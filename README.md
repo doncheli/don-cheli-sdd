@@ -21,7 +21,7 @@
 
 ## El problema
 
-Empezás un proyecto con IA. Las primeras 2 horas todo va bien. Después:
+Empiezas un proyecto con IA. Las primeras 2 horas todo va bien. Después:
 
 - **Context rot** — Claude olvida tus decisiones de arquitectura
 - **Stubs silenciosos** — Te dice "implementé el servicio" pero el código dice `// TODO`
@@ -37,7 +37,7 @@ Eso es **vibe coding**. Y es el enemigo del software de calidad.
 Especificar → Clarificar → Planificar → Desglosar → Implementar → Revisar
 ```
 
-Cada paso tiene **puertas de calidad**. No avanzás sin cumplir. El código se genera con **TDD obligatorio**, **detección de stubs**, y **peer review de 7 dimensiones**.
+Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se genera con **TDD obligatorio**, **detección de stubs**, y **peer review de 7 dimensiones**.
 
 ---
 
@@ -412,7 +412,7 @@ git checkout -b feature/mi-mejora
 
 [Apache 2.0](LICENCIA) — Copyright 2026 José Luis Oroño
 
-Podés usar, modificar y distribuir Don Cheli libremente. Debés mantener la atribución al autor original e indicar los cambios realizados.
+Puedes usar, modificar y distribuir Don Cheli libremente. Debes mantener la atribución al autor original e indicar los cambios realizados.
 
 ---
 

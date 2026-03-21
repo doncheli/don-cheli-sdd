@@ -152,9 +152,9 @@ copywriting:
   reglas:
     - "Usar 'tú' (no 'usted') para el usuario"
     - "Botones: verbos en infinitivo ('Crear', 'Guardar', 'Cancelar')"
-    - "Errores: explicar qué pasó Y qué hacer ('El email ya existe. Intentá con otro.')"
+    - "Errores: explicar qué pasó Y qué hacer ('El email ya existe. Intenta con otro.')"
     - "Éxito: confirmar la acción completada ('Usuario creado exitosamente')"
-    - "Vacíos: guiar al usuario ('Aún no tenés proyectos. Creá el primero.')"
+    - "Vacíos: guiar al usuario ('Aún no tienes proyectos. Crea el primero.')"
   prohibido:
     - "Click here / Haga clic aquí"
     - "Error genérico sin contexto"

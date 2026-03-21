@@ -76,7 +76,7 @@ El contexto principal se mantiene limpio.
 - El agente se repite o olvida contexto previo
 - Respuestas genéricas sin conocimiento del proyecto
 - Tool calls que fallan por razones que antes funcionaban
-- "¿Me podés repetir qué estamos haciendo?"
+- "¿Me puedes repetir qué estamos haciendo?"
 
 ### Solución
 

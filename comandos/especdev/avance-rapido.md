@@ -21,8 +21,8 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 
 | Situación | Comando |
 |-----------|---------|
-| Sabés exactamente qué querés | `/especdev:avance-rapido` ← ESTE |
-| Requisitos poco claros, necesitás investigar | `/especdev:explorar` primero |
+| Sabes exactamente qué quieres | `/especdev:avance-rapido` ← ESTE |
+| Requisitos poco claros, necesitas investigar | `/especdev:explorar` primero |
 | Querés ir paso a paso revisando | `/especdev:proponer` + `/especdev:continuar` |
 
 ## Comportamiento
