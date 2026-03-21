@@ -1,0 +1,27 @@
+{
+  "name": "don-cheli",
+  "version": "1.6.0",
+  "description": "Don Cheli — SDD Framework. Desarrollo Dirigido por Especificaciones en español. Combina lo mejor de ArtChiTech, BMO y Specular con RLM y estimados de desarrollo.",
+  "main": "scripts/instalar.sh",
+  "scripts": {
+    "instalar": "bash scripts/instalar.sh",
+    "bucle": "bash scripts/bucle.sh",
+    "validar": "bash scripts/validar.sh"
+  },
+  "keywords": [
+    "sdd",
+    "spec-driven-development",
+    "ai-framework",
+    "claude-code",
+    "desarrollo-especificaciones",
+    "rlm",
+    "estimados",
+    "español"
+  ],
+  "author": "Don Cheli Contributors",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doncheli/don-cheli-sdd.git"
+  }
+}

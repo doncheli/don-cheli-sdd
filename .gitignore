@@ -1,0 +1,36 @@
+# Dependencias
+node_modules/
+.npm
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Datos sensibles del proyecto
+.especdev/sesion/
+.especdev/historial/
+.env
+.env.local
+
+# Archivos temporales
+tmp/
+.tmp/
+
+# Excluidos del repo público
+CAMBIOS.md
+docs/guion-live.md
+
+# Claude Code local
+.claude/settings.local.json

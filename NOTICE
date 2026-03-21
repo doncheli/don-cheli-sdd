@@ -1,0 +1,12 @@
+Don Cheli — SDD Framework
+Copyright 2026 José Luis Oroño
+
+Este producto incluye software desarrollado por José Luis Oroño.
+
+Inspirado y adaptado de:
+- ArtChiTech (ciclo de vida 7 fases, razonamiento, hooks, agentes)
+- BMO (bucle de contexto fresco, PRD-creator, soporte multi-LLM)
+- Specular (pipeline Gherkin, BDD/TDD, artefactos trazables, constitución)
+- DeepCode / HKUDS (CodeRAG, Blueprint Distillation, detección de loops)
+- Get Shit Done / gsd-build (Nyquist validation, stub detection, UI contracts, checkpoints)
+- spec-kit / GitHub (prioridades P1/P2/P3+, constitution check, complexity tracking)
