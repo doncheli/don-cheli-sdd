@@ -410,7 +410,7 @@ git checkout -b feature/mi-mejora
 
 ## Licencia
 
-[Apache 2.0](LICENCIA) — Copyright 2026 José Luis Oroño
+[Apache 2.0](LICENCIA) — Copyright 2026 Jose Luis Oronoz Troconis (@DonCheli)
 
 Puedes usar, modificar y distribuir Don Cheli libremente. Debes mantener la atribución al autor original e indicar los cambios realizados.
 
