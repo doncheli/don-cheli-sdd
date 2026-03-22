@@ -5,13 +5,13 @@
   </p>
   <p align="center">
     El framework de Desarrollo Dirigido por Especificaciones más completo del mercado.<br/>
-    Open source. En español. Para Claude Code y otros agentes IA.
+    Open source. Multilenguaje (ES/EN/PT). Para Claude Code y otros agentes IA.
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.6.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.7.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
-    <img src="https://img.shields.io/badge/idioma-español-red" alt="Spanish">
+    <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
     <img src="https://img.shields.io/badge/comandos-55+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-40+-orange" alt="Skills">
   </p>
@@ -57,7 +57,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 <tr><td>Detección de stubs</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Contratos de UI</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Validación Nyquist</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>En español</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Multilenguaje (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 ### 10 cosas que solo Don Cheli tiene
@@ -86,6 +86,58 @@ cd don-cheli-sdd && bash scripts/instalar.sh --global
 
 # 3. En cualquier proyecto, inicializar
 /especdev:iniciar
+```
+
+### Selección de idioma
+
+Lo **primero** que ves al instalar es el selector de idioma:
+
+```
+  ╔═══════════════════════════════════════════════════════════╗
+  ║                                                           ║
+  ║           🏗️  Don Cheli — SDD Framework                   ║
+  ║                                                           ║
+  ╚═══════════════════════════════════════════════════════════╝
+
+  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma
+
+     1)  🇪🇸  Español
+     2)  🇬🇧  English
+     3)  🇧🇷  Português
+
+  ▸ _
+```
+
+Una vez seleccionado, **todo el framework se adapta al idioma elegido**: carpetas, archivos, plantillas, mensajes y la comunicación de Claude.
+
+### Estructura por idioma
+
+La instalación crea carpetas con nombres en el idioma seleccionado:
+
+<table>
+<tr><th>Contenido</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
+<tr><td>Habilidades</td><td><code>habilidades/</code></td><td><code>skills/</code></td><td><code>habilidades/</code></td></tr>
+<tr><td>Reglas</td><td><code>reglas/</code></td><td><code>rules/</code></td><td><code>regras/</code></td></tr>
+<tr><td>Plantillas</td><td><code>plantillas/</code></td><td><code>templates/</code></td><td><code>modelos/</code></td></tr>
+<tr><td>Ganchos</td><td><code>ganchos/</code></td><td><code>hooks/</code></td><td><code>ganchos/</code></td></tr>
+<tr><td>Agentes</td><td><code>agentes/</code></td><td><code>agents/</code></td><td><code>agentes/</code></td></tr>
+</table>
+
+Los archivos de proyecto (`.especdev/`) también se crean en el idioma configurado:
+
+<table>
+<tr><th>Archivo</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
+<tr><td>Estado</td><td><code>estado.md</code></td><td><code>status.md</code></td><td><code>estado.md</code></td></tr>
+<tr><td>Hallazgos</td><td><code>hallazgos.md</code></td><td><code>findings.md</code></td><td><code>descobertas.md</code></td></tr>
+<tr><td>Plan</td><td><code>plan.md</code></td><td><code>plan.md</code></td><td><code>plano.md</code></td></tr>
+<tr><td>Progreso</td><td><code>progreso.md</code></td><td><code>progress.md</code></td><td><code>progresso.md</code></td></tr>
+<tr><td>Propuesta</td><td><code>propuesta.md</code></td><td><code>proposal.md</code></td><td><code>proposta.md</code></td></tr>
+</table>
+
+El idioma se persiste en `locale` y `folder-map.json` para que Claude sepa exactamente qué archivos buscar. Para cambiar de idioma, simplemente reinstala:
+
+```bash
+bash scripts/instalar.sh --global
 ```
 
 <details>
@@ -367,23 +419,48 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/        # 46 comandos /especdev:*
-│   └── razonar/         # 15 comandos /razonar:*
-├── habilidades/         # 40 habilidades modulares
+│   ├── especdev/          # 47 comandos /especdev:*
+│   └── razonar/           # 15 comandos /razonar:*
+├── habilidades/           # 40 habilidades modulares
 ├── reglas/
-│   ├── constitucion.md  # 8 principios gobernantes
-│   ├── leyes-hierro.md  # 3 leyes no negociables
+│   ├── constitucion.md    # 8 principios gobernantes
+│   ├── leyes-hierro.md    # 3 leyes no negociables
 │   ├── puertas-calidad.md # 6 quality gates
+│   ├── i18n.md            # Reglas de internacionalización
 │   └── reglas-trabajo-globales.md
-├── plantillas/          # Templates para .especdev/
-├── agentes/             # 7 agentes especializados
-├── ganchos/             # Pre/Post herramienta + Stop hooks
-├── scripts/             # instalar.sh, bucle.sh, validar.sh
-├── CLAUDE.md            # Instrucciones para Claude Code
-├── AGENTS.md            # Instrucciones para Codex
-├── prompt.md            # Instrucciones para Amp
-├── NOTICE               # Atribuciones
-└── LICENCIA             # Apache 2.0
+├── locales/               # 🌍 Strings i18n
+│   ├── es.json            # Español (158 strings)
+│   ├── en.json            # English (158 strings)
+│   └── pt.json            # Português (158 strings)
+├── plantillas/
+│   └── especdev/
+│       ├── es/            # Templates en español
+│       ├── en/            # Templates in English
+│       └── pt/            # Templates em português
+├── agentes/               # 7 agentes especializados
+├── ganchos/               # Pre/Post herramienta + Stop hooks
+├── scripts/               # instalar.sh, bucle.sh, validar.sh
+├── CLAUDE.md              # Instrucciones para Claude Code
+├── AGENTS.md              # Instrucciones para Codex
+├── prompt.md              # Instrucciones para Amp
+├── NOTICE                 # Atribuciones
+└── LICENCIA               # Apache 2.0
+```
+
+Después de instalar con un idioma, la estructura instalada usa los nombres localizados:
+
+```
+~/.claude/don-cheli/          # Instalación global
+├── skills/                   # (o habilidades/ en ES, habilidades/ en PT)
+├── rules/                    # (o reglas/ en ES, regras/ en PT)
+├── templates/                # (o plantillas/ en ES, modelos/ en PT)
+├── hooks/                    # (o ganchos/ en ES/PT)
+├── agents/                   # (o agentes/ en ES/PT)
+├── locales/                  # es.json, en.json, pt.json
+├── locale                    # Archivo de 2 letras: "es", "en" o "pt"
+├── folder-map.json           # Mapeo de nombres para Claude
+├── CLAUDE.md
+└── VERSION
 ```
 
 ---
