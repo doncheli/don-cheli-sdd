@@ -55,7 +55,7 @@ Corrección: Siempre verificar la ruta absoluta antes de editar
 ## Activación
 
 El agente detecta automáticamente cuándo aprender:
-- Usuario dice "recordá esto", "no hagas eso", "aprendé de esto"
+- Usuario dice "recuerda esto", "no hagas eso", "aprende de esto"
 - Se identifica un error y su corrección
 - El wrap-up captura learnings
 

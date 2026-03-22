@@ -23,7 +23,7 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 |-----------|---------|
 | Sabes exactamente qué quieres | `/especdev:avance-rapido` ← ESTE |
 | Requisitos poco claros, necesitas investigar | `/especdev:explorar` primero |
-| Querés ir paso a paso revisando | `/especdev:proponer` + `/especdev:continuar` |
+| Quieres ir paso a paso revisando | `/especdev:proponer` + `/especdev:continuar` |
 
 ## Comportamiento
 
