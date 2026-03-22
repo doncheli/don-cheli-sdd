@@ -1,5 +1,6 @@
 ---
 description: Modo Prueba de Concepto para validar viabilidad técnica antes de comprometer implementación completa
+i18n: true
 ---
 
 # /especdev:poc

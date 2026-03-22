@@ -1,5 +1,6 @@
 ---
 description: Detectar ambigüedades y contradicciones en specs de forma exhaustiva
+i18n: true
 ---
 
 # /especdev:detectar-ambiguedad

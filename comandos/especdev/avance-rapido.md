@@ -1,5 +1,6 @@
 ---
 description: Crear todos los artefactos de planificación de un golpe (fast-forward)
+i18n: true
 ---
 
 # /especdev:avance-rapido

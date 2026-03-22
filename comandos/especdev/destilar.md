@@ -1,5 +1,6 @@
 ---
 description: Extraer especificaciones compactas desde código existente (Blueprint Distillation)
+i18n: true
 ---
 
 # /especdev:destilar

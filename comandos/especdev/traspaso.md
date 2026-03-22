@@ -1,5 +1,6 @@
 ---
 description: Generar handoff de contexto para transferencia de sesión
+i18n: true
 ---
 
 # /especdev:traspaso

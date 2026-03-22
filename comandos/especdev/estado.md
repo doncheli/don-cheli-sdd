@@ -1,5 +1,6 @@
 ---
 description: Mostrar el estado actual del proyecto Don Cheli
+i18n: true
 ---
 
 # /especdev:estado

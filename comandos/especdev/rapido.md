@@ -1,5 +1,6 @@
 ---
 description: Modo rápido para tareas pequeñas y bien definidas (Nivel 1)
+i18n: true
 ---
 
 # /especdev:rapido

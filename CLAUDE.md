@@ -76,7 +76,15 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 - System prompts < 500 tokens.
 - Outputs estructurados desde el inicio (JSON, tablas).
 
-## Idioma
+## Idioma (i18n)
 
-Todo output, documentación y comunicación debe ser en **español**.
-Código (variables, funciones, comentarios) en **inglés**.
+El framework soporta 3 idiomas: **español (es)**, **English (en)**, **Português (pt)**.
+
+**Detección de idioma (en orden):**
+1. Leer `${FRAMEWORK_HOME}/locale` (archivo de 2 letras: `es`, `en` o `pt`)
+2. Leer `.especdev/config.yaml` → `framework.idioma`
+3. Default: `es`
+
+**Regla:** Toda comunicación, documentación, commits y output del framework debe ser en el idioma configurado. Código (variables, funciones) **siempre en inglés**.
+
+Lee `reglas/i18n.md` para la guía completa de internacionalización.

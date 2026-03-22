@@ -1,5 +1,6 @@
 ---
 description: Ejecutar tareas TDD fase por fase dentro de Docker hasta que todos los tests pasen
+i18n: true
 ---
 
 # /especdev:implementar

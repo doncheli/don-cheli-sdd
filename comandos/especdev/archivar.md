@@ -1,5 +1,6 @@
 ---
 description: Archivar specs completadas y sincronizar delta specs con specs principales
+i18n: true
 ---
 
 # /especdev:archivar

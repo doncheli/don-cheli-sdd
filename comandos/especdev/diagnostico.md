@@ -1,5 +1,6 @@
 ---
 description: Verificar la salud del setup de Don Cheli en el proyecto actual
+i18n: true
 ---
 
 # /especdev:diagnostico

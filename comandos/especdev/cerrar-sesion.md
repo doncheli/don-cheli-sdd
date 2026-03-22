@@ -1,5 +1,6 @@
 ---
 description: Ritual de cierre de sesión con auditoría, calidad, aprendizajes y contexto para la próxima sesión
+i18n: true
 ---
 
 # /especdev:cerrar-sesion

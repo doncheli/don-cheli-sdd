@@ -1,5 +1,6 @@
 ---
 description: Validar la conformidad de archivos .especdev/
+i18n: true
 ---
 
 # /especdev:validar

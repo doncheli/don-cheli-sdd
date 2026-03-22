@@ -1,0 +1,27 @@
+# Don Cheli Project Configuration
+project:
+  name: "my-project"
+  type: "product"  # product|cli|app|library|service|refactor|bugfix|poc
+  description: ""
+  version: "0.1.0"
+
+# AI Models
+models:
+  default: sonnet
+  agents:
+    planner: opus
+    architect: opus
+    executor: sonnet
+    reviewer: opus
+    tester: sonnet
+    documenter: haiku
+    estimator: opus
+
+# Session history
+history:
+  enabled: true
+  maxSessions: 10
+  autoSave: true
+
+# Language
+language: "en"

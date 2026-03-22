@@ -1,5 +1,6 @@
 ---
 description: Peer review estricto con análisis de rendimiento, arquitectura, seguridad y cumplimiento
+i18n: true
 ---
 
 # /especdev:revisar

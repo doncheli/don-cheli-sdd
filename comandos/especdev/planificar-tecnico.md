@@ -1,5 +1,6 @@
 ---
 description: Generar blueprint técnico desde una especificación Gherkin
+i18n: true
 ---
 
 # /especdev:planificar-tecnico

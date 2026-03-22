@@ -1,5 +1,6 @@
 ---
 description: Crear propuesta de cambio con intención, alcance y enfoque antes de especificar
+i18n: true
 ---
 
 # /especdev:proponer

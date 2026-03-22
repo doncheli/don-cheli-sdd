@@ -1,5 +1,6 @@
 ---
 description: Discusión multi-perspectiva con varios agentes sobre un tema
+i18n: true
 ---
 
 # /especdev:mesa-redonda

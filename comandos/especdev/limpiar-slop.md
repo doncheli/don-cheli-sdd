@@ -1,5 +1,6 @@
 ---
 description: Eliminar slop de código generado por IA antes de commits
+i18n: true
 ---
 
 # /especdev:limpiar-slop

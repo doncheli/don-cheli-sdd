@@ -1,5 +1,6 @@
 ---
 description: Diseño técnico con decisiones de arquitectura documentadas
+i18n: true
 ---
 
 # /especdev:diseñar

@@ -1,5 +1,6 @@
 ---
 description: Dividir un blueprint técnico en tareas con TDD (RED→GREEN) y marcadores de paralelismo
+i18n: true
 ---
 
 # /especdev:desglosar

@@ -1,0 +1,179 @@
+{
+  "installer": {
+    "banner_line1": "Don Cheli — SDD Framework v{{version}}",
+    "banner_line2": "Pare de improvisar. Comece a entregar.",
+    "select_language": "Selecciona tu idioma / Select your language / Selecione seu idioma",
+    "option_es": "Español",
+    "option_en": "English",
+    "option_pt": "Português",
+    "invalid_option": "Opção inválida. Selecione 1, 2 ou 3.",
+    "language_selected": "Idioma selecionado: {{language}}",
+    "mode_global": "Modo: Instalação global",
+    "mode_local": "Modo: Instalação local no projeto atual",
+    "framework_path": "Framework: {{path}}",
+    "commands_path": "Comandos: {{path}}",
+    "step_structure": "Criando estrutura...",
+    "step_commands": "Copiando comandos...",
+    "step_commands_done": "{{count}} comandos /especdev:*",
+    "step_reasoning_done": "{{count}} comandos /razonar:*",
+    "step_skills": "Copiando habilidades...",
+    "step_skills_done": "{{count}} habilidades",
+    "step_rules": "Copiando regras...",
+    "step_rules_done": "{{count}} regras",
+    "step_templates": "Copiando modelos...",
+    "step_templates_done": "Modelos copiados",
+    "step_hooks": "Copiando ganchos...",
+    "step_hooks_done": "Ganchos copiados",
+    "step_agents": "Copiando agentes...",
+    "step_agents_done": "Agentes copiados",
+    "step_scripts": "Copiando scripts...",
+    "step_scripts_done": "Scripts copiados",
+    "step_reference": "Copiando arquivos de referência...",
+    "step_reference_done": "CLAUDE.md, AGENTS.md, prompt.md, NOTICE",
+    "success_title": "Don Cheli v{{version}} instalado com sucesso",
+    "structure_title": "Estrutura instalada:",
+    "structure_skills": "habilidades",
+    "structure_rules": "regras",
+    "structure_templates": "modelos",
+    "structure_hooks": "ganchos",
+    "structure_agents": "agentes",
+    "structure_commands": "comandos",
+    "next_steps_title": "Próximos passos:",
+    "next_step_1": "Reinicie o Claude Code",
+    "next_step_2": "Em qualquer projeto execute: /especdev:iniciar",
+    "farewell": "Pare de improvisar. Comece a entregar!"
+  },
+  "framework": {
+    "identity": "Você é um assistente de desenvolvimento que opera sob o framework Don Cheli (Desenvolvimento Orientado por Especificações).",
+    "language_instruction": "SEMPRE responda em português. Código (variáveis, funções) em inglês. Documentação, commits e comunicação em português.",
+    "phases": {
+      "0": "Inicialização",
+      "1": "Proposta",
+      "2": "Especificação",
+      "3": "Clarificação",
+      "4": "Design técnico",
+      "5": "Planejamento",
+      "6": "Detalhamento",
+      "7": "Implementação",
+      "8": "Revisão"
+    },
+    "status": {
+      "pending": "Pendente",
+      "in_progress": "Em andamento",
+      "completed": "Concluída",
+      "approved": "Aprovada",
+      "blocked": "Bloqueada"
+    },
+    "project_types": {
+      "produto": "Produto completo novo",
+      "cli": "Aplicação de linha de comando",
+      "app": "Aplicação desktop/móvel",
+      "libreria": "Pacote reutilizável",
+      "servico": "Microsserviço/API",
+      "refactor": "Refactoring existente",
+      "correcao": "Correção de bug"
+    },
+    "verdicts": {
+      "viable": "VIÁVEL — Prosseguir com a implementação",
+      "viable_with_reservations": "VIÁVEL COM RESSALVAS — Documentar limitações",
+      "not_viable": "NÃO VIÁVEL — Explorar alternativas",
+      "inconclusive": "INCONCLUSIVO — Reformular hipótese"
+    },
+    "review": {
+      "approved": "APROVADO",
+      "approved_with_observations": "APROVADO COM OBSERVAÇÕES",
+      "rejected": "REJEITADO",
+      "pending": "PENDENTE DE APROVAÇÃO"
+    },
+    "priorities": {
+      "p1": "Caminho Crítico",
+      "p2": "Importante",
+      "p3": "Desejável"
+    },
+    "severity": {
+      "critical": "Crítico",
+      "high": "Alto",
+      "medium": "Médio",
+      "low": "Baixo"
+    },
+    "tdd": {
+      "red": "Escrever teste que FALHA",
+      "green": "Implementar código MÍNIMO para passar",
+      "refactor": "Limpar sem alterar comportamento"
+    },
+    "iron_laws": {
+      "1": "Todo código de produção requer testes",
+      "2": "Primeiro a causa raiz, depois a correção",
+      "3": "Evidência antes de afirmações"
+    }
+  },
+  "commands": {
+    "iniciar": {
+      "initialized": "Don Cheli inicializado",
+      "project": "Projeto",
+      "type": "Tipo",
+      "directory": "Diretório",
+      "files_created": "arquivos criados",
+      "next_step": "Próximo passo: edite .especdev/plan.md para definir suas fases",
+      "already_exists": ".especdev/ já existe. Deseja sobrescrever ou reparar?"
+    },
+    "estado": {
+      "current_phase": "Fase Atual",
+      "next_phase": "Próxima Fase",
+      "summary": "Resumo",
+      "phase_history": "Histórico de Fases"
+    },
+    "proponer": {
+      "intention": "Intenção (POR QUÊ)",
+      "scope": "Escopo (O QUÊ)",
+      "included": "Incluído",
+      "excluded": "Excluído",
+      "approach": "Abordagem (COMO)",
+      "risks": "Riscos",
+      "estimate": "Estimativa Preliminar",
+      "open_questions": "Perguntas em Aberto",
+      "pending_approval": "PENDENTE DE APROVAÇÃO"
+    },
+    "clarificar": {
+      "ambiguities_detected": "Ambiguidades Detectadas",
+      "schema_check": "Verificação Schema-Spec",
+      "convention_check": "Verificação de Convenções",
+      "auto_generated_audit": "Auditoria Auto-Gerado",
+      "result": "Resultado",
+      "pass": "PASSA",
+      "fail": "FALHA",
+      "advance": "AVANÇAR",
+      "no_advance": "NÃO-AVANÇAR"
+    },
+    "implementar": {
+      "phase_setup": "Fase 1: Setup",
+      "phase_foundation": "Fase 2: Fundação",
+      "phase_stories": "Fase 3: Histórias de Usuário",
+      "phase_polish": "Fase 4: Polish",
+      "phase_verify": "Fase 5: Verificação Final",
+      "checkpoint_verify": "CHECKPOINT: verificar",
+      "checkpoint_decision": "CHECKPOINT: decisão",
+      "checkpoint_human": "CHECKPOINT: ação-humana",
+      "all_tests_pass": "Todos os testes passam. Feature implementada com sucesso."
+    },
+    "revisar": {
+      "functional": "Correção Funcional",
+      "tests": "Testes e Cobertura",
+      "performance": "Desempenho",
+      "architecture": "Arquitetura e Design",
+      "security": "Segurança",
+      "style": "Estilo e Convenções",
+      "diff": "Diff Limpo"
+    },
+    "diagnostico": {
+      "structure": "Estrutura",
+      "configuration": "Configuração",
+      "environment": "Ambiente",
+      "pipeline": "Pipeline",
+      "healthy": "SAUDÁVEL",
+      "functional": "FUNCIONAL",
+      "needs_attention": "REQUER ATENÇÃO",
+      "warnings": "Avisos"
+    }
+  }
+}

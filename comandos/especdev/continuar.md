@@ -1,5 +1,6 @@
 ---
 description: Recuperar sesión previa y generar reporte de puesta al día
+i18n: true
 ---
 
 # /especdev:continuar

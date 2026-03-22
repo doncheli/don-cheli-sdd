@@ -1,5 +1,6 @@
 ---
 description: Cargar un agente especializado para una tarea específica
+i18n: true
 ---
 
 # /especdev:agente

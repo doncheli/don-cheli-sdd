@@ -1,5 +1,6 @@
 ---
 description: Crear especificación Gherkin desde un requerimiento con schema DBML auto-generado
+i18n: true
 ---
 
 # /especdev:especificar

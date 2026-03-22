@@ -1,5 +1,6 @@
 ---
 description: Auditoría de seguridad estática del código (OWASP Top 10, SecDevOps)
+i18n: true
 ---
 
 # /especdev:auditar-seguridad

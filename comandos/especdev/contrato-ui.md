@@ -1,5 +1,6 @@
 ---
 description: Bloquear estándares visuales antes de codear frontend (UI Design Contract)
+i18n: true
 ---
 
 # /especdev:contrato-ui

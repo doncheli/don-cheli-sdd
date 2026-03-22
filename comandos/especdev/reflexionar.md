@@ -1,5 +1,6 @@
 ---
 description: Reflexionar sobre una tarea para mejorar calidad (+8-21%)
+i18n: true
 ---
 
 # /especdev:reflexionar

@@ -1,5 +1,6 @@
 ---
 description: Detectar actualizaciones del framework Don Cheli y aplicarlas
+i18n: true
 ---
 
 # /especdev:actualizar

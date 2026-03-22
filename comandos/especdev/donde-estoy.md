@@ -1,5 +1,6 @@
 ---
 description: Test rápido de 5 preguntas para verificar contexto
+i18n: true
 ---
 
 # /especdev:donde-estoy

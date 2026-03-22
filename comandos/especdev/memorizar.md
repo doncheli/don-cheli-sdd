@@ -1,5 +1,6 @@
 ---
 description: Guardar insights importantes para referencia futura
+i18n: true
 ---
 
 # /especdev:memorizar

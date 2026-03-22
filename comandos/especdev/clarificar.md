@@ -1,5 +1,6 @@
 ---
 description: Detectar ambigüedades en una especificación, ejecutar Auto-QA y registrar respuestas
+i18n: true
 ---
 
 # /especdev:clarificar

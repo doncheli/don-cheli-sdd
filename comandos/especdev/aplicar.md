@@ -1,5 +1,6 @@
 ---
 description: Aplicar (implementar) tareas de un cambio específico
+i18n: true
 ---
 
 # /especdev:aplicar

@@ -1,5 +1,6 @@
 ---
 description: Generar estimados de desarrollo usando múltiples modelos de estimación
+i18n: true
 ---
 
 # /especdev:estimar

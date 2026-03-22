@@ -1,5 +1,6 @@
 ---
 description: Auditar componentes del framework
+i18n: true
 ---
 
 # /especdev:auditar

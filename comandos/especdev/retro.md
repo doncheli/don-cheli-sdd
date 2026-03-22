@@ -1,5 +1,6 @@
 ---
 description: Ver detalles de una sesión pasada
+i18n: true
 ---
 
 # /especdev:retro

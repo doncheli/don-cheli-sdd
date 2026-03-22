@@ -1,5 +1,6 @@
 ---
 description: Analizar sesiones de Claude en el equipo para extraer patrones de uso y generar recomendaciones de habilidades, plugins, agentes y reglas
+i18n: true
 ---
 
 # /especdev:analizar-sesiones

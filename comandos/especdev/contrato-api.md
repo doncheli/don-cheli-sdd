@@ -1,5 +1,6 @@
 ---
 description: Diseñar contratos de API, webhooks e integraciones con manejo de errores y reintentos
+i18n: true
 ---
 
 # /especdev:contrato-api

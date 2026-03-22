@@ -1,5 +1,6 @@
 ---
 description: Inicializar Don Cheli en un proyecto nuevo o existente
+i18n: true
 ---
 
 # /especdev:iniciar
@@ -26,14 +27,17 @@ Crear el directorio `.especdev/` con todos los archivos de contexto necesarios p
 
 ## Comportamiento
 
-1. **Verificar** si `.especdev/` ya existe
+1. **Detectar idioma** — Leer `${FRAMEWORK_HOME}/locale` (set durante instalación). Si no existe, preguntar al usuario.
+2. **Verificar** si `.especdev/` ya existe
    - Si existe: preguntar si desea sobrescribir o reparar
    - Si no existe: continuar
-2. **Crear** directorio `.especdev/`
-3. **Copiar** plantillas desde `plantillas/especdev/`
-4. **Configurar** `config.yaml` con nombre y tipo de proyecto
-5. **Inicializar** `estado.md`, `plan.md`, `hallazgos.md`, `progreso.md`
-6. **Opcionalmente** crear hooks locales (`--con-hooks`)
+3. **Crear** directorio `.especdev/`
+4. **Copiar** plantillas desde `plantillas/especdev/`
+5. **Configurar** `config.yaml` con nombre, tipo de proyecto y `framework.idioma` (del locale detectado)
+6. **Inicializar** `estado.md`, `plan.md`, `hallazgos.md`, `progreso.md` — todos en el idioma configurado
+7. **Opcionalmente** crear hooks locales (`--con-hooks`)
+
+**IMPORTANTE:** Todos los archivos generados (.md) deben usar la terminología del idioma configurado. Consultar `locales/{locale}.json` para las traducciones correctas de fases, estados, tipos de proyecto, etc.
 
 ## Archivos Creados
 

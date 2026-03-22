@@ -1,5 +1,6 @@
 ---
 description: Buscar repos open-source relevantes como referencia antes de implementar
+i18n: true
 ---
 
 # /especdev:minar-referencias

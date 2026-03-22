@@ -1,5 +1,6 @@
 ---
 description: Incorporar nuevo desarrollador al proyecto con contexto completo
+i18n: true
 ---
 
 # /especdev:incorporar

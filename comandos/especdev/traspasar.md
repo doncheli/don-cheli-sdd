@@ -1,5 +1,6 @@
 ---
 description: Generar documento de traspaso estructurado para retomar en la próxima sesión
+i18n: true
 ---
 
 # /especdev:traspasar

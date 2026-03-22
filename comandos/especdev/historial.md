@@ -1,5 +1,6 @@
 ---
 description: Listar sesiones pasadas guardadas en el historial
+i18n: true
 ---
 
 # /especdev:historial

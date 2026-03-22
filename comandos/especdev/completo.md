@@ -1,5 +1,6 @@
 ---
 description: Modo completo para proyectos grandes y complejos (Nivel 3)
+i18n: true
 ---
 
 # /especdev:completo

@@ -1,5 +1,6 @@
 ---
 description: Planificar y ejecutar migración entre stacks tecnológicos o versiones mayores
+i18n: true
 ---
 
 # /especdev:migrar

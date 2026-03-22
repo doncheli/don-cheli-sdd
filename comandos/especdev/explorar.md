@@ -1,5 +1,6 @@
 ---
 description: Explorar e investigar el codebase antes de proponer cambios
+i18n: true
 ---
 
 # /especdev:explorar

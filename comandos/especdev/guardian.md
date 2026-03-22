@@ -1,5 +1,6 @@
 ---
 description: Revisión de código IA como pre-commit hook — Guardian Angel
+i18n: true
 ---
 
 # /especdev:guardian

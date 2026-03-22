@@ -1,5 +1,6 @@
 ---
 description: Extraer arquitectura de un codebase existente (ingeniería inversa)
+i18n: true
 ---
 
 # /especdev:reversa

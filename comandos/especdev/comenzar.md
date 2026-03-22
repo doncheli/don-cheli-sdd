@@ -1,5 +1,6 @@
 ---
 description: Iniciar tarea con nivel de complejidad auto-detectado (0-4)
+i18n: true
 ---
 
 # /especdev:comenzar
