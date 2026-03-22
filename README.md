@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idioma-español-red" alt="Spanish">
     <img src="https://img.shields.io/badge/comandos-55+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/habilidades-35+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/habilidades-40+-orange" alt="Skills">
   </p>
 </p>
 
@@ -46,7 +46,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
 <tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>55+</strong></td></tr>
-<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>35</strong></td></tr>
+<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>40</strong></td></tr>
 <tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
 <tr><td>Quality gates formales</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
@@ -179,6 +179,7 @@ No negociables. Se aplican siempre.
 | `/especdev:explorar` | Explorar codebase (modo supuestos) |
 | `/especdev:proponer` | Propuesta de cambio |
 | `/especdev:analizar-sesiones` | Análisis de patrones de uso |
+| `/especdev:actualizar` | Detectar y aplicar actualizaciones del framework |
 </details>
 
 <details>
@@ -217,16 +218,18 @@ No negociables. Se aplican siempre.
 
 ---
 
-## Habilidades (35)
+## Habilidades (40)
 
 | Categoría | Habilidades |
 |-----------|------------|
 | **Calidad** | Leyes de hierro, Validación Nyquist, Detección de stubs, Detección de loops, Puertas de calidad, Prueba de trabajo, Rigor progresivo |
-| **Contexto** | Ingeniería de contexto, Optimizador de contexto, Memoria persistente (Engram), CodeRAG, Code reference mining |
+| **Contexto** | Ingeniería de contexto, Optimizador de contexto, Memoria persistente (Engram), CodeRAG + LightRAG, Code reference mining |
 | **Razonamiento** | 12 modelos mentales, 3 modelos RLM (PrimeIntellect) |
 | **Arquitectura** | Mapa arquitectónico vivo, Refactorización SOLID, Schemas DBML |
-| **Documentación** | Documentación viva (ADRs, OpenAPI), DevLog, Trazabilidad, Delta specs |
+| **Diseño** | UI/UX Design System (67 estilos, 161 paletas), Contratos de UI, Presentaciones HTML |
+| **Documentación** | Documentación viva (ADRs, OpenAPI), DevLog, Trazabilidad, Delta specs, Obsidian |
 | **Autonomía** | Orquestación autónoma, Auto-corrección, Recuperación de sesión |
+| **Descubrimiento** | Brainstorming estructurado, Git Worktrees |
 | **Eficiencia** | Optimización de tokens, Contabilidad de tokens, Desarrollo con subagentes |
 | **Seguridad** | Permisos y seguridad, Auditoría OWASP |
 | **Integración** | MCP servers, Extensiones y presets |
@@ -366,7 +369,7 @@ don-cheli/
 ├── comandos/
 │   ├── especdev/        # 46 comandos /especdev:*
 │   └── razonar/         # 15 comandos /razonar:*
-├── habilidades/         # 35 habilidades modulares
+├── habilidades/         # 40 habilidades modulares
 ├── reglas/
 │   ├── constitucion.md  # 8 principios gobernantes
 │   ├── leyes-hierro.md  # 3 leyes no negociables

@@ -159,27 +159,99 @@ export async function handleWebhook(req: Request): Promise<void> {
 > Adaptar al contexto y convenciones del proyecto actual.
 ```
 
-## Grafo de Dependencias
+## Grafo de Conocimiento (LightRAG)
 
-El grafo permite responder preguntas como:
+> Mejorado con conceptos de [LightRAG](https://github.com/HKUDS/LightRAG) — Retrieval dual-level con grafo de entidades y relaciones.
 
-- "¿Qué archivos se ven afectados si cambio esta interfaz?"
-- "¿Qué patrón usa el proyecto de referencia para este caso?"
-- "¿Hay dependencias circulares?"
+### Enfoque Dual-Level
 
 ```
-// .especdev/code-rag/deps.json
+Query
+  ├─→ Traversal de grafo (relaciones entre entidades)
+  │   └─→ Nodo A → usa → Nodo B → extiende → Nodo C
+  │
+  └─→ Búsqueda semántica (similitud por tags/nombre)
+      └─→ Match fuzzy por descripción
+
+  ├─→ Combinar resultados con contexto relacional
+  └─→ Inyectar top-3 con grafo de dependencias incluido
+```
+
+### Entidades y Relaciones
+
+El grafo extrae automáticamente:
+
+| Entidad | Ejemplos |
+|---------|----------|
+| **Función** | `handleWebhook`, `createUser` |
+| **Clase** | `AuthService`, `UserRepository` |
+| **Módulo** | `src/services/auth`, `src/utils/jwt` |
+| **Patrón** | Factory, Repository, Observer |
+| **Interfaz** | `UserInput`, `WebhookPayload` |
+
+| Relación | Significado |
+|----------|-----------|
+| `calls` | Función A invoca función B |
+| `extends` | Clase A hereda de clase B |
+| `implements` | Clase A implementa interfaz B |
+| `imports` | Módulo A importa desde módulo B |
+| `composes` | Patrón A se compone con patrón B |
+| `depends_on` | Componente A depende de componente B |
+
+### Queries Multi-Nivel
+
+| Modo | Qué busca | Ejemplo |
+|------|----------|---------|
+| **Local** | Contexto específico de un módulo | "error handling en auth service" |
+| **Global** | Patrones cross-módulo | "todas las implementaciones de Factory" |
+| **Híbrido** | Combina local + global | "auth patterns + sus dependencias" |
+
+### Almacenamiento
+
+```
+.especdev/code-rag/
+├── patterns.json     # Patrones indexados
+├── entities.json     # Entidades extraídas (funciones, clases, módulos)
+├── relations.json    # Relaciones entre entidades (grafo)
+├── deps.json         # Grafo de dependencias de archivos
+├── apis.json         # APIs y contratos
+└── fuentes.yaml      # Configuración de fuentes
+```
+
+```json
+// .especdev/code-rag/entities.json
 {
-  "nodes": [
-    {"id": "auth-service", "archivo": "src/services/auth.ts", "tipo": "service"},
-    {"id": "jwt-util", "archivo": "src/utils/jwt.ts", "tipo": "utility"},
-    {"id": "user-model", "archivo": "src/models/user.ts", "tipo": "model"}
-  ],
-  "edges": [
-    {"from": "auth-service", "to": "jwt-util", "tipo": "import"},
-    {"from": "auth-service", "to": "user-model", "tipo": "import"}
+  "entities": [
+    {"id": "auth-service", "tipo": "service", "archivo": "src/services/auth.ts",
+     "tags": ["auth", "jwt", "security"]},
+    {"id": "jwt-util", "tipo": "utility", "archivo": "src/utils/jwt.ts",
+     "tags": ["jwt", "crypto", "token"]}
   ]
 }
+
+// .especdev/code-rag/relations.json
+{
+  "relations": [
+    {"from": "auth-service", "to": "jwt-util", "tipo": "imports"},
+    {"from": "auth-service", "to": "user-model", "tipo": "depends_on"},
+    {"from": "auth-handler", "to": "auth-service", "tipo": "calls"}
+  ]
+}
+```
+
+### Ventaja sobre RAG tradicional
+
+```
+RAG tradicional:
+  Query: "async error handling"
+  → Busca por similitud → Devuelve snippets sueltos
+
+CodeRAG + LightRAG:
+  Query: "async error handling"
+  → Extrae entidades: [error_handler, async_fn, middleware]
+  → Traversa grafo: async_fn --calls--> error_handler --wraps--> middleware
+  → Devuelve: snippet + contexto relacional + patrones asociados
+  → Bonus: "Este patrón se compone con logging middleware"
 ```
 
 ## Gestión del Índice

@@ -63,6 +63,7 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 - `/especdev:contrato-api` — Diseñar contratos de API, webhooks e integraciones
 - `/especdev:auditar-seguridad` — Auditoría de seguridad estática (OWASP Top 10)
 - `/especdev:migrar` — Migración entre stacks tecnológicos o versiones mayores
+- `/especdev:actualizar` — Detectar y aplicar actualizaciones del framework
 - `/razonar:*` — 12 modelos de razonamiento + 3 modelos RLM (PrimeIntellect)
 - `/bucle` — Bucle autónomo
 - `/historias-generar` — Generar prd.json
