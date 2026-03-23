@@ -1,0 +1,565 @@
+> 🌐 Read this in other languages: [Español](README.md) | [English](README.en.md) | [Português](README.pt.md)
+
+<p align="center">
+  <h1 align="center">Don Cheli — SDD Framework</h1>
+  <p align="center">
+    <strong>Stop improvising. Start delivering.</strong>
+  </p>
+  <p align="center">
+    The most comprehensive Specification-Driven Development framework on the market.<br/>
+    Open source. Multilingual (ES/EN/PT). For Claude Code and other AI agents.
+  </p>
+  <p align="center">
+    <a href="#-installation"><img src="https://img.shields.io/badge/install-1_minute-brightgreen" alt="Install"></a>
+    <img src="https://img.shields.io/badge/version-1.10.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License">
+    <img src="https://img.shields.io/badge/languages-ES%20|%20EN%20|%20PT-red" alt="Languages">
+    <img src="https://img.shields.io/badge/commands-68+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/skills-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
+  </p>
+</p>
+
+---
+
+## The Problem
+
+You start a project with AI. The first 2 hours go well. Then:
+
+- **Context rot** — Claude forgets your architecture decisions
+- **Silent stubs** — It says "I implemented the service" but the code says `// TODO`
+- **No verification** — Does it work? I don't know. Tests? No. Can I deploy? Hopefully
+
+That is **vibe coding**. And it is the enemy of quality software.
+
+## The Solution
+
+**Don Cheli** transforms chaos into a structured process:
+
+```
+Specify → Clarify → Plan → Break Down → Implement → Review
+```
+
+Each step has **quality gates**. You don't advance without meeting them. Code is generated with **mandatory TDD**, **stub detection**, and **7-dimension peer review**.
+
+---
+
+## Why Don Cheli
+
+<table>
+<tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
+<tr><td>Commands</td><td>~20</td><td>~80</td><td>~10</td><td><strong>68+</strong></td></tr>
+<tr><td>Skills</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
+<tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
+<tr><td>Automatic estimates</td><td>—</td><td>—</td><td>—</td><td><strong>4 models</strong></td></tr>
+<tr><td>Formal quality gates</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
+<tr><td>Mandatory TDD</td><td>—</td><td>—</td><td>—</td><td><strong>Iron Law</strong></td></tr>
+<tr><td>PoC Mode</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>OWASP Audit</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Stack Migration</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Stub detection</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>UI Contracts</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Nyquist Validation</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Multilingual (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td><strong>✅ Compatible</strong></td></tr>
+<tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+</table>
+
+### 15 things only Don Cheli has
+
+1. **15 reasoning models** — Pre-mortem, 5 Whys, Pareto, RLM
+2. **4 estimation models** — Function Points, AI Planning Poker, COCOMO, Historical
+3. **PoC Mode** — Validate ideas with timebox and success criteria before committing
+4. **Blueprint Distillation** — Extract specs from existing code (behavioral reverse engineering)
+5. **CodeRAG** — Index reference repos and retrieve relevant patterns
+6. **OWASP Audit** — Static security scanning integrated into the pipeline
+7. **Stack Migration** — Vue→React, JS→TS with wave plan and equivalences
+8. **API Contracts** — REST/GraphQL with retries, circuit breaker, idempotency
+9. **SOLID Refactoring** — Checklist, metrics, structured design patterns
+10. **Living Documentation** — ADRs, auto-generated OpenAPI, Mermaid diagrams
+11. **Captures & Triage** — Annotate ideas without pausing work, automatic classification into 5 categories
+12. **Auto-generated UAT** — Human-executable acceptance scripts after each feature
+13. **Doctor** — Diagnosis and auto-repair of git, framework, and environment
+14. **Skill Creator** — Iterative meta-skill: generate → test → evaluate → improve skills automatically
+15. **Skills Marketplace** — Install skills from official Anthropic, community, or create your own
+
+---
+
+## Installation
+
+```bash
+# 1. Clone
+git clone https://github.com/doncheli/don-cheli-sdd.git
+
+# 2. Install globally
+cd don-cheli-sdd && bash scripts/instalar.sh --global
+
+# 3. In any project, initialize
+/especdev:iniciar
+```
+
+### Language Selection
+
+The **first** thing you see after installing is the language selector:
+
+```
+  ╔═══════════════════════════════════════════════════════════╗
+  ║                                                           ║
+  ║           🏗️  Don Cheli — SDD Framework                   ║
+  ║                                                           ║
+  ╚═══════════════════════════════════════════════════════════╝
+
+  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma
+
+     1)  🇪🇸  Español
+     2)  🇬🇧  English
+     3)  🇧🇷  Português
+
+  ▸ _
+```
+
+Once selected, **the entire framework adapts to the chosen language**: folders, files, templates, messages, and Claude's communication.
+
+### Structure by Language
+
+The installation creates folders with names in the selected language:
+
+<table>
+<tr><th>Content</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
+<tr><td>Skills</td><td><code>habilidades/</code></td><td><code>skills/</code></td><td><code>habilidades/</code></td></tr>
+<tr><td>Rules</td><td><code>reglas/</code></td><td><code>rules/</code></td><td><code>regras/</code></td></tr>
+<tr><td>Templates</td><td><code>plantillas/</code></td><td><code>templates/</code></td><td><code>modelos/</code></td></tr>
+<tr><td>Hooks</td><td><code>ganchos/</code></td><td><code>hooks/</code></td><td><code>ganchos/</code></td></tr>
+<tr><td>Agents</td><td><code>agentes/</code></td><td><code>agents/</code></td><td><code>agentes/</code></td></tr>
+</table>
+
+Project files (`.especdev/`) are also created in the configured language:
+
+<table>
+<tr><th>File</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
+<tr><td>Status</td><td><code>estado.md</code></td><td><code>status.md</code></td><td><code>estado.md</code></td></tr>
+<tr><td>Findings</td><td><code>hallazgos.md</code></td><td><code>findings.md</code></td><td><code>descobertas.md</code></td></tr>
+<tr><td>Plan</td><td><code>plan.md</code></td><td><code>plan.md</code></td><td><code>plano.md</code></td></tr>
+<tr><td>Progress</td><td><code>progreso.md</code></td><td><code>progress.md</code></td><td><code>progresso.md</code></td></tr>
+<tr><td>Proposal</td><td><code>propuesta.md</code></td><td><code>proposal.md</code></td><td><code>proposta.md</code></td></tr>
+</table>
+
+The language is persisted in `locale` and `folder-map.json` so Claude knows exactly which files to look for. To change language, simply reinstall:
+
+```bash
+bash scripts/instalar.sh --global
+```
+
+<details>
+<summary>Remote installation (without cloning)</summary>
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global
+```
+</details>
+
+**Requirements:** Claude Code (or compatible AI agent) + Git
+
+---
+
+## Quick Start
+
+### 1. Initialize in your project
+
+```bash
+/especdev:iniciar --tipo servicio --nombre "my-api"
+```
+
+### 2. Start a task
+
+```bash
+/especdev:comenzar Implement JWT authentication
+```
+
+Don Cheli auto-detects complexity and chooses the appropriate process:
+
+| Level | Name | When |
+|-------|------|------|
+| **0** | Atomic | 1 file, < 30 min |
+| **P** | PoC | Validate viability (2-4h timebox) |
+| **1** | Micro | 1-3 files, known solution |
+| **2** | Standard | Multiple files, 1-3 days |
+| **3** | Complex | Multi-module, 1-2 weeks |
+| **4** | Product | New system, 2+ weeks |
+
+### 3. Follow the pipeline
+
+```bash
+/especdev:especificar    # Gherkin spec + DBML schema
+/especdev:clarificar     # Auto-QA + resolve ambiguities
+/especdev:planificar-tecnico  # Blueprint + constitution check
+/especdev:desglosar      # TDD tasks with parallelism
+/especdev:implementar    # RED → GREEN → REFACTOR in Docker
+/especdev:revisar        # 7-dimension peer review
+```
+
+---
+
+## The 3 Iron Laws
+
+Non-negotiable. Always applied.
+
+| Law | Principle | In practice |
+|-----|-----------|-------------|
+| **TDD** | All code requires tests | RED → GREEN → REFACTOR, no exceptions |
+| **Debugging** | Root cause first | Reproduce → Isolate → Understand → Fix → Verify |
+| **Verification** | Evidence before assertions | "Tests pass" > "I think it works" |
+
+---
+
+## Anthropic Skills 2.0
+
+Don Cheli is **100% compatible** with the [Anthropic Skills](https://github.com/anthropics/skills) ecosystem. It supports both skill formats:
+
+| Format | File | Usage |
+|--------|------|-------|
+| **Anthropic** | `SKILL.md` | Compatible with the official marketplace |
+| **Don Cheli** | `HABILIDAD.md` | Extended format with version, tags, freedom degree |
+
+### Skill Creator
+
+Create skills without writing a single line of YAML:
+
+```bash
+/especdev:crear-skill "Weekly team report generator"
+```
+
+5 iterative phases: **Discover** → **Generate** SKILL.md → **Test** with real prompt → **Evaluate** quality → **Iterate** until optimal.
+
+### Skills Marketplace
+
+Install skills from the official Anthropic marketplace or from the community:
+
+```bash
+/especdev:marketplace --instalar document-skills --fuente anthropic
+/especdev:marketplace --buscar "weekly report"
+```
+
+Supported sources: [Anthropic Official](https://github.com/anthropics/skills) • [skillsmp.com](https://skillsmp.com/) • [aitmpl.com](https://www.aitmpl.com/skills) • Don Cheli built-in (42 skills)
+
+### Progressive Disclosure
+
+Skills use a 3-layer design for maximum token efficiency:
+
+```
+Layer 1: Metadata (YAML)     → ~20 tokens per skill, always in context
+Layer 2: Body (Markdown)     → Loaded only when the skill is activated
+Layer 3: File References     → Loaded on demand within the body
+```
+
+This allows having dozens of skills without impacting the context window.
+
+---
+
+## Commands (68+)
+
+<details>
+<summary><strong>Main (29)</strong></summary>
+
+| Command | Description |
+|---------|-------------|
+| `/especdev:iniciar` | Initialize in a project |
+| `/especdev:comenzar` | Start task (auto-detects level) |
+| `/especdev:rapido` | Fast mode (Level 1) |
+| `/especdev:poc` | Proof of Concept with timebox |
+| `/especdev:completo` | Full mode (Level 3) |
+| `/especdev:estado` | Current status |
+| `/especdev:diagnostico` | Setup health check |
+| `/especdev:doctor` | Diagnosis and auto-repair of git, framework, and environment |
+| `/especdev:continuar` | Recover previous session |
+| `/especdev:reflexionar` | Self-reflection (+8-21% quality) |
+| `/especdev:capturar` | Fire-and-forget ideas with automatic triage |
+| `/especdev:uat` | Auto-generated acceptance scripts per feature |
+| `/especdev:agente` | Load specialized agent |
+| `/especdev:mesa-redonda` | Multi-perspective discussion |
+| `/especdev:estimar` | Development estimates |
+| `/especdev:destilar` | Extract specs from code |
+| `/especdev:minar-referencias` | Search reference repos |
+| `/especdev:contrato-ui` | UI design contracts |
+| `/especdev:contrato-api` | API/webhook contracts |
+| `/especdev:auditar-seguridad` | OWASP Top 10 audit |
+| `/especdev:migrar` | Stack migration |
+| `/especdev:reversa` | Architecture reverse engineering |
+| `/especdev:explorar` | Explore codebase (assumptions mode) |
+| `/especdev:proponer` | Change proposal |
+| `/especdev:analizar-sesiones` | Usage pattern analysis |
+| `/especdev:presentar` | Generate interactive HTML presentation |
+| `/especdev:crear-skill` | Create skills iteratively (Anthropic Skills 2.0 compatible) |
+| `/especdev:marketplace` | Install skills from Anthropic, community, or built-in |
+| `/especdev:actualizar` | Detect and apply framework updates |
+</details>
+
+<details>
+<summary><strong>Gherkin Pipeline (5)</strong></summary>
+
+| Command | Description |
+|---------|-------------|
+| `/especdev:especificar` | Gherkin spec with P1/P2/P3+ priorities |
+| `/especdev:clarificar` | Auto-QA + schema-spec verification |
+| `/especdev:planificar-tecnico` | Blueprint + constitution check |
+| `/especdev:desglosar` | TDD tasks with `[P]` markers |
+| `/especdev:revisar` | 7-dimension peer review |
+</details>
+
+<details>
+<summary><strong>Reasoning (15)</strong></summary>
+
+| Command | What it does |
+|---------|-------------|
+| `/razonar:primeros-principios` | Decompose to fundamentals |
+| `/razonar:5-porques` | Root cause analysis |
+| `/razonar:pareto` | 80/20 focus |
+| `/razonar:inversion` | Solve in reverse |
+| `/razonar:segundo-orden` | Consequences of consequences |
+| `/razonar:pre-mortem` | Anticipate failures |
+| `/razonar:minimizar-arrepentimiento` | Long-term decisions |
+| `/razonar:costo-oportunidad` | Evaluate alternatives |
+| `/razonar:circulo-competencia` | Know your limits |
+| `/razonar:mapa-territorio` | Model vs reality |
+| `/razonar:probabilistico` | Reason in probabilities |
+| `/razonar:reversibilidad` | Can it be undone? |
+| `/razonar:rlm-verificacion` | Verification with sub-LLMs |
+| `/razonar:rlm-cadena-pensamiento` | Multi-step reasoning |
+| `/razonar:rlm-descomposicion` | Divide and conquer |
+</details>
+
+---
+
+## Skills (42)
+
+| Category | Skills |
+|----------|--------|
+| **Quality** | Iron Laws, Nyquist Validation, Stub detection, Loop detection, Quality gates, Proof of work, Progressive rigor |
+| **Context** | Context engineering, Context optimizer, Persistent memory (Engram), CodeRAG + LightRAG, Code reference mining |
+| **Reasoning** | 12 mental models, 3 RLM models (PrimeIntellect) |
+| **Architecture** | Living architectural map, SOLID Refactoring, DBML Schemas |
+| **Design** | UI/UX Design System (67 styles, 161 palettes), UI Contracts, HTML Presentations |
+| **Documentation** | Living documentation (ADRs, OpenAPI), DevLog, Traceability, Delta specs, Obsidian |
+| **Autonomy** | Autonomous orchestration, Auto-correction, Session recovery |
+| **Discovery** | Structured brainstorming, Git Worktrees |
+| **Efficiency** | Token optimization, Token accounting, Subagent development, **Dynamic model routing**, **Cost projections** |
+| **Observability** | **Skill health** (success rate and consumption telemetry per skill) |
+| **Security** | Permissions and security, OWASP Audit |
+| **Integration** | MCP servers, Extensions and presets |
+
+---
+
+## Visual Pipeline
+
+```
+  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
+  │   SPECIFY   │────▶│   CLARIFY   │────▶│  TECHNICAL PLAN  │
+  │             │     │             │     │                  │
+  │ Gherkin     │     │ Auto-QA     │     │ Constitution     │
+  │ P1/P2/P3+   │     │ Schema↔Spec │     │ check            │
+  │ DBML auto   │     │ Ambiguities │     │ Technical context│
+  └─────────────┘     └─────────────┘     └──────────────────┘
+        │                   │                      │
+    [Gate 1]           [Gate 2+3]              [Gate 4]
+                                                   │
+                                                   ▼
+  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
+  │   REVIEW    │◀────│  IMPLEMENT  │◀────│   BREAK DOWN     │
+  │             │     │             │     │                  │
+  │ 7 dimensions│     │ TDD in Docker│     │ [T001] [P] [US1] │
+  │ N+1, SOLID  │     │ Checkpoints │     │ 5 phases         │
+  │ Security    │     │ Anti-stubs  │     │ Nyquist          │
+  └─────────────┘     └─────────────┘     └──────────────────┘
+        │                   │                      │
+    [Gate 6]           [Gate 6]               [Gate 5]
+    + Regression
+```
+
+Each gate blocks progress if criteria are not met. **No shortcuts.**
+
+---
+
+## 7 specialized agents
+
+| Agent | Model | Role |
+|-------|-------|------|
+| `planificador` | opus | Decomposition and planning |
+| `arquitecto` | opus | System design |
+| `ejecutor` | sonnet | Code implementation |
+| `revisor` | opus | Architectural code review |
+| `tester` | sonnet | Testing and QA |
+| `documentador` | haiku | Documentation |
+| `estimador` | opus | Effort estimates |
+
+```bash
+/especdev:agente planificador
+/especdev:mesa-redonda "Monolith or microservices?"
+```
+
+---
+
+## PoC Mode
+
+Validate ideas before committing to implementation:
+
+```bash
+/especdev:poc --hipotesis "SQLite is sufficient for the MVP"
+```
+
+| Phase | What |
+|-------|------|
+| **Hypothesis** | Define what to validate and success/failure criteria |
+| **Build** | Throwaway code, relaxed rules, no TDD |
+| **Evaluate** | Results vs criteria with evidence |
+| **Verdict** | VIABLE / WITH RESERVATIONS / NOT VIABLE / INCONCLUSIVE |
+
+If viable → `/especdev:poc --graduar` → full pipeline.
+
+---
+
+## Automatic Estimates
+
+```bash
+/especdev:estimar docs/prd.md
+```
+
+4 complementary models:
+
+| Model | Technique |
+|-------|-----------|
+| **Function Points** | Functional complexity |
+| **AI Planning Poker** | 3 agents estimate independently |
+| **COCOMO** | Estimated LOC → effort |
+| **Historical** | Comparison with similar tasks |
+
+Output: optimistic, expected, and pessimistic estimate with breakdown by feature.
+
+---
+
+## Security Audit
+
+```bash
+/especdev:auditar-seguridad
+```
+
+Scans all 10 OWASP categories:
+
+- **A01** Broken Access Control — endpoints without auth, IDOR, CORS
+- **A02** Cryptographic Failures — passwords in plaintext, JWT without expiration
+- **A03** Injection — SQL, XSS, command injection
+- **A04-A10** — Configuration, vulnerable components, logging
+
+Each finding includes severity, file, line, and suggested fix.
+
+---
+
+## Stack Migration
+
+```bash
+/especdev:migrar --de "Vue 3" --a "React 19"
+```
+
+6 phases: Inventory → Equivalences → Strategy → Plan → Execution → Verification
+
+Supports: framework (Vue→React), version (Next 14→15), language (JS→TS), paradigm (REST→GraphQL).
+
+---
+
+## Multi-LLM
+
+| File | Agent |
+|------|-------|
+| `CLAUDE.md` | Claude Code |
+| `AGENTS.md` | Codex |
+| `prompt.md` | Amp / others |
+
+---
+
+## Project Structure
+
+```
+don-cheli/
+├── comandos/
+│   ├── especdev/          # 53 /especdev:* commands
+│   └── razonar/           # 15 /razonar:* commands
+├── habilidades/           # 42 modular skills
+├── reglas/
+│   ├── constitucion.md    # 8 governing principles
+│   ├── leyes-hierro.md    # 3 non-negotiable laws
+│   ├── puertas-calidad.md # 6 quality gates
+│   ├── i18n.md            # Internationalization rules
+│   ├── skills-best-practices.md  # Anthropic Skills 2.0 best practices
+│   └── reglas-trabajo-globales.md
+├── locales/               # 🌍 i18n strings
+│   ├── es.json            # Spanish (158 strings)
+│   ├── en.json            # English (158 strings)
+│   └── pt.json            # Portuguese (158 strings)
+├── plantillas/
+│   └── especdev/
+│       ├── es/            # Templates in Spanish
+│       ├── en/            # Templates in English
+│       └── pt/            # Templates in Portuguese
+├── agentes/               # 7 specialized agents
+├── ganchos/               # Pre/Post tool + Stop hooks
+├── scripts/               # instalar.sh, bucle.sh, validar.sh
+├── CLAUDE.md              # Instructions for Claude Code
+├── AGENTS.md              # Instructions for Codex
+├── prompt.md              # Instructions for Amp
+├── NOTICE                 # Attributions
+└── LICENCIA               # Apache 2.0
+```
+
+After installing with a language, the installed structure uses localized names:
+
+```
+~/.claude/don-cheli/          # Global installation
+├── skills/                   # (or habilidades/ in ES, habilidades/ in PT)
+├── rules/                    # (or reglas/ in ES, regras/ in PT)
+├── templates/                # (or plantillas/ in ES, modelos/ in PT)
+├── hooks/                    # (or ganchos/ in ES/PT)
+├── agents/                   # (or agentes/ in ES/PT)
+├── locales/                  # es.json, en.json, pt.json
+├── locale                    # 2-letter file: "es", "en" or "pt"
+├── folder-map.json           # Name mapping for Claude
+├── CLAUDE.md
+└── VERSION
+```
+
+---
+
+## Philosophy
+
+> **"Context Window = RAM, File System = Disk"**
+
+1. **Persistence over conversation** — Write it down, don't just say it
+2. **Structure over chaos** — Clear files, clear roles
+3. **Recovery over restart** — Never lose progress
+4. **Evidence over assertions** — Show, don't tell
+5. **Simplicity over complexity** — Everything in your language
+
+---
+
+## Contributing
+
+See [CONTRIBUIR.md](CONTRIBUIR.md) for the complete guide.
+
+```bash
+# Fork → Clone → Branch → Changes → PR
+git checkout -b feature/my-improvement
+```
+
+---
+
+## License
+
+[Apache 2.0](LICENCIA) — Copyright 2026 Jose Luis Oronoz Troconis (@DonCheli)
+
+You may use, modify, and distribute Don Cheli freely. You must maintain attribution to the original author and indicate any changes made.
+
+---
+
+<p align="center">
+  <strong>Stop improvising. Start delivering.</strong><br/>
+  <sub>Don Cheli — SDD Framework</sub>
+</p>
