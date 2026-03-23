@@ -9,11 +9,12 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.9.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.10.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-66+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-68+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
   </p>
 </p>
 
@@ -45,7 +46,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>66+</strong></td></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>68+</strong></td></tr>
 <tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
@@ -58,9 +59,12 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 <tr><td>Contratos de UI</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Validación Nyquist</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Multilenguaje (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td><strong>✅ Compatible</strong></td></tr>
+<tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
-### 13 cosas que solo Don Cheli tiene
+### 15 cosas que solo Don Cheli tiene
 
 1. **15 modelos de razonamiento** — Pre-mortem, 5 porqués, Pareto, RLM
 2. **4 modelos de estimación** — Puntos de Función, Planning Poker IA, COCOMO, Histórico
@@ -75,6 +79,8 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 11. **Captures & Triage** — Anotar ideas sin pausar el trabajo, clasificación automática en 5 categorías
 12. **UAT auto-generado** — Scripts de aceptación ejecutables por humano tras cada feature
 13. **Doctor** — Diagnóstico y auto-reparación de git, framework y entorno
+14. **Skill Creator** — Meta-skill iterativo: generar → probar → evaluar → mejorar skills automáticamente
+15. **Skills Marketplace** — Instalar skills desde Anthropic oficial, comunidad, o crear las tuyas
 
 ---
 
@@ -205,10 +211,54 @@ No negociables. Se aplican siempre.
 
 ---
 
-## Comandos (66+)
+## Anthropic Skills 2.0
+
+Don Cheli es **100% compatible** con el ecosistema de [Anthropic Skills](https://github.com/anthropics/skills). Soporta ambos formatos de skill:
+
+| Formato | Archivo | Uso |
+|---------|---------|-----|
+| **Anthropic** | `SKILL.md` | Compatible con el marketplace oficial |
+| **Don Cheli** | `HABILIDAD.md` | Formato extendido con version, tags, grado de libertad |
+
+### Skill Creator
+
+Crear skills sin escribir una sola línea de YAML:
+
+```bash
+/especdev:crear-skill "Generador de reportes semanales del equipo"
+```
+
+5 fases iterativas: **Descubrir** → **Generar** SKILL.md → **Testear** con prompt real → **Evaluar** calidad → **Iterar** hasta óptimo.
+
+### Skills Marketplace
+
+Instalar skills del marketplace oficial de Anthropic o de la comunidad:
+
+```bash
+/especdev:marketplace --instalar document-skills --fuente anthropic
+/especdev:marketplace --buscar "weekly report"
+```
+
+Fuentes soportadas: [Anthropic Official](https://github.com/anthropics/skills) • [skillsmp.com](https://skillsmp.com/) • [aitmpl.com](https://www.aitmpl.com/skills) • Don Cheli built-in (42 skills)
+
+### Progressive Disclosure
+
+Las skills usan un diseño de 3 capas para máxima eficiencia de tokens:
+
+```
+Capa 1: Metadata (YAML)     → ~20 tokens por skill, siempre en contexto
+Capa 2: Body (Markdown)     → Cargado solo al activar la skill
+Capa 3: File References     → Cargados bajo demanda dentro del body
+```
+
+Esto permite tener decenas de skills sin impactar el context window.
+
+---
+
+## Comandos (68+)
 
 <details>
-<summary><strong>Principales (27)</strong></summary>
+<summary><strong>Principales (29)</strong></summary>
 
 | Comando | Descripción |
 |---------|-------------|
@@ -238,6 +288,8 @@ No negociables. Se aplican siempre.
 | `/especdev:proponer` | Propuesta de cambio |
 | `/especdev:analizar-sesiones` | Análisis de patrones de uso |
 | `/especdev:presentar` | Generar presentación interactiva HTML |
+| `/especdev:crear-skill` | Crear skills iterativamente (compatible Anthropic Skills 2.0) |
+| `/especdev:marketplace` | Instalar skills desde Anthropic, comunidad, o built-in |
 | `/especdev:actualizar` | Detectar y aplicar actualizaciones del framework |
 </details>
 
@@ -427,7 +479,7 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 51 comandos /especdev:*
+│   ├── especdev/          # 53 comandos /especdev:*
 │   └── razonar/           # 15 comandos /razonar:*
 ├── habilidades/           # 42 habilidades modulares
 ├── reglas/
@@ -435,6 +487,7 @@ don-cheli/
 │   ├── leyes-hierro.md    # 3 leyes no negociables
 │   ├── puertas-calidad.md # 6 quality gates
 │   ├── i18n.md            # Reglas de internacionalización
+│   ├── skills-best-practices.md  # Best practices Anthropic Skills 2.0
 │   └── reglas-trabajo-globales.md
 ├── locales/               # 🌍 Strings i18n
 │   ├── es.json            # Español (158 strings)
