@@ -9,10 +9,10 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.7.1-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.8.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-55+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-60+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-40+-orange" alt="Skills">
   </p>
 </p>
@@ -202,10 +202,10 @@ No negociables. Se aplican siempre.
 
 ---
 
-## Comandos (55+)
+## Comandos (60+)
 
 <details>
-<summary><strong>Principales (22)</strong></summary>
+<summary><strong>Principales (23)</strong></summary>
 
 | Comando | Descripción |
 |---------|-------------|
@@ -231,6 +231,7 @@ No negociables. Se aplican siempre.
 | `/especdev:explorar` | Explorar codebase (modo supuestos) |
 | `/especdev:proponer` | Propuesta de cambio |
 | `/especdev:analizar-sesiones` | Análisis de patrones de uso |
+| `/especdev:presentar` | Generar presentación interactiva HTML |
 | `/especdev:actualizar` | Detectar y aplicar actualizaciones del framework |
 </details>
 
@@ -419,9 +420,9 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 47 comandos /especdev:*
+│   ├── especdev/          # 48 comandos /especdev:*
 │   └── razonar/           # 15 comandos /razonar:*
-├── habilidades/           # 40 habilidades modulares
+├── habilidades/           # 40+ habilidades modulares
 ├── reglas/
 │   ├── constitucion.md    # 8 principios gobernantes
 │   ├── leyes-hierro.md    # 3 leyes no negociables

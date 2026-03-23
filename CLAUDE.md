@@ -54,7 +54,7 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 
 ## Comandos Disponibles
 
-- `/especdev:*` — Comandos del framework (iniciar, comenzar, estimar, etc.)
+- `/especdev:*` — Comandos del framework (iniciar, comenzar, estimar, presentar, etc.)
 - `/especdev:analizar-sesiones` — Analizar patrones de uso y generar recomendaciones
 - `/especdev:destilar` — Extraer specs compactas desde código existente (Blueprint Distillation)
 - `/especdev:minar-referencias` — Buscar repos open-source relevantes como referencia
