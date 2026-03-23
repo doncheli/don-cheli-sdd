@@ -1,5 +1,5 @@
 ---
-description: Discusión multi-perspectiva con varios agentes sobre un tema
+description: Discusión multi-perspectiva exploratoria con roles senior sobre un tema
 i18n: true
 ---
 
@@ -7,13 +7,28 @@ i18n: true
 
 ## Objetivo
 
-Iniciar una discusión multi-agente donde diferentes perspectivas debaten un tema.
+Iniciar una discusión exploratoria multi-perspectiva donde roles senior comparten su visión sobre un tema. A diferencia de `/especdev:debate` (que busca tensión adversarial), la mesa redonda busca **explorar opciones** y construir sobre las ideas de los demás.
 
 ## Uso
 
 ```
 /especdev:mesa-redonda "<tema>"
+/especdev:mesa-redonda --roles "CPO,Arquitecto,Negocio" "<tema>"
 ```
+
+## Roles Disponibles
+
+| Rol | Perspectiva | Enfoque |
+|-----|-------------|---------|
+| **CPO** | Visión de producto | Roadmap, priorización, métricas de adopción |
+| **Arquitecto** | Sistema y escalabilidad | Performance, mantenibilidad, deuda técnica |
+| **UX Lead** | Experiencia de usuario | Usabilidad, accesibilidad, research, conversión |
+| **Negocio** | Viabilidad comercial | ROI, unit economics, ventaja competitiva |
+| **QA Lead** | Calidad y testing | Testability, edge cases, automatización |
+| **Seguridad** | Protección y compliance | OWASP, regulaciones, datos sensibles |
+| **DevOps** | Operaciones | Observabilidad, CI/CD, costos infra |
+
+Default: CPO, Arquitecto, UX Lead, Negocio.
 
 ## Ejemplo
 
@@ -23,19 +38,23 @@ Iniciar una discusión multi-agente donde diferentes perspectivas debaten un tem
 === Mesa Redonda ===
 Tema: ¿Microservicios o monolito?
 
+📦 CPO: Con un equipo de 5 personas y sin product-market fit confirmado,
+   la velocidad de iteración es más valiosa que la escalabilidad.
+   Un monolito nos deja lanzar features 2-3x más rápido...
+
 🏗️ Arquitecto: Dado nuestro equipo de 5 personas, un monolito modular
-   nos permite movernos más rápido sin la complejidad operacional...
+   nos permite movernos más rápido sin la complejidad operacional.
+   Shopify escala con monolito — no es limitante...
 
-⚡ Ejecutor: Desde el punto de vista de implementación, un monolito
-   reduce la fricción de despliegue y debugging...
+🎨 UX Lead: Un solo codebase significa design system centralizado y
+   latencia consistente. La experiencia del usuario es más predecible
+   cuando no hay hops entre servicios...
 
-🔍 Revisor: La mantenibilidad a largo plazo favorece módulos bien
-   separados. Un monolito modular con interfaces claras...
-
-📊 Estimador: Microservicios agregarían ~40% más de esfuerzo en
-   infraestructura y DevOps...
+💼 Negocio: Microservicios agregarían ~$3-5K/mes en infra y 30% más
+   tiempo en DevOps. Para pre-Serie A, cada mes de runway cuenta.
+   Los inversores quieren tracción, no arquitectura...
 
 === Consenso ===
-Monolito modular con interfaces claras preparadas para futura
-separación si el equipo crece.
+Monolito modular con interfaces claras. Revisión de arquitectura
+al llegar a 10K usuarios o 10 developers.
 ```
