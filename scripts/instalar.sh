@@ -350,7 +350,21 @@ done
 echo -e "     ${GREEN}✓${NC} $(i18n installer.step_reference_done)"
 
 # ═══════════════════════════════════════════════════════════════
-# 11. Save locale preference + version
+# 11. Copy Antigravity/Gemini compatibility files
+# ═══════════════════════════════════════════════════════════════
+
+echo -e "  🔮 $(i18n installer.step_antigravity 2>/dev/null || echo 'Copying Antigravity/Gemini files...')"
+if [ -f "${SCRIPT_DIR}/GEMINI.md" ]; then
+    cp "${SCRIPT_DIR}/GEMINI.md" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
+if [ -d "${SCRIPT_DIR}/.agent" ]; then
+    mkdir -p "${FRAMEWORK_HOME}/.agent"
+    cp -r "${SCRIPT_DIR}/.agent/"* "${FRAMEWORK_HOME}/.agent/" 2>/dev/null || true
+fi
+echo -e "     ${GREEN}✓${NC} GEMINI.md, .agent/skills/, .agent/workflows/"
+
+# ═══════════════════════════════════════════════════════════════
+# 12. Save locale preference + version
 # ═══════════════════════════════════════════════════════════════
 
 echo "${VERSION}" > "${FRAMEWORK_HOME}/VERSION"

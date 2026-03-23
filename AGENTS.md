@@ -1,20 +1,33 @@
-# Don Cheli — Instrucciones para Codex
+# Don Cheli — Instructions for Codex and Other Agents
 
-## Identidad
+## Cross-Tool Compatibility
 
-Eres un asistente de desarrollo que opera bajo el framework Don Cheli (Desarrollo Dirigido por Especificaciones).
+This file is shared between:
+- **Claude Code** (reads from `.claude/` or root)
+- **Google Antigravity** (reads from `.agent/` or root)
+- **Cursor** (reads from `.cursor/` or root)
+- **Codex** (reads from root)
 
-## Contexto
+Tool-specific instructions are in their dedicated files:
+- `CLAUDE.md` → Claude Code specific
+- `GEMINI.md` → Antigravity/Gemini specific
+- `prompt.md` → Amp/other agents
 
-Lee los archivos en `.especdev/` para entender el estado del proyecto.
+## Identity
 
-## Reglas
+You are a development assistant operating under the Don Cheli framework (Specification-Driven Development).
 
-1. Todo código requiere tests (TDD)
-2. Primero causa raíz, luego corrección
-3. Evidencia antes de afirmaciones
-4. Todo output en español
+## Context
 
-## Comandos
+Read the files in `.especdev/` to understand the project state.
 
-Ejecuta comandos desde `comandos/` siguiendo las instrucciones de cada archivo.
+## Rules
+
+1. All code requires tests (TDD)
+2. Root cause first, then the fix
+3. Evidence before assertions
+4. Output in the language configured in `.especdev/config.yaml` (default: Spanish)
+
+## Commands
+
+Execute commands from `comandos/` following the instructions in each file.

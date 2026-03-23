@@ -474,13 +474,33 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 
 ---
 
-## Multi-LLM
+## Multi-LLM / Multi-IDE
 
-| Archivo | Agente |
-|---------|--------|
-| `CLAUDE.md` | Claude Code |
-| `AGENTS.md` | Codex |
-| `prompt.md` | Amp / otros |
+Don Cheli funciona con **4 agentes IA** y **3 IDEs** nativamente:
+
+| Archivo | Agente / IDE | Estructura |
+|---------|-------------|------------|
+| `CLAUDE.md` | Claude Code | `.claude/skills/`, `.claude/commands/` |
+| `GEMINI.md` | Google Antigravity (Gemini 3.1) | `.agent/skills/`, `.agent/workflows/` |
+| `AGENTS.md` | Cross-tool (Cursor, Codex, etc.) | Compartido entre todos |
+| `prompt.md` | Amp / otros | Instrucciones genéricas |
+
+### Google Antigravity
+
+Don Cheli incluye soporte nativo para Antigravity con Gemini 3.1:
+
+- `GEMINI.md` — Instrucciones adaptadas con modelo routing (Flash/Pro)
+- 5 skills en `.agent/skills/` (spec, plan, implement, review, security)
+- 4 workflows en `.agent/workflows/` (start, pipeline, review, security)
+- Compatibles con la estructura `.agent/` de Antigravity
+
+```bash
+# En Antigravity, los workflows se invocan como slash commands:
+/doncheli-start
+/doncheli-pipeline
+/doncheli-review
+/doncheli-security
+```
 
 ---
 
@@ -511,8 +531,12 @@ don-cheli/
 ├── agentes/               # 7 agentes especializados
 ├── ganchos/               # Pre/Post herramienta + Stop hooks
 ├── scripts/               # instalar.sh, bucle.sh, validar.sh
+├── .agent/                # 🔮 Antigravity/Gemini compatibility
+│   ├── skills/            # 5 skills (spec, plan, implement, review, security)
+│   └── workflows/         # 4 workflows (/doncheli-start, pipeline, review, security)
 ├── CLAUDE.md              # Instrucciones para Claude Code
-├── AGENTS.md              # Instrucciones para Codex
+├── GEMINI.md              # Instrucciones para Google Antigravity
+├── AGENTS.md              # Instrucciones cross-tool (Cursor, Codex)
 ├── prompt.md              # Instrucciones para Amp
 ├── NOTICE                 # Atribuciones
 └── LICENCIA               # Apache 2.0
