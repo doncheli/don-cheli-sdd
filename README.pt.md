@@ -285,7 +285,8 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 | `/especdev:capturar` | Fire-and-forget de ideias com triage automático |
 | `/especdev:uat` | Scripts de aceitação auto-gerados por feature |
 | `/especdev:agente` | Carregar agente especializado |
-| `/especdev:mesa-redonda` | Discussão multi-perspectiva |
+| `/especdev:mesa-redonda` | Discussão multi-perspectiva (CPO, UX, Negócio) |
+| `/especdev:mesa-tecnica` | Mesa de especialistas sênior de desenvolvimento (Tech Lead, Backend, Frontend, Arquiteto, DevOps) |
 | `/especdev:estimar` | Estimativas de desenvolvimento |
 | `/especdev:destilar` | Extrair specs a partir de código |
 | `/especdev:minar-referencias` | Buscar repositórios de referência |
@@ -403,6 +404,7 @@ Cada porta bloqueia o avanço se os critérios não forem cumpridos. **Sem atalh
 ```bash
 /especdev:agente planificador
 /especdev:mesa-redonda "Monolito ou microsserviços?"
+/especdev:mesa-tecnica "Redis ou Memcached para caching de sessões?"
 ```
 
 ---

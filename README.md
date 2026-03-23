@@ -290,7 +290,8 @@ This allows having dozens of skills without impacting the context window.
 | `/especdev:capturar` | Fire-and-forget ideas with automatic triage |
 | `/especdev:uat` | Auto-generated acceptance scripts per feature |
 | `/especdev:agente` | Load specialized agent |
-| `/especdev:mesa-redonda` | Multi-perspective discussion |
+| `/especdev:mesa-redonda` | Multi-perspective discussion (CPO, UX, Business) |
+| `/especdev:mesa-tecnica` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
 | `/especdev:estimar` | Development estimates |
 | `/especdev:destilar` | Extract specs from code |
 | `/especdev:minar-referencias` | Search reference repos |
@@ -411,6 +412,7 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 ```bash
 /especdev:agente planificador
 /especdev:mesa-redonda "Monolith or microservices?"
+/especdev:mesa-tecnica "Redis or Memcached for session caching?"
 ```
 
 ---

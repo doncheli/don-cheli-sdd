@@ -290,7 +290,8 @@ Esto permite tener decenas de skills sin impactar el context window.
 | `/especdev:capturar` | Fire-and-forget de ideas con triage automático |
 | `/especdev:uat` | Scripts de aceptación auto-generados por feature |
 | `/especdev:agente` | Cargar agente especializado |
-| `/especdev:mesa-redonda` | Discusión multi-perspectiva |
+| `/especdev:mesa-redonda` | Discusión multi-perspectiva (CPO, UX, Negocio) |
+| `/especdev:mesa-tecnica` | Mesa de expertos senior de desarrollo (Tech Lead, Backend, Frontend, Arquitecto, DevOps) |
 | `/especdev:estimar` | Estimados de desarrollo |
 | `/especdev:destilar` | Extraer specs desde código |
 | `/especdev:minar-referencias` | Buscar repos de referencia |
@@ -411,6 +412,7 @@ Cada puerta bloquea el avance si no se cumplen los criterios. **Sin atajos.**
 ```bash
 /especdev:agente planificador
 /especdev:mesa-redonda "¿Monolito o microservicios?"
+/especdev:mesa-tecnica "¿Redis o Memcached para caching de sesiones?"
 ```
 
 ---
