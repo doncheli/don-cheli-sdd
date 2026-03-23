@@ -9,11 +9,11 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.8.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.9.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-60+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/habilidades-40+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/comandos-66+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
   </p>
 </p>
 
@@ -45,8 +45,8 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>55+</strong></td></tr>
-<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>40</strong></td></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>66+</strong></td></tr>
+<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
 <tr><td>Quality gates formales</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
@@ -60,7 +60,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 <tr><td>Multilenguaje (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
-### 10 cosas que solo Don Cheli tiene
+### 13 cosas que solo Don Cheli tiene
 
 1. **15 modelos de razonamiento** — Pre-mortem, 5 porqués, Pareto, RLM
 2. **4 modelos de estimación** — Puntos de Función, Planning Poker IA, COCOMO, Histórico
@@ -72,6 +72,9 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 8. **Contratos de API** — REST/GraphQL con reintentos, circuit breaker, idempotencia
 9. **Refactorización SOLID** — Checklist, métricas, patrones de diseño estructurados
 10. **Documentación viva** — ADRs, OpenAPI auto-generado, diagramas Mermaid
+11. **Captures & Triage** — Anotar ideas sin pausar el trabajo, clasificación automática en 5 categorías
+12. **UAT auto-generado** — Scripts de aceptación ejecutables por humano tras cada feature
+13. **Doctor** — Diagnóstico y auto-reparación de git, framework y entorno
 
 ---
 
@@ -202,10 +205,10 @@ No negociables. Se aplican siempre.
 
 ---
 
-## Comandos (60+)
+## Comandos (66+)
 
 <details>
-<summary><strong>Principales (23)</strong></summary>
+<summary><strong>Principales (27)</strong></summary>
 
 | Comando | Descripción |
 |---------|-------------|
@@ -216,8 +219,11 @@ No negociables. Se aplican siempre.
 | `/especdev:completo` | Modo completo (Nivel 3) |
 | `/especdev:estado` | Estado actual |
 | `/especdev:diagnostico` | Health check del setup |
+| `/especdev:doctor` | Diagnóstico y auto-reparación de git, framework y entorno |
 | `/especdev:continuar` | Recuperar sesión previa |
 | `/especdev:reflexionar` | Auto-reflexión (+8-21% calidad) |
+| `/especdev:capturar` | Fire-and-forget de ideas con triage automático |
+| `/especdev:uat` | Scripts de aceptación auto-generados por feature |
 | `/especdev:agente` | Cargar agente especializado |
 | `/especdev:mesa-redonda` | Discusión multi-perspectiva |
 | `/especdev:estimar` | Estimados de desarrollo |
@@ -271,7 +277,7 @@ No negociables. Se aplican siempre.
 
 ---
 
-## Habilidades (40)
+## Habilidades (42)
 
 | Categoría | Habilidades |
 |-----------|------------|
@@ -283,7 +289,8 @@ No negociables. Se aplican siempre.
 | **Documentación** | Documentación viva (ADRs, OpenAPI), DevLog, Trazabilidad, Delta specs, Obsidian |
 | **Autonomía** | Orquestación autónoma, Auto-corrección, Recuperación de sesión |
 | **Descubrimiento** | Brainstorming estructurado, Git Worktrees |
-| **Eficiencia** | Optimización de tokens, Contabilidad de tokens, Desarrollo con subagentes |
+| **Eficiencia** | Optimización de tokens, Contabilidad de tokens, Desarrollo con subagentes, **Routing dinámico de modelos**, **Proyecciones de costo** |
+| **Observabilidad** | **Salud de habilidades** (telemetría de success rate y consumo por skill) |
 | **Seguridad** | Permisos y seguridad, Auditoría OWASP |
 | **Integración** | MCP servers, Extensiones y presets |
 
@@ -420,9 +427,9 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 48 comandos /especdev:*
+│   ├── especdev/          # 51 comandos /especdev:*
 │   └── razonar/           # 15 comandos /razonar:*
-├── habilidades/           # 40+ habilidades modulares
+├── habilidades/           # 42 habilidades modulares
 ├── reglas/
 │   ├── constitucion.md    # 8 principios gobernantes
 │   ├── leyes-hierro.md    # 3 leyes no negociables
