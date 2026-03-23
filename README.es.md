@@ -11,7 +11,7 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.11.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.11.1-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
     <img src="https://img.shields.io/badge/comandos-71+-purple" alt="Commands">
@@ -159,9 +159,17 @@ bash scripts/instalar.sh --global
 <details>
 <summary>Instalación remota (sin clonar)</summary>
 
+El instalador descarga automáticamente el repositorio cuando se ejecuta via pipe:
+
 ```bash
+# Interactivo (pregunta el idioma)
 curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global
+
+# No-interactivo (idioma directo)
+curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global --lang es
 ```
+
+Idiomas disponibles: `es` (Español), `en` (English), `pt` (Português)
 </details>
 
 **Requisitos:** Claude Code (o agente IA compatible) + Git

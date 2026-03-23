@@ -4,9 +4,35 @@
 
 set -e
 
-VERSION="1.11.0"
+VERSION="1.11.1"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
-SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+CLEANUP_TMPDIR=""
+
+# Detect if running via pipe (curl | bash) or directly
+if [ -t 0 ] && [ -f "$0" ]; then
+    # Running directly from a file
+    SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+else
+    # Running via pipe (curl | bash) — clone repo to temp dir
+    TMPDIR=$(mktemp -d)
+    CLEANUP_TMPDIR="$TMPDIR"
+    echo -e "  ⬇️  Downloading Don Cheli v${VERSION}..."
+    if ! git clone --depth 1 --quiet "$REPO_URL" "$TMPDIR/don-cheli-sdd" 2>/dev/null; then
+        echo -e "\033[0;31m  ✗ Failed to clone repository. Check your internet connection.\033[0m"
+        rm -rf "$TMPDIR"
+        exit 1
+    fi
+    SCRIPT_DIR="$TMPDIR/don-cheli-sdd"
+    echo -e "  \033[0;32m✓\033[0m Downloaded successfully."
+    echo ""
+fi
+
+cleanup() {
+    if [ -n "$CLEANUP_TMPDIR" ] && [ -d "$CLEANUP_TMPDIR" ]; then
+        rm -rf "$CLEANUP_TMPDIR"
+    fi
+}
+trap cleanup EXIT
 
 # Colors
 GREEN='\033[0;32m'
@@ -139,6 +165,22 @@ set_folder_names() {
 # STEP 0 — Language Selection (FIRST THING THE USER SEES)
 # ═══════════════════════════════════════════════════════════════
 
+# Parse --lang flag from arguments (e.g., --lang es)
+LANG_FLAG=""
+for arg in "$@"; do
+    case "$arg" in
+        --lang=*) LANG_FLAG="${arg#*=}" ;;
+    esac
+done
+# Also check positional: --lang es
+PREV=""
+for arg in "$@"; do
+    if [ "$PREV" = "--lang" ]; then
+        LANG_FLAG="$arg"
+    fi
+    PREV="$arg"
+done
+
 clear 2>/dev/null || true
 echo ""
 echo -e "${CYAN}${BOLD}"
@@ -149,14 +191,26 @@ echo "  ║                                                           ║"
 echo "  ╚═══════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 echo ""
-echo -e "${BOLD}  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma${NC}"
-echo ""
-echo -e "     ${CYAN}1)${NC}  🇪🇸  Español"
-echo -e "     ${CYAN}2)${NC}  🇬🇧  English"
-echo -e "     ${CYAN}3)${NC}  🇧🇷  Português"
-echo ""
-echo -ne "  ${BOLD}▸ ${NC}"
-read -r LANG_CHOICE
+
+if [ -n "$LANG_FLAG" ]; then
+    # Language provided via flag — skip interactive prompt
+    LANG_CHOICE="$LANG_FLAG"
+else
+    echo -e "${BOLD}  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma${NC}"
+    echo ""
+    echo -e "     ${CYAN}1)${NC}  🇪🇸  Español"
+    echo -e "     ${CYAN}2)${NC}  🇬🇧  English"
+    echo -e "     ${CYAN}3)${NC}  🇧🇷  Português"
+    echo ""
+    echo -ne "  ${BOLD}▸ ${NC}"
+    # Read from /dev/tty to work even when script is piped via curl
+    if ! read -r LANG_CHOICE < /dev/tty 2>/dev/null; then
+        echo ""
+        echo -e "  ${YELLOW}⚠ Cannot read input (piped mode). Using default: Español${NC}"
+        echo -e "  ${DIM}  Tip: use --lang es|en|pt to set language non-interactively${NC}"
+        LANG_CHOICE="es"
+    fi
+fi
 
 case "$LANG_CHOICE" in
     1|es|ES|español|Español)
@@ -207,9 +261,11 @@ echo -e "${NC}"
 # ═══════════════════════════════════════════════════════════════
 
 MODE="local"
-if [ "$1" == "--global" ] || [ "$2" == "--global" ]; then
-    MODE="global"
-fi
+for arg in "$@"; do
+    if [ "$arg" = "--global" ]; then
+        MODE="global"
+    fi
+done
 
 if [ "$MODE" == "global" ]; then
     FRAMEWORK_HOME="$HOME/.claude/don-cheli"
