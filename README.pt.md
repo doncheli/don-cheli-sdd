@@ -1,4 +1,4 @@
-> 🌐 Leia em outros idiomas: [Español](README.md) | [English](README.en.md) | [Português](README.pt.md)
+> 🌐 Leia em outros idiomas: [Español](README.es.md) | [English](README.md) | [Português](README.pt.md)
 
 <p align="center">
   <h1 align="center">Don Cheli — SDD Framework</h1>
