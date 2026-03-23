@@ -4,7 +4,7 @@
 
 set -e
 
-VERSION="1.8.0"
+VERSION="1.9.0"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
 SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 
