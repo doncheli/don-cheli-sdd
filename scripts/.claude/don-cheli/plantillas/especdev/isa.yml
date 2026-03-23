@@ -1,0 +1,152 @@
+# ISA — Arquitectura de Conjunto de Instrucciones para BDD
+
+# Mapea tipos de pasos Gherkin a patrones de código de test.
+# Adaptado de Specular (pei9564/Specular) y traducido al español.
+#
+# Este archivo define la "arquitectura de instrucciones" que conecta
+# cada tipo de paso Gherkin con su implementación en tests.
+#
+# CÓMO MEJORA EL FRAMEWORK:
+# Sin ISA, el agente inventa patrones de test diferentes cada vez.
+# Con ISA, la generación de tests es CONSISTENTE y PREDECIBLE.
+# Cada escenario Gherkin mapea a un patrón de test bien definido.
+
+# ============================================================
+# Compartido: Contrato de conftest.py para TODOS los tipos
+# ============================================================
+compartido:
+  contexto_fixture:
+    descripcion: |
+      Diccionario mutable, portador de estado para Dado → Cuando → Entonces.
+      Proporcionado por tests/integracion/conftest.py como fixture de pytest.
+    claves:
+      - "contexto['datos_base_*']  ← Pasos Dado (datos mock de tablas Gherkin)"
+      - "contexto['resultado']     ← Paso Cuando (valor de retorno o excepción capturada)"
+      - "contexto['payload']       ← (tipos API) Pasos Cuando acumulan de tablas de datos"
+      - "contexto['respuesta']     ← (tipos API) asegurar_llamado() cachea la respuesta"
+      - "contexto['config']        ← (tipos Servicio) Pasos Dado configuran objeto de config"
+
+  helpers:
+    - nombre: "tabla_a_dicts"
+      ubicacion: "tests/integracion/conftest.py"
+      firma: "tabla_a_dicts(datatable: list[list[str]]) -> list[dict]"
+      descripcion: "Convierte datatable de pytest-bdd a list[dict]. NUNCA parsear datatables manualmente."
+
+  reglas_limite:
+    conftest_posee:
+      - "fixture contexto (dict[str, Any])"
+      - "helper tabla_a_dicts()"
+      - "fixtures app / client (solo tipos API)"
+      - "Pasos Dado comunes: entidades de fondo, middleware de auth"
+    archivo_feature_posee:
+      - "decoradores @scenario() (1:1 desde Gherkin)"
+      - "Pasos Dado específicos del feature"
+      - "Pasos Cuando específicos del feature"
+      - "Pasos Entonces específicos del feature"
+    prevencion_colision:
+      - "Nombres de función DEBEN incluir contexto de dominio o feature"
+      - "MAL:  cuando_crear_recurso, entonces_fallo"
+      - "BIEN: cuando_ejecutar_creacion_usuario, entonces_creacion_usuario_deberia_fallar"
+
+# ============================================================
+# Tipo API: Flujo HTTP client
+# ============================================================
+api:
+  flujo_contexto:
+    cuando_acumula: "contexto['payload']"
+    disparador_almacena: "contexto['respuesta']"
+    funcion_disparador: "asegurar_llamado(contexto, client, {{ mock_repo }})"
+
+  definiciones:
+    # --- CONFIGURACION_MOCK (Dado) ---
+    - patron: "el sistema tiene los siguientes {tipo_entidad}:"
+      tipo: "CONFIGURACION_MOCK"
+      contexto: "Dado"
+      notas: "Parsear tabla de datos en contexto para configuración de mock."
+
+    # --- LLAMADA_API (Cuando) ---
+    - patron: "el usuario crea {recurso}:"
+      tipo: "LLAMADA_API"
+      contexto: "Cuando"
+      notas: "Parsear tabla field/value en contexto['payload']."
+
+    # --- DISPARADOR_API ---
+    - patron: "(interno — llamado por pasos Entonces)"
+      tipo: "DISPARADOR_API"
+      contexto: "Entonces (interno)"
+      notas: |
+        asegurar_llamado() configura mocks, dispara el request HTTP,
+        y cachea la respuesta. Idempotente: dispara solo una vez por escenario.
+
+    # --- ASERCION_API (Entonces) ---
+    - patron: "el {recurso} debería crearse exitosamente"
+      tipo: "ASERCION_API"
+      contexto: "Entonces"
+      notas: "Verificar status 201 y campos del body."
+
+    - patron: "la creación debería fallar"
+      tipo: "ASERCION_API"
+      contexto: "Entonces"
+      notas: "Verificar status >= 400."
+
+    - patron: "el mensaje de error debería indicar \"{texto}\""
+      tipo: "ASERCION_API"
+      contexto: "Entonces"
+      notas: "Verificar que el mensaje de error contiene el texto."
+
+    # --- ASERCION_BD (Entonces) ---
+    - patron: "la tabla {tabla} debería contener:"
+      tipo: "ASERCION_BD"
+      contexto: "Entonces"
+      notas: "Verificar campos de respuesta contra tabla de datos."
+
+# ============================================================
+# Tipo Servicio: Llamada directa al servicio
+# ============================================================
+servicio:
+  flujo_contexto:
+    dado_acumula: "contexto['config']"
+    cuando_almacena: "contexto['resultado']"
+    descripcion: |
+      Sin HTTP client involucrado. Los pasos Cuando llaman al método del servicio directamente.
+      contexto["resultado"] almacena el valor de retorno o la excepción capturada.
+
+  definiciones:
+    # --- CONFIGURACION (Dado) ---
+    - patron: "el sistema está configurado con:"
+      tipo: "CONFIGURACION"
+      contexto: "Dado"
+      notas: "Parsear tabla de configuración en contexto['config']."
+
+    # --- LLAMADA_SERVICIO (Cuando) ---
+    - patron: "el sistema ejecuta {operacion}"
+      tipo: "LLAMADA_SERVICIO"
+      contexto: "Cuando"
+      notas: "Invocar método del servicio directamente. Capturar excepciones."
+
+    # --- ASERCION_SERVICIO (Entonces) ---
+    - patron: "la operación debería completarse exitosamente"
+      tipo: "ASERCION_SERVICIO"
+      contexto: "Entonces"
+      notas: "Verificar que resultado no es excepción."
+
+    - patron: "el resultado debería contener:"
+      tipo: "ASERCION_SERVICIO"
+      contexto: "Entonces"
+      notas: "Verificar campos del resultado contra tabla de datos."
+
+    # --- ASERCION_EXCEPCION (Entonces) ---
+    - patron: "la operación debería fallar"
+      tipo: "ASERCION_EXCEPCION"
+      contexto: "Entonces"
+      notas: "Verificar que resultado es una excepción."
+
+    - patron: "el tipo de error debería ser \"{tipo_excepcion}\""
+      tipo: "ASERCION_EXCEPCION"
+      contexto: "Entonces"
+      notas: "Verificar nombre de clase de excepción."
+
+    - patron: "el mensaje de error debería contener \"{texto}\""
+      tipo: "ASERCION_EXCEPCION"
+      contexto: "Entonces"
+      notas: "Verificar que el mensaje de excepción contiene el texto."

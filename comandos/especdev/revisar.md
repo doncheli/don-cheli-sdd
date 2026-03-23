@@ -219,3 +219,13 @@ for user in users:
 - **Nunca** ignorar hallazgos de seguridad
 - **Siempre** verificar cumplimiento de constitución
 - **Siempre** documentar hallazgos con archivo + línea + sugerencia
+
+## Regla Adversarial
+
+Inspirada en el framework BMAD: el reviewer DEBE encontrar al menos un hallazgo concreto en cada revisión.
+
+- Si el review produce **cero hallazgos**, se activa una segunda pasada obligatoria con instrucción explícita: "Re-analizar buscando específicamente: N+1 queries, race conditions, edge cases no testeados, datos sensibles en logs, y naming inconsistencies."
+- Si la segunda pasada también produce cero hallazgos, se debe incluir una justificación explícita de por qué el código es excepcionalmente limpio.
+- **Nunca** aprobar con "todo se ve bien" sin evidencia de análisis profundo.
+
+Esto combate la tendencia natural del LLM a aprobar trabajo propio sin challenge suficiente.

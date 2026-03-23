@@ -1,0 +1,19 @@
+{
+  "locale": "es",
+  "dirs": {
+    "skills": "habilidades",
+    "rules": "reglas",
+    "templates": "plantillas",
+    "hooks": "ganchos",
+    "agents": "agentes",
+    "scripts": "scripts"
+  },
+  "files": {
+    "status": "estado.md",
+    "findings": "hallazgos.md",
+    "plan": "plan.md",
+    "progress": "progreso.md",
+    "proposal": "propuesta.md",
+    "config": "config.yaml"
+  }
+}

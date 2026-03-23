@@ -1,0 +1,179 @@
+{
+  "installer": {
+    "banner_line1": "Don Cheli — SDD Framework v{{version}}",
+    "banner_line2": "Stop improvising. Start delivering.",
+    "select_language": "Selecciona tu idioma / Select your language / Selecione seu idioma",
+    "option_es": "Español",
+    "option_en": "English",
+    "option_pt": "Português",
+    "invalid_option": "Invalid option. Select 1, 2 or 3.",
+    "language_selected": "Language selected: {{language}}",
+    "mode_global": "Mode: Global installation",
+    "mode_local": "Mode: Local installation in current project",
+    "framework_path": "Framework: {{path}}",
+    "commands_path": "Commands: {{path}}",
+    "step_structure": "Creating structure...",
+    "step_commands": "Copying commands...",
+    "step_commands_done": "{{count}} commands /especdev:*",
+    "step_reasoning_done": "{{count}} commands /razonar:*",
+    "step_skills": "Copying skills...",
+    "step_skills_done": "{{count}} skills",
+    "step_rules": "Copying rules...",
+    "step_rules_done": "{{count}} rules",
+    "step_templates": "Copying templates...",
+    "step_templates_done": "Templates copied",
+    "step_hooks": "Copying hooks...",
+    "step_hooks_done": "Hooks copied",
+    "step_agents": "Copying agents...",
+    "step_agents_done": "Agents copied",
+    "step_scripts": "Copying scripts...",
+    "step_scripts_done": "Scripts copied",
+    "step_reference": "Copying reference files...",
+    "step_reference_done": "CLAUDE.md, AGENTS.md, prompt.md, NOTICE",
+    "success_title": "Don Cheli v{{version}} successfully installed",
+    "structure_title": "Installed structure:",
+    "structure_skills": "skills",
+    "structure_rules": "rules",
+    "structure_templates": "templates",
+    "structure_hooks": "hooks",
+    "structure_agents": "agents",
+    "structure_commands": "commands",
+    "next_steps_title": "Next steps:",
+    "next_step_1": "Restart Claude Code",
+    "next_step_2": "In any project run: /especdev:iniciar",
+    "farewell": "Stop improvising. Start delivering!"
+  },
+  "framework": {
+    "identity": "You are a development assistant operating under the Don Cheli framework (Specification-Driven Development).",
+    "language_instruction": "ALWAYS respond in English. Code (variables, functions) in English. Documentation, commits and communication in English.",
+    "phases": {
+      "0": "Initialization",
+      "1": "Proposal",
+      "2": "Specification",
+      "3": "Clarification",
+      "4": "Technical design",
+      "5": "Planning",
+      "6": "Breakdown",
+      "7": "Implementation",
+      "8": "Review"
+    },
+    "status": {
+      "pending": "Pending",
+      "in_progress": "In progress",
+      "completed": "Completed",
+      "approved": "Approved",
+      "blocked": "Blocked"
+    },
+    "project_types": {
+      "producto": "New complete product",
+      "cli": "Command-line application",
+      "app": "Desktop/mobile application",
+      "libreria": "Reusable package",
+      "servicio": "Microservice/API",
+      "refactor": "Existing refactoring",
+      "correccion": "Bug fix"
+    },
+    "verdicts": {
+      "viable": "VIABLE — Proceed with implementation",
+      "viable_with_reservations": "VIABLE WITH RESERVATIONS — Document limitations",
+      "not_viable": "NOT VIABLE — Explore alternatives",
+      "inconclusive": "INCONCLUSIVE — Reformulate hypothesis"
+    },
+    "review": {
+      "approved": "APPROVED",
+      "approved_with_observations": "APPROVED WITH OBSERVATIONS",
+      "rejected": "REJECTED",
+      "pending": "PENDING APPROVAL"
+    },
+    "priorities": {
+      "p1": "Critical Path",
+      "p2": "Important",
+      "p3": "Desirable"
+    },
+    "severity": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "tdd": {
+      "red": "Write a FAILING test",
+      "green": "Implement MINIMUM code to pass",
+      "refactor": "Clean up without changing behavior"
+    },
+    "iron_laws": {
+      "1": "All production code requires tests",
+      "2": "Root cause first, then the fix",
+      "3": "Evidence before assertions"
+    }
+  },
+  "commands": {
+    "iniciar": {
+      "initialized": "Don Cheli initialized",
+      "project": "Project",
+      "type": "Type",
+      "directory": "Directory",
+      "files_created": "files created",
+      "next_step": "Next step: edit .especdev/plan.md to define your phases",
+      "already_exists": ".especdev/ already exists. Do you want to overwrite or repair?"
+    },
+    "estado": {
+      "current_phase": "Current Phase",
+      "next_phase": "Next Phase",
+      "summary": "Summary",
+      "phase_history": "Phase History"
+    },
+    "proponer": {
+      "intention": "Intention (WHY)",
+      "scope": "Scope (WHAT)",
+      "included": "Included",
+      "excluded": "Excluded",
+      "approach": "Approach (HOW)",
+      "risks": "Risks",
+      "estimate": "Preliminary Estimate",
+      "open_questions": "Open Questions",
+      "pending_approval": "PENDING APPROVAL"
+    },
+    "clarificar": {
+      "ambiguities_detected": "Ambiguities Detected",
+      "schema_check": "Schema-Spec Verification",
+      "convention_check": "Convention Check",
+      "auto_generated_audit": "Auto-Generated Audit",
+      "result": "Result",
+      "pass": "PASS",
+      "fail": "FAIL",
+      "advance": "ADVANCE",
+      "no_advance": "NO-ADVANCE"
+    },
+    "implementar": {
+      "phase_setup": "Phase 1: Setup",
+      "phase_foundation": "Phase 2: Foundation",
+      "phase_stories": "Phase 3: User Stories",
+      "phase_polish": "Phase 4: Polish",
+      "phase_verify": "Phase 5: Final Verification",
+      "checkpoint_verify": "CHECKPOINT: verify",
+      "checkpoint_decision": "CHECKPOINT: decision",
+      "checkpoint_human": "CHECKPOINT: human-action",
+      "all_tests_pass": "All tests pass. Feature successfully implemented."
+    },
+    "revisar": {
+      "functional": "Functional Correctness",
+      "tests": "Tests and Coverage",
+      "performance": "Performance",
+      "architecture": "Architecture and Design",
+      "security": "Security",
+      "style": "Style and Conventions",
+      "diff": "Clean Diff"
+    },
+    "diagnostico": {
+      "structure": "Structure",
+      "configuration": "Configuration",
+      "environment": "Environment",
+      "pipeline": "Pipeline",
+      "healthy": "HEALTHY",
+      "functional": "FUNCTIONAL",
+      "needs_attention": "NEEDS ATTENTION",
+      "warnings": "Warnings"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# Configuração do Projeto Don Cheli
+projeto:
+  nome: "meu-projeto"
+  tipo: "produto"  # produto|cli|app|biblioteca|servico|refatoracao|correcao|poc
+  descricao: ""
+  versao: "0.1.0"
+
+# Modelos de IA
+modelos:
+  padrao: sonnet
+  agentes:
+    planejador: opus
+    arquiteto: opus
+    executor: sonnet
+    revisor: opus
+    testador: sonnet
+    documentador: haiku
+    estimador: opus
+
+# Histórico de sessões
+historico:
+  habilitado: true
+  maxSessoes: 10
+  autoSalvar: true
+
+# Idioma
+idioma: "pt"

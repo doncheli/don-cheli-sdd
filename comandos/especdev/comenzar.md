@@ -75,3 +75,31 @@ Duración:   2 (días)
 - Si durante la ejecución se detecta mayor complejidad → escalar nivel
 - Si la complejidad resulta menor → des-escalar nivel
 - Regla de Desviación 4 → escalar al menos 1 nivel
+
+## Heurística de Scale-Adaptive Planning
+
+Inspirada en el framework BMAD: el nivel de planificación se ajusta automáticamente según la complejidad detectada.
+
+| Nivel detectado | Fases que se ejecutan | Fases que se SALTAN |
+|-----------------|----------------------|---------------------|
+| **0 — Atómico** | implementar → verificar | spec, clarificar, planificar, desglosar |
+| **1 — Micro** | especificar (light) → implementar → revisar | clarificar, planificar, desglosar, pseudocódigo |
+| **P — PoC** | hipótesis → construir → evaluar → veredicto | todo el pipeline formal |
+| **2 — Estándar** | especificar → clarificar → planificar → desglosar → implementar → revisar | pseudocódigo (opcional) |
+| **3 — Complejo** | especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
+| **4 — Producto** | constitución → proponer → especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
+
+**Principio:** No aplicar el mismo proceso a un micro-fix que a una migración de plataforma. La fricción innecesaria es tan dañina como la falta de estructura.
+
+### Señales de detección automática
+
+| Señal | Sube nivel | Baja nivel |
+|-------|-----------|------------|
+| Archivos afectados > 10 | +1 | |
+| Archivos afectados ≤ 2 | | -1 |
+| Cambio cruza módulos | +1 | |
+| Solo 1 módulo | | -1 |
+| Toca auth/pagos/seguridad | +1 | |
+| Solo wording/config | | -1 |
+| Dependencias externas nuevas | +1 | |
+| Sin dependencias nuevas | | 0 |

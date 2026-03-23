@@ -11,10 +11,10 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.10.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versión-1.11.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-68+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-71+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
   </p>
@@ -48,7 +48,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>68+</strong></td></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>71+</strong></td></tr>
 <tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
@@ -66,7 +66,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 <tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
-### 15 cosas que solo Don Cheli tiene
+### 20 cosas que solo Don Cheli tiene
 
 1. **15 modelos de razonamiento** — Pre-mortem, 5 porqués, Pareto, RLM
 2. **4 modelos de estimación** — Puntos de Función, Planning Poker IA, COCOMO, Histórico
@@ -83,6 +83,11 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 13. **Doctor** — Diagnóstico y auto-reparación de git, framework y entorno
 14. **Skill Creator** — Meta-skill iterativo: generar → probar → evaluar → mejorar skills automáticamente
 15. **Skills Marketplace** — Instalar skills desde Anthropic oficial, comunidad, o crear las tuyas
+16. **Constitución de proyecto** — Principios inmutables pre-spec que se validan en cada puerta de calidad
+17. **Pseudocódigo formal** — Fase de razonamiento lógico agnóstico de tecnología entre spec y plan (SPARC)
+18. **Validación multi-capa de spec** — 8 checks (implementation leakage, measurability, completeness, constitution adherence)
+19. **Debate adversarial multi-rol** — PM vs Arquitecto vs QA con tensiones explícitas y objeción obligatoria
+20. **Scale-adaptive planning** — El nivel de planificación se ajusta según complejidad (no mismo proceso para 1 archivo que para 100)
 
 ---
 
@@ -257,10 +262,10 @@ Esto permite tener decenas de skills sin impactar el context window.
 
 ---
 
-## Comandos (68+)
+## Comandos (71+)
 
 <details>
-<summary><strong>Principales (29)</strong></summary>
+<summary><strong>Principales (32)</strong></summary>
 
 | Comando | Descripción |
 |---------|-------------|
@@ -292,6 +297,9 @@ Esto permite tener decenas de skills sin impactar el context window.
 | `/especdev:presentar` | Generar presentación interactiva HTML |
 | `/especdev:crear-skill` | Crear skills iterativamente (compatible Anthropic Skills 2.0) |
 | `/especdev:marketplace` | Instalar skills desde Anthropic, comunidad, o built-in |
+| `/especdev:pseudocodigo` | Lógica agnóstica de tecnología entre spec y plan (SPARC) |
+| `/especdev:validar-spec` | Validación multi-capa de specs (8 checks, BMAD-inspired) |
+| `/especdev:debate` | Deliberación adversarial multi-rol (PM vs Arquitecto vs QA) |
 | `/especdev:actualizar` | Detectar y aplicar actualizaciones del framework |
 </details>
 
@@ -481,7 +489,7 @@ Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), p
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 53 comandos /especdev:*
+│   ├── especdev/          # 56 comandos /especdev:*
 │   └── razonar/           # 15 comandos /razonar:*
 ├── habilidades/           # 42 habilidades modulares
 ├── reglas/

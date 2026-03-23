@@ -1,0 +1,28 @@
+# docker-compose.yml para Don Cheli
+# Servicios: test, lint, reporte
+
+services:
+  test:
+    build: .
+    command: pytest -v --tb=short
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1
+
+  lint:
+    build: .
+    command: |
+      sh -c "
+        flake8 app/ --max-line-length=120 --ignore=E501 &&
+        mypy app/ --ignore-missing-imports
+      "
+    volumes:
+      - .:/app
+
+  reporte:
+    build: .
+    command: pytest --html=reports/test-report.html --self-contained-html -v
+    volumes:
+      - .:/app
+      - ./reports:/app/reports
