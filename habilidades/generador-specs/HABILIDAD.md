@@ -1,3 +1,12 @@
+---
+nombre: Generador de Specs
+descripcion: "Generar especificaciones Gherkin automáticamente desde descripciones de features en lenguaje natural"
+version: 1.0.0
+autor: Don Cheli
+tags: [especificación, gherkin, BDD, features, specs]
+activacion: "generar spec", "escribir gherkin", "crear feature file"
+---
+
 # Habilidad: Generador de Specs (Pipeline Gherkin)
 
 **Versión:** 1.0.0

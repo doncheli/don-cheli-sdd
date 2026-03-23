@@ -1,3 +1,12 @@
+---
+nombre: Presentaciones Interactivas (HTML Slides)
+descripcion: "Generar presentaciones interactivas HTML autocontenidas desde contenido del proyecto"
+version: 1.0.0
+autor: Don Cheli
+tags: [presentaciones, html, slides, documentacion]
+activacion: "presentación", "slides", "presentar proyecto", "generar HTML"
+---
+
 # Habilidad: Presentaciones Interactivas (HTML Slides)
 
 **Versión:** 1.0.0

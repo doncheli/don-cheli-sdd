@@ -1,3 +1,12 @@
+---
+nombre: Brainstorming Estructurado
+descripcion: "Sesiones de brainstorming estructurado con técnicas como SCAMPER, mapas mentales y 6 sombreros"
+version: 1.0.0
+autor: Don Cheli
+tags: [brainstorming, ideacion, descubrimiento, creatividad]
+activacion: "brainstorming", "lluvia de ideas", "generar opciones", "explorar alternativas"
+---
+
 # Habilidad: Brainstorming Estructurado
 
 **Versión:** 1.0.0

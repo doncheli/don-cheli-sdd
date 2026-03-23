@@ -1,3 +1,12 @@
+---
+nombre: Estimación de Desarrollo
+descripcion: "Estimar esfuerzo de desarrollo con 4 modelos: Puntos de Función, Planning Poker IA, COCOMO, Histórico"
+version: 1.0.0
+autor: Don Cheli
+tags: [planificación, estimación, COCOMO, planning-poker, esfuerzo]
+activacion: "estimar esfuerzo", "cuánto tiempo toma", "planning poker", "estimación"
+---
+
 # Habilidad: Estimación de Desarrollo
 
 **Versión:** 1.0.0

@@ -1,3 +1,12 @@
+---
+nombre: Prueba de Trabajo
+descripcion: "Generar evidencia verificable de que el código funciona: tests pasando, screenshots, logs"
+version: 1.0.0
+autor: Don Cheli
+tags: [verificación, evidencia, proof-of-work, ci]
+activacion: "prueba de trabajo", "evidencia", "proof of work", "demostrar que funciona"
+---
+
 # Habilidad: Prueba de Trabajo (Proof of Work)
 
 **Versión:** 1.0.0

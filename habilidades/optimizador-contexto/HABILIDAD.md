@@ -1,3 +1,12 @@
+---
+nombre: Optimizador de Contexto
+descripcion: "Comprimir y priorizar el contexto del conversation window para máxima eficiencia de tokens"
+version: 1.0.0
+autor: Don Cheli
+tags: [contexto, tokens, rendimiento, optimizacion]
+activacion: "optimizar contexto", "comprimir conversación", "context window lleno"
+---
+
 # Habilidad: Optimizador de Contexto
 
 **Versión:** 1.0.0

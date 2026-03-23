@@ -1,3 +1,12 @@
+---
+nombre: Reflexión
+descripcion: "Auto-evaluar la calidad del trabajo antes de entregar. Mejora calidad en +8-21%"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, reflexión, auto-evaluación, revisión]
+activacion: "reflexionar", "auto-evaluar", "revisar mi trabajo"
+---
+
 # Habilidad: Reflexión
 
 **Versión:** 1.0.0

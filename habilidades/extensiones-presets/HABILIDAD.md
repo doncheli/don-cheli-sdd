@@ -1,3 +1,12 @@
+---
+nombre: Sistema de Extensiones y Presets
+descripcion: "Cargar configuraciones predefinidas para frameworks específicos (Django, Rails, Next.js, etc.)"
+version: 1.0.0
+autor: Don Cheli
+tags: [extensiones, presets, configuracion, frameworks]
+activacion: "preset", "configuración para Django", "template de framework"
+---
+
 # Habilidad: Sistema de Extensiones y Presets
 
 **Versión:** 1.0.0

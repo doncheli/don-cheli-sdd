@@ -1,3 +1,12 @@
+---
+nombre: Recuperación de Sesión
+descripcion: "Recuperar el contexto de una sesión previa leyendo artifacts del disco y generando briefing"
+version: 1.0.0
+autor: Don Cheli
+tags: [fundamental, sesión, contexto, recuperación, memoria]
+activacion: "recuperar sesión", "continuar donde dejé", "qué estaba haciendo"
+---
+
 # Habilidad: Recuperación de Sesión
 
 **Versión:** 1.0.0

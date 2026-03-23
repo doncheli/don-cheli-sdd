@@ -1,3 +1,12 @@
+---
+nombre: Leyes de Hierro
+descripcion: "Aplicar las 3 leyes no negociables: TDD obligatorio, causa raíz primero, evidencia siempre"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, TDD, debugging, verificación, leyes]
+activacion: "leyes de hierro", "TDD obligatorio", "reglas no negociables"
+---
+
 # Habilidad: Leyes de Hierro
 
 **Versión:** 1.0.0

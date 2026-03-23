@@ -1,3 +1,12 @@
+---
+nombre: DevLog — Bitácora de Desarrollo
+descripcion: "Mantener un log de desarrollo con decisiones, cambios y contexto para referencia futura"
+version: 1.0.0
+autor: Don Cheli
+tags: [devlog, bitacora, historial, observabilidad]
+activacion: "devlog", "registrar decisión", "log de desarrollo"
+---
+
 # Habilidad: DevLog — Bitácora de Desarrollo
 
 **Versión:** 1.0.0

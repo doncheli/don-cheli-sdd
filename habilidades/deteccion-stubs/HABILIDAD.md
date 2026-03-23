@@ -1,3 +1,12 @@
+---
+nombre: Detección de Stubs
+descripcion: "Detectar código stub (TODO, placeholder, mock sin implementar) antes de marcar una tarea como completa"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, stubs, TODOs, placeholders, completitud]
+activacion: "detectar stubs", "buscar TODOs", "código incompleto", "placeholders"
+---
+
 # Habilidad: Detección de Stubs (Código Placeholder)
 
 **Versión:** 1.0.0

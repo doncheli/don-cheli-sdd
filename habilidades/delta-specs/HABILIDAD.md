@@ -1,3 +1,12 @@
+---
+nombre: Delta Specs — Specs Incrementales
+descripcion: "Detectar cambios entre versiones de specs y generar diff semántico con impacto en código"
+version: 1.0.0
+autor: Don Cheli
+tags: [delta, specs, diff, incremental]
+activacion: "delta spec", "qué cambió en la spec", "diff de specs", "cambios en requisitos"
+---
+
 # Habilidad: Delta Specs — Specs Incrementales
 
 **Versión:** 1.0.0

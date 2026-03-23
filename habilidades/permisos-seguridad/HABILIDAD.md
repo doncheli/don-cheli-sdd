@@ -1,3 +1,12 @@
+---
+nombre: Sistema de Permisos y Seguridad
+descripcion: "Gestionar permisos de archivos, validar acceso y prevenir operaciones peligrosas en el proyecto"
+version: 1.0.0
+autor: Don Cheli
+tags: [seguridad, permisos, acceso, proteccion]
+activacion: "permisos", "seguridad", "acceso a archivos", "operación peligrosa"
+---
+
 # Habilidad: Sistema de Permisos y Seguridad
 
 **Versión:** 1.0.0

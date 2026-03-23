@@ -1,3 +1,12 @@
+---
+nombre: Desarrollo por Subagentes
+descripcion: "Dividir tareas complejas en subtareas y asignarlas a subagentes paralelos con el modelo adecuado"
+version: 1.0.0
+autor: Don Cheli
+tags: [orquestación, subagentes, paralelismo, agentes, SDD]
+activacion: "subagentes", "dividir tarea", "paralelizar", "agentes en paralelo"
+---
+
 # Habilidad: Desarrollo por Subagentes (SDD)
 
 **Versión:** 1.0.0

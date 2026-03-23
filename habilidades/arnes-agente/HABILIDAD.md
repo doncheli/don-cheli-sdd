@@ -1,3 +1,12 @@
+---
+nombre: Arnés del Agente
+descripcion: "Configurar y ejecutar agentes especializados con restricciones, timeouts y recuperación de errores"
+version: 1.0.0
+autor: Don Cheli
+tags: [configuración, agente, harness, arnés]
+activacion: "configurar agente", "arnés", "harness", "ejecutar agente"
+---
+
 # Habilidad: Arnés del Agente (Agent Harness)
 
 **Versión:** 1.0.0

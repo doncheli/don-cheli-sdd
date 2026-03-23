@@ -1,3 +1,12 @@
+---
+nombre: Detección de Loops
+descripcion: "Detectar ciclos infinitos en la ejecución del agente (A→B→A→B) y escalar antes del stop-loss"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, loops, ciclos, detección, auto-corrección]
+activacion: "loop detectado", "ciclo infinito", "estoy en un loop", "stuck"
+---
+
 # Habilidad: Detección de Loops en Auto-Corrección
 
 **Versión:** 1.0.0

@@ -1,3 +1,12 @@
+---
+nombre: Optimización de Tokens
+descripcion: "Reducir consumo de tokens sin perder calidad: lazy loading, compresión, selección de modelo"
+version: 1.0.0
+autor: Don Cheli
+tags: [eficiencia, tokens, optimización, costos, modelos]
+activacion: "optimizar tokens", "reducir consumo", "gastar menos tokens"
+---
+
 # Habilidad: Optimización de Tokens
 
 **Versión:** 1.0.0

@@ -1,3 +1,12 @@
+---
+nombre: Documentación Viva
+descripcion: "Generar y mantener documentación sincronizada con el código: ADRs, OpenAPI, diagramas Mermaid"
+version: 1.0.0
+autor: Don Cheli
+tags: [documentación, ADR, OpenAPI, Mermaid, diagramas]
+activacion: "documentación viva", "generar docs", "ADR", "OpenAPI", "diagrama"
+---
+
 # Habilidad: Documentación Técnica Viva
 
 **Versión:** 1.0.0

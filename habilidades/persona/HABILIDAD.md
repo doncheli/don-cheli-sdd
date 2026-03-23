@@ -1,3 +1,12 @@
+---
+nombre: Persona del Agente
+descripcion: "Asumir un rol especializado (arquitecto, QA, DBA, etc.) para ofrecer perspectiva experta"
+version: 1.0.0
+autor: Don Cheli
+tags: [persona, rol, configuracion, agente]
+activacion: "actúa como", "rol de", "perspectiva de", "persona"
+---
+
 # Habilidad: Persona del Agente
 
 **Versión:** 1.0.0

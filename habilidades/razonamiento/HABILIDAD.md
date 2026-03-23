@@ -1,3 +1,12 @@
+---
+nombre: Razonamiento (15 modelos + RLM)
+descripcion: "Aplicar modelos mentales estructurados para resolver problemas complejos de forma sistemática"
+version: 1.0.0
+autor: Don Cheli
+tags: [razonamiento, modelos-mentales, decision, analisis]
+activacion: "razonar", "analizar problema", "modelo mental", "pensar mejor"
+---
+
 # Habilidad: Razonamiento (15 modelos + RLM)
 
 **Versión:** 1.0.0

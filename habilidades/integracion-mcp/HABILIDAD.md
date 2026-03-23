@@ -1,3 +1,12 @@
+---
+nombre: Integración MCP
+descripcion: "Conectar y orquestar servidores MCP para extender las capacidades del agente con herramientas externas"
+version: 1.0.0
+autor: Don Cheli
+tags: [mcp, herramientas, integracion, protocolo]
+activacion: "MCP", "conectar servidor", "herramientas externas", "model context protocol"
+---
+
 # Habilidad: Integración MCP
 
 **Versión:** 1.0.0

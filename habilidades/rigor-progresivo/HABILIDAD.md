@@ -1,3 +1,12 @@
+---
+nombre: Rigor Progresivo
+descripcion: "Ajustar automáticamente el nivel de rigor (tests, docs, review) según la complejidad de la tarea"
+version: 1.0.0
+autor: Don Cheli
+tags: [specs, rigor, calidad, especificación]
+activacion: "nivel de rigor", "cuánto testing", "qué tan estricto"
+---
+
 # Habilidad: Rigor Progresivo en Specs
 
 **Versión:** 1.0.0

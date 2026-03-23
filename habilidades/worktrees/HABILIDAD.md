@@ -1,3 +1,12 @@
+---
+nombre: Git Worktrees
+descripcion: "Usar git worktrees para trabajo paralelo en múltiples branches sin conflictos de checkout"
+version: 1.0.0
+autor: Don Cheli
+tags: [git, worktrees, paralelo, branches]
+activacion: "worktree", "trabajo paralelo", "múltiples branches"
+---
+
 # Habilidad: Git Worktrees
 
 **Versión:** 1.0.0

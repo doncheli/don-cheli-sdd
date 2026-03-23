@@ -1,3 +1,12 @@
+---
+nombre: Cambio como Carpeta (Change-as-Folder)
+descripcion: "Gestionar cambios de directorio de trabajo del agente de forma segura con validación de contexto"
+version: 1.0.0
+autor: Don Cheli
+tags: [cambio, carpeta, directorio, organizacion]
+activacion: "cambiar carpeta", "ir a directorio", "cambiar proyecto"
+---
+
 # Habilidad: Cambio como Carpeta (Change-as-Folder)
 
 **Versión:** 1.0.0

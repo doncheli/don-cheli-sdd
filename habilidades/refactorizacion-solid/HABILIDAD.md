@@ -1,3 +1,12 @@
+---
+nombre: Refactorización SOLID
+descripcion: "Guiar refactoring con principios SOLID: checklist de violaciones, métricas, patrones de diseño"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, SOLID, refactoring, clean-code, patrones]
+activacion: "refactorizar SOLID", "principios SOLID", "code smells", "refactoring"
+---
+
 # Habilidad: Refactorización SOLID y Clean Code
 
 **Versión:** 1.0.0

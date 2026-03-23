@@ -1,3 +1,12 @@
+---
+nombre: Integración Obsidian
+descripcion: "Exportar conocimiento del proyecto a formato Obsidian con links bidireccionales y grafos"
+version: 1.0.0
+autor: Don Cheli
+tags: [obsidian, documentacion, knowledge-graph, markdown]
+activacion: "obsidian", "exportar a vault", "knowledge graph", "notas conectadas"
+---
+
 # Habilidad: Integración Obsidian
 
 **Versión:** 1.0.0

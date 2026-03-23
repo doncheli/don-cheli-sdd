@@ -1,3 +1,12 @@
+---
+nombre: RLM — Modelo de Lenguaje Recursivo
+descripcion: "Recursive Language Model: verificar, razonar en cadena y descomponer problemas con sub-LLMs"
+version: 1.0.0
+autor: Don Cheli
+tags: [rlm, razonamiento, sub-llm, recursivo]
+activacion: "RLM", "verificar con otro modelo", "razonamiento recursivo", "sub-LLM"
+---
+
 # Habilidad: RLM — Modelo de Lenguaje Recursivo
 
 **Versión:** 1.0.0

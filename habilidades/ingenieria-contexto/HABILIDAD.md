@@ -1,3 +1,12 @@
+---
+nombre: Ingeniería de Contexto
+descripcion: "Gestionar qué información cargar en el context window para maximizar calidad de respuestas"
+version: 1.0.0
+autor: Don Cheli
+tags: [fundamental, contexto, memoria, context-window, sesión]
+activacion: "contexto", "qué archivos cargar", "context window"
+---
+
 # Habilidad: Ingeniería de Contexto
 
 **Versión:** 1.0.0

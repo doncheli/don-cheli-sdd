@@ -1,3 +1,12 @@
+---
+nombre: Validación Nyquist
+descripcion: "Verificar que cada requisito de la spec tiene al menos un test que lo cubre (mapeo 1:1 spec↔test)"
+version: 1.0.0
+autor: Don Cheli
+tags: [calidad, nyquist, tests, cobertura, requisitos]
+activacion: "nyquist", "cobertura de specs", "mapeo tests requisitos"
+---
+
 # Habilidad: Validación Nyquist (Testabilidad Pre-Coding)
 
 **Versión:** 1.0.0

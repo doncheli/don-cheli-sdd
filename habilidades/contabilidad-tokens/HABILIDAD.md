@@ -1,3 +1,12 @@
+---
+nombre: Contabilidad de Tokens
+descripcion: "Trackear consumo de tokens por tarea, sesión y modelo. Genera reportes de costo y uso"
+version: 1.0.0
+autor: Don Cheli
+tags: [tokens, observabilidad, costos, métricas]
+activacion: "cuántos tokens", "costo de la sesión", "consumo", "budget"
+---
+
 # Habilidad: Contabilidad de Tokens
 
 **Versión:** 1.0.0

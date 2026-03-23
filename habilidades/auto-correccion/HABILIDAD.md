@@ -1,3 +1,12 @@
+---
+nombre: Auto-Corrección
+descripcion: "Detectar y corregir errores automáticamente sin intervención humana según las reglas de desviación"
+version: 1.0.0
+autor: Don Cheli
+tags: [auto-corrección, aprendizaje, errores, reglas]
+activacion: "auto-fix", "corregir automáticamente", "auto-corrección"
+---
+
 # Habilidad: Bucle de Auto-Corrección
 
 **Versión:** 1.0.0

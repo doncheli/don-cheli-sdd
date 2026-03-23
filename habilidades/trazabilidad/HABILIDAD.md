@@ -1,3 +1,12 @@
+---
+nombre: Pipeline de Trazabilidad
+descripcion: "Mantener trazabilidad completa entre requisitos, specs, código y tests en todo el pipeline"
+version: 1.0.0
+autor: Don Cheli
+tags: [trazabilidad, calidad, gherkin, pipeline]
+activacion: "trazabilidad", "de dónde viene este requisito", "rastrear cambio"
+---
+
 # Habilidad: Pipeline de Trazabilidad
 
 **Versión:** 1.0.0

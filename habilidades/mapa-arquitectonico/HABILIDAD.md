@@ -1,3 +1,12 @@
+---
+nombre: Mapa Arquitectónico Vivo
+descripcion: "Generar y mantener un mapa visual de la arquitectura del sistema con dependencias y flujos"
+version: 1.0.0
+autor: Don Cheli
+tags: [arquitectura, mapa, diagrama, dependencias]
+activacion: "mapa de arquitectura", "diagrama del sistema", "dependencias", "cómo está estructurado"
+---
+
 # Habilidad: Mapa Arquitectónico Vivo
 
 **Versión:** 1.0.0

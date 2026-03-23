@@ -1,3 +1,12 @@
+---
+nombre: Engram — Memoria Persistente Cross-Sesión
+descripcion: "Almacenar y recuperar información cross-sesión usando archivos Engram en disco"
+version: 1.0.0
+autor: Don Cheli
+tags: [memoria, engram, persistencia, contexto]
+activacion: "recordar esto", "memoria", "guardar para después", "engram"
+---
+
 # Habilidad: Engram — Memoria Persistente Cross-Sesión
 
 **Versión:** 1.0.0

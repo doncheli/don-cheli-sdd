@@ -1,3 +1,12 @@
+---
+nombre: UI/UX Design System
+descripcion: "Aplicar sistema de diseño con 67 estilos y 161 paletas de colores para interfaces consistentes"
+version: 1.0.0
+autor: Don Cheli
+tags: [diseño, ui, ux, design-system, colores]
+activacion: "diseño UI", "paleta de colores", "design system", "estilos", "UX"
+---
+
 # Habilidad: UI/UX Design System
 
 **Versión:** 1.0.0

@@ -1,3 +1,12 @@
+---
+nombre: Schemas DBML (Verdad Viva)
+descripcion: "Generar y mantener schemas de base de datos en formato DBML sincronizados con las specs Gherkin"
+version: 1.0.0
+autor: Don Cheli
+tags: [dbml, schema, base-de-datos, especificacion]
+activacion: "schema DBML", "modelo de datos", "base de datos", "tablas"
+---
+
 # Habilidad: Schemas DBML (Verdad Viva)
 
 **Versión:** 1.0.0

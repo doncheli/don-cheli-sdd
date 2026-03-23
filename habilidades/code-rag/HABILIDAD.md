@@ -1,3 +1,12 @@
+---
+nombre: CodeRAG
+descripcion: "Indexar repos de referencia y recuperar patrones relevantes usando RAG para informar implementación"
+version: 1.0.0
+autor: Don Cheli
+tags: [contexto, RAG, código, patrones, referencia]
+activacion: "buscar referencia", "código similar", "RAG", "cómo lo hicieron otros"
+---
+
 # Habilidad: CodeRAG (Retrieval-Augmented Generation para Código)
 
 **Versión:** 1.0.0

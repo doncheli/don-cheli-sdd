@@ -1,3 +1,12 @@
+---
+nombre: Orquestación Autónoma
+descripcion: "Ejecutar múltiples tareas de forma autónoma con coordinación entre agentes y checkpoints humanos"
+version: 1.0.0
+autor: Don Cheli
+tags: [automatización, orquestación, agentes, autónomo]
+activacion: "ejecutar autónomamente", "modo autónomo", "sin supervisión"
+---
+
 # Habilidad: Orquestación Autónoma (Máquina de Estados)
 
 **Versión:** 1.0.0
