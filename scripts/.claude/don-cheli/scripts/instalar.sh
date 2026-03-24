@@ -273,6 +273,99 @@ if [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
     CMDS_ESPECDEV=$(ls "${COMMANDS_DIR}/especdev/"*.md 2>/dev/null | wc -l | tr -d ' ')
     echo -e "     ${GREEN}✓${NC} $(tpl "$(i18n installer.step_commands_done)" count "$CMDS_ESPECDEV")"
     echo -e "     ${GREEN}✓${NC} /dc:* alias created (${CMDS_ESPECDEV} commands)"
+    # Rename dc/ commands to match locale
+    if [ "$LOCALE" = "en" ]; then
+        cd "${COMMANDS_DIR}/dc/" 2>/dev/null && {
+            # Rename Spanish → English (longest names first to avoid conflicts)
+            for pair in \
+                "analizar-sesiones:analyze-sessions" \
+                "auditar-seguridad:security-audit" \
+                "avance-rapido:fast-forward" \
+                "cerrar-sesion:close-session" \
+                "contrato-api:api-contract" \
+                "contrato-ui:ui-contract" \
+                "crear-skill:create-skill" \
+                "detectar-ambiguedad:detect-ambiguity" \
+                "limpiar-slop:clean-slop" \
+                "mesa-redonda:roundtable" \
+                "mesa-tecnica:tech-panel" \
+                "minar-referencias:mine-refs" \
+                "planificar-tecnico:tech-plan" \
+                "validar-spec:validate-spec" \
+                "donde-estoy:where-am-i" \
+                "pseudocodigo:pseudocode" \
+                "reflexionar:reflect" \
+                "diagnostico:diagnostic" \
+                "especificar:specify" \
+                "implementar:implement" \
+                "incorporar:onboard" \
+                "actualizar:update" \
+                "comenzar:start" \
+                "continuar:continue" \
+                "capturar:capture" \
+                "desglosar:breakdown" \
+                "destilar:distill" \
+                "explorar:explore" \
+                "historial:history" \
+                "memorizar:memorize" \
+                "presentar:present" \
+                "proponer:propose" \
+                "traspasar:handoff" \
+                "traspaso:handover" \
+                "archivar:archive" \
+                "completo:full" \
+                "guardian:guardian" \
+                "iniciar:init" \
+                "migrar:migrate" \
+                "reversa:reverse" \
+                "revisar:review" \
+                "cambios:changes" \
+                "aplicar:apply" \
+                "estimar:estimate" \
+                "validar:validate" \
+                "clarificar:clarify" \
+                "rapido:quick" \
+                "estado:status" \
+                "agente:agent"; do
+                src="${pair%%:*}.md"
+                dst="${pair##*:}.md"
+                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null
+            done
+            cd - >/dev/null
+        }
+        echo -e "     ${GREEN}✓${NC} Commands renamed to English"
+    elif [ "$LOCALE" = "pt" ]; then
+        cd "${COMMANDS_DIR}/dc/" 2>/dev/null && {
+            for pair in \
+                "analizar-sesiones:analisar-sessoes" \
+                "auditar-seguridad:auditar-segurança" \
+                "avance-rapido:avanço-rapido" \
+                "cerrar-sesion:fechar-sessao" \
+                "crear-skill:criar-skill" \
+                "detectar-ambiguedad:detectar-ambiguidade" \
+                "limpiar-slop:limpar-slop" \
+                "donde-estoy:onde-estou" \
+                "reflexionar:refletir" \
+                "incorporar:integrar" \
+                "actualizar:atualizar" \
+                "comenzar:começar" \
+                "desglosar:decompor" \
+                "presentar:apresentar" \
+                "proponer:propor" \
+                "traspasar:transferir" \
+                "traspaso:transferencia" \
+                "archivar:arquivar" \
+                "guardian:guardiao" \
+                "cambios:mudanças" \
+                "historial:historico"; do
+                src="${pair%%:*}.md"
+                dst="${pair##*:}.md"
+                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null
+            done
+            cd - >/dev/null
+        }
+        echo -e "     ${GREEN}✓${NC} Commands renamed to Português"
+    fi
 fi
 if [ -d "${SCRIPT_DIR}/comandos/razonar" ]; then
     cp -r "${SCRIPT_DIR}/comandos/razonar/"*.md "${COMMANDS_DIR}/razonar/" 2>/dev/null || true

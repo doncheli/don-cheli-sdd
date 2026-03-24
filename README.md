@@ -101,7 +101,7 @@ git clone https://github.com/doncheli/don-cheli-sdd.git
 cd don-cheli-sdd && bash scripts/instalar.sh --global
 
 # 3. In any project, initialize
-/dc:iniciar
+/dc:init
 ```
 
 ### Language Selection
@@ -181,13 +181,13 @@ Available languages: `es` (Español), `en` (English), `pt` (Português)
 ### 1. Initialize in your project
 
 ```bash
-/dc:iniciar --tipo servicio --nombre "my-api"
+/dc:init --tipo servicio --nombre "my-api"
 ```
 
 ### 2. Start a task
 
 ```bash
-/dc:comenzar Implement JWT authentication
+/dc:start Implement JWT authentication
 ```
 
 Don Cheli auto-detects complexity and chooses the appropriate process:
@@ -204,12 +204,12 @@ Don Cheli auto-detects complexity and chooses the appropriate process:
 ### 3. Follow the pipeline
 
 ```bash
-/dc:especificar    # Gherkin spec + DBML schema
-/dc:clarificar     # Auto-QA + resolve ambiguities
-/dc:planificar-tecnico  # Blueprint + constitution check
-/dc:desglosar      # TDD tasks with parallelism
-/dc:implementar    # RED → GREEN → REFACTOR in Docker
-/dc:revisar        # 7-dimension peer review
+/dc:specify    # Gherkin spec + DBML schema
+/dc:clarify     # Auto-QA + resolve ambiguities
+/dc:tech-plan  # Blueprint + constitution check
+/dc:breakdown      # TDD tasks with parallelism
+/dc:implement    # RED → GREEN → REFACTOR in Docker
+/dc:review        # 7-dimension peer review
 ```
 
 ---
@@ -240,7 +240,7 @@ Don Cheli is **100% compatible** with the [Anthropic Skills](https://github.com/
 Create skills without writing a single line of YAML:
 
 ```bash
-/dc:crear-skill "Weekly team report generator"
+/dc:create-skill "Weekly team report generator"
 ```
 
 5 iterative phases: **Discover** → **Generate** SKILL.md → **Test** with real prompt → **Evaluate** quality → **Iterate** until optimal.
@@ -279,40 +279,40 @@ This allows having dozens of skills without impacting the context window.
 
 | Command | Description |
 |---------|-------------|
-| `/dc:iniciar` | Initialize in a project |
-| `/dc:comenzar` | Start task (auto-detects level) |
-| `/dc:rapido` | Fast mode (Level 1) |
+| `/dc:init` | Initialize in a project |
+| `/dc:start` | Start task (auto-detects level) |
+| `/dc:quick` | Fast mode (Level 1) |
 | `/dc:poc` | Proof of Concept with timebox |
-| `/dc:completo` | Full mode (Level 3) |
-| `/dc:estado` | Current status |
-| `/dc:diagnostico` | Setup health check |
+| `/dc:full` | Full mode (Level 3) |
+| `/dc:status` | Current status |
+| `/dc:diagnostic` | Setup health check |
 | `/dc:doctor` | Diagnosis and auto-repair of git, framework, and environment |
-| `/dc:continuar` | Recover previous session |
-| `/dc:reflexionar` | Self-reflection (+8-21% quality) |
-| `/dc:capturar` | Fire-and-forget ideas with automatic triage |
+| `/dc:continue` | Recover previous session |
+| `/dc:reflect` | Self-reflection (+8-21% quality) |
+| `/dc:capture` | Fire-and-forget ideas with automatic triage |
 | `/dc:uat` | Auto-generated acceptance scripts per feature |
-| `/dc:agente` | Load specialized agent |
-| `/dc:mesa-redonda` | Multi-perspective discussion (CPO, UX, Business) |
-| `/dc:mesa-tecnica` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
+| `/dc:agent` | Load specialized agent |
+| `/dc:roundtable` | Multi-perspective discussion (CPO, UX, Business) |
+| `/dc:tech-panel` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
 | `/dc:planning` | Weekly team planning: RFC review, WSJF prioritization, pair/squad assignment |
-| `/dc:estimar` | Development estimates |
-| `/dc:destilar` | Extract specs from code |
-| `/dc:minar-referencias` | Search reference repos |
-| `/dc:contrato-ui` | UI design contracts |
-| `/dc:contrato-api` | API/webhook contracts |
-| `/dc:auditar-seguridad` | OWASP Top 10 audit |
-| `/dc:migrar` | Stack migration |
-| `/dc:reversa` | Architecture reverse engineering |
-| `/dc:explorar` | Explore codebase (assumptions mode) |
-| `/dc:proponer` | Change proposal |
-| `/dc:analizar-sesiones` | Usage pattern analysis |
-| `/dc:presentar` | Generate interactive HTML presentation |
-| `/dc:crear-skill` | Create skills iteratively (Anthropic Skills 2.0 compatible) |
+| `/dc:estimate` | Development estimates |
+| `/dc:distill` | Extract specs from code |
+| `/dc:mine-refs` | Search reference repos |
+| `/dc:ui-contract` | UI design contracts |
+| `/dc:api-contract` | API/webhook contracts |
+| `/dc:security-audit` | OWASP Top 10 audit |
+| `/dc:migrate` | Stack migration |
+| `/dc:reverse` | Architecture reverse engineering |
+| `/dc:explore` | Explore codebase (assumptions mode) |
+| `/dc:propose` | Change proposal |
+| `/dc:analyze-sessions` | Usage pattern analysis |
+| `/dc:present` | Generate interactive HTML presentation |
+| `/dc:create-skill` | Create skills iteratively (Anthropic Skills 2.0 compatible) |
 | `/dc:marketplace` | Install skills from Anthropic, community, or built-in |
-| `/dc:pseudocodigo` | Technology-agnostic logic between spec and plan (SPARC) |
-| `/dc:validar-spec` | Multi-layer spec validation (8 checks, BMAD-inspired) |
+| `/dc:pseudocode` | Technology-agnostic logic between spec and plan (SPARC) |
+| `/dc:validate-spec` | Multi-layer spec validation (8 checks, BMAD-inspired) |
 | `/dc:debate` | Adversarial multi-role deliberation (PM vs Architect vs QA) |
-| `/dc:actualizar` | Detect and apply framework updates |
+| `/dc:update` | Detect and apply framework updates |
 </details>
 
 <details>
@@ -320,11 +320,11 @@ This allows having dozens of skills without impacting the context window.
 
 | Command | Description |
 |---------|-------------|
-| `/dc:especificar` | Gherkin spec with P1/P2/P3+ priorities |
-| `/dc:clarificar` | Auto-QA + schema-spec verification |
-| `/dc:planificar-tecnico` | Blueprint + constitution check |
-| `/dc:desglosar` | TDD tasks with `[P]` markers |
-| `/dc:revisar` | 7-dimension peer review |
+| `/dc:specify` | Gherkin spec with P1/P2/P3+ priorities |
+| `/dc:clarify` | Auto-QA + schema-spec verification |
+| `/dc:tech-plan` | Blueprint + constitution check |
+| `/dc:breakdown` | TDD tasks with `[P]` markers |
+| `/dc:review` | 7-dimension peer review |
 </details>
 
 <details>
@@ -413,9 +413,9 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 | `estimador` | opus | Effort estimates |
 
 ```bash
-/dc:agente planificador
-/dc:mesa-redonda "Monolith or microservices?"
-/dc:mesa-tecnica "Redis or Memcached for session caching?"
+/dc:agent planificador
+/dc:roundtable "Monolith or microservices?"
+/dc:tech-panel "Redis or Memcached for session caching?"
 /dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
 ```
 
@@ -443,7 +443,7 @@ If viable → `/dc:poc --graduar` → full pipeline.
 ## Automatic Estimates
 
 ```bash
-/dc:estimar docs/prd.md
+/dc:estimate docs/prd.md
 ```
 
 4 complementary models:
@@ -462,7 +462,7 @@ Output: optimistic, expected, and pessimistic estimate with breakdown by feature
 ## Security Audit
 
 ```bash
-/dc:auditar-seguridad
+/dc:security-audit
 ```
 
 Scans all 10 OWASP categories:
@@ -479,7 +479,7 @@ Each finding includes severity, file, line, and suggested fix.
 ## Stack Migration
 
 ```bash
-/dc:migrar --de "Vue 3" --a "React 19"
+/dc:migrate --de "Vue 3" --a "React 19"
 ```
 
 6 phases: Inventory → Equivalences → Strategy → Plan → Execution → Verification

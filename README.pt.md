@@ -182,7 +182,7 @@ Idiomas disponíveis: `es` (Español), `en` (English), `pt` (Português)
 ### 2. Iniciar uma tarefa
 
 ```bash
-/dc:comenzar Implementar autenticação JWT
+/dc:começar Implementar autenticação JWT
 ```
 
 O Don Cheli detecta automaticamente a complexidade e escolhe o processo adequado:
@@ -202,7 +202,7 @@ O Don Cheli detecta automaticamente a complexidade e escolhe o processo adequado
 /dc:especificar    # Spec Gherkin + schema DBML
 /dc:clarificar     # Auto-QA + resolver ambiguidades
 /dc:planificar-tecnico  # Blueprint + verificação de constituição
-/dc:desglosar      # Tarefas TDD com paralelismo
+/dc:decompor      # Tarefas TDD com paralelismo
 /dc:implementar    # RED → GREEN → REFACTOR no Docker
 /dc:revisar        # Peer review de 7 dimensões
 ```
@@ -235,7 +235,7 @@ O Don Cheli é **100% compatível** com o ecossistema de [Anthropic Skills](http
 Criar skills sem escrever uma única linha de YAML:
 
 ```bash
-/dc:crear-skill "Gerador de relatórios semanais da equipe"
+/dc:criar-skill "Gerador de relatórios semanais da equipe"
 ```
 
 5 fases iterativas: **Descobrir** → **Gerar** SKILL.md → **Testar** com prompt real → **Avaliar** qualidade → **Iterar** até o ideal.
@@ -275,7 +275,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 | Comando | Descrição |
 |---------|-----------|
 | `/dc:iniciar` | Inicializar em um projeto |
-| `/dc:comenzar` | Iniciar tarefa (detecta nível automaticamente) |
+| `/dc:começar` | Iniciar tarefa (detecta nível automaticamente) |
 | `/dc:rapido` | Modo rápido (Nível 1) |
 | `/dc:poc` | Prova de Conceito com timebox |
 | `/dc:completo` | Modo completo (Nível 3) |
@@ -283,7 +283,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 | `/dc:diagnostico` | Health check do setup |
 | `/dc:doctor` | Diagnóstico e auto-reparo de git, framework e ambiente |
 | `/dc:continuar` | Recuperar sessão anterior |
-| `/dc:reflexionar` | Auto-reflexão (+8-21% de qualidade) |
+| `/dc:refletir` | Auto-reflexão (+8-21% de qualidade) |
 | `/dc:capturar` | Fire-and-forget de ideias com triage automático |
 | `/dc:uat` | Scripts de aceitação auto-gerados por feature |
 | `/dc:agente` | Carregar agente especializado |
@@ -295,16 +295,16 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 | `/dc:minar-referencias` | Buscar repositórios de referência |
 | `/dc:contrato-ui` | Contratos de design de UI |
 | `/dc:contrato-api` | Contratos de API/webhooks |
-| `/dc:auditar-seguridad` | Auditoria OWASP Top 10 |
+| `/dc:auditar-segurança` | Auditoria OWASP Top 10 |
 | `/dc:migrar` | Migração de stacks |
 | `/dc:reversa` | Engenharia reversa de arquitetura |
 | `/dc:explorar` | Explorar codebase (modo suposições) |
-| `/dc:proponer` | Proposta de mudança |
-| `/dc:analizar-sesiones` | Análise de padrões de uso |
-| `/dc:presentar` | Gerar apresentação interativa em HTML |
-| `/dc:crear-skill` | Criar skills iterativamente (compatível Anthropic Skills 2.0) |
+| `/dc:propor` | Proposta de mudança |
+| `/dc:analisar-sessoes` | Análise de padrões de uso |
+| `/dc:apresentar` | Gerar apresentação interativa em HTML |
+| `/dc:criar-skill` | Criar skills iterativamente (compatível Anthropic Skills 2.0) |
 | `/dc:marketplace` | Instalar skills do Anthropic, comunidade ou built-in |
-| `/dc:actualizar` | Detectar e aplicar atualizações do framework |
+| `/dc:atualizar` | Detectar e aplicar atualizações do framework |
 </details>
 
 <details>
@@ -315,7 +315,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 | `/dc:especificar` | Spec Gherkin com prioridades P1/P2/P3+ |
 | `/dc:clarificar` | Auto-QA + verificação schema-spec |
 | `/dc:planificar-tecnico` | Blueprint + verificação de constituição |
-| `/dc:desglosar` | Tarefas TDD com marcadores `[P]` |
+| `/dc:decompor` | Tarefas TDD com marcadores `[P]` |
 | `/dc:revisar` | Peer review de 7 dimensões |
 </details>
 
@@ -454,7 +454,7 @@ Saída: estimativa otimista, esperada e pessimista com detalhamento por feature.
 ## Auditoria de Segurança
 
 ```bash
-/dc:auditar-seguridad
+/dc:auditar-segurança
 ```
 
 Varre as 10 categorias OWASP:
