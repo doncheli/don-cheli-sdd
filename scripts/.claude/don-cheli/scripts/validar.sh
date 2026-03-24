@@ -2,7 +2,7 @@
 # Don Cheli - Script de Validación
 # Valida la estructura del framework
 
-set -e
+set -euo pipefail
 
 VERDE='\033[0;32m'
 ROJO='\033[0;31m'
@@ -60,7 +60,7 @@ echo "- Comandos utilidad: $UTIL_COUNT"
 echo "- Errores: $ERRORES"
 echo "- Advertencias: $ADVERTENCIAS"
 
-if [ $ERRORES -eq 0 ]; then
+if [ "$ERRORES" -eq 0 ]; then
     echo ""
     echo -e "${VERDE}✅ Framework válido${NC}"
 else

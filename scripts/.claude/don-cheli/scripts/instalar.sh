@@ -2,7 +2,7 @@
 # Don Cheli - Installation Script (i18n)
 # Installs the Don Cheli framework locally or globally
 
-set -e
+set -euo pipefail
 
 VERSION="1.8.0"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
@@ -156,7 +156,13 @@ echo -e "     ${CYAN}2)${NC}  🇬🇧  English"
 echo -e "     ${CYAN}3)${NC}  🇧🇷  Português"
 echo ""
 echo -ne "  ${BOLD}▸ ${NC}"
-read -r LANG_CHOICE
+# Read from /dev/tty to work even when script is piped via curl
+if ! read -r LANG_CHOICE < /dev/tty 2>/dev/null; then
+    echo ""
+    echo -e "  ${YELLOW}⚠ Cannot read input (piped mode). Using default: Español${NC}"
+    echo -e "  ${DIM}  Tip: use --lang es|en|pt to set language non-interactively${NC}"
+    LANG_CHOICE="es"
+fi
 
 case "$LANG_CHOICE" in
     1|es|ES|español|Español)
@@ -228,6 +234,12 @@ echo ""
 # ═══════════════════════════════════════════════════════════════
 # 1. Create structure
 # ═══════════════════════════════════════════════════════════════
+
+# Guard: abort if FRAMEWORK_HOME is empty to prevent rm -rf on system root
+if [ -z "$FRAMEWORK_HOME" ]; then
+    echo -e "  ${RED}✗ Error: FRAMEWORK_HOME is empty. Aborting to prevent data loss.${NC}"
+    exit 1
+fi
 
 # Clean previous locale folders to avoid leftovers from other languages
 echo -e "  🧹 Cleaning previous installation..."

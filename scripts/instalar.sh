@@ -2,7 +2,7 @@
 # Don Cheli - Installation Script (i18n)
 # Installs the Don Cheli framework locally or globally
 
-set -e
+set -euo pipefail
 
 VERSION="1.11.1"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
@@ -14,15 +14,16 @@ if [ -t 0 ] && [ -f "$0" ]; then
     SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 else
     # Running via pipe (curl | bash) — clone repo to temp dir
-    TMPDIR=$(mktemp -d)
-    CLEANUP_TMPDIR="$TMPDIR"
+    # Use INSTALL_TMPDIR to avoid colliding with system $TMPDIR
+    INSTALL_TMPDIR=$(mktemp -d)
+    CLEANUP_TMPDIR="$INSTALL_TMPDIR"
     echo -e "  ⬇️  Downloading Don Cheli v${VERSION}..."
-    if ! git clone --depth 1 --quiet "$REPO_URL" "$TMPDIR/don-cheli-sdd" 2>/dev/null; then
+    if ! git clone --depth 1 --quiet "$REPO_URL" "$INSTALL_TMPDIR/don-cheli-sdd" 2>/dev/null; then
         echo -e "\033[0;31m  ✗ Failed to clone repository. Check your internet connection.\033[0m"
-        rm -rf "$TMPDIR"
+        rm -rf "$INSTALL_TMPDIR"
         exit 1
     fi
-    SCRIPT_DIR="$TMPDIR/don-cheli-sdd"
+    SCRIPT_DIR="$INSTALL_TMPDIR/don-cheli-sdd"
     echo -e "  \033[0;32m✓\033[0m Downloaded successfully."
     echo ""
 fi
@@ -284,6 +285,12 @@ echo ""
 # ═══════════════════════════════════════════════════════════════
 # 1. Create structure
 # ═══════════════════════════════════════════════════════════════
+
+# Guard: abort if FRAMEWORK_HOME is empty to prevent rm -rf on system root
+if [ -z "$FRAMEWORK_HOME" ]; then
+    echo -e "  ${RED}✗ Error: FRAMEWORK_HOME is empty. Aborting to prevent data loss.${NC}"
+    exit 1
+fi
 
 # Clean previous locale folders to avoid leftovers from other languages
 echo -e "  🧹 Cleaning previous installation..."

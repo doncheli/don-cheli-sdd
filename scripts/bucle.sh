@@ -2,7 +2,7 @@
 # Don Cheli - Bucle Autónomo
 # Ejecuta historias de usuario en contexto fresco hasta completar
 
-set -e
+set -euo pipefail
 
 # Colores
 VERDE='\033[0;32m'
@@ -17,6 +17,12 @@ MAX_ITERACIONES="${2:-10}"
 PRD_FILE=".especdev/sesion/prd.json"
 PROGRESO_FILE=".especdev/progreso.md"
 
+# Validate MAX_ITERACIONES is a positive integer
+if ! [[ "$MAX_ITERACIONES" =~ ^[0-9]+$ ]]; then
+    echo -e "${ROJO}Error: MAX_ITERACIONES debe ser un entero positivo, recibido: '$MAX_ITERACIONES'${NC}"
+    exit 1
+fi
+
 echo "╔═══════════════════════════════════════╗"
 echo "║       Don Cheli - Bucle Autónomo        ║"
 echo "╚═══════════════════════════════════════╝"
@@ -30,8 +36,8 @@ if [ ! -f "$PRD_FILE" ]; then
 fi
 
 # Contar historias
-TOTAL=$(cat "$PRD_FILE" | python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d.get('historiasUsuario', d.get('userStories', []))))" 2>/dev/null || echo "0")
-PENDIENTES=$(cat "$PRD_FILE" | python3 -c "import json,sys; d=json.load(sys.stdin); stories=d.get('historiasUsuario', d.get('userStories', [])); print(len([s for s in stories if not s.get('pasa', s.get('passes', False))]))" 2>/dev/null || echo "0")
+TOTAL=$(python3 -c "import json,sys; d=json.load(sys.stdin); print(len(d.get('historiasUsuario', d.get('userStories', []))))" < "$PRD_FILE" 2>/dev/null || echo "0")
+PENDIENTES=$(python3 -c "import json,sys; d=json.load(sys.stdin); stories=d.get('historiasUsuario', d.get('userStories', [])); print(len([s for s in stories if not s.get('pasa', s.get('passes', False))]))" < "$PRD_FILE" 2>/dev/null || echo "0")
 
 echo -e "${CYAN}=== Bucle Don Cheli Iniciado ===${NC}"
 echo "Herramienta: $HERRAMIENTA"
@@ -46,19 +52,21 @@ if [ "$PENDIENTES" -eq 0 ]; then
 fi
 
 # Bucle principal
-for i in $(seq 1 $MAX_ITERACIONES); do
+for i in $(seq 1 "$MAX_ITERACIONES"); do
     echo -e "${CYAN}--- Iteración $i/$MAX_ITERACIONES ---${NC}"
     
-    # Seleccionar siguiente historia
-    HISTORIA=$(cat "$PRD_FILE" | python3 -c "
-import json, sys
+    # Seleccionar siguiente historia (sanitize: strip control chars)
+    HISTORIA_RAW=$(python3 -c "
+import json, sys, re
 d = json.load(sys.stdin)
 stories = d.get('historiasUsuario', d.get('userStories', []))
 for s in sorted(stories, key=lambda x: x.get('prioridad', x.get('priority', 99))):
     if not s.get('pasa', s.get('passes', False)):
-        print(f\"{s.get('id', 'HU-???')} {s.get('titulo', s.get('title', 'Sin título'))}\")
+        title = re.sub(r'[\x00-\x1f\x7f]', '', f\"{s.get('id', 'HU-???')} {s.get('titulo', s.get('title', 'Sin titulo'))}\")
+        print(title)
         break
-" 2>/dev/null)
+" < "$PRD_FILE" 2>/dev/null)
+    HISTORIA="${HISTORIA_RAW:-}"
     
     if [ -z "$HISTORIA" ]; then
         echo -e "${VERDE}=== COMPLETO ===${NC}"
