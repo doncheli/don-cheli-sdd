@@ -1,3 +1,8 @@
+---
+description: Análisis de causa raíz preguntando "¿por qué?" repetidamente hasta llegar al origen del problema.
+i18n: true
+---
+
 # /razonar:5-porques
 
 Análisis de causa raíz preguntando "¿por qué?" repetidamente hasta llegar al origen del problema.

@@ -1,3 +1,8 @@
+---
+description: Aplicar el principio 80/20: enfocarse en el 20% que produce el 80% de los resultados.
+i18n: true
+---
+
 # /razonar:pareto
 
 Aplicar el principio 80/20: enfocarse en el 20% que produce el 80% de los resultados.

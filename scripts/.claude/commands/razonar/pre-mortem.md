@@ -1,3 +1,8 @@
+---
+description: Anticipar el fracaso ANTES de que ocurra. Imaginar que el proyecto ya falló y analizar por qué.
+i18n: true
+---
+
 # /razonar:pre-mortem
 
 Anticipar el fracaso ANTES de que ocurra. Imaginar que el proyecto ya falló y analizar por qué.

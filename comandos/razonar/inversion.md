@@ -1,3 +1,8 @@
+---
+description: Resolver un problema pensando al revés: ¿cómo GARANTIZARÍAMOS el fracaso?
+i18n: true
+---
+
 # /razonar:inversion
 
 Resolver un problema pensando al revés: ¿cómo GARANTIZARÍAMOS el fracaso?

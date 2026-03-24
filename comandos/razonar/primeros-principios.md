@@ -1,3 +1,8 @@
+---
+description: Descomponer un problema o suposición a sus verdades fundamentales, luego reconstruir el entendimiento desde cero.
+i18n: true
+---
+
 # /razonar:primeros-principios
 
 Descomponer un problema o suposición a sus verdades fundamentales, luego reconstruir el entendimiento desde cero.

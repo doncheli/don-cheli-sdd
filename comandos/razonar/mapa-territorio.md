@@ -1,3 +1,8 @@
+---
+description: Distinguir entre el modelo (mapa) y la realidad (territorio). El mapa NO es el territorio.
+i18n: true
+---
+
 # /razonar:mapa-territorio
 
 Distinguir entre el modelo (mapa) y la realidad (territorio). El mapa NO es el territorio.

@@ -1,3 +1,8 @@
+---
+description: Tomar decisiones pensando en lo que minimizará el arrepentimiento a largo plazo.
+i18n: true
+---
+
 # /razonar:minimizar-arrepentimiento
 
 Tomar decisiones pensando en lo que minimizará el arrepentimiento a largo plazo.

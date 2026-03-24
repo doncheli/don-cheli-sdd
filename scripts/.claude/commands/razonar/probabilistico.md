@@ -1,3 +1,8 @@
+---
+description: Razonar en probabilidades en vez de certezas. Asignar porcentajes a los posibles resultados.
+i18n: true
+---
+
 # /razonar:probabilistico
 
 Razonar en probabilidades en vez de certezas. Asignar porcentajes a los posibles resultados.

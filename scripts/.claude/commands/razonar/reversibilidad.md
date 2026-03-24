@@ -1,3 +1,8 @@
+---
+description: Calibrar el nivel de compromiso según si la decisión es reversible o irreversible.
+i18n: true
+---
+
 # /razonar:reversibilidad
 
 Calibrar el nivel de compromiso según si la decisión es reversible o irreversible.

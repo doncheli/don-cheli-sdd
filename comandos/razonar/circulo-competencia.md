@@ -1,3 +1,8 @@
+---
+description: Conocer tus límites. Distinguir entre lo que conoces profundamente y lo que solo conoces superficialmente.
+i18n: true
+---
+
 # /razonar:circulo-competencia
 
 Conocer tus límites. Distinguir entre lo que conoces profundamente y lo que solo conoces superficialmente.

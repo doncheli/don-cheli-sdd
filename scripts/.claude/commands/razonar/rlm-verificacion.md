@@ -1,3 +1,8 @@
+---
+description: Verificación con Sub-LLMs
+i18n: true
+---
+
 # /razonar:rlm-verificacion
 
 🧠 **Modelo RLM: Verificación con Sub-LLMs**

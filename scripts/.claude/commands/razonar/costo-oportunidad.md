@@ -1,3 +1,8 @@
+---
+description: Evaluar el costo de NO elegir las alternativas. Cada decisión tiene un costo oculto.
+i18n: true
+---
+
 # /razonar:costo-oportunidad
 
 Evaluar el costo de NO elegir las alternativas. Cada decisión tiene un costo oculto.

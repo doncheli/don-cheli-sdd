@@ -1,3 +1,8 @@
+---
+description: Descomposición Recursiva con Sub-LLMs
+i18n: true
+---
+
 # /razonar:rlm-descomposicion
 
 🧠 **Modelo RLM: Descomposición Recursiva con Sub-LLMs**

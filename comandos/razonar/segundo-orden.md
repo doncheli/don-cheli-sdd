@@ -1,3 +1,8 @@
+---
+description: Pensar en las consecuencias de las consecuencias. Ir más allá del efecto inmediato.
+i18n: true
+---
+
 # /razonar:segundo-orden
 
 Pensar en las consecuencias de las consecuencias. Ir más allá del efecto inmediato.

@@ -1,3 +1,8 @@
+---
+description: Razonamiento en Cadena con Context Folding
+i18n: true
+---
+
 # /razonar:rlm-cadena-pensamiento
 
 🧠 **Modelo RLM: Razonamiento en Cadena con Context Folding**
