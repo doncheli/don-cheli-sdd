@@ -72,6 +72,26 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 - `/bucle` — Bucle autónomo
 - `/historias-generar` — Generar prd.json
 
+## Verificación de Actualizaciones (Auto-check)
+
+Al inicio de la **primera interacción** de cada sesión, verificar silenciosamente si hay actualizaciones disponibles:
+
+1. Leer `${FRAMEWORK_HOME}/VERSION` para obtener la versión instalada
+2. Obtener la versión remota: `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
+3. Si la versión remota es mayor, notificar al usuario con un mensaje breve:
+
+**Formato de notificación (según idioma configurado):**
+
+- **es:** `⬆️ Don Cheli v{remota} disponible (instalada: v{local}). Ejecuta /dc:actualizar para actualizar.`
+- **en:** `⬆️ Don Cheli v{remote} available (installed: v{local}). Run /dc:update to upgrade.`
+- **pt:** `⬆️ Don Cheli v{remota} disponível (instalada: v{local}). Execute /dc:atualizar para atualizar.`
+
+**Reglas:**
+- Solo notificar **una vez por sesión** (no repetir en cada mensaje)
+- Si no hay conexión o falla el curl, continuar sin notificar (no bloquear)
+- Si las versiones son iguales, no mostrar nada
+- Usar el nombre del comando en el idioma configurado (`/dc:actualizar`, `/dc:update`, `/dc:atualizar`)
+
 ## Gestión de Contexto
 
 - Leer archivos **bajo demanda**, no preventivamente.
