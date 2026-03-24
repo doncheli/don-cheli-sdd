@@ -4,7 +4,7 @@
 
 Si encontrás una vulnerabilidad de seguridad en Don Cheli, por favor **no la reportes públicamente** como un issue.
 
-En su lugar, enviá un email a: **[tu-email@ejemplo.com]**
+En su lugar, enviá un email a: **doncheli@github.com**
 
 Incluí:
 - Descripción de la vulnerabilidad

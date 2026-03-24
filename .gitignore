@@ -22,7 +22,12 @@ npm-debug.log*
 .especdev/sesion/
 .especdev/historial/
 .env
+.env.*
 .env.local
+.env.development
+.env.staging
+.env.production
+.env.test
 
 # Archivos temporales
 tmp/
