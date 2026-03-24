@@ -1,6 +1,6 @@
 {
   "name": "don-cheli",
-  "version": "1.8.0",
+  "version": "1.13.0",
   "description": "Don Cheli — SDD Framework. Desarrollo Dirigido por Especificaciones en español. Combina lo mejor de ArtChiTech, BMO y Specular con RLM y estimados de desarrollo.",
   "main": "scripts/instalar.sh",
   "scripts": {

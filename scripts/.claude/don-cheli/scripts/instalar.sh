@@ -258,6 +258,7 @@ mkdir -p "${FRAMEWORK_HOME}/${DIR_AGENTS}"
 mkdir -p "${FRAMEWORK_HOME}/${DIR_SCRIPTS}"
 mkdir -p "${FRAMEWORK_HOME}/locales"
 mkdir -p "${COMMANDS_DIR}/especdev"
+mkdir -p "${COMMANDS_DIR}/dc"
 mkdir -p "${COMMANDS_DIR}/razonar"
 
 # ═══════════════════════════════════════════════════════════════
@@ -267,8 +268,11 @@ mkdir -p "${COMMANDS_DIR}/razonar"
 echo -e "  📋 $(i18n installer.step_commands)"
 if [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
     cp -r "${SCRIPT_DIR}/comandos/especdev/"*.md "${COMMANDS_DIR}/especdev/" 2>/dev/null || true
+    # Create /dc: alias (same commands, shorter prefix)
+    cp -r "${SCRIPT_DIR}/comandos/especdev/"*.md "${COMMANDS_DIR}/dc/" 2>/dev/null || true
     CMDS_ESPECDEV=$(ls "${COMMANDS_DIR}/especdev/"*.md 2>/dev/null | wc -l | tr -d ' ')
     echo -e "     ${GREEN}✓${NC} $(tpl "$(i18n installer.step_commands_done)" count "$CMDS_ESPECDEV")"
+    echo -e "     ${GREEN}✓${NC} /dc:* alias created (${CMDS_ESPECDEV} commands)"
 fi
 if [ -d "${SCRIPT_DIR}/comandos/razonar" ]; then
     cp -r "${SCRIPT_DIR}/comandos/razonar/"*.md "${COMMANDS_DIR}/razonar/" 2>/dev/null || true
@@ -411,6 +415,7 @@ echo -e "       ├── locales/          (es, en, pt)"
 echo -e "       └── CLAUDE.md"
 echo ""
 echo -e "    📂 ${COMMANDS_DIR}/"
+echo -e "       ├── dc/               (${CMDS_ESPECDEV} — short alias)"
 echo -e "       ├── especdev/         (${CMDS_ESPECDEV} $(i18n installer.structure_commands))"
 echo -e "       └── razonar/          (${CMDS_RAZONAR} $(i18n installer.structure_commands))"
 echo ""

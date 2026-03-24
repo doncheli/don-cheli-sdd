@@ -54,16 +54,20 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 
 ## Comandos Disponibles
 
-- `/especdev:*` — Comandos del framework (iniciar, comenzar, estimar, presentar, etc.)
-- `/especdev:analizar-sesiones` — Analizar patrones de uso y generar recomendaciones
-- `/especdev:destilar` — Extraer specs compactas desde código existente (Blueprint Distillation)
-- `/especdev:minar-referencias` — Buscar repos open-source relevantes como referencia
-- `/especdev:contrato-ui` — Bloquear estándares visuales antes de codear frontend
-- `/especdev:poc` — Prueba de Concepto con timebox y veredicto (reglas relajadas)
-- `/especdev:contrato-api` — Diseñar contratos de API, webhooks e integraciones
-- `/especdev:auditar-seguridad` — Auditoría de seguridad estática (OWASP Top 10)
-- `/especdev:migrar` — Migración entre stacks tecnológicos o versiones mayores
-- `/especdev:actualizar` — Detectar y aplicar actualizaciones del framework
+**Prefijo corto:** `/dc:*` (alias de `/especdev:*` — ambos funcionan)
+
+- `/dc:*` o `/especdev:*` — Comandos del framework (iniciar, comenzar, estimar, presentar, etc.)
+- `/dc:planning` — Planning semanal de equipo con RFCs, priorización WSJF y asignación
+- `/dc:mesa-tecnica` — Mesa de expertos senior de desarrollo
+- `/dc:analizar-sesiones` — Analizar patrones de uso y generar recomendaciones
+- `/dc:destilar` — Extraer specs compactas desde código existente (Blueprint Distillation)
+- `/dc:minar-referencias` — Buscar repos open-source relevantes como referencia
+- `/dc:contrato-ui` — Bloquear estándares visuales antes de codear frontend
+- `/dc:poc` — Prueba de Concepto con timebox y veredicto (reglas relajadas)
+- `/dc:contrato-api` — Diseñar contratos de API, webhooks e integraciones
+- `/dc:auditar-seguridad` — Auditoría de seguridad estática (OWASP Top 10)
+- `/dc:migrar` — Migración entre stacks tecnológicos o versiones mayores
+- `/dc:actualizar` — Detectar y aplicar actualizaciones del framework
 - `/razonar:*` — 12 modelos de razonamiento + 3 modelos RLM (PrimeIntellect)
 - `/bucle` — Bucle autónomo
 - `/historias-generar` — Generar prd.json

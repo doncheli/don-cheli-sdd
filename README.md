@@ -270,7 +270,9 @@ This allows having dozens of skills without impacting the context window.
 
 ---
 
-## Commands (71+)
+## Commands (72+)
+
+> **Short prefix:** All `/especdev:*` commands are also available as `/dc:*` (e.g., `/dc:planning`, `/dc:debate`). Both prefixes work identically.
 
 <details>
 <summary><strong>Main (32)</strong></summary>
@@ -292,6 +294,7 @@ This allows having dozens of skills without impacting the context window.
 | `/especdev:agente` | Load specialized agent |
 | `/especdev:mesa-redonda` | Multi-perspective discussion (CPO, UX, Business) |
 | `/especdev:mesa-tecnica` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
+| `/especdev:planning` | Weekly team planning: RFC review, WSJF prioritization, pair/squad assignment |
 | `/especdev:estimar` | Development estimates |
 | `/especdev:destilar` | Extract specs from code |
 | `/especdev:minar-referencias` | Search reference repos |
@@ -413,6 +416,7 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 /especdev:agente planificador
 /especdev:mesa-redonda "Monolith or microservices?"
 /especdev:mesa-tecnica "Redis or Memcached for session caching?"
+/dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
 ```
 
 ---

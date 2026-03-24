@@ -270,7 +270,9 @@ Esto permite tener decenas de skills sin impactar el context window.
 
 ---
 
-## Comandos (71+)
+## Comandos (72+)
+
+> **Prefijo corto:** Todos los comandos `/especdev:*` también están disponibles como `/dc:*` (ej: `/dc:planning`, `/dc:debate`). Ambos prefijos funcionan igual.
 
 <details>
 <summary><strong>Principales (32)</strong></summary>
@@ -292,6 +294,7 @@ Esto permite tener decenas de skills sin impactar el context window.
 | `/especdev:agente` | Cargar agente especializado |
 | `/especdev:mesa-redonda` | Discusión multi-perspectiva (CPO, UX, Negocio) |
 | `/especdev:mesa-tecnica` | Mesa de expertos senior de desarrollo (Tech Lead, Backend, Frontend, Arquitecto, DevOps) |
+| `/especdev:planning` | Planning semanal de equipo: revisión de RFCs, priorización WSJF, asignación por pareja/squad |
 | `/especdev:estimar` | Estimados de desarrollo |
 | `/especdev:destilar` | Extraer specs desde código |
 | `/especdev:minar-referencias` | Buscar repos de referencia |
@@ -413,6 +416,7 @@ Cada puerta bloquea el avance si no se cumplen los criterios. **Sin atajos.**
 /especdev:agente planificador
 /especdev:mesa-redonda "¿Monolito o microservicios?"
 /especdev:mesa-tecnica "¿Redis o Memcached para caching de sesiones?"
+/dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
 ```
 
 ---
