@@ -101,7 +101,7 @@ git clone https://github.com/doncheli/don-cheli-sdd.git
 cd don-cheli-sdd && bash scripts/instalar.sh --global
 
 # 3. In any project, initialize
-/especdev:iniciar
+/dc:iniciar
 ```
 
 ### Language Selection
@@ -181,13 +181,13 @@ Available languages: `es` (Español), `en` (English), `pt` (Português)
 ### 1. Initialize in your project
 
 ```bash
-/especdev:iniciar --tipo servicio --nombre "my-api"
+/dc:iniciar --tipo servicio --nombre "my-api"
 ```
 
 ### 2. Start a task
 
 ```bash
-/especdev:comenzar Implement JWT authentication
+/dc:comenzar Implement JWT authentication
 ```
 
 Don Cheli auto-detects complexity and chooses the appropriate process:
@@ -204,12 +204,12 @@ Don Cheli auto-detects complexity and chooses the appropriate process:
 ### 3. Follow the pipeline
 
 ```bash
-/especdev:especificar    # Gherkin spec + DBML schema
-/especdev:clarificar     # Auto-QA + resolve ambiguities
-/especdev:planificar-tecnico  # Blueprint + constitution check
-/especdev:desglosar      # TDD tasks with parallelism
-/especdev:implementar    # RED → GREEN → REFACTOR in Docker
-/especdev:revisar        # 7-dimension peer review
+/dc:especificar    # Gherkin spec + DBML schema
+/dc:clarificar     # Auto-QA + resolve ambiguities
+/dc:planificar-tecnico  # Blueprint + constitution check
+/dc:desglosar      # TDD tasks with parallelism
+/dc:implementar    # RED → GREEN → REFACTOR in Docker
+/dc:revisar        # 7-dimension peer review
 ```
 
 ---
@@ -240,7 +240,7 @@ Don Cheli is **100% compatible** with the [Anthropic Skills](https://github.com/
 Create skills without writing a single line of YAML:
 
 ```bash
-/especdev:crear-skill "Weekly team report generator"
+/dc:crear-skill "Weekly team report generator"
 ```
 
 5 iterative phases: **Discover** → **Generate** SKILL.md → **Test** with real prompt → **Evaluate** quality → **Iterate** until optimal.
@@ -250,8 +250,8 @@ Create skills without writing a single line of YAML:
 Install skills from the official Anthropic marketplace or from the community:
 
 ```bash
-/especdev:marketplace --instalar document-skills --fuente anthropic
-/especdev:marketplace --buscar "weekly report"
+/dc:marketplace --instalar document-skills --fuente anthropic
+/dc:marketplace --buscar "weekly report"
 ```
 
 Supported sources: [Anthropic Official](https://github.com/anthropics/skills) • [skillsmp.com](https://skillsmp.com/) • [aitmpl.com](https://www.aitmpl.com/skills) • Don Cheli built-in (42 skills)
@@ -272,47 +272,47 @@ This allows having dozens of skills without impacting the context window.
 
 ## Commands (72+)
 
-> **Short prefix:** All `/especdev:*` commands are also available as `/dc:*` (e.g., `/dc:planning`, `/dc:debate`). Both prefixes work identically.
+> **Backward compatible:** All `/dc:*` commands are also available as `/especdev:*` for backward compatibility.
 
 <details>
 <summary><strong>Main (32)</strong></summary>
 
 | Command | Description |
 |---------|-------------|
-| `/especdev:iniciar` | Initialize in a project |
-| `/especdev:comenzar` | Start task (auto-detects level) |
-| `/especdev:rapido` | Fast mode (Level 1) |
-| `/especdev:poc` | Proof of Concept with timebox |
-| `/especdev:completo` | Full mode (Level 3) |
-| `/especdev:estado` | Current status |
-| `/especdev:diagnostico` | Setup health check |
-| `/especdev:doctor` | Diagnosis and auto-repair of git, framework, and environment |
-| `/especdev:continuar` | Recover previous session |
-| `/especdev:reflexionar` | Self-reflection (+8-21% quality) |
-| `/especdev:capturar` | Fire-and-forget ideas with automatic triage |
-| `/especdev:uat` | Auto-generated acceptance scripts per feature |
-| `/especdev:agente` | Load specialized agent |
-| `/especdev:mesa-redonda` | Multi-perspective discussion (CPO, UX, Business) |
-| `/especdev:mesa-tecnica` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
-| `/especdev:planning` | Weekly team planning: RFC review, WSJF prioritization, pair/squad assignment |
-| `/especdev:estimar` | Development estimates |
-| `/especdev:destilar` | Extract specs from code |
-| `/especdev:minar-referencias` | Search reference repos |
-| `/especdev:contrato-ui` | UI design contracts |
-| `/especdev:contrato-api` | API/webhook contracts |
-| `/especdev:auditar-seguridad` | OWASP Top 10 audit |
-| `/especdev:migrar` | Stack migration |
-| `/especdev:reversa` | Architecture reverse engineering |
-| `/especdev:explorar` | Explore codebase (assumptions mode) |
-| `/especdev:proponer` | Change proposal |
-| `/especdev:analizar-sesiones` | Usage pattern analysis |
-| `/especdev:presentar` | Generate interactive HTML presentation |
-| `/especdev:crear-skill` | Create skills iteratively (Anthropic Skills 2.0 compatible) |
-| `/especdev:marketplace` | Install skills from Anthropic, community, or built-in |
-| `/especdev:pseudocodigo` | Technology-agnostic logic between spec and plan (SPARC) |
-| `/especdev:validar-spec` | Multi-layer spec validation (8 checks, BMAD-inspired) |
-| `/especdev:debate` | Adversarial multi-role deliberation (PM vs Architect vs QA) |
-| `/especdev:actualizar` | Detect and apply framework updates |
+| `/dc:iniciar` | Initialize in a project |
+| `/dc:comenzar` | Start task (auto-detects level) |
+| `/dc:rapido` | Fast mode (Level 1) |
+| `/dc:poc` | Proof of Concept with timebox |
+| `/dc:completo` | Full mode (Level 3) |
+| `/dc:estado` | Current status |
+| `/dc:diagnostico` | Setup health check |
+| `/dc:doctor` | Diagnosis and auto-repair of git, framework, and environment |
+| `/dc:continuar` | Recover previous session |
+| `/dc:reflexionar` | Self-reflection (+8-21% quality) |
+| `/dc:capturar` | Fire-and-forget ideas with automatic triage |
+| `/dc:uat` | Auto-generated acceptance scripts per feature |
+| `/dc:agente` | Load specialized agent |
+| `/dc:mesa-redonda` | Multi-perspective discussion (CPO, UX, Business) |
+| `/dc:mesa-tecnica` | Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps) |
+| `/dc:planning` | Weekly team planning: RFC review, WSJF prioritization, pair/squad assignment |
+| `/dc:estimar` | Development estimates |
+| `/dc:destilar` | Extract specs from code |
+| `/dc:minar-referencias` | Search reference repos |
+| `/dc:contrato-ui` | UI design contracts |
+| `/dc:contrato-api` | API/webhook contracts |
+| `/dc:auditar-seguridad` | OWASP Top 10 audit |
+| `/dc:migrar` | Stack migration |
+| `/dc:reversa` | Architecture reverse engineering |
+| `/dc:explorar` | Explore codebase (assumptions mode) |
+| `/dc:proponer` | Change proposal |
+| `/dc:analizar-sesiones` | Usage pattern analysis |
+| `/dc:presentar` | Generate interactive HTML presentation |
+| `/dc:crear-skill` | Create skills iteratively (Anthropic Skills 2.0 compatible) |
+| `/dc:marketplace` | Install skills from Anthropic, community, or built-in |
+| `/dc:pseudocodigo` | Technology-agnostic logic between spec and plan (SPARC) |
+| `/dc:validar-spec` | Multi-layer spec validation (8 checks, BMAD-inspired) |
+| `/dc:debate` | Adversarial multi-role deliberation (PM vs Architect vs QA) |
+| `/dc:actualizar` | Detect and apply framework updates |
 </details>
 
 <details>
@@ -320,11 +320,11 @@ This allows having dozens of skills without impacting the context window.
 
 | Command | Description |
 |---------|-------------|
-| `/especdev:especificar` | Gherkin spec with P1/P2/P3+ priorities |
-| `/especdev:clarificar` | Auto-QA + schema-spec verification |
-| `/especdev:planificar-tecnico` | Blueprint + constitution check |
-| `/especdev:desglosar` | TDD tasks with `[P]` markers |
-| `/especdev:revisar` | 7-dimension peer review |
+| `/dc:especificar` | Gherkin spec with P1/P2/P3+ priorities |
+| `/dc:clarificar` | Auto-QA + schema-spec verification |
+| `/dc:planificar-tecnico` | Blueprint + constitution check |
+| `/dc:desglosar` | TDD tasks with `[P]` markers |
+| `/dc:revisar` | 7-dimension peer review |
 </details>
 
 <details>
@@ -413,9 +413,9 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 | `estimador` | opus | Effort estimates |
 
 ```bash
-/especdev:agente planificador
-/especdev:mesa-redonda "Monolith or microservices?"
-/especdev:mesa-tecnica "Redis or Memcached for session caching?"
+/dc:agente planificador
+/dc:mesa-redonda "Monolith or microservices?"
+/dc:mesa-tecnica "Redis or Memcached for session caching?"
 /dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
 ```
 
@@ -426,7 +426,7 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 Validate ideas before committing to implementation:
 
 ```bash
-/especdev:poc --hipotesis "SQLite is sufficient for the MVP"
+/dc:poc --hipotesis "SQLite is sufficient for the MVP"
 ```
 
 | Phase | What |
@@ -436,14 +436,14 @@ Validate ideas before committing to implementation:
 | **Evaluate** | Results vs criteria with evidence |
 | **Verdict** | VIABLE / WITH RESERVATIONS / NOT VIABLE / INCONCLUSIVE |
 
-If viable → `/especdev:poc --graduar` → full pipeline.
+If viable → `/dc:poc --graduar` → full pipeline.
 
 ---
 
 ## Automatic Estimates
 
 ```bash
-/especdev:estimar docs/prd.md
+/dc:estimar docs/prd.md
 ```
 
 4 complementary models:
@@ -462,7 +462,7 @@ Output: optimistic, expected, and pessimistic estimate with breakdown by feature
 ## Security Audit
 
 ```bash
-/especdev:auditar-seguridad
+/dc:auditar-seguridad
 ```
 
 Scans all 10 OWASP categories:
@@ -479,7 +479,7 @@ Each finding includes severity, file, line, and suggested fix.
 ## Stack Migration
 
 ```bash
-/especdev:migrar --de "Vue 3" --a "React 19"
+/dc:migrar --de "Vue 3" --a "React 19"
 ```
 
 6 phases: Inventory → Equivalences → Strategy → Plan → Execution → Verification
@@ -522,7 +522,7 @@ Don Cheli includes native support for Antigravity with Gemini 3.1:
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 53 /especdev:* commands
+│   ├── especdev/          # 53 /dc:* commands
 │   └── razonar/           # 15 /razonar:* commands
 ├── habilidades/           # 42 modular skills
 ├── reglas/
