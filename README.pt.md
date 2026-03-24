@@ -176,7 +176,7 @@ Idiomas disponíveis: `es` (Español), `en` (English), `pt` (Português)
 ### 1. Inicializar no seu projeto
 
 ```bash
-/dc:iniciar --tipo servicio --nombre "minha-api"
+/dc:iniciar --tipo serviço --nome "minha-api"
 ```
 
 ### 2. Iniciar uma tarefa
@@ -245,7 +245,7 @@ Criar skills sem escrever uma única linha de YAML:
 Instalar skills do marketplace oficial da Anthropic ou da comunidade:
 
 ```bash
-/dc:marketplace --instalar document-skills --fuente anthropic
+/dc:marketplace --instalar document-skills --fonte anthropic
 /dc:marketplace --buscar "weekly report"
 ```
 
@@ -418,7 +418,7 @@ Cada porta bloqueia o avanço se os critérios não forem cumpridos. **Sem atalh
 Validar ideias antes de se comprometer com a implementação:
 
 ```bash
-/dc:poc --hipotesis "SQLite é suficiente para o MVP"
+/dc:poc --hipotese "SQLite é suficiente para o MVP"
 ```
 
 | Fase | O que é |
@@ -428,7 +428,7 @@ Validar ideias antes de se comprometer com a implementação:
 | **Avaliar** | Resultados vs critérios com evidência |
 | **Veredicto** | VIÁVEL / COM RESSALVAS / NÃO VIÁVEL / INCONCLUSIVO |
 
-Se for viável → `/dc:poc --graduar` → pipeline completo.
+Se for viável → `/dc:poc --promover` → pipeline completo.
 
 ---
 
@@ -471,7 +471,7 @@ Cada descoberta com severidade, arquivo, linha e correção sugerida.
 ## Migração de Stacks
 
 ```bash
-/dc:migrar --de "Vue 3" --a "React 19"
+/dc:migrar --de "Vue 3" --para "React 19"
 ```
 
 6 fases: Inventário → Equivalências → Estratégia → Plano → Execução → Verificação

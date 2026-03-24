@@ -181,7 +181,7 @@ Available languages: `es` (Español), `en` (English), `pt` (Português)
 ### 1. Initialize in your project
 
 ```bash
-/dc:init --tipo servicio --nombre "my-api"
+/dc:init --type service --name "my-api"
 ```
 
 ### 2. Start a task
@@ -250,8 +250,8 @@ Create skills without writing a single line of YAML:
 Install skills from the official Anthropic marketplace or from the community:
 
 ```bash
-/dc:marketplace --instalar document-skills --fuente anthropic
-/dc:marketplace --buscar "weekly report"
+/dc:marketplace --install document-skills --source anthropic
+/dc:marketplace --search "weekly report"
 ```
 
 Supported sources: [Anthropic Official](https://github.com/anthropics/skills) • [skillsmp.com](https://skillsmp.com/) • [aitmpl.com](https://www.aitmpl.com/skills) • Don Cheli built-in (42 skills)
@@ -413,10 +413,10 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 | `estimador` | opus | Effort estimates |
 
 ```bash
-/dc:agent planificador
+/dc:agent planner
 /dc:roundtable "Monolith or microservices?"
 /dc:tech-panel "Redis or Memcached for session caching?"
-/dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
+/dc:planning --team "Ana,Carlos,Luis" --week "2026-03-24"
 ```
 
 ---
@@ -426,7 +426,7 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 Validate ideas before committing to implementation:
 
 ```bash
-/dc:poc --hipotesis "SQLite is sufficient for the MVP"
+/dc:poc --hypothesis "SQLite is sufficient for the MVP"
 ```
 
 | Phase | What |
@@ -436,7 +436,7 @@ Validate ideas before committing to implementation:
 | **Evaluate** | Results vs criteria with evidence |
 | **Verdict** | VIABLE / WITH RESERVATIONS / NOT VIABLE / INCONCLUSIVE |
 
-If viable → `/dc:poc --graduar` → full pipeline.
+If viable → `/dc:poc --graduate` → full pipeline.
 
 ---
 
@@ -479,7 +479,7 @@ Each finding includes severity, file, line, and suggested fix.
 ## Stack Migration
 
 ```bash
-/dc:migrate --de "Vue 3" --a "React 19"
+/dc:migrate --from "Vue 3" --to "React 19"
 ```
 
 6 phases: Inventory → Equivalences → Strategy → Plan → Execution → Verification
