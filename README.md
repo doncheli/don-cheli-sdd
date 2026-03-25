@@ -429,21 +429,21 @@ This allows having dozens of skills without impacting the context window.
 
 | Command | What it does |
 |---------|-------------|
-| `/razonar:primeros-principios` | Decompose to fundamentals |
-| `/razonar:5-porques` | Root cause analysis |
+| `/razonar:first-principles` | Decompose to fundamentals |
+| `/razonar:5-whys` | Root cause analysis |
 | `/razonar:pareto` | 80/20 focus |
 | `/razonar:inversion` | Solve in reverse |
-| `/razonar:segundo-orden` | Consequences of consequences |
+| `/razonar:second-order` | Consequences of consequences |
 | `/razonar:pre-mortem` | Anticipate failures |
-| `/razonar:minimizar-arrepentimiento` | Long-term decisions |
-| `/razonar:costo-oportunidad` | Evaluate alternatives |
-| `/razonar:circulo-competencia` | Know your limits |
-| `/razonar:mapa-territorio` | Model vs reality |
-| `/razonar:probabilistico` | Reason in probabilities |
-| `/razonar:reversibilidad` | Can it be undone? |
-| `/razonar:rlm-verificacion` | Verification with sub-LLMs |
-| `/razonar:rlm-cadena-pensamiento` | Multi-step reasoning |
-| `/razonar:rlm-descomposicion` | Divide and conquer |
+| `/razonar:minimize-regret` | Long-term decisions |
+| `/razonar:opportunity-cost` | Evaluate alternatives |
+| `/razonar:circle-of-competence` | Know your limits |
+| `/razonar:map-territory` | Model vs reality |
+| `/razonar:probabilistic` | Reason in probabilities |
+| `/razonar:reversibility` | Can it be undone? |
+| `/razonar:rlm-verification` | Verification with sub-LLMs |
+| `/razonar:rlm-chain-of-thought` | Multi-step reasoning |
+| `/razonar:rlm-decomposition` | Divide and conquer |
 </details>
 
 ---
@@ -501,13 +501,13 @@ Each gate blocks progress if criteria are not met. **No shortcuts.**
 
 | Agent | Model | Role |
 |-------|-------|------|
-| `planificador` | opus | Decomposition and planning |
-| `arquitecto` | opus | System design |
-| `ejecutor` | sonnet | Code implementation |
-| `revisor` | opus | Architectural code review |
+| `planner` | opus | Decomposition and planning |
+| `architect` | opus | System design |
+| `executor` | sonnet | Code implementation |
+| `reviewer` | opus | Architectural code review |
 | `tester` | sonnet | Testing and QA |
-| `documentador` | haiku | Documentation |
-| `estimador` | opus | Effort estimates |
+| `documenter` | haiku | Documentation |
+| `estimator` | opus | Effort estimates |
 
 ```bash
 /dc:agent planner

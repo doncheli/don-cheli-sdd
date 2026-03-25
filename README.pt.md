@@ -324,21 +324,21 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 
 | Comando | O que faz |
 |---------|-----------|
-| `/razonar:primeros-principios` | Decompor ao fundamental |
+| `/razonar:primeiros-principios` | Decompor ao fundamental |
 | `/razonar:5-porques` | Análise de causa raiz |
 | `/razonar:pareto` | Foco 80/20 |
-| `/razonar:inversion` | Resolver ao contrário |
-| `/razonar:segundo-orden` | Consequências das consequências |
+| `/razonar:inversao` | Resolver ao contrário |
+| `/razonar:segunda-ordem` | Consequências das consequências |
 | `/razonar:pre-mortem` | Antecipar falhas |
-| `/razonar:minimizar-arrepentimiento` | Decisões de longo prazo |
-| `/razonar:costo-oportunidad` | Avaliar alternativas |
+| `/razonar:minimizar-arrependimento` | Decisões de longo prazo |
+| `/razonar:custo-oportunidade` | Avaliar alternativas |
 | `/razonar:circulo-competencia` | Conhecer seus limites |
 | `/razonar:mapa-territorio` | Modelo vs realidade |
 | `/razonar:probabilistico` | Raciocinar em probabilidades |
-| `/razonar:reversibilidad` | É possível desfazer? |
-| `/razonar:rlm-verificacion` | Verificação com sub-LLMs |
-| `/razonar:rlm-cadena-pensamiento` | Raciocínio em múltiplas etapas |
-| `/razonar:rlm-descomposicion` | Dividir e conquistar |
+| `/razonar:reversibilidade` | É possível desfazer? |
+| `/razonar:rlm-verificacao` | Verificação com sub-LLMs |
+| `/razonar:rlm-cadeia-pensamento` | Raciocínio em múltiplas etapas |
+| `/razonar:rlm-decomposicao` | Dividir e conquistar |
 </details>
 
 ---
@@ -396,16 +396,16 @@ Cada porta bloqueia o avanço se os critérios não forem cumpridos. **Sem atalh
 
 | Agente | Modelo | Papel |
 |--------|--------|-------|
-| `planificador` | opus | Decomposição e planejamento |
-| `arquitecto` | opus | Design de sistemas |
-| `ejecutor` | sonnet | Implementação de código |
+| `planejador` | opus | Decomposição e planejamento |
+| `arquiteto` | opus | Design de sistemas |
+| `executor` | sonnet | Implementação de código |
 | `revisor` | opus | Code review arquitetural |
-| `tester` | sonnet | Testing e QA |
+| `testador` | sonnet | Testing e QA |
 | `documentador` | haiku | Documentação |
 | `estimador` | opus | Estimativas de esforço |
 
 ```bash
-/dc:agente planificador
+/dc:agente planejador
 /dc:mesa-redonda "Monolito ou microsserviços?"
 /dc:mesa-tecnica "Redis ou Memcached para caching de sessões?"
 /dc:planning --equipe "Ana,Carlos,Luis" --semana "2026-03-24"
