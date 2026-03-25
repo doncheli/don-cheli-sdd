@@ -28,6 +28,10 @@
 
 ## Quick Demo
 
+<p align="center">
+  <img src="demo.gif" alt="Don Cheli Demo" width="800"/>
+</p>
+
 > **How does Don Cheli look in action?**
 >
 > Start a task with automatic complexity detection:
