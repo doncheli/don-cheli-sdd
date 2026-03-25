@@ -1,0 +1,51 @@
+name: "🔧 Nuevo comando /dc:*"
+description: "Proponer un nuevo comando para el framework"
+title: "[COMMAND] /dc:"
+labels: ["enhancement", "new-command"]
+body:
+  - type: input
+    id: command_name
+    attributes:
+      label: Nombre del comando
+      description: "Nombre en español (ej: auditar-rendimiento)"
+      placeholder: "/dc:nombre-del-comando"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "¿Qué hace este comando?"
+      description: "Describe brevemente el objetivo del comando"
+    validations:
+      required: true
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Caso de uso
+      description: "¿Cuándo lo usaría un desarrollador?"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categoría
+      options:
+        - Ciclo de vida (especificar, planificar, implementar...)
+        - Calidad (auditoría, review, validación...)
+        - Razonamiento (modelo de decisión)
+        - Herramienta (utilidad, diagnóstico...)
+        - Colaboración (debate, mesa técnica, planning...)
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output esperado
+      description: "¿Qué produce el comando? (ejemplo de output)"
+  - type: checkboxes
+    id: willing
+    attributes:
+      label: "¿Puedes implementarlo?"
+      options:
+        - label: "Sí, puedo abrir un PR"
+        - label: "No, solo es una propuesta"

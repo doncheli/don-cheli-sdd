@@ -50,6 +50,25 @@ jobs:
           fi
           echo "✅ $COUNT habilidades verificadas"
 
+      - name: Validar sintaxis de scripts shell
+        run: |
+          ERRORES=0
+          for f in $(find . -name "*.sh" -type f); do
+            if bash -n "$f" 2>/dev/null; then
+              echo "✅ $f"
+            else
+              echo "❌ $f"
+              ERRORES=$((ERRORES + 1))
+            fi
+          done
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::error::$ERRORES scripts con errores de sintaxis"
+            exit 1
+          fi
+
+      - name: Validar JSON
+        run: python3 -m json.tool package.json > /dev/null && echo "✅ package.json válido"
+
       - name: Ejecutar validación del framework
         run: |
           if [ -f scripts/validar.sh ]; then

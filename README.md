@@ -6,8 +6,8 @@
     <strong>Stop improvising. Start delivering.</strong>
   </p>
   <p align="center">
-    The most comprehensive Specification-Driven Development framework on the market.<br/>
-    Open source. Multilingual (ES/EN/PT). For Claude Code and other AI agents.
+    The first AI-assisted development framework made in and for Latin America.<br/>
+    The most comprehensive SDD framework on the market. Open source. Multilingual (ES/EN/PT).
   </p>
   <p align="center">
     <a href="#-installation"><img src="https://img.shields.io/badge/install-1_minute-brightgreen" alt="Install"></a>
@@ -21,6 +21,8 @@
     <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
     <a href="https://www.npmjs.com/package/don-cheli-sdd"><img src="https://img.shields.io/npm/v/don-cheli-sdd" alt="npm"></a>
     <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-ver-blue" alt="Changelog"></a>
+    <img src="https://img.shields.io/github/last-commit/doncheli/don-cheli-sdd" alt="Last Commit">
+    <img src="https://img.shields.io/github/contributors/doncheli/don-cheli-sdd" alt="Contributors">
   </p>
 </p>
 
@@ -41,6 +43,28 @@
 > Don Cheli detects **Level 2 (Standard)**, generates the Gherkin spec,
 > proposes the technical blueprint, breaks down into TDD tasks and executes in Docker.
 > No vibe coding. With evidence.
+
+---
+
+## In Action
+
+### Before (vibe coding)
+```bash
+# Developer without framework:
+"Claude, build me a users API"
+# → Code without tests, no docs, no error handling
+# → 3 days later: everything broken in production
+```
+
+### With Don Cheli
+```bash
+/dc:start "Users API with JWT auth"
+# → Auto-detects Level 2 (Standard)
+# → Generates Gherkin spec in 30s
+# → 6 quality gates active
+# → Tests written BEFORE code (TDD Iron Law)
+# → Deploy with real evidence
+```
 
 ---
 
@@ -69,7 +93,7 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 ## Why Don Cheli
 
 <table>
-<tr><th></th><th>BMAD<br/><sub>42K ⭐</sub></th><th>GSD<br/><sub>39K ⭐</sub></th><th>spec-kit<br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
+<tr><th></th><th><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD</a><br/><sub>42K ⭐</sub></th><th><a href="https://github.com/gsd-build/get-shit-done">GSD</a><br/><sub>39K ⭐</sub></th><th><a href="https://github.com/github/spec-kit">spec-kit</a><br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
 <tr><td>Commands</td><td>~20</td><td>~80</td><td>~10</td><td><strong>72+</strong></td></tr>
 <tr><td>Skills</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
@@ -87,6 +111,8 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 <tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
+
+<sub>Data verified on 2026-03-25. Star counts are approximate.</sub>
 
 ### 20 things only Don Cheli has
 
@@ -110,6 +136,40 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 18. **Multi-layer Spec Validation** — 8 checks (implementation leakage, measurability, completeness, constitution adherence)
 19. **Adversarial Multi-role Debate** — PM vs Architect vs QA with explicit tensions and mandatory objections
 20. **Scale-adaptive Planning** — Planning level adjusts to complexity (same process for 1 file ≠ 100 files)
+
+---
+
+## Use Cases
+
+| Project type | Recommended level | Impact |
+|---|---|---|
+| REST API with auth | Level 2 | ~40% fewer bugs on first delivery |
+| Vue→React migration | `/dc:migrate` | Automatic plan in 10 min |
+| Startup PoC | PoC Mode | Validated in 2-4h with clear criteria |
+| Security audit | `/dc:security-audit` | OWASP Top 10 in < 5 min |
+| Legacy refactoring | SOLID + Blueprint Distillation | Spec from code with no documentation |
+| Weekly team planning | `/dc:planning` | RFCs + WSJF + squad assignment |
+
+---
+
+## Visual Pipeline
+
+```mermaid
+flowchart LR
+    A["📋 SPECIFY\nGherkin + DBML"] -->|Gate 1| B["🔍 CLARIFY\nAuto-QA"]
+    B -->|Gates 2+3| C["🏗️ PLAN\nBlueprint"]
+    C -->|Gate 4| D["📦 BREAKDOWN\nTDD Tasks"]
+    D -->|Gate 5| E["⚙️ IMPLEMENT\nRED→GREEN→REFACTOR"]
+    E -->|Gate 6| F["✅ REVIEW\n7 dimensions"]
+    F -->|Fail| E
+
+    style A fill:#4A90D9,color:#fff
+    style B fill:#7B68EE,color:#fff
+    style C fill:#50C878,color:#fff
+    style D fill:#FF8C00,color:#fff
+    style E fill:#DC143C,color:#fff
+    style F fill:#228B22,color:#fff
+```
 
 ---
 
@@ -197,6 +257,15 @@ Available languages: `es` (Español), `en` (English), `pt` (Português)
 
 ```bash
 npx don-cheli-sdd init
+```
+
+### Verified installation (recommended for security)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh \
+  -o instalar.sh
+cat instalar.sh  # Review before executing
+bash instalar.sh --global
 ```
 </details>
 
@@ -621,6 +690,21 @@ See [CONTRIBUIR.md](CONTRIBUIR.md) for the complete guide.
 # Fork → Clone → Branch → Changes → PR
 git checkout -b feature/my-improvement
 ```
+
+---
+
+## Community & Support
+
+| Channel | Purpose |
+|---|---|
+| [GitHub Issues](https://github.com/doncheli/don-cheli-sdd/issues) | Bugs and feature requests |
+| [YouTube @doncheli](https://youtube.com/@doncheli) | Tutorials and video demos |
+| [Instagram @doncheli.tv](https://instagram.com/doncheli.tv) | Updates and quick tips |
+
+### Found a bug?
+1. Search [existing issues](https://github.com/doncheli/don-cheli-sdd/issues)
+2. If it doesn't exist, open one with the bug report template
+3. Include: framework version, AI agent, and steps to reproduce
 
 ---
 
