@@ -11,14 +11,32 @@
   </p>
   <p align="center">
     <a href="#-installation"><img src="https://img.shields.io/badge/install-1_minute-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/version-1.11.1-blue" alt="Version">
+    <img src="https://img.shields.io/badge/version-1.13.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/languages-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/commands-71+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/commands-72+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/skills-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
+    <br/>
+    <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
+    <a href="https://www.npmjs.com/package/don-cheli-sdd"><img src="https://img.shields.io/npm/v/don-cheli-sdd" alt="npm"></a>
+    <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-ver-blue" alt="Changelog"></a>
   </p>
 </p>
+
+---
+
+## Quick Demo
+
+> **How does Don Cheli look in action?**
+>
+> Start a task with automatic complexity detection:
+> ```
+> /dc:start Implement JWT authentication with refresh tokens
+> ```
+> Don Cheli detects **Level 2 (Standard)**, generates the Gherkin spec,
+> proposes the technical blueprint, breaks down into TDD tasks and executes in Docker.
+> No vibe coding. With evidence.
 
 ---
 
@@ -47,8 +65,8 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 ## Why Don Cheli
 
 <table>
-<tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Commands</td><td>~20</td><td>~80</td><td>~10</td><td><strong>71+</strong></td></tr>
+<tr><th></th><th>BMAD<br/><sub>42K ⭐</sub></th><th>GSD<br/><sub>39K ⭐</sub></th><th>spec-kit<br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
+<tr><td>Commands</td><td>~20</td><td>~80</td><td>~10</td><td><strong>72+</strong></td></tr>
 <tr><td>Skills</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Automatic estimates</td><td>—</td><td>—</td><td>—</td><td><strong>4 models</strong></td></tr>
@@ -170,6 +188,12 @@ curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts
 ```
 
 Available languages: `es` (Español), `en` (English), `pt` (Português)
+
+### Via npx
+
+```bash
+npx don-cheli-sdd init
+```
 </details>
 
 **Requirements:** Claude Code (or compatible AI agent) + Git
@@ -593,6 +617,12 @@ See [CONTRIBUIR.md](CONTRIBUIR.md) for the complete guide.
 # Fork → Clone → Branch → Changes → PR
 git checkout -b feature/my-improvement
 ```
+
+---
+
+## Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for the full history of changes.
 
 ---
 

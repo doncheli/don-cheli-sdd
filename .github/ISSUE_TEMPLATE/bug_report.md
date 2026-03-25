@@ -1,35 +1,24 @@
 ---
-name: Reporte de Bug
-about: Reportar un problema con Don Cheli
-title: '[BUG] '
-labels: bug
-assignees: ''
+name: "🐛 Reporte de bug"
+about: "Reportar un comportamiento inesperado del framework"
+title: "[BUG] "
+labels: ["bug"]
+assignees: []
 ---
 
-## Descripción del bug
-
-Descripción clara y concisa del problema.
+## Descripción del problema
+<!-- Describe claramente qué está fallando -->
 
 ## Pasos para reproducir
-
-1. Ejecutar `...`
-2. Hacer `...`
-3. Ver error
+1.
+2.
+3.
 
 ## Comportamiento esperado
-
-Qué esperabas que pasara.
+<!-- Qué debería pasar -->
 
 ## Comportamiento actual
-
-Qué pasó en realidad.
-
-## Entorno
-
-- **OS:** macOS / Linux / Windows
-- **Claude Code versión:**
-- **Don Cheli versión:** (ver `cat ~/.claude/don-cheli/VERSION`)
-- **Comando usado:** `/especdev:...`
+<!-- Qué está pasando realmente -->
 
 ## Logs / Output
 
@@ -37,6 +26,8 @@ Qué pasó en realidad.
 Pegar output relevante aquí
 ```
 
-## Contexto adicional
-
-Cualquier otro contexto sobre el problema.
+## Contexto
+- Versión del framework: <!-- ejecuta `cat VERSION` o `cat ~/.claude/don-cheli/VERSION` -->
+- Agente IA utilizado: <!-- Claude Code / Codex / Amp / Antigravity -->
+- Sistema operativo:
+- Comando usado: `/dc:...`

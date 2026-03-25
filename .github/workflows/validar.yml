@@ -1,0 +1,62 @@
+name: CI — Validar Estructura
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validar-estructura:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verificar archivos críticos
+        run: |
+          echo "=== Verificando archivos críticos ==="
+          ERRORES=0
+          for archivo in CLAUDE.md AGENTS.md prompt.md VERSION CHANGELOG.md LICENCIA; do
+            if [ -f "$archivo" ]; then
+              echo "✅ $archivo"
+            else
+              echo "❌ $archivo (faltante)"
+              ERRORES=$((ERRORES + 1))
+            fi
+          done
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::error::Faltan $ERRORES archivos críticos"
+            exit 1
+          fi
+
+      - name: Verificar comandos (mínimo 40 archivos .md)
+        run: |
+          COUNT=$(find comandos/ -name "*.md" -type f | wc -l | tr -d ' ')
+          echo "Comandos encontrados: $COUNT"
+          if [ "$COUNT" -lt 40 ]; then
+            echo "::error::Se esperan al menos 40 comandos, encontrados: $COUNT"
+            exit 1
+          fi
+          echo "✅ $COUNT comandos verificados"
+
+      - name: Verificar habilidades (mínimo 30 subdirectorios)
+        run: |
+          COUNT=$(find habilidades/ -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')
+          echo "Habilidades encontradas: $COUNT"
+          if [ "$COUNT" -lt 30 ]; then
+            echo "::error::Se esperan al menos 30 habilidades, encontradas: $COUNT"
+            exit 1
+          fi
+          echo "✅ $COUNT habilidades verificadas"
+
+      - name: Ejecutar validación del framework
+        run: |
+          if [ -f scripts/validar.sh ]; then
+            bash scripts/validar.sh
+          else
+            echo "⚠️ scripts/validar.sh no encontrado, saltando"
+          fi
+
+      - name: Resultado
+        run: echo "✅ Estructura del framework validada correctamente"

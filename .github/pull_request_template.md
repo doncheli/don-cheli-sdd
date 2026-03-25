@@ -1,25 +1,22 @@
-## Resumen
-
-Descripción breve de los cambios (1-3 líneas).
+## Descripción
+<!-- ¿Qué problema resuelve este PR? -->
 
 ## Tipo de cambio
-
-- [ ] Nuevo comando
-- [ ] Nueva habilidad
-- [ ] Mejora a funcionalidad existente
-- [ ] Fix de bug
-- [ ] Documentación
-- [ ] Otro
+- [ ] 🐛 Bug fix
+- [ ] ✨ Nueva funcionalidad (comando, habilidad, modelo)
+- [ ] 📝 Documentación
+- [ ] 🔧 Mejora interna
 
 ## Cambios realizados
-
-- Cambio 1
-- Cambio 2
+<!-- Lista los archivos modificados y qué cambió en cada uno -->
 
 ## Checklist
+- [ ] Todo está escrito en español (código en inglés)
+- [ ] Sigue las convenciones de nombrado del framework (kebab-case)
+- [ ] No rompe comandos ni habilidades existentes
+- [ ] La documentación refleja los cambios (3 idiomas si aplica)
+- [ ] Comandos nuevos tienen `description` en frontmatter YAML
+- [ ] Probé localmente con `bash scripts/validar.sh`
 
-- [ ] Los archivos modificados siguen la estructura del framework
-- [ ] El README está actualizado (si aplica)
-- [ ] Los comandos nuevos tienen `description` en el frontmatter YAML
-- [ ] Las habilidades tienen el formato estándar (Versión, Categoría, Tipo)
-- [ ] No hay credenciales ni datos sensibles en los cambios
+## Contexto adicional
+<!-- Screenshots, ejemplos de uso, o cualquier info relevante -->

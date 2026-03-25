@@ -1,7 +1,7 @@
 {
-  "name": "don-cheli",
+  "name": "don-cheli-sdd",
   "version": "1.13.0",
-  "description": "Don Cheli — SDD Framework. Desarrollo Dirigido por Especificaciones en español. Combina lo mejor de ArtChiTech, BMO y Specular con RLM y estimados de desarrollo.",
+  "description": "Framework SDD para Claude Code — 72+ comandos, 43 habilidades, 15 modelos de razonamiento. TDD como ley de hierro. EN/ES/PT.",
   "main": "scripts/instalar.sh",
   "scripts": {
     "instalar": "bash scripts/instalar.sh",
@@ -9,19 +9,40 @@
     "validar": "bash scripts/validar.sh"
   },
   "keywords": [
-    "sdd",
-    "spec-driven-development",
-    "ai-framework",
-    "claude-code",
-    "desarrollo-especificaciones",
-    "rlm",
-    "estimados",
-    "español"
+    "claude-code", "sdd", "ai-framework", "prompt-engineering",
+    "developer-tools", "tdd", "llm", "especificaciones", "español",
+    "agentes-ia", "claude-ai", "spec-driven-development", "rlm",
+    "estimados"
   ],
-  "author": "Don Cheli Contributors",
-  "license": "Apache-2.0",
+  "homepage": "https://www.doncheli.tv",
   "repository": {
     "type": "git",
     "url": "https://github.com/doncheli/don-cheli-sdd.git"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/doncheli/don-cheli-sdd/issues"
+  },
+  "author": "Jose Luis Oronoz Troconis <@doncheli>",
+  "license": "Apache-2.0",
+  "bin": {
+    "don-cheli": "./scripts/instalar.sh"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "comandos/",
+    "habilidades/",
+    "reglas/",
+    "plantillas/",
+    "agentes/",
+    "ganchos/",
+    "scripts/",
+    "locales/",
+    "CLAUDE.md",
+    "AGENTS.md",
+    "prompt.md",
+    "VERSION",
+    "CHANGELOG.md"
+  ]
 }

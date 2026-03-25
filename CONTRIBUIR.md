@@ -1,56 +1,117 @@
 # Contribuir a Don Cheli
 
-¡Gracias por tu interés en contribuir a Don Cheli! 🎉
+Don Cheli es el framework SDD más completo para Claude Code y agentes de IA. Tu contribución ayuda a que más desarrolladores dejen de improvisar y empiecen a entregar con evidencia.
 
-## Cómo Contribuir
+## Requisitos previos
 
-1. **Fork** el repositorio
-2. **Crea** una rama para tu feature: `git checkout -b feature/mi-mejora`
-3. **Implementa** tus cambios siguiendo las convenciones del framework
-4. **Prueba** que todo funcione correctamente
-5. **Commit** con mensajes descriptivos en español
-6. **Push** a tu fork: `git push origin feature/mi-mejora`
-7. **Abre** un Pull Request describiendo tus cambios
+- [Claude Code](https://claude.ai/download) instalado
+- Git
+- Conocimiento básico de Markdown y YAML frontmatter
+- Bash (para probar scripts)
 
-## Convenciones
+## Setup local
 
-- **Idioma:** Todo el código, documentación y comentarios en **español**
-- **Formato:** Markdown con YAML frontmatter para comandos y habilidades
-- **Nombrado:** kebab-case para archivos, camelCase para JSON
-- **Commits:** Mensajes descriptivos en español, ej: `feat: agregar modelo de estimación por puntos de función`
+```bash
+# 1. Fork y clonar
+git clone https://github.com/TU_USUARIO/don-cheli-sdd.git
+cd don-cheli-sdd
 
-## Estructura de un Comando
+# 2. Instalar localmente
+bash scripts/instalar.sh
+
+# 3. Verificar que todo funciona
+bash scripts/validar.sh
+
+# 4. Crear rama para tu cambio
+git checkout -b feature/mi-mejora
+```
+
+## Tipos de contribuciones
+
+### Nuevos comandos `/dc:*`
+
+Agregar archivos en `comandos/especdev/nombre-del-comando.md`. Cada comando necesita:
 
 ```markdown
 ---
-description: Descripción breve del comando
+description: Descripción breve del comando (obligatorio)
+i18n: true
 ---
 
-# /especdev:nombre
+# /dc:nombre-del-comando
 
 ## Objetivo
-[Qué hace el comando]
+Qué hace el comando y cuándo usarlo.
 
 ## Uso
-[Cómo usarlo]
+\```
+/dc:nombre-del-comando "<argumento>"
+/dc:nombre-del-comando --flag valor
+\```
 
 ## Comportamiento
-[Pasos que sigue]
+1. Paso 1
+2. Paso 2
+
+## Output
+\```markdown
+Ejemplo del output esperado
+\```
 ```
 
-## Estructura de una Habilidad
+### Nuevas habilidades
+
+Crear carpeta en `habilidades/nombre-habilidad/HABILIDAD.md`:
 
 ```
-habilidades/nombre-habilidad/
-├── HABILIDAD.md          # Documentación principal
+habilidades/mi-habilidad/
+├── HABILIDAD.md          # Documentación principal (obligatorio)
 ├── modelos/              # Sub-componentes (opcional)
 └── plantillas/           # Templates (opcional)
 ```
 
-## Reportar Problemas
+El `HABILIDAD.md` debe incluir: versión, categoría, tipo, problema que resuelve, cuándo usarla y cuándo no.
 
-Abre un Issue describiendo:
-- **Qué esperabas** que ocurriera
-- **Qué ocurrió** realmente
-- **Pasos** para reproducir
-- **Versión** del framework
+### Nuevos modelos de razonamiento
+
+Agregar en `comandos/razonar/nombre-modelo.md` con frontmatter YAML (`description`, `i18n: true`).
+
+### Correcciones de documentación
+
+PRs de typos, mejoras de claridad o traducciones son bienvenidos. Los READMEs están en 3 idiomas (ES/EN/PT) — asegúrate de actualizar los 3 si el cambio aplica.
+
+### Mejoras a scripts
+
+Scripts en `scripts/`. Todos usan `set -euo pipefail`. Probar en macOS y Linux antes de enviar.
+
+## Criterios de aceptación de PRs
+
+Para que un PR sea mergeado debe cumplir:
+
+- [ ] Descripción clara del problema que resuelve
+- [ ] Todo en español (código en inglés, documentación en español)
+- [ ] No rompe comandos ni habilidades existentes
+- [ ] Sigue convenciones de nombrado: `kebab-case` para archivos, frontmatter YAML válido
+- [ ] Si agrega comando: tiene `description` en frontmatter
+- [ ] Si agrega habilidad: tiene `HABILIDAD.md` con formato estándar
+- [ ] Si modifica READMEs: actualiza los 3 idiomas
+- [ ] Probado localmente con `bash scripts/validar.sh`
+
+## Issues para empezar
+
+Busca issues con la etiqueta **`good first issue`** — son tareas concretas, acotadas e ideales para familiarizarte con el proyecto.
+
+## Convenciones
+
+- **Commits:** `<type>: <descripción en español>` (feat, fix, docs, refactor, test, chore)
+- **Branches:** `feature/<nombre>`, `fix/<nombre>`
+- **Archivos:** kebab-case, `.md` para comandos y habilidades
+- **Frontmatter:** YAML entre `---`, campos `description` (obligatorio) e `i18n: true`
+
+## Código de conducta
+
+Respeto mutuo. Comunicación constructiva. Español como idioma principal del proyecto (código en inglés). Seguimos el [Contributor Covenant](CODE_OF_CONDUCT.md).
+
+## Reconocimientos
+
+Los contribuidores aparecen en el README del proyecto. Toda contribución mergeada cuenta.
