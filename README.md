@@ -467,32 +467,6 @@ This allows having dozens of skills without impacting the context window.
 
 ---
 
-## Visual Pipeline
-
-```
-  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
-  │   SPECIFY   │────▶│   CLARIFY   │────▶│  TECHNICAL PLAN  │
-  │             │     │             │     │                  │
-  │ Gherkin     │     │ Auto-QA     │     │ Constitution     │
-  │ P1/P2/P3+   │     │ Schema↔Spec │     │ check            │
-  │ DBML auto   │     │ Ambiguities │     │ Technical context│
-  └─────────────┘     └─────────────┘     └──────────────────┘
-        │                   │                      │
-    [Gate 1]           [Gate 2+3]              [Gate 4]
-                                                   │
-                                                   ▼
-  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
-  │   REVIEW    │◀────│  IMPLEMENT  │◀────│   BREAK DOWN     │
-  │             │     │             │     │                  │
-  │ 7 dimensions│     │ TDD in Docker│     │ [T001] [P] [US1] │
-  │ N+1, SOLID  │     │ Checkpoints │     │ 5 phases         │
-  │ Security    │     │ Anti-stubs  │     │ Nyquist          │
-  └─────────────┘     └─────────────┘     └──────────────────┘
-        │                   │                      │
-    [Gate 6]           [Gate 6]               [Gate 5]
-    + Regression
-```
-
 Each gate blocks progress if criteria are not met. **No shortcuts.**
 
 ---
@@ -585,32 +559,130 @@ Supports: framework (Vue→React), version (Next 14→15), language (JS→TS), p
 
 ---
 
-## Multi-LLM / Multi-IDE
+## Supported Platforms
 
-Don Cheli works natively with **4 AI agents** and **3 IDEs**:
+Don Cheli works natively with multiple AI agents and IDEs. All content adapts to the installed language (ES/EN/PT).
 
-| File | Agent / IDE | Structure |
-|------|------------|-----------|
-| `CLAUDE.md` | Claude Code | `.claude/skills/`, `.claude/commands/` |
-| `GEMINI.md` | Google Antigravity (Gemini 3.1) | `.agent/skills/`, `.agent/workflows/` |
-| `AGENTS.md` | Cross-tool (Cursor, Codex, etc.) | Shared between all |
-| `prompt.md` | Amp / others | Generic instructions |
+<details>
+<summary><strong>Claude Code — Full support (72+ commands, 43 skills)</strong></summary>
 
-### Google Antigravity
+### What you get
+- `CLAUDE.md` — Framework instructions (translated to installed language)
+- 72+ slash commands via `/dc:*` (translated names per locale)
+- `/especdev:*` — Backward-compatible alias
+- `/razonar:*` — 15 reasoning models
+- 43 modular skills in `habilidades/` (or `skills/` in EN)
+- 7 specialized agents (planner, architect, executor, reviewer, tester, documenter, estimator)
+- Full i18n: folder names, file content, rules, commands — all in your language
 
-Don Cheli includes native support for Antigravity with Gemini 3.1:
-
-- `GEMINI.md` — Adapted instructions with model routing (Flash/Pro)
-- 5 skills in `.agent/skills/` (spec, plan, implement, review, security)
-- 4 workflows in `.agent/workflows/` (start, pipeline, review, security)
-
+### Commands
 ```bash
-# In Antigravity, workflows are invoked as slash commands:
-/doncheli-start
-/doncheli-pipeline
-/doncheli-review
-/doncheli-security
+/dc:start "Implement JWT auth"       # Start task (auto-detect complexity)
+/dc:specify                           # Gherkin spec + DBML
+/dc:implement                         # TDD: RED → GREEN → REFACTOR
+/dc:debate "Monolith vs microservices" # Adversarial multi-role debate
+/dc:estimate docs/prd.md             # 4 estimation models
+/razonar:pre-mortem                   # Anticipate failures
 ```
+
+### Limitations
+None. Claude Code is the primary platform with full feature access.
+
+</details>
+
+<details>
+<summary><strong>Google Antigravity (Gemini 3.1) — 14 skills, 9 workflows</strong></summary>
+
+### What you get
+- `GEMINI.md` — Adapted instructions with Gemini model routing (Flash/Pro) — translated to installed language
+- 14 skills in `.agent/skills/` loaded via semantic matching
+- 9 workflows in `.agent/workflows/` as slash commands
+- `doncheli-skills` meta-router for access to all 43 habilidades
+- Model routing: Gemini 3 Flash (default) → Gemini 3.1 Pro (complex tasks)
+
+### Skills (14)
+| Skill | What it does |
+|-------|-------------|
+| `@doncheli-spec` | Gherkin BDD specifications |
+| `@doncheli-plan` | Technical blueprint |
+| `@doncheli-implement` | TDD execution (RED-GREEN-REFACTOR) |
+| `@doncheli-review` | 7-dimension peer review |
+| `@doncheli-security` | OWASP Top 10 audit |
+| `@doncheli-estimate` | 4 estimation models |
+| `@doncheli-debate` | Adversarial multi-role debate |
+| `@doncheli-reasoning` | 15 reasoning models |
+| `@doncheli-migrate` | Stack migration with wave plan |
+| `@doncheli-distill` | Blueprint Distillation |
+| `@doncheli-planning` | Weekly team planning |
+| `@doncheli-tech-panel` | Senior dev expert table |
+| `@doncheli-api-contract` | API/webhook contract design |
+| `@doncheli-skills` | Router to all 43 habilidades |
+
+### Workflows
+```bash
+/doncheli-start          # Init or start task
+/doncheli-pipeline       # Full spec→review pipeline
+/doncheli-estimate       # Run 4 estimation models
+/doncheli-debate         # Launch adversarial debate
+/doncheli-reasoning      # Apply reasoning model
+/doncheli-migrate        # Plan stack migration
+/doncheli-planning       # Weekly team planning
+/doncheli-review         # Standalone review
+/doncheli-security       # Standalone security audit
+```
+
+### Limitations
+- No direct access to `/dc:*` slash commands (use workflows and `@skills` instead)
+- Skills are invoked via semantic matching, not explicit command names
+- Some advanced features (doctor, capture, guardian) require using the `@doncheli-skills` router
+
+</details>
+
+<details>
+<summary><strong>Cursor IDE — Full command reference (.cursorrules)</strong></summary>
+
+### What you get
+- `.cursorrules` — Comprehensive instructions (115 lines) — translated to installed language
+- All `/dc:*` commands documented with descriptions
+- All `/razonar:*` reasoning models documented
+- 6 quality gates, complexity levels, pipeline reference
+- Iron laws enforced
+
+### How to use
+Commands work as prompts in Cursor's AI chat:
+```
+/dc:start "Implement JWT auth"
+/dc:specify
+/dc:implement
+/razonar:pre-mortem "What could go wrong with this migration?"
+```
+
+### Limitations
+- Commands are prompt-based (not native slash commands like in Claude Code)
+- No `.agent/skills/` semantic matching (Cursor doesn't support Antigravity's skill format)
+- No specialized agents (planner, architect, etc.) — Cursor uses a single model
+- Skills/habilidades must be referenced manually, not auto-loaded
+
+</details>
+
+<details>
+<summary><strong>Other agents (Codex, Amp, etc.)</strong></summary>
+
+### What you get
+- `AGENTS.md` — Cross-tool instructions
+- `prompt.md` — Minimal generic instructions for any AI agent
+- All rules and habilidades are standard Markdown — any agent can read them
+
+### How to use
+Point your agent to read `CLAUDE.md` or `prompt.md` at the start of a session. The framework's files are standard Markdown, so any agent that can read files can use Don Cheli.
+
+### Limitations
+- No native slash command integration
+- No semantic skill matching
+- Manual workflow — you need to tell the agent which files to read
+- No model routing optimization
+
+</details>
 
 ---
 
@@ -642,8 +714,8 @@ don-cheli/
 ├── ganchos/               # Pre/Post tool + Stop hooks
 ├── scripts/               # instalar.sh, bucle.sh, validar.sh
 ├── .agent/                # 🔮 Antigravity/Gemini compatibility
-│   ├── skills/            # 5 skills (spec, plan, implement, review, security)
-│   └── workflows/         # 4 workflows (/doncheli-start, pipeline, review, security)
+│   ├── skills/            # 14 skills (spec, plan, implement, review, security, estimate, debate, reasoning, migrate, distill, planning, tech-panel, api-contract, skills-router)
+│   └── workflows/         # 9 workflows (start, pipeline, review, security, estimate, debate, reasoning, migrate, planning)
 ├── CLAUDE.md              # Instructions for Claude Code
 ├── GEMINI.md              # Instructions for Google Antigravity
 ├── AGENTS.md              # Cross-tool instructions (Cursor, Codex)
