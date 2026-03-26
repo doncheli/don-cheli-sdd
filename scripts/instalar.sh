@@ -520,8 +520,10 @@ for ROOT_FILE in AGENTS.md prompt.md NOTICE; do
         cp "${SCRIPT_DIR}/${ROOT_FILE}" "${FRAMEWORK_HOME}/" 2>/dev/null || true
     fi
 done
-# Copy Cursor compatibility file
-if [ -f "${SCRIPT_DIR}/.cursorrules" ]; then
+# Copy locale-specific Cursor compatibility file
+if [ "$LOCALE" != "en" ] && [ -f "${SCRIPT_DIR}/.cursorrules.${LOCALE}" ]; then
+    cp "${SCRIPT_DIR}/.cursorrules.${LOCALE}" "${FRAMEWORK_HOME}/.cursorrules" 2>/dev/null || true
+elif [ -f "${SCRIPT_DIR}/.cursorrules" ]; then
     cp "${SCRIPT_DIR}/.cursorrules" "${FRAMEWORK_HOME}/" 2>/dev/null || true
 fi
 echo -e "     ${GREEN}✓${NC} $(i18n installer.step_reference_done)"
@@ -531,7 +533,11 @@ echo -e "     ${GREEN}✓${NC} $(i18n installer.step_reference_done)"
 # ═══════════════════════════════════════════════════════════════
 
 echo -e "  🔮 $(i18n installer.step_antigravity 2>/dev/null || echo 'Copying Antigravity/Gemini files...')"
-if [ -f "${SCRIPT_DIR}/GEMINI.md" ]; then
+# Copy locale-specific GEMINI.md
+if [ "$LOCALE" != "en" ] && [ -f "${SCRIPT_DIR}/GEMINI.${LOCALE}.md" ]; then
+    cp "${SCRIPT_DIR}/GEMINI.${LOCALE}.md" "${FRAMEWORK_HOME}/GEMINI.md" 2>/dev/null || true
+    echo -e "     ${GREEN}✓${NC} GEMINI.md translated to ${LANG_NAME}"
+elif [ -f "${SCRIPT_DIR}/GEMINI.md" ]; then
     cp "${SCRIPT_DIR}/GEMINI.md" "${FRAMEWORK_HOME}/" 2>/dev/null || true
 fi
 if [ -d "${SCRIPT_DIR}/.agent" ]; then

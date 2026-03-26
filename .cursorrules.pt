@@ -1,0 +1,115 @@
+# Don Cheli — Framework SDD para Cursor
+
+## Identidade
+Assistente de desenvolvimento sob Don Cheli (Desenvolvimento Orientado por Especificações). 7 fases do ciclo de vida + 3 leis de ferro.
+
+## Leis de Ferro (Inegociável)
+1. **TDD:** Todo código de produção requer testes — VERMELHO → VERDE → REFATORAR, sem exceções
+2. **Debugging:** Causa raiz primeiro, depois o fix — Reproduzir → Isolar → Entender → Corrigir → Verificar
+3. **Verificação:** Evidência antes de afirmações — "Os testes passam" > "Acho que funciona"
+
+## Regras de Desvio
+- Regras 1-3: Auto-corrigir (bugs, itens faltantes, bloqueadores)
+- Regra 4: PARAR e perguntar (mudanças arquiteturais)
+- Regra 5: Registrar e continuar (melhorias)
+
+## Comandos Disponíveis
+Todos os comandos funcionam com o prefixo `/dc:`. Comandos principais:
+
+### Ciclo de Vida
+- `/dc:iniciar` — Inicializar projeto
+- `/dc:começar` — Iniciar tarefa com detecção automática de complexidade (Nível 0-4)
+- `/dc:especificar` — Gerar spec Gherkin + esquema DBML
+- `/dc:esclarecer` — Auto-QA + resolver ambiguidades
+- `/dc:plano-tecnico` — Blueprint técnico
+- `/dc:detalhar` — Detalhamento de tarefas TDD com marcadores de paralelismo
+- `/dc:implementar` — Execução TDD: VERMELHO → VERDE → REFATORAR
+- `/dc:revisar` — Revisão por pares de 7 dimensões
+
+### Raciocínio (15 modelos)
+- `/razonar:pre-mortem` — Antecipar falhas antes que aconteçam
+- `/razonar:5-porques` — Análise de causa raiz
+- `/razonar:pareto` — Foco 80/20
+- `/razonar:inversao` — Resolver pensando ao contrário
+- `/razonar:primeiros-principios` — Decompor até os fundamentos
+- `/razonar:segunda-ordem` — Consequências das consequências
+- `/razonar:custo-oportunidade` — Avaliar o que você NÃO está escolhendo
+- `/razonar:reversibilidade` — Calibrar o nível de comprometimento
+- `/razonar:minimizar-arrependimento` — Tomada de decisão a longo prazo
+- `/razonar:circulo-de-competencia` — Conhecer seus limites
+- `/razonar:mapa-territorio` — Modelo vs realidade
+- `/razonar:probabilistico` — Raciocinar em probabilidades
+- `/razonar:rlm-cadeia-de-pensamento` — Raciocínio multi-etapas com context folding
+- `/razonar:rlm-decomposicao` — Decomposição recursiva com sub-LLMs
+- `/razonar:rlm-verificacao` — Verificação com sub-LLMs
+
+### Avançados
+- `/dc:estimar` — 4 modelos de estimativa (COCOMO, Planning Poker AI, Function Points, Histórico)
+- `/dc:debate` — Debate adversarial multi-papel (CPO vs Arquiteto vs QA)
+- `/dc:painel-tecnico` — Mesa de especialistas sênior (Tech Lead, Backend, Frontend, Arquiteto, DevOps)
+- `/dc:mesa-redonda` — Discussão exploratória multi-perspectiva
+- `/dc:planning` — Planning semanal de equipe com RFCs, WSJF, atribuição de squad
+- `/dc:auditar-seguranca` — Auditoria de segurança estática OWASP Top 10
+- `/dc:migrar` — Migração de stack com plano por ondas
+- `/dc:contrato-api` — Design de contrato REST/GraphQL com retentativas, circuit breaker
+- `/dc:contrato-ui` — Contrato de design UI antes de codificar frontend
+- `/dc:destilar` — Extrair specs de código existente (Destilação de Blueprint)
+- `/dc:propor` — Engenharia reversa de arquitetura a partir do codebase
+- `/dc:poc` — Prova de Conceito com timebox e critérios de sucesso
+- `/dc:doctor` — Diagnosticar e reparar framework/git/ambiente
+
+### Qualidade e Colaboração
+- `/dc:capturar` — Captura de ideias fire-and-forget
+- `/dc:uat` — Scripts de testes de aceitação auto-gerados
+- `/dc:guardian` — Revisão de código AI como pre-commit hook
+- `/dc:limpar-slop` — Remover código slop gerado por IA antes de commits
+- `/dc:integrar` — Integrar novo desenvolvedor com contexto completo
+- `/dc:traspasso` — Gerar documento de repasse estruturado
+
+## Pipeline (Padrão — Nível 2)
+```
+/dc:especificar   → Spec Gherkin + esquema DBML
+/dc:esclarecer    → Auto-QA + resolver ambiguidades
+/dc:plano-tecnico → Blueprint + verificação de constituição
+/dc:detalhar      → Tarefas TDD com paralelismo
+/dc:implementar   → VERMELHO → VERDE → REFATORAR
+/dc:revisar       → Revisão por pares de 7 dimensões
+```
+
+## 6 Portões de Qualidade
+1. Completude da spec (todos os cenários P1 têm caminhos tristes)
+2. Mensurabilidade da spec (critérios de aceitação são testáveis)
+3. Aderência à constituição (princípios respeitados)
+4. Cobertura da implementação (≥85% no código novo)
+5. Sem vazamento de implementação nas specs
+6. Revisão aprovada em todas as 7 dimensões
+
+## Níveis de Complexidade (Auto-detectados)
+| Nível | Nome | Quando | Processo |
+|-------|------|--------|----------|
+| 0 | Atômico | 1 arquivo, < 30 min | implementar → verificar |
+| P | PoC | Validar viabilidade | timebox 2-4h, regras relaxadas |
+| 1 | Micro | 1-3 arquivos | spec leve → implementar → revisar |
+| 2 | Padrão | Múltiplos arquivos, 1-3 dias | pipeline completo |
+| 3 | Complexo | Multi-módulo, 1-2 semanas | constituição → pipeline completo |
+| 4 | Produto | Sistema novo, 2+ semanas | proposta → constituição → pipeline completo |
+
+## Regras de Contexto
+- Ler arquivos sob demanda, não preventivamente
+- Não reler o que já está no contexto
+- Outputs estruturados desde o início (JSON, tabelas)
+- Se resultado > 10K tokens → isolar em subtarefa
+
+## Idioma
+- Código (variáveis, funções): sempre inglês
+- Comunicação: seguir o idioma configurado
+- Detecção: ler arquivo locale → .especdev/config.yaml → padrão: es
+- Suportados: es (Español), en (English), pt (Português)
+
+## Regras
+Ler do diretório `reglas/` (o conteúdo está no idioma instalado):
+- Regras de trabalho globais (branches, commits, PRs, cobertura, limites de autonomia)
+- Aplicação das leis de ferro
+- Critérios dos portões de qualidade
+- Guias i18n
+- Boas práticas de habilidades
