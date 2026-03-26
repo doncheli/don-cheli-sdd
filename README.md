@@ -769,6 +769,7 @@ git checkout -b feature/my-improvement
 
 | Channel | Purpose |
 |---|---|
+| [GitHub Discussions](https://github.com/doncheli/don-cheli-sdd/discussions) | Questions, ideas, show & tell |
 | [GitHub Issues](https://github.com/doncheli/don-cheli-sdd/issues) | Bugs and feature requests |
 | [YouTube @doncheli](https://youtube.com/@doncheli) | Tutorials and video demos |
 | [Instagram @doncheli.tv](https://instagram.com/doncheli.tv) | Updates and quick tips |
