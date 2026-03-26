@@ -61,13 +61,24 @@ Invoke skills with `@skill-name` syntax (e.g., `@doncheli-spec`, `@doncheli-revi
 
 Slash commands are in `.agent/workflows/`. They orchestrate multi-step processes using skills. Available commands map to `/especdev:*` commands from the framework.
 
-## Available Commands
+## Available Skills (13)
 
+### Lifecycle
 - `@doncheli-spec` — Generate Gherkin BDD specifications with P1/P2/P3+ priorities
 - `@doncheli-plan` — Generate technical blueprint from Gherkin specs
 - `@doncheli-implement` — Execute TDD implementation (RED-GREEN-REFACTOR)
 - `@doncheli-review` — 7-dimension peer review with adversarial analysis
 - `@doncheli-security` — OWASP Top 10 static security audit
+
+### Advanced
+- `@doncheli-estimate` — 4 estimation models (COCOMO, Planning Poker AI, Function Points, Historical)
+- `@doncheli-debate` — Adversarial multi-role debate (CPO vs Architect vs QA vs Security)
+- `@doncheli-reasoning` — 15 reasoning models (pre-mortem, 5-whys, pareto, first principles, etc.)
+- `@doncheli-migrate` — Stack migration with wave plan and equivalences
+- `@doncheli-distill` — Extract specs from existing code (Blueprint Distillation)
+- `@doncheli-planning` — Weekly team planning with RFCs, WSJF scoring, squad assignment
+- `@doncheli-tech-panel` — Senior dev experts table (Tech Lead, Backend, Frontend, Architect, DevOps)
+- `@doncheli-api-contract` — REST/GraphQL contract design with retries, circuit breaker, idempotency
 
 ## Context Management
 
