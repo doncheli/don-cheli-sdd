@@ -444,7 +444,13 @@ fi
 
 echo -e "  ⚖️  $(i18n installer.step_rules)"
 if [ -d "${SCRIPT_DIR}/reglas" ]; then
-    cp -r "${SCRIPT_DIR}/reglas/"* "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+    # Copy base rules (Spanish)
+    cp "${SCRIPT_DIR}/reglas/"*.md "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+    # Overwrite with locale-specific translations if available
+    if [ "$LOCALE" != "es" ] && [ -d "${SCRIPT_DIR}/reglas/${LOCALE}" ]; then
+        cp "${SCRIPT_DIR}/reglas/${LOCALE}/"*.md "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+        echo -e "     ${GREEN}✓${NC} Rules translated to ${LANG_NAME}"
+    fi
     RULES=$(ls "${FRAMEWORK_HOME}/${DIR_RULES}/"*.md 2>/dev/null | wc -l | tr -d ' ')
     echo -e "     ${GREEN}✓${NC} $(tpl "$(i18n installer.step_rules_done)" count "$RULES")"
 fi
@@ -502,11 +508,22 @@ fi
 # ═══════════════════════════════════════════════════════════════
 
 echo -e "  📝 $(i18n installer.step_reference)"
-for ROOT_FILE in CLAUDE.md AGENTS.md prompt.md NOTICE; do
+# Copy locale-specific CLAUDE.md if available
+if [ "$LOCALE" != "es" ] && [ -f "${SCRIPT_DIR}/CLAUDE.${LOCALE}.md" ]; then
+    cp "${SCRIPT_DIR}/CLAUDE.${LOCALE}.md" "${FRAMEWORK_HOME}/CLAUDE.md" 2>/dev/null || true
+    echo -e "     ${GREEN}✓${NC} CLAUDE.md translated to ${LANG_NAME}"
+elif [ -f "${SCRIPT_DIR}/CLAUDE.md" ]; then
+    cp "${SCRIPT_DIR}/CLAUDE.md" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
+for ROOT_FILE in AGENTS.md prompt.md NOTICE; do
     if [ -f "${SCRIPT_DIR}/${ROOT_FILE}" ]; then
         cp "${SCRIPT_DIR}/${ROOT_FILE}" "${FRAMEWORK_HOME}/" 2>/dev/null || true
     fi
 done
+# Copy Cursor compatibility file
+if [ -f "${SCRIPT_DIR}/.cursorrules" ]; then
+    cp "${SCRIPT_DIR}/.cursorrules" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
 echo -e "     ${GREEN}✓${NC} $(i18n installer.step_reference_done)"
 
 # ═══════════════════════════════════════════════════════════════

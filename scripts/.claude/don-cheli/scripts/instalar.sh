@@ -6,7 +6,34 @@ set -euo pipefail
 
 VERSION="1.13.0"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
-SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+CLEANUP_TMPDIR=""
+
+# Detect if running via pipe (curl | bash) or directly
+if [ -t 0 ] && [ -f "$0" ]; then
+    # Running directly from a file
+    SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+else
+    # Running via pipe (curl | bash) — clone repo to temp dir
+    # Use INSTALL_TMPDIR to avoid colliding with system $TMPDIR
+    INSTALL_TMPDIR=$(mktemp -d)
+    CLEANUP_TMPDIR="$INSTALL_TMPDIR"
+    echo -e "  ⬇️  Downloading Don Cheli v${VERSION}..."
+    if ! git clone --depth 1 --quiet "$REPO_URL" "$INSTALL_TMPDIR/don-cheli-sdd" 2>/dev/null; then
+        echo -e "\033[0;31m  ✗ Failed to clone repository. Check your internet connection.\033[0m"
+        rm -rf "$INSTALL_TMPDIR"
+        exit 1
+    fi
+    SCRIPT_DIR="$INSTALL_TMPDIR/don-cheli-sdd"
+    echo -e "  \033[0;32m✓\033[0m Downloaded successfully."
+    echo ""
+fi
+
+cleanup() {
+    if [ -n "$CLEANUP_TMPDIR" ] && [ -d "$CLEANUP_TMPDIR" ]; then
+        rm -rf "$CLEANUP_TMPDIR"
+    fi
+}
+trap cleanup EXIT
 
 # Colors
 GREEN='\033[0;32m'
@@ -139,6 +166,22 @@ set_folder_names() {
 # STEP 0 — Language Selection (FIRST THING THE USER SEES)
 # ═══════════════════════════════════════════════════════════════
 
+# Parse --lang flag from arguments (e.g., --lang es)
+LANG_FLAG=""
+for arg in "$@"; do
+    case "$arg" in
+        --lang=*) LANG_FLAG="${arg#*=}" ;;
+    esac
+done
+# Also check positional: --lang es
+PREV=""
+for arg in "$@"; do
+    if [ "$PREV" = "--lang" ]; then
+        LANG_FLAG="$arg"
+    fi
+    PREV="$arg"
+done
+
 clear 2>/dev/null || true
 echo ""
 echo -e "${CYAN}${BOLD}"
@@ -149,19 +192,25 @@ echo "  ║                                                           ║"
 echo "  ╚═══════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
 echo ""
-echo -e "${BOLD}  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma${NC}"
-echo ""
-echo -e "     ${CYAN}1)${NC}  🇪🇸  Español"
-echo -e "     ${CYAN}2)${NC}  🇬🇧  English"
-echo -e "     ${CYAN}3)${NC}  🇧🇷  Português"
-echo ""
-echo -ne "  ${BOLD}▸ ${NC}"
-# Read from /dev/tty to work even when script is piped via curl
-if ! read -r LANG_CHOICE < /dev/tty 2>/dev/null; then
+
+if [ -n "$LANG_FLAG" ]; then
+    # Language provided via flag — skip interactive prompt
+    LANG_CHOICE="$LANG_FLAG"
+else
+    echo -e "${BOLD}  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma${NC}"
     echo ""
-    echo -e "  ${YELLOW}⚠ Cannot read input (piped mode). Using default: Español${NC}"
-    echo -e "  ${DIM}  Tip: use --lang es|en|pt to set language non-interactively${NC}"
-    LANG_CHOICE="es"
+    echo -e "     ${CYAN}1)${NC}  🇪🇸  Español"
+    echo -e "     ${CYAN}2)${NC}  🇬🇧  English"
+    echo -e "     ${CYAN}3)${NC}  🇧🇷  Português"
+    echo ""
+    echo -ne "  ${BOLD}▸ ${NC}"
+    # Read from /dev/tty to work even when script is piped via curl
+    if ! read -r LANG_CHOICE < /dev/tty 2>/dev/null; then
+        echo ""
+        echo -e "  ${YELLOW}⚠ Cannot read input (piped mode). Using default: Español${NC}"
+        echo -e "  ${DIM}  Tip: use --lang es|en|pt to set language non-interactively${NC}"
+        LANG_CHOICE="es"
+    fi
 fi
 
 case "$LANG_CHOICE" in
@@ -213,9 +262,11 @@ echo -e "${NC}"
 # ═══════════════════════════════════════════════════════════════
 
 MODE="local"
-if [ "$1" == "--global" ] || [ "$2" == "--global" ]; then
-    MODE="global"
-fi
+for arg in "$@"; do
+    if [ "$arg" = "--global" ]; then
+        MODE="global"
+    fi
+done
 
 if [ "$MODE" == "global" ]; then
     FRAMEWORK_HOME="$HOME/.claude/don-cheli"
@@ -393,7 +444,13 @@ fi
 
 echo -e "  ⚖️  $(i18n installer.step_rules)"
 if [ -d "${SCRIPT_DIR}/reglas" ]; then
-    cp -r "${SCRIPT_DIR}/reglas/"* "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+    # Copy base rules (Spanish)
+    cp "${SCRIPT_DIR}/reglas/"*.md "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+    # Overwrite with locale-specific translations if available
+    if [ "$LOCALE" != "es" ] && [ -d "${SCRIPT_DIR}/reglas/${LOCALE}" ]; then
+        cp "${SCRIPT_DIR}/reglas/${LOCALE}/"*.md "${FRAMEWORK_HOME}/${DIR_RULES}/" 2>/dev/null || true
+        echo -e "     ${GREEN}✓${NC} Rules translated to ${LANG_NAME}"
+    fi
     RULES=$(ls "${FRAMEWORK_HOME}/${DIR_RULES}/"*.md 2>/dev/null | wc -l | tr -d ' ')
     echo -e "     ${GREEN}✓${NC} $(tpl "$(i18n installer.step_rules_done)" count "$RULES")"
 fi
@@ -451,15 +508,40 @@ fi
 # ═══════════════════════════════════════════════════════════════
 
 echo -e "  📝 $(i18n installer.step_reference)"
-for ROOT_FILE in CLAUDE.md AGENTS.md prompt.md NOTICE; do
+# Copy locale-specific CLAUDE.md if available
+if [ "$LOCALE" != "es" ] && [ -f "${SCRIPT_DIR}/CLAUDE.${LOCALE}.md" ]; then
+    cp "${SCRIPT_DIR}/CLAUDE.${LOCALE}.md" "${FRAMEWORK_HOME}/CLAUDE.md" 2>/dev/null || true
+    echo -e "     ${GREEN}✓${NC} CLAUDE.md translated to ${LANG_NAME}"
+elif [ -f "${SCRIPT_DIR}/CLAUDE.md" ]; then
+    cp "${SCRIPT_DIR}/CLAUDE.md" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
+for ROOT_FILE in AGENTS.md prompt.md NOTICE; do
     if [ -f "${SCRIPT_DIR}/${ROOT_FILE}" ]; then
         cp "${SCRIPT_DIR}/${ROOT_FILE}" "${FRAMEWORK_HOME}/" 2>/dev/null || true
     fi
 done
+# Copy Cursor compatibility file
+if [ -f "${SCRIPT_DIR}/.cursorrules" ]; then
+    cp "${SCRIPT_DIR}/.cursorrules" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
 echo -e "     ${GREEN}✓${NC} $(i18n installer.step_reference_done)"
 
 # ═══════════════════════════════════════════════════════════════
-# 11. Save locale preference + version
+# 11. Copy Antigravity/Gemini compatibility files
+# ═══════════════════════════════════════════════════════════════
+
+echo -e "  🔮 $(i18n installer.step_antigravity 2>/dev/null || echo 'Copying Antigravity/Gemini files...')"
+if [ -f "${SCRIPT_DIR}/GEMINI.md" ]; then
+    cp "${SCRIPT_DIR}/GEMINI.md" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
+if [ -d "${SCRIPT_DIR}/.agent" ]; then
+    mkdir -p "${FRAMEWORK_HOME}/.agent"
+    cp -r "${SCRIPT_DIR}/.agent/"* "${FRAMEWORK_HOME}/.agent/" 2>/dev/null || true
+fi
+echo -e "     ${GREEN}✓${NC} GEMINI.md, .agent/skills/, .agent/workflows/"
+
+# ═══════════════════════════════════════════════════════════════
+# 12. Save locale preference + version
 # ═══════════════════════════════════════════════════════════════
 
 echo "${VERSION}" > "${FRAMEWORK_HOME}/VERSION"

@@ -1,0 +1,33 @@
+# Don Cheli — SDD Framework (Cursor Rules)
+
+## Identity
+You are a development assistant operating under the Don Cheli framework (Specification-Driven Development). All your work follows the 7 lifecycle phases and the iron laws.
+
+## Iron Laws (Non-Negotiable)
+1. TDD: All production code requires tests — RED → GREEN → REFACTOR
+2. Debugging: Root cause first, then fix
+3. Verification: Evidence before assertions
+
+## Deviation Rules
+- Rules 1-3: Auto-correct (bugs, missing items, blockers)
+- Rule 4: STOP and ask (architectural changes)
+- Rule 5: Register and continue (improvements)
+
+## Commands
+- `/dc:*` — Primary prefix (72+ commands)
+- `/especdev:*` — Backward-compatible alias
+- `/razonar:*` — 15 reasoning models
+
+## Quality
+- Minimum 85% coverage on new code
+- Before commit: linter + tests + build
+- Before PR: full diff review, code smells, coverage
+
+## Context Management
+- Read files on demand, not preemptively
+- Don't re-read what's already in context
+- Structured outputs from the start
+
+## Language
+Code (variables, functions): always English
+Communication: follow configured language (default: Spanish)
