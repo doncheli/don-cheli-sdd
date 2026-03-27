@@ -173,8 +173,8 @@ load test_helper
     mkdir -p "$fake_root/habilidades/skill-sin-doc"
 
     run bash -c "cd '$fake_root' && bash '$REPO_ROOT/scripts/validar.sh'"
-    # Advertencias count should be > 0 (e.g., "Advertencias: 1")
-    [[ "$output" =~ "Advertencias: "[1-9] ]]
+    # Advertencias count should be > 0 (e.g., "- Advertencias: 1")
+    [[ "$output" == *"Advertencias: "[1-9]* ]]
     teardown_tmpdir
 }
 
