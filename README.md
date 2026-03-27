@@ -85,26 +85,31 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 ## Why Don Cheli
 
 <table>
-<tr><th></th><th><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD</a><br/><sub>42K ⭐</sub></th><th><a href="https://github.com/gsd-build/get-shit-done">GSD</a><br/><sub>39K ⭐</sub></th><th><a href="https://github.com/github/spec-kit">spec-kit</a><br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
-<tr><td>Commands</td><td>~20</td><td>~80</td><td>~10</td><td><strong>72+</strong></td></tr>
-<tr><td>Skills</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
-<tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
-<tr><td>Automatic estimates</td><td>—</td><td>—</td><td>—</td><td><strong>4 models</strong></td></tr>
-<tr><td>Formal quality gates</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
-<tr><td>Mandatory TDD</td><td>—</td><td>—</td><td>—</td><td><strong>Iron Law</strong></td></tr>
-<tr><td>PoC Mode</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>OWASP Audit</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Stack Migration</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Stub detection</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>UI Contracts</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Nyquist Validation</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Multilingual (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td><strong>✅ Compatible</strong></td></tr>
-<tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><th></th><th><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD</a><br/><sub>42K ⭐</sub></th><th><a href="https://github.com/gsd-build/get-shit-done">GSD</a><br/><sub>39K ⭐</sub></th><th><a href="https://github.com/gsd-build/gsd-2">GSD-2</a><br/><sub>3K ⭐</sub></th><th><a href="https://github.com/github/spec-kit">spec-kit</a><br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
+<tr><td>Commands</td><td>~20</td><td>~80</td><td>~40</td><td>~10</td><td><strong>72+</strong></td></tr>
+<tr><td>Skills</td><td>~15</td><td>~15</td><td>~10</td><td>~6</td><td><strong>43</strong></td></tr>
+<tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
+<tr><td>Automatic estimates</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>4 models</strong></td></tr>
+<tr><td>Formal quality gates</td><td>—</td><td>1</td><td>2</td><td>4</td><td><strong>6</strong></td></tr>
+<tr><td>Mandatory TDD</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>Iron Law</strong></td></tr>
+<tr><td>PoC Mode</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>OWASP Audit</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Stack Migration</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Worktree isolation</td><td>—</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Crash recovery</td><td>—</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Cost tracking</td><td>—</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Stuck detection</td><td>—</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Stub detection</td><td>—</td><td>✅</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>UI Contracts</td><td>—</td><td>✅</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Nyquist Validation</td><td>—</td><td>✅</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Multilingual (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅ Compatible</strong></td></tr>
+<tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Multi-platform (Cursor, Antigravity)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
-<sub>Data verified on 2026-03-25. Star counts are approximate.</sub>
+<sub>Data verified on 2026-03-27. Star counts are approximate.</sub>
 
 ### 20 things only Don Cheli has
 
