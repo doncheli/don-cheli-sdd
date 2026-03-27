@@ -48,22 +48,14 @@
 
 ## In Action
 
-### Before (vibe coding)
 ```bash
-# Developer without framework:
+# Without Don Cheli:
 "Claude, build me a users API"
-# → Code without tests, no docs, no error handling
-# → 3 days later: everything broken in production
-```
+# → Code without tests → broken in production
 
-### With Don Cheli
-```bash
+# With Don Cheli (one command):
 /dc:start "Users API with JWT auth"
-# → Auto-detects Level 2 (Standard)
-# → Generates Gherkin spec in 30s
-# → 6 quality gates active
-# → Tests written BEFORE code (TDD Iron Law)
-# → Deploy with real evidence
+# → Spec → Tests first → Code → Review → Done with evidence
 ```
 
 ---
@@ -273,21 +265,46 @@ bash instalar.sh --global
 
 ---
 
-## Quick Start
+## Quick Start — Zero to productive in 2 minutes
 
-### 1. Initialize in your project
-
+**Step 1:** Install (1 min)
 ```bash
-/dc:init --type service --name "my-api"
+curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global --lang en
 ```
 
-### 2. Start a task
+**Step 2:** Use (1 command)
+
+**You only need one command to start:**
 
 ```bash
-/dc:start Implement JWT authentication
+/dc:start "Implement JWT authentication"
 ```
 
-Don Cheli auto-detects complexity and chooses the appropriate process:
+That's it. Don Cheli will:
+1. Auto-detect the complexity level of your task
+2. Generate a Gherkin spec with acceptance criteria
+3. Write tests BEFORE the code (TDD iron law)
+4. Implement the minimum code to pass
+5. Run a 7-dimension peer review
+
+You don't need to memorize 72 commands. Just `/dc:start` and follow the prompts.
+
+<details>
+<summary>Want more control? Use individual pipeline commands</summary>
+
+```bash
+/dc:specify    # Gherkin spec + DBML schema
+/dc:clarify    # Auto-QA + resolve ambiguities
+/dc:tech-plan  # Blueprint + constitution check
+/dc:breakdown  # TDD tasks with parallelism
+/dc:implement  # RED → GREEN → REFACTOR
+/dc:review     # 7-dimension peer review
+```
+
+</details>
+
+<details>
+<summary>Complexity levels (auto-detected, no action needed)</summary>
 
 | Level | Name | When |
 |-------|------|------|
@@ -298,16 +315,7 @@ Don Cheli auto-detects complexity and chooses the appropriate process:
 | **3** | Complex | Multi-module, 1-2 weeks |
 | **4** | Product | New system, 2+ weeks |
 
-### 3. Follow the pipeline
-
-```bash
-/dc:specify    # Gherkin spec + DBML schema
-/dc:clarify     # Auto-QA + resolve ambiguities
-/dc:tech-plan  # Blueprint + constitution check
-/dc:breakdown      # TDD tasks with parallelism
-/dc:implement    # RED → GREEN → REFACTOR in Docker
-/dc:review        # 7-dimension peer review
-```
+</details>
 
 ---
 
