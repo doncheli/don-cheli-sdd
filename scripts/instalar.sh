@@ -380,7 +380,7 @@ if [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
                 "agente:agent"; do
                 src="${pair%%:*}.md"
                 dst="${pair##*:}.md"
-                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null
+                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null || true
             done
             cd - >/dev/null
         }
@@ -411,7 +411,7 @@ if [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
                 "historial:historico"; do
                 src="${pair%%:*}.md"
                 dst="${pair##*:}.md"
-                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null
+                [ -f "$src" ] && mv "$src" "$dst" 2>/dev/null || true
             done
             cd - >/dev/null
         }
