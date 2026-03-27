@@ -206,7 +206,7 @@ O Don Cheli detecta automaticamente a complexidade e escolhe o processo adequado
 ```bash
 /dc:especificar    # Spec Gherkin + schema DBML
 /dc:clarificar     # Auto-QA + resolver ambiguidades
-/dc:planificar-tecnico  # Blueprint + verificação de constituição
+/dc:plano-tecnico  # Blueprint + verificação de constituição
 /dc:decompor      # Tarefas TDD com paralelismo
 /dc:implementar    # RED → GREEN → REFACTOR no Docker
 /dc:revisar        # Peer review de 7 dimensões
@@ -319,7 +319,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 |---------|-----------|
 | `/dc:especificar` | Spec Gherkin com prioridades P1/P2/P3+ |
 | `/dc:clarificar` | Auto-QA + verificação schema-spec |
-| `/dc:planificar-tecnico` | Blueprint + verificação de constituição |
+| `/dc:plano-tecnico` | Blueprint + verificação de constituição |
 | `/dc:decompor` | Tarefas TDD com marcadores `[P]` |
 | `/dc:revisar` | Peer review de 7 dimensões |
 </details>

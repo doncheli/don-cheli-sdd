@@ -31,7 +31,7 @@ Se o repositório tiver um `docs/index.md`, consultá-lo como mapa de navegaçã
 
 ## Regras de Trabalho Globais
 
-Leia o diretório `reglas/` para regras sobre:
+Leia o diretório `regras/` para regras sobre:
 - Idioma (código em inglês, commits/docs no locale configurado)
 - Branches (`feature/`, `fix/`, `hotfix/`)
 - Commits (`<tipo>: <descrição>`)
@@ -99,4 +99,4 @@ O framework suporta 3 idiomas: **español (es)**, **English (en)**, **Português
 
 **Regra:** Toda comunicação, documentação, commits e output do framework devem estar no idioma configurado. Código (variáveis, funções) **sempre em inglês**.
 
-Leia `reglas/i18n.md` para o guia completo de internacionalização.
+Leia `regras/i18n.md` para o guia completo de internacionalização.

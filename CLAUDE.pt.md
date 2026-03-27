@@ -21,9 +21,9 @@ Quando o usuário iniciar uma tarefa, ler sob demanda:
 
 ## Regras Detalhadas
 Ler sob demanda:
-- `reglas/pt/reglas-trabajo-globales.md` — idioma, branches, commits, PRs, cobertura, autonomia
-- `reglas/pt/i18n.md` — internacionalização (es/en/pt)
-- `habilidades/optimizacion-tokens/HABILIDAD.md` — gestão de contexto
+- `regras/regras-trabajo-globales.md` — idioma, branches, commits, PRs, cobertura, autonomia
+- `regras/i18n.md` — internacionalização (es/en/pt)
+- `habilidades/optimizacao-tokens/HABILIDADE.md` — gestão de contexto
 
 ## Comandos
 - `/dc:*` — Prefixo principal (72+ comandos)

@@ -107,7 +107,7 @@ Todos os comandos funcionam com o prefixo `/dc:`. Comandos principais:
 - Suportados: es (Español), en (English), pt (Português)
 
 ## Regras
-Ler do diretório `reglas/` (o conteúdo está no idioma instalado):
+Ler do diretório `regras/` (o conteúdo está no idioma instalado):
 - Regras de trabalho globais (branches, commits, PRs, cobertura, limites de autonomia)
 - Aplicação das leis de ferro
 - Critérios dos portões de qualidade
