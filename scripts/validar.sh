@@ -48,9 +48,9 @@ for dir in habilidades/*/; do
 done
 
 # Contar comandos
-ESPECDEV_COUNT=$(ls comandos/especdev/*.md 2>/dev/null | wc -l | tr -d ' ')
-RAZONAR_COUNT=$(ls comandos/razonar/*.md 2>/dev/null | wc -l | tr -d ' ')
-UTIL_COUNT=$(ls comandos/*.md 2>/dev/null | wc -l | tr -d ' ')
+ESPECDEV_COUNT=$(find comandos/especdev/ -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+RAZONAR_COUNT=$(find comandos/razonar/ -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+UTIL_COUNT=$(find comandos/ -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
 
 echo ""
 echo "Resumen:"
