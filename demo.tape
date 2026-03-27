@@ -16,7 +16,7 @@ Type "# 🏗️ Don Cheli v1.13.0 — SDD Framework"
 Enter
 Sleep 1s
 
-Type "# Stop improvising. Start delivering."
+Type "# Stop guessing. Start Engineering."
 Enter
 Sleep 1.5s
 
@@ -186,7 +186,7 @@ Enter
 Type "echo ''"
 Enter
 
-Type "echo '  Stop improvising. Start delivering.'"
+Type "echo '  Stop guessing. Start Engineering.'"
 Enter
 
 Sleep 3s

@@ -1,7 +1,7 @@
 {
   "installer": {
     "banner_line1": "Don Cheli — SDD Framework v{{version}}",
-    "banner_line2": "Stop improvising. Start delivering.",
+    "banner_line2": "Stop guessing. Start Engineering.",
     "select_language": "Selecciona tu idioma / Select your language / Selecione seu idioma",
     "option_es": "Español",
     "option_en": "English",
@@ -41,7 +41,7 @@
     "next_steps_title": "Next steps:",
     "next_step_1": "Restart Claude Code",
     "next_step_2": "In any project run: /especdev:iniciar",
-    "farewell": "Stop improvising. Start delivering!"
+    "farewell": "Stop guessing. Start Engineering!"
   },
   "framework": {
     "identity": "You are a development assistant operating under the Don Cheli framework (Specification-Driven Development).",

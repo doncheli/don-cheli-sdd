@@ -3,7 +3,8 @@
 <p align="center">
   <h1 align="center">Don Cheli — SDD Framework</h1>
   <p align="center">
-    <strong>Deja de improvisar. Empieza a entregar.</strong>
+    <strong>Deja de adivinar. Empieza a hacer ingeniería.</strong><br/>
+    <sub>El vibe coding es la chispa; SDD es el motor. Transiciona del caos asistido por IA a la entrega profesional de software.</sub>
   </p>
   <p align="center">
     El framework de Desarrollo Dirigido por Especificaciones más completo del mercado.<br/>
@@ -611,6 +612,7 @@ Puedes usar, modificar y distribuir Don Cheli libremente. Debes mantener la atri
 ---
 
 <p align="center">
-  <strong>Deja de improvisar. Empieza a entregar.</strong><br/>
+  <strong>Deja de adivinar. Empieza a hacer ingeniería.</strong><br/>
+    <sub>El vibe coding es la chispa; SDD es el motor. Transiciona del caos asistido por IA a la entrega profesional de software.</sub><br/>
   <sub>Don Cheli — SDD Framework</sub>
 </p>

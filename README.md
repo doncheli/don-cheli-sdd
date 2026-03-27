@@ -3,7 +3,8 @@
 <p align="center">
   <h1 align="center">Don Cheli — SDD Framework</h1>
   <p align="center">
-    <strong>Stop improvising. Start delivering.</strong>
+    <strong>Stop guessing. Start Engineering.</strong><br/>
+    <sub>Vibe coding is the spark; SDD is the engine. Transition from AI-assisted chaos to professional software delivery.</sub>
   </p>
   <p align="center">
     The first AI-assisted development framework made in and for Latin America.<br/>
@@ -809,6 +810,7 @@ You may use, modify, and distribute Don Cheli freely. You must maintain attribut
 ---
 
 <p align="center">
-  <strong>Stop improvising. Start delivering.</strong><br/>
+  <strong>Stop guessing. Start Engineering.</strong><br/>
+    <sub>Vibe coding is the spark; SDD is the engine. Transition from AI-assisted chaos to professional software delivery.</sub><br/>
   <sub>Don Cheli — SDD Framework</sub>
 </p>
