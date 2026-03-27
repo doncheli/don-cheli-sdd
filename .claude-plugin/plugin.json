@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "name": "don-cheli-sdd",
+  "display_name": "Don Cheli — Spec-Driven Development",
+  "version": "1.13.0",
+  "description": "Full SDD (Spec-Driven Development) framework for Claude Code. 72+ slash commands (/dc:*), 14 reusable skills, 15 reasoning models, TDD as an iron law, and i18n support (ES/EN/PT). Turn requirements into tested, documented, production-ready code through 7 disciplined lifecycle phases.",
+  "author": {
+    "name": "Jose Luis Oronoz Troconis",
+    "handle": "@doncheli",
+    "url": "https://www.doncheli.tv"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://www.doncheli.tv",
+  "repository": "https://github.com/doncheli/don-cheli-sdd",
+  "bugs": "https://github.com/doncheli/don-cheli-sdd/issues",
+  "keywords": [
+    "sdd",
+    "spec-driven-development",
+    "tdd",
+    "claude-code",
+    "ai-framework",
+    "prompt-engineering",
+    "developer-tools",
+    "llm",
+    "gherkin",
+    "bdd",
+    "agentes-ia",
+    "especificaciones",
+    "reasoning",
+    "estimation",
+    "español",
+    "i18n"
+  ],
+  "categories": ["development", "productivity", "testing"],
+  "commands": {
+    "prefix": "/dc:",
+    "aliases": ["/especdev:"],
+    "source_dir": "comandos/",
+    "namespaces": {
+      "especdev": "comandos/especdev/",
+      "razonar": "comandos/razonar/"
+    },
+    "count": {
+      "especdev": 58,
+      "razonar": 15
+    }
+  },
+  "skills": {
+    "source_dir": ".agent/skills/",
+    "items": [
+      "doncheli-spec",
+      "doncheli-plan",
+      "doncheli-implement",
+      "doncheli-review",
+      "doncheli-security",
+      "doncheli-estimate",
+      "doncheli-debate",
+      "doncheli-reasoning",
+      "doncheli-migrate",
+      "doncheli-distill",
+      "doncheli-planning",
+      "doncheli-tech-panel",
+      "doncheli-api-contract",
+      "doncheli-skills"
+    ]
+  },
+  "agents": {
+    "source_dir": "agentes/",
+    "prompts_dir": "agentes/prompts/"
+  },
+  "hooks": {
+    "source_dir": "ganchos/"
+  },
+  "rules": {
+    "source_dir": "reglas/"
+  },
+  "localization": {
+    "supported": ["es", "en", "pt"],
+    "default": "es",
+    "source_dir": "locales/"
+  },
+  "entry_point": "CLAUDE.md",
+  "min_claude_version": "claude-3-5-sonnet"
+}

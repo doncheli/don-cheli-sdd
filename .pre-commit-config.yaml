@@ -1,0 +1,24 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '^\.git/'
+      - id: end-of-file-fixer
+        exclude: '^\.git/'
+      - id: check-json
+        files: ^(package\.json|locales/.*\.json)$
+      - id: check-yaml
+        args: [--allow-multiple-documents]
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        args: [--severity=warning]
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.14.0
+    hooks:
+      - id: markdownlint-cli2
+        args: [--config, .markdownlint.yaml]

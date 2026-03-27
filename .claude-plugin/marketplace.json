@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "name": "don-cheli",
+  "display_name": "Don Cheli Marketplace",
+  "owner": {
+    "name": "Jose Luis Oronoz Troconis",
+    "handle": "@doncheli",
+    "url": "https://www.doncheli.tv",
+    "github": "https://github.com/doncheli"
+  },
+  "plugins": [
+    {
+      "name": "don-cheli-sdd",
+      "display_name": "Don Cheli — Spec-Driven Development",
+      "version": "1.13.0",
+      "description": "Full SDD framework for Claude Code. Iron-law TDD, 72+ commands (/dc:*), 14 skills, 15 reasoning models, and i18n (ES/EN/PT).",
+      "category": "development",
+      "tags": ["sdd", "tdd", "bdd", "gherkin", "estimation", "reasoning", "i18n", "español"],
+      "source": {
+        "type": "git",
+        "url": "https://github.com/doncheli/don-cheli-sdd.git",
+        "branch": "main",
+        "plugin_manifest": ".claude-plugin/plugin.json"
+      },
+      "install": {
+        "npm": "npx don-cheli-sdd",
+        "manual": "bash <(curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh)"
+      },
+      "homepage": "https://www.doncheli.tv",
+      "changelog": "https://github.com/doncheli/don-cheli-sdd/blob/main/CHANGELOG.md",
+      "license": "Apache-2.0",
+      "featured": true
+    }
+  ]
+}

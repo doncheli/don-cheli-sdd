@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "=== Verificando archivos críticos ==="
           ERRORES=0
-          for archivo in CLAUDE.md AGENTS.md prompt.md VERSION CHANGELOG.md LICENCIA; do
+          for archivo in CLAUDE.md AGENTS.md prompt.md VERSION CHANGELOG.md LICENCIA ARCHITECTURE.md; do
             if [ -f "$archivo" ]; then
               echo "✅ $archivo"
             else
@@ -29,6 +29,18 @@ jobs:
             echo "::error::Faltan $ERRORES archivos críticos"
             exit 1
           fi
+
+      - name: Verificar sincronización VERSION ↔ package.json
+        run: |
+          VERSION_FILE=$(cat VERSION | tr -d '[:space:]')
+          VERSION_PKG=$(python3 -c "import json; print(json.load(open('package.json'))['version'])")
+          echo "VERSION file: $VERSION_FILE"
+          echo "package.json: $VERSION_PKG"
+          if [ "$VERSION_FILE" != "$VERSION_PKG" ]; then
+            echo "::error::VERSION ($VERSION_FILE) no coincide con package.json ($VERSION_PKG)"
+            exit 1
+          fi
+          echo "✅ Versiones sincronizadas: $VERSION_FILE"
 
       - name: Verificar comandos (mínimo 40 archivos .md)
         run: |
@@ -66,8 +78,104 @@ jobs:
             exit 1
           fi
 
-      - name: Validar JSON
-        run: python3 -m json.tool package.json > /dev/null && echo "✅ package.json válido"
+      - name: Validar todos los JSON (package.json + locales)
+        run: |
+          ERRORES=0
+          for f in package.json locales/es.json locales/en.json locales/pt.json; do
+            if [ -f "$f" ]; then
+              if python3 -m json.tool "$f" > /dev/null 2>&1; then
+                echo "✅ $f"
+              else
+                echo "❌ $f (JSON inválido)"
+                ERRORES=$((ERRORES + 1))
+              fi
+            else
+              echo "⚠️ $f no encontrado"
+            fi
+          done
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::error::$ERRORES archivos JSON inválidos"
+            exit 1
+          fi
+
+      - name: Validar frontmatter de comandos
+        run: |
+          echo "=== Validando frontmatter YAML en comandos ==="
+          ERRORES=0
+          TOTAL=0
+          for f in $(find comandos/ -name "*.md" -type f); do
+            TOTAL=$((TOTAL + 1))
+            # Verificar que empieza con ---
+            FIRST_LINE=$(head -1 "$f")
+            if [ "$FIRST_LINE" != "---" ]; then
+              echo "❌ $f — falta frontmatter (no empieza con ---)"
+              ERRORES=$((ERRORES + 1))
+              continue
+            fi
+            # Verificar que tiene campo description
+            FRONTMATTER=$(sed -n '/^---$/,/^---$/p' "$f" | head -20)
+            if ! echo "$FRONTMATTER" | grep -q "description:"; then
+              echo "❌ $f — falta campo 'description' en frontmatter"
+              ERRORES=$((ERRORES + 1))
+              continue
+            fi
+            echo "✅ $f"
+          done
+          echo ""
+          echo "Total: $TOTAL | Válidos: $((TOTAL - ERRORES)) | Errores: $ERRORES"
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::error::$ERRORES comandos sin frontmatter válido"
+            exit 1
+          fi
+
+      - name: Validar Anthropic Skills 2.0 (SKILL.md)
+        run: |
+          echo "=== Validando Skills 2.0 ==="
+          ERRORES=0
+          for f in $(find .agent/skills/ -name "SKILL.md" -type f 2>/dev/null); do
+            FIRST_LINE=$(head -1 "$f")
+            if [ "$FIRST_LINE" != "---" ]; then
+              echo "❌ $f — falta frontmatter"
+              ERRORES=$((ERRORES + 1))
+              continue
+            fi
+            FRONTMATTER=$(sed -n '/^---$/,/^---$/p' "$f" | head -20)
+            HAS_NAME=$(echo "$FRONTMATTER" | grep -c "^name:" || true)
+            HAS_DESC=$(echo "$FRONTMATTER" | grep -c "^description:" || true)
+            if [ "$HAS_NAME" -eq 0 ] || [ "$HAS_DESC" -eq 0 ]; then
+              echo "❌ $f — faltan campos requeridos (name/description)"
+              ERRORES=$((ERRORES + 1))
+              continue
+            fi
+            # Verificar naming convention (lowercase-hyphens)
+            DIR_NAME=$(basename "$(dirname "$f")")
+            if ! echo "$DIR_NAME" | grep -qE '^[a-z0-9][a-z0-9-]*$'; then
+              echo "❌ $f — nombre de directorio no sigue convención lowercase-hyphens: $DIR_NAME"
+              ERRORES=$((ERRORES + 1))
+              continue
+            fi
+            echo "✅ $f ($DIR_NAME)"
+          done
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::error::$ERRORES skills no conformes con Anthropic Skills 2.0"
+            exit 1
+          fi
+          echo "✅ Todas las skills conformes"
+
+      - name: Verificar que cada habilidad tiene HABILIDAD.md
+        run: |
+          ERRORES=0
+          for dir in habilidades/*/; do
+            if [ ! -f "${dir}HABILIDAD.md" ]; then
+              echo "❌ ${dir}HABILIDAD.md (faltante)"
+              ERRORES=$((ERRORES + 1))
+            fi
+          done
+          if [ "$ERRORES" -gt 0 ]; then
+            echo "::warning::$ERRORES habilidades sin HABILIDAD.md"
+          else
+            echo "✅ Todas las habilidades tienen HABILIDAD.md"
+          fi
 
       - name: Ejecutar validación del framework
         run: |
@@ -77,5 +185,113 @@ jobs:
             echo "⚠️ scripts/validar.sh no encontrado, saltando"
           fi
 
-      - name: Resultado
-        run: echo "✅ Estructura del framework validada correctamente"
+  bats-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run bats test suite
+        uses: bats-core/bats-action@4.0.0
+        with:
+          test-regexp: test/
+          arguments: "--timing"
+
+  test-instalacion:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        lang: [es, en, pt]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: "Smoke test: instalar.sh --global --lang ${{ matrix.lang }}"
+        run: |
+          echo "=== Probando instalación en ${{ matrix.lang }} ==="
+          bash scripts/instalar.sh --global --lang ${{ matrix.lang }}
+
+      - name: Verificar estructura instalada
+        run: |
+          INSTALL_DIR="$HOME/.claude/don-cheli"
+          CMDS_DIR="$HOME/.claude/commands"
+
+          echo "=== Verificando instalación ==="
+
+          # Verificar que el directorio existe
+          if [ ! -d "$INSTALL_DIR" ]; then
+            echo "::error::Directorio de instalación no existe: $INSTALL_DIR"
+            exit 1
+          fi
+          echo "✅ $INSTALL_DIR existe"
+
+          # Verificar VERSION
+          if [ ! -f "$INSTALL_DIR/VERSION" ]; then
+            echo "::error::VERSION no instalado"
+            exit 1
+          fi
+          INSTALLED_VERSION=$(cat "$INSTALL_DIR/VERSION")
+          SOURCE_VERSION=$(cat VERSION)
+          if [ "$INSTALLED_VERSION" != "$SOURCE_VERSION" ]; then
+            echo "::error::VERSION instalada ($INSTALLED_VERSION) != source ($SOURCE_VERSION)"
+            exit 1
+          fi
+          echo "✅ VERSION: $INSTALLED_VERSION"
+
+          # Verificar locale
+          if [ ! -f "$INSTALL_DIR/locale" ]; then
+            echo "::error::locale no guardado"
+            exit 1
+          fi
+          LOCALE=$(cat "$INSTALL_DIR/locale")
+          echo "✅ Locale: $LOCALE"
+
+          # Verificar folder-map.json
+          if [ ! -f "$INSTALL_DIR/folder-map.json" ]; then
+            echo "::error::folder-map.json no instalado"
+            exit 1
+          fi
+          python3 -m json.tool "$INSTALL_DIR/folder-map.json" > /dev/null
+          echo "✅ folder-map.json válido"
+
+          # Verificar CLAUDE.md instalado
+          if [ ! -f "$INSTALL_DIR/CLAUDE.md" ]; then
+            echo "::error::CLAUDE.md no instalado"
+            exit 1
+          fi
+          echo "✅ CLAUDE.md instalado"
+
+          # Verificar que hay comandos instalados
+          ESPECDEV_COUNT=$(find "$CMDS_DIR/especdev/" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+          DC_COUNT=$(find "$CMDS_DIR/dc/" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+          RAZONAR_COUNT=$(find "$CMDS_DIR/razonar/" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
+
+          if [ "$ESPECDEV_COUNT" -lt 40 ]; then
+            echo "::error::Pocos comandos especdev instalados: $ESPECDEV_COUNT"
+            exit 1
+          fi
+          echo "✅ Comandos: especdev=$ESPECDEV_COUNT dc=$DC_COUNT razonar=$RAZONAR_COUNT"
+
+          # Verificar que hay habilidades instaladas
+          SKILLS_DIR=$(python3 -c "import json; print(json.load(open('$INSTALL_DIR/folder-map.json'))['dirs']['skills'])")
+          SKILLS_COUNT=$(find "$INSTALL_DIR/$SKILLS_DIR/" -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l | tr -d ' ')
+          if [ "$SKILLS_COUNT" -lt 30 ]; then
+            echo "::error::Pocas habilidades instaladas: $SKILLS_COUNT"
+            exit 1
+          fi
+          echo "✅ Habilidades: $SKILLS_COUNT en $SKILLS_DIR/"
+
+          # Verificar locales
+          for loc in es.json en.json pt.json; do
+            if [ -f "$INSTALL_DIR/locales/$loc" ]; then
+              python3 -m json.tool "$INSTALL_DIR/locales/$loc" > /dev/null
+              echo "✅ locales/$loc"
+            else
+              echo "::error::locales/$loc no instalado"
+              exit 1
+            fi
+          done
+
+          echo ""
+          echo "✅ Instalación verificada correctamente (${{ matrix.lang }})"

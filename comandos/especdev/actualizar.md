@@ -15,6 +15,7 @@ Verificar si hay actualizaciones disponibles en el repositorio de Don Cheli y of
 /especdev:actualizar
 /especdev:actualizar --verificar    # Solo verificar, no aplicar
 /especdev:actualizar --forzar       # Aplicar sin confirmar
+/especdev:actualizar --auto         # Auto-actualizar con auditoría de seguridad (usado por auto-check de sesión)
 ```
 
 ## Proceso
@@ -65,20 +66,62 @@ curl -s "https://api.github.com/repos/doncheli/don-cheli-sdd/compare/v${VERSION_
   | jq '.commits[].commit.message'
 ```
 
-### 5. Preguntar al usuario
+### 5. Auditoría de seguridad pre-actualización
 
+Antes de aplicar cualquier actualización, ejecutar auditoría de seguridad sobre los cambios:
+
+```
+1. DIFF — Obtener archivos cambiados entre versiones
+   curl -s "https://api.github.com/repos/doncheli/don-cheli-sdd/compare/v${VERSION_LOCAL}...v${VERSION_REMOTA}" \
+     | jq '.files[].filename'
+
+2. CLONAR — Descargar versión nueva en temporal
+   TEMP=$(mktemp -d)
+   git clone --depth 1 https://github.com/doncheli/don-cheli-sdd.git "$TEMP"
+
+3. AUDITAR — Análisis de seguridad sobre archivos cambiados
+   Ejecutar /especdev:auditar-seguridad sobre $TEMP con:
+   - Buscar secretos hardcoded (API keys, tokens, passwords)
+   - Buscar inyección de comandos en scripts (exec, eval, spawn)
+   - Verificar que scripts de instalación no ejecuten código arbitrario
+   - Verificar integridad de dependencias (package.json, lockfile)
+   - Buscar URLs/endpoints sospechosos nuevos
+   - Verificar que no se introduzcan permisos excesivos
+
+4. CLASIFICAR — Severidad de hallazgos
+   🔴 Crítico → BLOQUEAR actualización, notificar al usuario
+   🟠 Alto → ADVERTIR, aplicar con nota de riesgo
+   🟡 Medio/🔵 Bajo → Registrar, no bloquear
+```
+
+#### Output de auditoría pre-actualización
+
+```markdown
+=== Auditoría de Seguridad Pre-Actualización ===
+
+Versión: v{local} → v{remota}
+Archivos cambiados: {N}
+Archivos auditados: {N} (scripts, configs, código ejecutable)
+
+Resultado: ✅ LIMPIO | ⚠️ ADVERTENCIAS | 🛑 BLOQUEADO
+
+Hallazgos:
+  (lista de hallazgos si los hay)
+```
+
+### 6. Preguntar al usuario (modo interactivo)
+
+En modo interactivo (sin `--auto` ni `--forzar`):
 ```
 ¿Deseas actualizar Don Cheli de v1.6.0 a v1.7.0? (s/n)
 ```
 
-### 6. Aplicar actualización
+En modo `--auto`: aplicar directamente si la auditoría pasa. Bloquear si hay hallazgos críticos.
+
+### 7. Aplicar actualización
 
 ```bash
-# Clonar versión nueva en temporal
-TEMP=$(mktemp -d)
-git clone --depth 1 https://github.com/doncheli/don-cheli-sdd.git "$TEMP"
-
-# Ejecutar instalador
+# Usar el temporal ya clonado en paso 5.2
 cd "$TEMP" && bash scripts/instalar.sh --global
 
 # Limpiar
@@ -179,18 +222,41 @@ Resumen: 98% conformidad | 2 campos opcionales pendientes
 /dc:actualizar --forzar           # Aplicar sin confirmar
 ```
 
-## Verificación Automática
+## Configuración de Auto-Actualización
 
-Si se configura en `.especdev/config.yaml`:
+En `.especdev/config.yaml`:
 
 ```yaml
 actualizaciones:
   verificar_al_iniciar: true
-  frecuencia: semanal  # diario | semanal | nunca
-  verificar_skills_spec: true  # Verificar conformidad Anthropic Skills 2.0
+  auto_actualizar: true          # Aplicar actualizaciones automáticamente (requiere auditoría limpia)
+  auditoria_pre_update: true     # Auditoría de seguridad obligatoria antes de aplicar
+  frecuencia: siempre            # siempre | diario | semanal | nunca
+  verificar_skills_spec: true    # Verificar conformidad Anthropic Skills 2.0
+  bloquear_en_critico: true      # Detener actualización si hay hallazgos 🔴
 ```
 
-El comando `/dc:continuar` verifica automáticamente si hay actualizaciones disponibles y notifica al usuario sin interrumpir el flujo.
+### Comportamiento al inicio de sesión
+
+Cada vez que un cliente inicia sesión con Don Cheli:
+1. Verificar versión remota vs local
+2. Si hay actualización → ejecutar `/dc:actualizar --auto` en background
+3. El proceso no bloquea la interacción del usuario
+4. El usuario recibe notificación al completar (éxito o bloqueo)
+
+### Flujo `--auto`
+
+```
+Inicio de sesión
+  → Detectar versión remota
+  → Si nueva versión disponible:
+    → Clonar en temporal
+    → Auditoría de seguridad (--severidad critica)
+    → Si 🔴 Crítico → BLOQUEAR + notificar
+    → Si limpio → instalar + notificar éxito
+    → Verificar Skills 2.0 (si habilitado)
+    → Limpiar temporal
+```
 
 ## Fuentes oficiales
 

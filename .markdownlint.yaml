@@ -1,0 +1,13 @@
+default: true
+
+# Deshabilitadas — demasiado opinionadas para este repo
+MD013: false   # line-length — docs largos son válidos
+MD033: false   # no-inline-html — usamos HTML para badges y drawers
+MD041: false   # first-line-heading — muchos archivos empiezan con frontmatter
+MD024: false   # no-duplicate-heading — repetimos headings entre secciones
+
+# Ajustes puntuales
+MD007:
+  indent: 2    # listas con 2 espacios de indentación
+MD029:
+  style: ordered  # listas ordenadas consistentes

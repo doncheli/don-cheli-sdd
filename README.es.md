@@ -11,12 +11,17 @@
   </p>
   <p align="center">
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versión-1.11.1-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-71+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-72+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
+    <br/>
+    <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
+    <a href="https://www.npmjs.com/package/don-cheli-sdd"><img src="https://img.shields.io/npm/v/don-cheli-sdd" alt="npm"></a>
+    <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-ver-blue" alt="Changelog"></a>
+    <img src="https://img.shields.io/github/last-commit/doncheli/don-cheli-sdd" alt="Last Commit">
+    <img src="https://img.shields.io/github/contributors/doncheli/don-cheli-sdd" alt="Contributors">
   </p>
 </p>
 

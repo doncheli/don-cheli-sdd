@@ -89,7 +89,7 @@ Scripts en `scripts/`. Todos usan `set -euo pipefail`. Probar en macOS y Linux a
 Para que un PR sea mergeado debe cumplir:
 
 - [ ] Descripción clara del problema que resuelve
-- [ ] Todo en español (código en inglés, documentación en español)
+- [ ] Código (variables, funciones, comentarios) en inglés; documentación y commits en español
 - [ ] No rompe comandos ni habilidades existentes
 - [ ] Sigue convenciones de nombrado: `kebab-case` para archivos, frontmatter YAML válido
 - [ ] Si agrega comando: tiene `description` en frontmatter
@@ -110,7 +110,7 @@ Busca issues con la etiqueta **`good first issue`** — son tareas concretas, ac
 
 ## Código de conducta
 
-Respeto mutuo. Comunicación constructiva. Español como idioma principal del proyecto (código en inglés). Seguimos el [Contributor Covenant](CODE_OF_CONDUCT.md).
+Respeto mutuo. Comunicación constructiva. Código siempre en inglés (variables, funciones, comentarios). Documentación y commits en español. Seguimos el [Contributor Covenant](CODE_OF_CONDUCT.md).
 
 ## Reconocimientos
 

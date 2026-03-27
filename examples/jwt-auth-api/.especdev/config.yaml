@@ -1,0 +1,26 @@
+framework:
+  version: "1.13.0"
+  idioma: es
+
+proyecto:
+  nombre: jwt-auth-api
+  tipo: api
+  descripcion: "API de autenticación con JWT, registro y login de usuarios"
+  version: "1.0.0"
+  stack: "Node.js, Express, JWT, bcrypt"
+  nivel: 2
+
+modelos:
+  default: sonnet
+  agentes:
+    planificador: opus
+    arquitecto: opus
+    ejecutor: sonnet
+    revisor: opus
+    tester: sonnet
+    documentador: haiku
+
+historial:
+  habilitado: true
+  maxSesiones: 10
+  autoGuardar: true

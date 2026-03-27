@@ -31,6 +31,7 @@
     "node": ">=18.0.0"
   },
   "files": [
+    ".claude-plugin/",
     "comandos/",
     "habilidades/",
     "reglas/",
@@ -43,6 +44,7 @@
     "AGENTS.md",
     "prompt.md",
     "VERSION",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "ARCHITECTURE.md"
   ]
 }
