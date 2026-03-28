@@ -5,6 +5,26 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ## [Unreleased]
 
+## [1.14.0] - 2026-03-28
+### Añadido
+- **13 nuevos comandos** basados en tendencias de la industria (marzo 2026):
+  - `/dc:drift` — Detectar divergencia entre specs y código (inspirado en GitHub Spec Kit)
+  - `/dc:audit-trail` — Registro de todas las decisiones tomadas con IA
+  - `/dc:tea` — Testing Autónomo End-to-End (inspirado en BMAD TEA Module)
+  - `/dc:pr-review` — Revisión automática de PRs en GitHub
+  - `/dc:data-policy` — Política de datos y privacidad del proyecto
+  - `/dc:visual-test` — Testing visual de UI con detección de regresiones
+  - `/dc:spec-score` — Puntaje cuantitativo de calidad de spec (IEEE/ISO)
+  - `/dc:webhook` — Integración con triggers externos (GitHub, Slack, Linear)
+  - `/dc:tech-debt` — Detector de deuda técnica acelerada por IA
+  - `/dc:context-health` — Dashboard de salud del context window
+  - `/dc:voice` — Integración con Voice Mode para dictar specs
+  - `/dc:diagram` — Auto-generar diagramas Mermaid/C4 desde código
+  - `/dc:changelog-auto` — Generar CHANGELOG automáticamente desde commits
+- **13 nuevos skills Antigravity** correspondientes a cada comando nuevo
+- Total de comandos: **85+** (antes 72+)
+- Total de skills Antigravity: **27** (antes 14)
+
 ## [1.13.0] - 2026-03-24
 ### Añadido
 - `/dc:` como prefijo principal (más corto y memorable), `/especdev:` queda como alias retrocompatible
