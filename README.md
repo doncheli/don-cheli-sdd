@@ -653,6 +653,47 @@ None. Claude Code is the primary platform with full feature access.
 </details>
 
 <details>
+<summary><strong>OpenCode (SST) — Agent + 27 skills via compatibility layer</strong></summary>
+
+### What you get
+- `opencode.json` — Configuration pointing to `CLAUDE.md` and `AGENTS.md`
+- `.opencode/agents/doncheli.md` — Primary agent with all 85+ commands
+- 27 skills loaded automatically via `.agent/skills/` compatibility layer
+- `CLAUDE.md` read as fallback instructions (native OpenCode behavior)
+
+### How to use
+Invoke the Don Cheli agent with `@doncheli`:
+```
+@doncheli start "Implement JWT authentication"
+@doncheli estimate docs/prd.md
+@doncheli debate "Monolith vs microservices"
+@doncheli pre-mortem "Database migration to MongoDB"
+@doncheli security-audit
+@doncheli tech-panel "Redis vs Memcached for caching"
+```
+
+Or just describe your task — skills activate via semantic matching:
+```
+"I need to implement user authentication"
+→ OpenCode activates @doncheli-spec automatically
+```
+
+### Available commands via @doncheli
+| Category | Commands |
+|---|---|
+| Lifecycle | `start`, `init`, `specify`, `clarify`, `tech-plan`, `breakdown`, `implement`, `review` |
+| Reasoning | `pre-mortem`, `5-whys`, `pareto`, `inversion`, `first-principles`, `second-order` + 9 more |
+| Advanced | `estimate`, `debate`, `tech-panel`, `planning`, `security-audit`, `migrate`, `drift`, `tea`, `pr-review` |
+| Quality | `spec-score`, `tech-debt`, `context-health`, `diagram`, `changelog-auto` |
+
+### Limitations
+- No native `/dc:*` slash commands — use `@doncheli <command>` instead
+- Skills loaded via `.agent/skills/` compatibility (not `.opencode/skills/`)
+- Model routing uses OpenCode's model config, not Don Cheli's agent table
+
+</details>
+
+<details>
 <summary><strong>Cursor IDE — Full command reference (.cursorrules)</strong></summary>
 
 ### What you get
@@ -705,7 +746,7 @@ Point your agent to read `CLAUDE.md` or `prompt.md` at the start of a session. T
 ```
 don-cheli/
 ├── comandos/
-│   ├── especdev/          # 53 /dc:* commands
+│   ├── especdev/          # 71 /dc:* commands
 │   └── razonar/           # 15 /razonar:* commands
 ├── habilidades/           # 42 modular skills
 ├── reglas/
@@ -727,6 +768,8 @@ don-cheli/
 ├── agentes/               # 7 specialized agents
 ├── ganchos/               # Pre/Post tool + Stop hooks
 ├── scripts/               # instalar.sh, bucle.sh, validar.sh
+├── .opencode/             # 🟢 OpenCode (SST) compatibility
+│   └── agents/            # @doncheli agent
 ├── .agent/                # 🔮 Antigravity/Gemini compatibility
 │   ├── skills/            # 14 skills (spec, plan, implement, review, security, estimate, debate, reasoning, migrate, distill, planning, tech-panel, api-contract, skills-router)
 │   └── workflows/         # 9 workflows (start, pipeline, review, security, estimate, debate, reasoning, migrate, planning)

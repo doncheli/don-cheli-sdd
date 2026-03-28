@@ -547,6 +547,20 @@ fi
 echo -e "     ${GREEN}✓${NC} GEMINI.md, .agent/skills/, .agent/workflows/"
 
 # ═══════════════════════════════════════════════════════════════
+# 11b. Copy OpenCode compatibility files
+# ═══════════════════════════════════════════════════════════════
+
+echo -e "  🟢 Copying OpenCode files..."
+if [ -d "${SCRIPT_DIR}/.opencode" ]; then
+    mkdir -p "${FRAMEWORK_HOME}/.opencode/agents"
+    cp -r "${SCRIPT_DIR}/.opencode/agents/"* "${FRAMEWORK_HOME}/.opencode/agents/" 2>/dev/null || true
+fi
+if [ -f "${SCRIPT_DIR}/opencode.json" ]; then
+    cp "${SCRIPT_DIR}/opencode.json" "${FRAMEWORK_HOME}/" 2>/dev/null || true
+fi
+echo -e "     ${GREEN}✓${NC} opencode.json, .opencode/agents/doncheli.md"
+
+# ═══════════════════════════════════════════════════════════════
 # 12. Save locale preference + version
 # ═══════════════════════════════════════════════════════════════
 
