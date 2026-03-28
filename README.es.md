@@ -14,7 +14,7 @@
     <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-72+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <br/>
@@ -54,7 +54,7 @@ Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se ge
 
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>71+</strong></td></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>85+</strong></td></tr>
 <tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
@@ -276,7 +276,7 @@ Esto permite tener decenas de skills sin impactar el context window.
 
 ---
 
-## Comandos (72+)
+## Comandos (85+)
 
 > **Retrocompatible:** Todos los comandos `/dc:*` también están disponibles como `/especdev:*` por retrocompatibilidad.
 

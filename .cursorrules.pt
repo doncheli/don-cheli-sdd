@@ -54,7 +54,7 @@ Todos os comandos funcionam com o prefixo `/dc:`. Comandos principais:
 - `/dc:contrato-api` — Design de contrato REST/GraphQL com retentativas, circuit breaker
 - `/dc:contrato-ui` — Contrato de design UI antes de codificar frontend
 - `/dc:destilar` — Extrair specs de código existente (Destilação de Blueprint)
-- `/dc:propor` — Engenharia reversa de arquitetura a partir do codebase
+- `/dc:reversa` — Engenharia reversa de arquitetura a partir do codebase
 - `/dc:poc` — Prova de Conceito com timebox e critérios de sucesso
 - `/dc:doctor` — Diagnosticar e reparar framework/git/ambiente
 
@@ -64,7 +64,7 @@ Todos os comandos funcionam com o prefixo `/dc:`. Comandos principais:
 - `/dc:guardian` — Revisão de código AI como pre-commit hook
 - `/dc:limpar-slop` — Remover código slop gerado por IA antes de commits
 - `/dc:integrar` — Integrar novo desenvolvedor com contexto completo
-- `/dc:traspasso` — Gerar documento de repasse estruturado
+- `/dc:transferencia` — Gerar documento de repasse estruturado
 
 ## Pipeline (Padrão — Nível 2)
 ```

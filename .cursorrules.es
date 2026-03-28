@@ -54,7 +54,7 @@ Todos los comandos funcionan con el prefijo `/dc:`. Comandos clave:
 - `/dc:contrato-api` — Diseño de contrato REST/GraphQL con reintentos, circuit breaker
 - `/dc:contrato-ui` — Contrato de diseño UI antes de codear frontend
 - `/dc:destilar` — Extraer specs desde código existente (Destilación de Blueprint)
-- `/dc:revertir` — Ingeniería inversa de arquitectura desde el codebase
+- `/dc:reversa` — Ingeniería inversa de arquitectura desde el codebase
 - `/dc:poc` — Prueba de Concepto con timebox y criterios de éxito
 - `/dc:doctor` — Diagnosticar y reparar framework/git/entorno
 
@@ -63,7 +63,7 @@ Todos los comandos funcionan con el prefijo `/dc:`. Comandos clave:
 - `/dc:uat` — Scripts de pruebas de aceptación auto-generados
 - `/dc:guardian` — Revisión de código AI como pre-commit hook
 - `/dc:limpiar-slop` — Eliminar código slop generado por IA antes de commits
-- `/dc:integrar` — Integrar nuevo desarrollador con contexto completo
+- `/dc:incorporar` — Incorporar nuevo desarrollador con contexto completo
 - `/dc:traspaso` — Generar documento de traspaso estructurado
 
 ## Pipeline (Estándar — Nivel 2)

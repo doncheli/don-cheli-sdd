@@ -14,7 +14,7 @@
     <a href="#-instalação"><img src="https://img.shields.io/badge/instalação-1_minuto-brightgreen" alt="Install"></a>
     <img src="https://img.shields.io/badge/licença-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-72+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <br/>
@@ -54,7 +54,7 @@ Cada etapa tem **portas de qualidade**. Você não avança sem cumpri-las. O có
 
 <table>
 <tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>71+</strong></td></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>85+</strong></td></tr>
 <tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
 <tr><td>Modelos de raciocínio</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Estimativas automáticas</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
@@ -72,7 +72,7 @@ Cada etapa tem **portas de qualidade**. Você não avança sem cumpri-las. O có
 <tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
-### 15 coisas que só o Don Cheli tem
+### 20 coisas que só o Don Cheli tem
 
 1. **15 modelos de raciocínio** — Pré-mortem, 5 porquês, Pareto, RLM
 2. **4 modelos de estimação** — Pontos de Função, Planning Poker IA, COCOMO, Histórico
@@ -89,6 +89,11 @@ Cada etapa tem **portas de qualidade**. Você não avança sem cumpri-las. O có
 13. **Doctor** — Diagnóstico e auto-reparo de git, framework e ambiente
 14. **Skill Creator** — Meta-skill iterativo: gerar → testar → avaliar → melhorar skills automaticamente
 15. **Skills Marketplace** — Instalar skills do Anthropic oficial, da comunidade, ou criar as suas próprias
+16. **Constituição do Projeto** — Princípios imutáveis pré-spec validados em cada portão de qualidade
+17. **Pseudocódigo Formal** — Fase de lógica agnóstica de tecnologia entre spec e planejamento (SPARC)
+18. **Validação Multi-camada de Specs** — 8 verificações (vazamento de implementação, mensurabilidade, completude, aderência à constituição)
+19. **Debate Adversarial Multi-role** — PM vs Arquiteto vs QA com tensões explícitas e objeções obrigatórias
+20. **Planejamento Adaptativo à Escala** — Nível de planejamento se ajusta à complexidade (mesmo processo para 1 arquivo ≠ 100 arquivos)
 
 ---
 
@@ -271,7 +276,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 
 ---
 
-## Comandos (72+)
+## Comandos (85+)
 
 > **Retrocompatível:** Todos os comandos `/dc:*` também estão disponíveis como `/especdev:*` por retrocompatibilidade.
 

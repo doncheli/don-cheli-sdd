@@ -21,9 +21,9 @@ When the user starts a task, read on demand:
 
 ## Detailed Rules
 Read on demand:
-- `reglas/en/reglas-trabajo-globales.md` — language, branches, commits, PRs, coverage, autonomy
-- `reglas/en/i18n.md` — internationalization (es/en/pt)
-- `habilidades/optimizacion-tokens/HABILIDAD.md` — context management
+- `rules/reglas-trabajo-globales.md` — language, branches, commits, PRs, coverage, autonomy
+- `rules/i18n.md` — internationalization (es/en/pt)
+- `skills/token-optimization/SKILL.md` — context management
 
 ## Commands
 - `/dc:*` — Primary prefix (72+ commands)

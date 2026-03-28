@@ -12,16 +12,16 @@
   </p>
   <p align="center">
     <a href="#-installation"><img src="https://img.shields.io/badge/install-1_minute-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/version-1.13.0-blue" alt="Version">
+    <img src="https://img.shields.io/badge/version-1.14.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/languages-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/commands-72+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/skills-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/commands-85+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/skills-43+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <br/>
     <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
     <a href="https://www.npmjs.com/package/don-cheli-sdd"><img src="https://img.shields.io/npm/v/don-cheli-sdd" alt="npm"></a>
-    <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-ver-blue" alt="Changelog"></a>
+    <a href="./CHANGELOG.md"><img src="https://img.shields.io/badge/changelog-view-blue" alt="Changelog"></a>
     <img src="https://img.shields.io/github/last-commit/doncheli/don-cheli-sdd" alt="Last Commit">
     <img src="https://img.shields.io/github/contributors/doncheli/don-cheli-sdd" alt="Contributors">
   </p>
@@ -87,7 +87,7 @@ Each step has **quality gates**. You don't advance without meeting them. Code is
 
 <table>
 <tr><th></th><th><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD</a><br/><sub>42K ⭐</sub></th><th><a href="https://github.com/gsd-build/get-shit-done">GSD</a><br/><sub>39K ⭐</sub></th><th><a href="https://github.com/gsd-build/gsd-2">GSD-2</a><br/><sub>3K ⭐</sub></th><th><a href="https://github.com/github/spec-kit">spec-kit</a><br/><sub>82K ⭐</sub></th><th><strong>✨ Don Cheli</strong></th></tr>
-<tr><td>Commands</td><td>~20</td><td>~80</td><td>~40</td><td>~10</td><td><strong>72+</strong></td></tr>
+<tr><td>Commands</td><td>~20</td><td>~80</td><td>~40</td><td>~10</td><td><strong>85+</strong></td></tr>
 <tr><td>Skills</td><td>~15</td><td>~15</td><td>~10</td><td>~6</td><td><strong>43</strong></td></tr>
 <tr><td>Reasoning models</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
 <tr><td>Automatic estimates</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>4 models</strong></td></tr>
@@ -381,7 +381,7 @@ This allows having dozens of skills without impacting the context window.
 
 ---
 
-## Commands (72+)
+## Commands (85+)
 
 > **Backward compatible:** All `/dc:*` commands are also available as `/especdev:*` for backward compatibility.
 
@@ -578,11 +578,11 @@ Supports: framework (Vue→React), version (Next 14→15), language (JS→TS), p
 Don Cheli works natively with multiple AI agents and IDEs. All content adapts to the installed language (ES/EN/PT).
 
 <details>
-<summary><strong>Claude Code — Full support (72+ commands, 43 skills)</strong></summary>
+<summary><strong>Claude Code — Full support (85+ commands, 43 skills)</strong></summary>
 
 ### What you get
 - `CLAUDE.md` — Framework instructions (translated to installed language)
-- 72+ slash commands via `/dc:*` (translated names per locale)
+- 85+ slash commands via `/dc:*` (translated names per locale)
 - `/especdev:*` — Backward-compatible alias
 - `/razonar:*` — 15 reasoning models
 - 43 modular skills in `habilidades/` (or `skills/` in EN)
@@ -770,7 +770,7 @@ After installing with a language, the installed structure uses localized names:
 
 ## Contributing
 
-See [CONTRIBUIR.md](CONTRIBUIR.md) for the complete guide.
+See [CONTRIBUTING](CONTRIBUIR.md) for the complete guide.
 
 ```bash
 # Fork → Clone → Branch → Changes → PR
