@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Don Cheli — Framework de Desarrollo Dirigido por Especificaciones</title>
+  <meta name="description" content="Deja de adivinar. Empieza a hacer ingeniería. Don Cheli transforma el caos del vibe coding en desarrollo profesional con IA.">
+  <meta property="og:title" content="Don Cheli — Desarrollo Dirigido por Especificaciones">
+  <meta property="og:description" content="El framework que convierte a la IA en tu ingeniero de software, no solo tu autocompletado.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://doncheli.tv">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-hover: #1a1a2e;
+      --border: #1e1e2e;
+      --border-glow: #6c5ce744;
+      --text: #e4e4ef;
+      --text-muted: #8888a0;
+      --text-dim: #55556a;
+      --accent: #6c5ce7;
+      --accent-light: #a29bfe;
+      --accent-glow: #6c5ce733;
+      --green: #00cec9;
+      --green-glow: #00cec933;
+      --orange: #fdcb6e;
+      --red: #ff6b6b;
+      --pink: #fd79a8;
+      --blue: #74b9ff;
+      --gradient-hero: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 50%, #00cec9 100%);
+      --gradient-card: linear-gradient(135deg, #12121a 0%, #1a1a2e 100%);
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 24px rgba(0,0,0,.4);
+      --shadow-glow: 0 0 40px var(--accent-glow);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+
+    /* ═══════════════════════════════════════════
+       UTILITIES
+       ═══════════════════════════════════════════ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .text-center { text-align: center; }
+    .text-muted { color: var(--text-muted); }
+    .text-accent { color: var(--accent-light); }
+    .text-green { color: var(--green); }
+    .mb-1 { margin-bottom: 8px; }
+    .mb-2 { margin-bottom: 16px; }
+    .mb-3 { margin-bottom: 24px; }
+    .mb-4 { margin-bottom: 40px; }
+
+    /* ═══════════════════════════════════════════
+       ANIMATED BACKGROUND
+       ═══════════════════════════════════════════ */
+    .bg-grid {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        linear-gradient(rgba(108,92,231,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(108,92,231,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none; z-index: 0;
+    }
+
+    .bg-glow {
+      position: fixed; top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 20%, rgba(108,92,231,.08) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(0,206,201,.05) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+      animation: glowFloat 20s ease-in-out infinite alternate;
+    }
+    @keyframes glowFloat {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-3%, 3%); }
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,15,.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,.5); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 14px 24px;
+    }
+    .nav-logo {
+      font-weight: 800; font-size: 1.2rem;
+      background: var(--gradient-hero); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: .9rem;
+      font-weight: 500; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent-light); }
+    .nav-cta {
+      background: var(--accent); color: #fff !important; padding: 8px 20px;
+      border-radius: 8px; font-weight: 600; transition: all .3s;
+    }
+    .nav-cta:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+    /* ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ */
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-glow); border: 1px solid var(--accent);
+      border-radius: 100px; padding: 6px 18px; font-size: .85rem;
+      color: var(--accent-light); margin-bottom: 28px;
+      animation: fadeInUp .8s ease-out;
+    }
+    .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900;
+      line-height: 1.1; margin-bottom: 24px;
+      animation: fadeInUp .8s ease-out .1s both;
+    }
+    .hero h1 .gradient {
+      background: var(--gradient-hero);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero .subtitle {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-muted);
+      max-width: 700px; margin: 0 auto 40px; line-height: 1.6;
+      animation: fadeInUp .8s ease-out .2s both;
+    }
+    .hero-actions {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      animation: fadeInUp .8s ease-out .3s both;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; border-radius: 12px; font-weight: 600;
+      font-size: 1rem; text-decoration: none; transition: all .3s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: var(--shadow-glow); }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 0 60px var(--accent-glow); }
+    .btn-secondary { background: var(--bg-card); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+
+    .hero-visual {
+      margin-top: 60px; position: relative;
+      animation: fadeInUp .8s ease-out .4s both;
+    }
+    .terminal {
+      background: #0d0d14; border: 1px solid var(--border); border-radius: var(--radius);
+      max-width: 700px; margin: 0 auto; text-align: left; overflow: hidden;
+      box-shadow: var(--shadow), 0 0 80px rgba(108,92,231,.1);
+    }
+    .terminal-header {
+      display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+      background: #0a0a12; border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .terminal-dot.red { background: #ff5f57; }
+    .terminal-dot.yellow { background: #febc2e; }
+    .terminal-dot.green { background: #28c840; }
+    .terminal-title { color: var(--text-dim); font-size: .8rem; margin-left: 8px; font-family: var(--mono); }
+    .terminal-body { padding: 20px; font-family: var(--mono); font-size: .9rem; line-height: 1.8; }
+    .terminal-body .prompt { color: var(--green); }
+    .terminal-body .cmd { color: var(--accent-light); }
+    .terminal-body .comment { color: var(--text-dim); }
+    .terminal-body .output { color: var(--text-muted); }
+    .terminal-body .success { color: var(--green); }
+    .terminal-body .typing { border-right: 2px solid var(--accent-light); animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { border-color: transparent; } }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTIONS
+       ═══════════════════════════════════════════ */
+    section { position: relative; z-index: 1; padding: 100px 0; }
+    section:nth-child(odd) { background: rgba(18,18,26,.3); }
+
+    .section-tag {
+      display: inline-block; font-family: var(--mono); font-size: .85rem;
+      color: var(--accent-light); background: var(--accent-glow);
+      padding: 4px 14px; border-radius: 6px; margin-bottom: 16px;
+      border: 1px solid rgba(108,92,231,.2);
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: 1.1rem; color: var(--text-muted);
+      max-width: 700px; margin-bottom: 48px;
+    }
+    .section-subtitle.centered { margin-left: auto; margin-right: auto; }
+
+    /* ═══════════════════════════════════════════
+       PROBLEM SECTION
+       ═══════════════════════════════════════════ */
+    .problem-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-bottom: 48px;
+    }
+    .problem-card {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px;
+      transition: all .3s;
+    }
+    .problem-card:hover { border-color: var(--red); transform: translateY(-4px); box-shadow: 0 0 30px rgba(255,107,107,.1); }
+    .problem-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .problem-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--red); }
+    .problem-card p { color: var(--text-muted); font-size: .95rem; }
+
+    .solution-banner {
+      background: linear-gradient(135deg, rgba(108,92,231,.1), rgba(0,206,201,.1));
+      border: 1px solid var(--accent); border-radius: var(--radius);
+      padding: 40px; text-align: center;
+    }
+    .solution-banner h3 { font-size: 1.5rem; margin-bottom: 12px; }
+    .solution-banner p { color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+    /* ═══════════════════════════════════════════
+       HOW IT WORKS — PIPELINE
+       ═══════════════════════════════════════════ */
+    .pipeline {
+      display: flex; flex-direction: column; gap: 0;
+      max-width: 800px; margin: 0 auto;
+    }
+    .pipeline-step {
+      display: flex; gap: 24px; align-items: flex-start;
+      position: relative; padding-bottom: 40px;
+    }
+    .pipeline-step:last-child { padding-bottom: 0; }
+    .pipeline-step:last-child .pipeline-line { display: none; }
+
+    .pipeline-marker {
+      flex-shrink: 0; width: 56px; height: 56px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 800; position: relative; z-index: 2;
+    }
+    .pipeline-line {
+      position: absolute; left: 27px; top: 56px; bottom: 0; width: 2px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+    }
+    .pipeline-content {
+      flex: 1; background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px 28px;
+      transition: all .3s;
+    }
+    .pipeline-content:hover { border-color: var(--border-glow); transform: translateX(4px); }
+    .pipeline-content h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+    .pipeline-cmd {
+      font-family: var(--mono); font-size: .85rem; color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+    .pipeline-content p { color: var(--text-muted); font-size: .93rem; }
+
+    .step-specify .pipeline-marker { background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: #fff; }
+    .step-clarify .pipeline-marker { background: linear-gradient(135deg, #0984e3, #74b9ff); color: #fff; }
+    .step-plan .pipeline-marker { background: linear-gradient(135deg, #00b894, #55efc4); color: #0a0a0f; }
+    .step-break .pipeline-marker { background: linear-gradient(135deg, #fdcb6e, #ffeaa7); color: #0a0a0f; }
+    .step-build .pipeline-marker { background: linear-gradient(135deg, #e17055, #fab1a0); color: #fff; }
+    .step-review .pipeline-marker { background: linear-gradient(135deg, #fd79a8, #fdcb6e); color: #0a0a0f; }
+
+    /* ═══════════════════════════════════════════
+       IRON LAWS
+       ═══════════════════════════════════════════ */
+    .laws-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .law-card {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px; position: relative;
+      overflow: hidden; transition: all .3s;
+    }
+    .law-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .law-card:nth-child(1)::before { background: var(--accent); }
+    .law-card:nth-child(2)::before { background: var(--green); }
+    .law-card:nth-child(3)::before { background: var(--orange); }
+    .law-card:hover { border-color: var(--border-glow); transform: translateY(-4px); }
+    .law-number {
+      font-family: var(--mono); font-size: .8rem; color: var(--accent-light);
+      font-weight: 600; margin-bottom: 12px; letter-spacing: 2px;
+    }
+    .law-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
+    .law-card p { color: var(--text-muted); margin-bottom: 16px; }
+    .law-visual {
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    }
+    .law-tag {
+      font-family: var(--mono); font-size: .8rem; padding: 4px 12px;
+      border-radius: 6px; font-weight: 600;
+    }
+    .tag-red { background: rgba(255,107,107,.15); color: var(--red); border: 1px solid rgba(255,107,107,.3); }
+    .tag-green { background: rgba(0,206,201,.15); color: var(--green); border: 1px solid rgba(0,206,201,.3); }
+    .tag-blue { background: rgba(116,185,255,.15); color: var(--blue); border: 1px solid rgba(116,185,255,.3); }
+    .tag-orange { background: rgba(253,203,110,.15); color: var(--orange); border: 1px solid rgba(253,203,110,.3); }
+    .law-arrow { color: var(--text-dim); font-size: 1.2rem; }
+
+    /* ═══════════════════════════════════════════
+       PROFILES
+       ═══════════════════════════════════════════ */
+    .profiles-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+    .profile-card {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; transition: all .3s;
+      position: relative; overflow: hidden;
+    }
+    .profile-card:hover { border-color: var(--border-glow); transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+    .profile-emoji { font-size: 3rem; margin-bottom: 16px; display: block; }
+    .profile-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+    .profile-role { font-size: .9rem; color: var(--accent-light); margin-bottom: 12px; font-weight: 500; }
+    .profile-card p { color: var(--text-muted); font-size: .93rem; margin-bottom: 16px; }
+    .profile-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .profile-tag {
+      font-size: .75rem; padding: 3px 10px; border-radius: 100px;
+      background: rgba(108,92,231,.1); color: var(--accent-light);
+      border: 1px solid rgba(108,92,231,.2);
+    }
+
+    /* ═══════════════════════════════════════════
+       COMMANDS SHOWCASE
+       ═══════════════════════════════════════════ */
+    .commands-tabs {
+      display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cmd-tab {
+      padding: 8px 20px; border-radius: 100px; border: 1px solid var(--border);
+      background: var(--bg-card); color: var(--text-muted); cursor: pointer;
+      font-size: .9rem; font-weight: 500; transition: all .2s;
+    }
+    .cmd-tab:hover { border-color: var(--accent); color: var(--text); }
+    .cmd-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .commands-panel { display: none; }
+    .commands-panel.active { display: block; }
+
+    .cmd-list {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+    .cmd-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 20px; transition: all .2s;
+    }
+    .cmd-item:hover { border-color: var(--border-glow); }
+    .cmd-name {
+      font-family: var(--mono); font-size: .85rem; color: var(--accent-light);
+      background: rgba(108,92,231,.1); padding: 4px 10px; border-radius: 6px;
+      white-space: nowrap; font-weight: 600;
+    }
+    .cmd-desc { color: var(--text-muted); font-size: .9rem; }
+
+    /* ═══════════════════════════════════════════
+       REASONING MODELS
+       ═══════════════════════════════════════════ */
+    .reasoning-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .reasoning-card {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 24px; transition: all .3s;
+    }
+    .reasoning-card:hover { border-color: var(--green); box-shadow: 0 0 20px var(--green-glow); transform: translateY(-2px); }
+    .reasoning-card h4 { font-size: 1rem; margin-bottom: 6px; }
+    .reasoning-card p { color: var(--text-muted); font-size: .88rem; }
+    .reasoning-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+
+    /* ═══════════════════════════════════════════
+       INSTALL
+       ═══════════════════════════════════════════ */
+    .install-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px; margin-bottom: 40px;
+    }
+    .install-step {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 32px; text-align: center;
+    }
+    .install-step .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px; font-size: 1.2rem;
+    }
+    .install-step h3 { margin-bottom: 8px; font-size: 1.1rem; }
+    .install-step p { color: var(--text-muted); font-size: .93rem; }
+    .install-code {
+      background: #0d0d14; border: 1px solid var(--border); border-radius: 10px;
+      padding: 20px 24px; font-family: var(--mono); font-size: .9rem;
+      color: var(--accent-light); max-width: 700px; margin: 0 auto;
+      position: relative; overflow-x: auto;
+    }
+    .install-code .line { display: block; margin-bottom: 4px; }
+    .install-code .comment { color: var(--text-dim); }
+    .copy-btn {
+      position: absolute; top: 12px; right: 12px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 6px 14px; border-radius: 6px;
+      font-size: .8rem; cursor: pointer; font-family: var(--mono);
+      transition: all .2s;
+    }
+    .copy-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+
+    /* ═══════════════════════════════════════════
+       COMPARISON TABLE
+       ═══════════════════════════════════════════ */
+    .comparison {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; max-width: 900px;
+      margin: 0 auto;
+    }
+    .comparison table { width: 100%; border-collapse: collapse; }
+    .comparison th {
+      padding: 16px 24px; text-align: left; font-weight: 700;
+      border-bottom: 1px solid var(--border); font-size: .95rem;
+    }
+    .comparison th:first-child { color: var(--text-muted); }
+    .comparison th:nth-child(2) { color: var(--red); }
+    .comparison th:nth-child(3) { color: var(--green); }
+    .comparison td {
+      padding: 14px 24px; border-bottom: 1px solid rgba(30,30,46,.5);
+      font-size: .93rem;
+    }
+    .comparison td:first-child { color: var(--text-muted); font-weight: 500; }
+    .comparison tr:last-child td { border-bottom: none; }
+    .comparison .icon-bad { color: var(--red); }
+    .comparison .icon-good { color: var(--green); }
+
+    /* ═══════════════════════════════════════════
+       MULTI-LLM
+       ═══════════════════════════════════════════ */
+    .llm-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .llm-card {
+      background: var(--gradient-card); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 24px; text-align: center;
+      transition: all .3s;
+    }
+    .llm-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
+    .llm-card .llm-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+    .llm-card h4 { font-size: 1rem; margin-bottom: 4px; }
+    .llm-card p { font-size: .85rem; color: var(--text-muted); }
+
+    /* ═══════════════════════════════════════════
+       LEVELS DIAGRAM
+       ═══════════════════════════════════════════ */
+    .levels-visual {
+      display: flex; gap: 12px; align-items: flex-end;
+      justify-content: center; margin-bottom: 40px; flex-wrap: wrap;
+    }
+    .level-bar {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 8px; min-width: 100px;
+    }
+    .level-fill {
+      width: 80px; border-radius: 10px 10px 0 0; transition: all .3s;
+      display: flex; align-items: flex-end; justify-content: center;
+      padding-bottom: 12px; font-weight: 700; font-size: .9rem; color: #fff;
+    }
+    .level-bar:nth-child(1) .level-fill { height: 60px; background: linear-gradient(to top, #6c5ce7, #a29bfe); }
+    .level-bar:nth-child(2) .level-fill { height: 80px; background: linear-gradient(to top, #0984e3, #74b9ff); }
+    .level-bar:nth-child(3) .level-fill { height: 120px; background: linear-gradient(to top, #00b894, #55efc4); color: #0a0a0f; }
+    .level-bar:nth-child(4) .level-fill { height: 170px; background: linear-gradient(to top, #fdcb6e, #ffeaa7); color: #0a0a0f; }
+    .level-bar:nth-child(5) .level-fill { height: 220px; background: linear-gradient(to top, #e17055, #fab1a0); }
+    .level-label { font-size: .8rem; color: var(--text-muted); font-weight: 600; text-align: center; }
+    .level-name { font-size: .75rem; color: var(--text-dim); }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border); padding: 60px 0 40px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;
+      background: var(--gradient-hero); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { color: var(--text-muted); margin-bottom: 24px; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: .9rem; transition: color .2s; }
+    .footer-links a:hover { color: var(--accent-light); }
+    .footer-copy { color: var(--text-dim); font-size: .85rem; }
+
+    /* ═══════════════════════════════════════════
+       DIAGRAM: FLOW
+       ═══════════════════════════════════════════ */
+    .flow-diagram {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px; flex-wrap: wrap; margin: 32px 0;
+    }
+    .flow-node {
+      padding: 10px 18px; border-radius: 10px; font-weight: 600;
+      font-size: .85rem; white-space: nowrap;
+    }
+    .flow-arrow { color: var(--text-dim); font-size: 1.2rem; }
+    .flow-idea { background: rgba(108,92,231,.2); color: var(--accent-light); border: 1px solid rgba(108,92,231,.3); }
+    .flow-spec { background: rgba(116,185,255,.2); color: var(--blue); border: 1px solid rgba(116,185,255,.3); }
+    .flow-code { background: rgba(0,206,201,.2); color: var(--green); border: 1px solid rgba(0,206,201,.3); }
+    .flow-ship { background: rgba(253,203,110,.2); color: var(--orange); border: 1px solid rgba(253,203,110,.3); }
+
+    /* ═══════════════════════════════════════════
+       STATS
+       ═══════════════════════════════════════════ */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px; margin: 48px 0;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2.5rem; font-weight: 900;
+      background: var(--gradient-hero); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { color: var(--text-muted); font-size: .9rem; margin-top: 4px; }
+
+    /* ═══════════════════════════════════════════
+       SCROLL ANIMATIONS
+       ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(10,10,15,.98); padding: 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-toggle { display: block; }
+      .pipeline-step { flex-direction: column; }
+      .pipeline-marker { align-self: flex-start; }
+      .pipeline-line { display: none; }
+      .comparison { overflow-x: auto; }
+      .levels-visual { gap: 8px; }
+      .level-bar { min-width: 70px; }
+      .level-fill { width: 55px; }
+      section { padding: 60px 0; }
+      .hero { padding: 100px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Don Cheli</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="#problema">El Problema</a></li>
+      <li><a href="#como-funciona">Como Funciona</a></li>
+      <li><a href="#perfiles">Perfiles</a></li>
+      <li><a href="#comandos">Comandos</a></li>
+      <li><a href="#razonamiento">Razonamiento</a></li>
+      <li><a href="#instalar" class="nav-cta">Instalar</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge"><span class="dot"></span> v1.14.0 — Open Source</div>
+    <h1>Deja de adivinar.<br><span class="gradient">Empieza a hacer ingenieria.</span></h1>
+    <p class="subtitle">Don Cheli transforma el caos del "vibe coding" en desarrollo profesional. Tu IA deja de ser un autocompletado y se convierte en un ingeniero de software.</p>
+    <div class="hero-actions">
+      <a href="#instalar" class="btn btn-primary">&#9889; Instalar Gratis</a>
+      <a href="https://github.com/doncheli/don-cheli-sdd" class="btn btn-secondary" target="_blank">&#9733; Ver en GitHub</a>
+    </div>
+    <div class="hero-visual">
+      <div class="terminal">
+        <div class="terminal-header">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-title">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <span class="prompt">$</span> <span class="cmd">/dc:comenzar</span> <span class="comment"># Don Cheli analiza tu tarea</span><br>
+          <span class="output">&#9654; Nivel detectado: <strong>2 — Estandar</strong></span><br>
+          <span class="output">&#9654; Fases: Especificar &rarr; Clarificar &rarr; Planificar &rarr; Desglosar &rarr; Implementar &rarr; Revisar</span><br><br>
+          <span class="prompt">$</span> <span class="cmd">/dc:especificar</span> <span class="comment"># Convierte tu idea en specs</span><br>
+          <span class="output">&#9654; Generando especificacion Gherkin...</span><br>
+          <span class="success">&#10003; 8 escenarios generados (5 P1, 2 P2, 1 P3)</span><br>
+          <span class="success">&#10003; Schema DBML provisional creado</span><br>
+          <span class="success">&#10003; Puerta 1: Completitud de Spec <strong>APROBADA</strong></span><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STATS ══════════ -->
+<section>
+  <div class="container">
+    <div class="stats-row reveal">
+      <div class="stat">
+        <div class="stat-num">85+</div>
+        <div class="stat-label">Comandos</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">42+</div>
+        <div class="stat-label">Habilidades</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">15</div>
+        <div class="stat-label">Modelos de Razonamiento</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Perfiles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Idiomas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">8+</div>
+        <div class="stat-label">Herramientas Compatibles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EL PROBLEMA ══════════ -->
+<section id="problema">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">EL PROBLEMA</span>
+      <h2 class="section-title">El "Vibe Coding" esta roto</h2>
+      <p class="section-subtitle centered">Cuando usas IA para programar sin estructura, ocurren tres cosas terribles:</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-icon">&#129504;</div>
+        <h3>Amnesia entre sesiones</h3>
+        <p>La IA olvida las decisiones de arquitectura que tomaron ayer. Cada sesion nueva es empezar de cero. Tu contexto se pierde como lagrimas en la lluvia.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">&#128123;</div>
+        <h3>Stubs silenciosos</h3>
+        <p>La IA dice "ya implemente X" pero el codigo tiene <code>// TODO: implementar</code>. Sin verificacion, estos fantasmas pasan desapercibidos hasta produccion.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">&#127922;</div>
+        <h3>Zero verificacion</h3>
+        <p>No hay evidencia de que nada funcione. No hay tests, no hay specs, no hay quality gates. Solo esperanza y vibes.</p>
+      </div>
+    </div>
+    <div class="solution-banner reveal">
+      <h3>&#10024; Don Cheli resuelve esto</h3>
+      <p>Con un pipeline estructurado de 6 fases, quality gates automaticos, y persistencia entre sesiones. Tu IA pasa de improvisar a hacer ingenieria real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMPARACION ══════════ -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">ANTES vs DESPUES</span>
+      <h2 class="section-title">El cambio que necesitas</h2>
+    </div>
+    <div class="comparison reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>Aspecto</th>
+            <th>&#128308; Sin Don Cheli</th>
+            <th>&#128994; Con Don Cheli</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Requerimientos</td>
+            <td class="icon-bad">"Hazme un login"</td>
+            <td class="icon-good">Spec Gherkin con 8 escenarios</td>
+          </tr>
+          <tr>
+            <td>Arquitectura</td>
+            <td class="icon-bad">La IA inventa sobre la marcha</td>
+            <td class="icon-good">Blueprint tecnico + DBML ratificado</td>
+          </tr>
+          <tr>
+            <td>Tests</td>
+            <td class="icon-bad">Quizas... algun dia...</td>
+            <td class="icon-good">TDD obligatorio: RED &rarr; GREEN &rarr; REFACTOR</td>
+          </tr>
+          <tr>
+            <td>Calidad</td>
+            <td class="icon-bad">"Creo que funciona"</td>
+            <td class="icon-good">6 Quality Gates + 85% cobertura</td>
+          </tr>
+          <tr>
+            <td>Contexto</td>
+            <td class="icon-bad">Se pierde cada sesion</td>
+            <td class="icon-good">Persistencia total en archivos</td>
+          </tr>
+          <tr>
+            <td>Stubs</td>
+            <td class="icon-bad">Pasan a produccion</td>
+            <td class="icon-good">Deteccion automatica de stubs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMO FUNCIONA ══════════ -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">COMO FUNCIONA</span>
+      <h2 class="section-title">6 fases. De la idea al codigo verificado.</h2>
+      <p class="section-subtitle centered">Don Cheli guia a tu IA paso a paso, como un director tecnico senior.</p>
+    </div>
+
+    <div class="flow-diagram reveal">
+      <span class="flow-node flow-idea">&#128161; Idea</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-spec">&#128196; Spec</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-spec">&#128269; Clarificar</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-code">&#128736; Plan</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-code">&#9889; Codigo</span>
+      <span class="flow-arrow">&rarr;</span>
+      <span class="flow-node flow-ship">&#10003; Revisado</span>
+    </div>
+
+    <div class="pipeline reveal">
+      <!-- Paso 1 -->
+      <div class="pipeline-step step-specify">
+        <div class="pipeline-marker">1</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Especificar</h3>
+          <div class="pipeline-cmd">/dc:especificar</div>
+          <p>Describes tu idea en lenguaje natural y Don Cheli la convierte en una <strong>especificacion Gherkin</strong> precisa con escenarios de prueba, prioridades y un esquema de datos provisional.</p>
+        </div>
+      </div>
+      <!-- Paso 2 -->
+      <div class="pipeline-step step-clarify">
+        <div class="pipeline-marker">2</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Clarificar</h3>
+          <div class="pipeline-cmd">/dc:clarificar</div>
+          <p>Un QA virtual revisa tu especificacion buscando <strong>ambiguedades y contradicciones</strong>. Todo lo que no esta claro se resuelve aqui, no en produccion.</p>
+        </div>
+      </div>
+      <!-- Paso 3 -->
+      <div class="pipeline-step step-plan">
+        <div class="pipeline-marker">3</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Planificar</h3>
+          <div class="pipeline-cmd">/dc:planificar-tecnico</div>
+          <p>Se genera un <strong>blueprint tecnico</strong> con la arquitectura, los contratos de API y el esquema de datos final. Como un plano de construccion antes de poner ladrillos.</p>
+        </div>
+      </div>
+      <!-- Paso 4 -->
+      <div class="pipeline-step step-break">
+        <div class="pipeline-marker">4</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Desglosar</h3>
+          <div class="pipeline-cmd">/dc:desglosar</div>
+          <p>El plan se divide en <strong>tareas concretas</strong> con un orden de ejecucion claro. Cada tarea sabe exactamente que archivos toca y que tests necesita.</p>
+        </div>
+      </div>
+      <!-- Paso 5 -->
+      <div class="pipeline-step step-build">
+        <div class="pipeline-marker">5</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Implementar</h3>
+          <div class="pipeline-cmd">/dc:implementar</div>
+          <p>La IA escribe el codigo siguiendo <strong>TDD estricto</strong>: primero el test (que falla), luego el codigo (que lo hace pasar), despues mejora. Nada pasa sin pruebas.</p>
+        </div>
+      </div>
+      <!-- Paso 6 -->
+      <div class="pipeline-step step-review">
+        <div class="pipeline-marker">6</div>
+        <div class="pipeline-line"></div>
+        <div class="pipeline-content">
+          <h3>Revisar</h3>
+          <div class="pipeline-cmd">/dc:revisar</div>
+          <p>Peer review automatico en <strong>7 dimensiones</strong>: funcionalidad, tests, rendimiento, arquitectura, seguridad, mantenibilidad y documentacion.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NIVELES ══════════ -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">ADAPTABLE</span>
+      <h2 class="section-title">Se adapta a tu proyecto</h2>
+      <p class="section-subtitle centered">No todo necesita las 6 fases. Don Cheli detecta automaticamente la complejidad y ajusta el proceso.</p>
+    </div>
+    <div class="levels-visual reveal">
+      <div class="level-bar">
+        <div class="level-fill">N0</div>
+        <div class="level-label">Atomico</div>
+        <div class="level-name">1 archivo<br>&lt;30 min</div>
+      </div>
+      <div class="level-bar">
+        <div class="level-fill">N1</div>
+        <div class="level-label">Micro</div>
+        <div class="level-name">1-3 archivos<br>Horas</div>
+      </div>
+      <div class="level-bar">
+        <div class="level-fill">N2</div>
+        <div class="level-label">Estandar</div>
+        <div class="level-name">Multi-archivo<br>1-3 dias</div>
+      </div>
+      <div class="level-bar">
+        <div class="level-fill">N3</div>
+        <div class="level-label">Complejo</div>
+        <div class="level-name">Multi-modulo<br>1-2 semanas</div>
+      </div>
+      <div class="level-bar">
+        <div class="level-fill">N4</div>
+        <div class="level-label">Producto</div>
+        <div class="level-name">Sistema nuevo<br>2+ semanas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LEYES DE HIERRO ══════════ -->
+<section id="leyes">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">NO NEGOCIABLE</span>
+      <h2 class="section-title">Las 3 Leyes de Hierro</h2>
+      <p class="section-subtitle centered">Estos principios jamas se rompen. Son la base de todo lo que Don Cheli hace.</p>
+    </div>
+    <div class="laws-grid reveal">
+      <div class="law-card">
+        <div class="law-number">LEY I</div>
+        <h3>&#9889; TDD Obligatorio</h3>
+        <p>Todo codigo de produccion nace de un test. Sin excepciones. Primero escribes la prueba, luego el codigo.</p>
+        <div class="law-visual">
+          <span class="law-tag tag-red">RED</span>
+          <span class="law-arrow">&rarr;</span>
+          <span class="law-tag tag-green">GREEN</span>
+          <span class="law-arrow">&rarr;</span>
+          <span class="law-tag tag-blue">REFACTOR</span>
+        </div>
+      </div>
+      <div class="law-card">
+        <div class="law-number">LEY II</div>
+        <h3>&#128269; Causa Raiz Primero</h3>
+        <p>Cuando algo falla, no se parchea. Se investiga la causa real siguiendo un protocolo estricto de 5 pasos.</p>
+        <div class="law-visual">
+          <span class="law-tag tag-orange">Reproducir</span>
+          <span class="law-arrow">&rarr;</span>
+          <span class="law-tag tag-orange">Aislar</span>
+          <span class="law-arrow">&rarr;</span>
+          <span class="law-tag tag-orange">Corregir</span>
+        </div>
+      </div>
+      <div class="law-card">
+        <div class="law-number">LEY III</div>
+        <h3>&#10004; Evidencia, No Promesas</h3>
+        <p>Nada se da por hecho sin pruebas. "Creo que funciona" no existe. Solo valen capturas, logs y tests verdes.</p>
+        <div class="law-visual">
+          <span class="law-tag tag-red">&#10008; "Creo que funciona"</span>
+          <span class="law-tag tag-green">&#10004; Tests pasan (evidencia)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PERFILES ══════════ -->
+<section id="perfiles">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">PERFILES</span>
+      <h2 class="section-title">Elige tu estilo</h2>
+      <p class="section-subtitle centered">6 perfiles preconfigurados con las habilidades, comandos y modelos de razonamiento ideales para cada rol.</p>
+    </div>
+    <div class="profiles-grid reveal">
+      <div class="profile-card">
+        <span class="profile-emoji">&#128123;</span>
+        <h3>Phantom Coder</h3>
+        <div class="profile-role">Full-stack Developer</div>
+        <p>El pipeline completo: desde la spec hasta el deploy. TDD, quality gates, y todo lo que necesitas para entregar codigo profesional.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">TDD</span>
+          <span class="profile-tag">Quality Gates</span>
+          <span class="profile-tag">Full Pipeline</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <span class="profile-emoji">&#128128;</span>
+        <h3>Reaper Sec</h3>
+        <div class="profile-role">Seguridad</div>
+        <p>OWASP Top 10, auditorias de seguridad, pentest workflows. Para quienes protegen el codigo de amenazas.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">OWASP</span>
+          <span class="profile-tag">Auditoria</span>
+          <span class="profile-tag">Pentest</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <span class="profile-emoji">&#127959;</span>
+        <h3>System Architect</h3>
+        <div class="profile-role">Arquitectura</div>
+        <p>Blueprints, SOLID, contratos de API, migraciones. Para disenar sistemas que escalen y se mantengan.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">Blueprints</span>
+          <span class="profile-tag">SOLID</span>
+          <span class="profile-tag">APIs</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <span class="profile-emoji">&#9889;</span>
+        <h3>Speedrunner</h3>
+        <div class="profile-role">MVP / Startup</div>
+        <p>PoC rapidas, estimados agiles, validacion veloz. Perfecto para startups que necesitan lanzar primero y perfeccionar despues.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">PoC</span>
+          <span class="profile-tag">MVP</span>
+          <span class="profile-tag">Velocidad</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <span class="profile-emoji">&#128302;</span>
+        <h3>The Oracle</h3>
+        <div class="profile-role">Razonamiento</div>
+        <p>Los 15 modelos mentales de razonamiento. Para decisiones dificiles, analisis profundo y pensamiento estrategico.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">15 Modelos</span>
+          <span class="profile-tag">Estrategia</span>
+          <span class="profile-tag">Decisiones</span>
+        </div>
+      </div>
+      <div class="profile-card">
+        <span class="profile-emoji">&#129399;</span>
+        <h3>Dev Dojo</h3>
+        <div class="profile-role">Aprendizaje</div>
+        <p>Crece mientras construyes. Documentacion viva, ADRs, reflexiones. Ideal para equipos que quieren aprender de cada sesion.</p>
+        <div class="profile-tags">
+          <span class="profile-tag">Docs Vivas</span>
+          <span class="profile-tag">ADRs</span>
+          <span class="profile-tag">Reflexion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMANDOS ══════════ -->
+<section id="comandos">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">COMANDOS</span>
+      <h2 class="section-title">85+ comandos a tu disposicion</h2>
+      <p class="section-subtitle centered">Cada comando es una accion concreta. Solo escribe el comando y Don Cheli se encarga del resto.</p>
+    </div>
+
+    <div class="commands-tabs reveal">
+      <button class="cmd-tab active" onclick="showPanel('pipeline')">Pipeline</button>
+      <button class="cmd-tab" onclick="showPanel('analisis')">Analisis</button>
+      <button class="cmd-tab" onclick="showPanel('equipo')">Equipo</button>
+      <button class="cmd-tab" onclick="showPanel('seguridad')">Seguridad</button>
+      <button class="cmd-tab" onclick="showPanel('sesion')">Sesion</button>
+      <button class="cmd-tab" onclick="showPanel('extras')">Extras</button>
+    </div>
+
+    <div id="panel-pipeline" class="commands-panel active reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:comenzar</span><span class="cmd-desc">Inicia una tarea detectando automaticamente su complejidad (Nivel 0-4)</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:especificar</span><span class="cmd-desc">Convierte tu idea en especificacion Gherkin con escenarios de prueba</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:clarificar</span><span class="cmd-desc">Encuentra ambiguedades y las resuelve antes de codear</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:planificar-tecnico</span><span class="cmd-desc">Genera el blueprint tecnico con arquitectura y contratos</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:desglosar</span><span class="cmd-desc">Divide el plan en tareas concretas con orden de ejecucion</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:implementar</span><span class="cmd-desc">Ejecuta las tareas con TDD: RED &rarr; GREEN &rarr; REFACTOR</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:revisar</span><span class="cmd-desc">Peer review automatico en 7 dimensiones</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:rapido</span><span class="cmd-desc">Modo rapido para tareas pequenas (Nivel 1)</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:completo</span><span class="cmd-desc">Modo completo para proyectos grandes (Nivel 3)</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:poc</span><span class="cmd-desc">Prueba de Concepto con timebox y criterios claros</span></div>
+      </div>
+    </div>
+
+    <div id="panel-analisis" class="commands-panel reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:explorar</span><span class="cmd-desc">Explora el codebase existente antes de proponer cambios</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:reversa</span><span class="cmd-desc">Ingenieria inversa: extrae la arquitectura de codigo existente</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:destilar</span><span class="cmd-desc">Extrae especificaciones compactas desde codigo existente</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:estimar</span><span class="cmd-desc">Estimados con 4 modelos: Function Points, COCOMO, Planning Poker y Historico</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:minar-referencias</span><span class="cmd-desc">Busca repos open-source relevantes como referencia</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:reflexionar</span><span class="cmd-desc">Auto-reflexion para mejorar calidad (+8-21%)</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:validar-spec</span><span class="cmd-desc">Valida completitud y calidad de una especificacion</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:pseudocodigo</span><span class="cmd-desc">Genera pseudocodigo antes de planificar (agnostico de tecnologia)</span></div>
+      </div>
+    </div>
+
+    <div id="panel-equipo" class="commands-panel reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:mesa-redonda</span><span class="cmd-desc">Discusion multi-perspectiva: CPO, UX, Negocio debaten tu idea</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:mesa-tecnica</span><span class="cmd-desc">Panel de expertos senior: Tech Lead, Backend, Frontend, Arquitecto</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:debate</span><span class="cmd-desc">Deliberacion adversarial: PM vs Arquitecto vs QA</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:planning</span><span class="cmd-desc">Planning semanal con priorizacion y asignacion por squad</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:incorporar</span><span class="cmd-desc">Onboarding: incorpora nuevo dev con contexto completo</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:traspasar</span><span class="cmd-desc">Genera handoff estructurado para la proxima sesion</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:presentar</span><span class="cmd-desc">Genera presentacion interactiva HTML desde tu proyecto</span></div>
+      </div>
+    </div>
+
+    <div id="panel-seguridad" class="commands-panel reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:auditar-seguridad</span><span class="cmd-desc">Auditoria OWASP Top 10 estatica del codigo</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:contrato-api</span><span class="cmd-desc">Disena contratos de API con reintentos y circuit breaker</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:contrato-ui</span><span class="cmd-desc">Bloquea estandares visuales antes de codear frontend</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:guardian</span><span class="cmd-desc">Guardian Angel: revision de codigo IA como pre-commit hook</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:limpiar-slop</span><span class="cmd-desc">Elimina codigo basura generado por IA antes de commits</span></div>
+      </div>
+    </div>
+
+    <div id="panel-sesion" class="commands-panel reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:continuar</span><span class="cmd-desc">Recupera tu sesion previa sin perder contexto</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:cerrar-sesion</span><span class="cmd-desc">Ritual de cierre con auditoria y aprendizajes</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:donde-estoy</span><span class="cmd-desc">Test rapido para verificar que la IA tiene el contexto correcto</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:estado</span><span class="cmd-desc">Muestra el estado actual de tu proyecto</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:capturar</span><span class="cmd-desc">Captura ideas sin interrumpir tu flujo de trabajo</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:memorizar</span><span class="cmd-desc">Guarda insights para referencia futura</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:historial</span><span class="cmd-desc">Lista todas tus sesiones pasadas</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:cambios</span><span class="cmd-desc">Muestra cambios desde la ultima sesion</span></div>
+      </div>
+    </div>
+
+    <div id="panel-extras" class="commands-panel reveal">
+      <div class="cmd-list">
+        <div class="cmd-item"><span class="cmd-name">/dc:migrar</span><span class="cmd-desc">Planifica migracion entre stacks (Vue&rarr;React, JS&rarr;TS...)</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:avance-rapido</span><span class="cmd-desc">Fast-forward: genera todos los artefactos de planificacion de un golpe</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:crear-skill</span><span class="cmd-desc">Crea nuevas habilidades para el framework</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:marketplace</span><span class="cmd-desc">Instala skills desde el marketplace de la comunidad</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:doctor</span><span class="cmd-desc">Diagnostica y repara problemas del framework</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:actualizar</span><span class="cmd-desc">Actualiza Don Cheli a la ultima version</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:proponer</span><span class="cmd-desc">Crea propuesta formal de cambio</span></div>
+        <div class="cmd-item"><span class="cmd-name">/dc:uat</span><span class="cmd-desc">Genera scripts de aceptacion para validacion humana</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RAZONAMIENTO ══════════ -->
+<section id="razonamiento">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">RAZONAMIENTO</span>
+      <h2 class="section-title">15 modelos mentales integrados</h2>
+      <p class="section-subtitle centered">No solo codigo. Don Cheli te ayuda a <strong>pensar mejor</strong> con modelos mentales de clase mundial.</p>
+    </div>
+    <div class="reasoning-grid reveal">
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#129520;</span>
+        <h4>Primeros Principios</h4>
+        <p>Descomponer hasta las verdades fundamentales y reconstruir desde cero.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#10067;</span>
+        <h4>5 Porques</h4>
+        <p>Causa raiz: pregunta "por que?" hasta llegar al origen real del problema.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128200;</span>
+        <h4>Pareto 80/20</h4>
+        <p>Enfocate en el 20% que produce el 80% de los resultados.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128260;</span>
+        <h4>Inversion</h4>
+        <p>En vez de como lograr X, pregunta: como GARANTIZO el fracaso?</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#127922;</span>
+        <h4>Pre-Mortem</h4>
+        <p>Imagina que ya fallo. Analiza por que. Previene en vez de lamentar.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128161;</span>
+        <h4>Segundo Orden</h4>
+        <p>Consecuencias de las consecuencias. Piensa 2-3 pasos mas alla.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#9878;</span>
+        <h4>Costo de Oportunidad</h4>
+        <p>Que sacrificas al elegir una opcion? Toda decision tiene un costo oculto.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128506;</span>
+        <h4>Mapa vs Territorio</h4>
+        <p>Distingue entre tu modelo mental y la realidad. El mapa NO es el territorio.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#127919;</span>
+        <h4>Minimizar Arrepentimiento</h4>
+        <p>Framework de Jeff Bezos: que decision minimiza el arrepentimiento a largo plazo?</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128176;</span>
+        <h4>Reversibilidad</h4>
+        <p>Calibra el compromiso: las decisiones reversibles se toman rapido, las irreversibles con cuidado.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#127902;</span>
+        <h4>Circulo de Competencia</h4>
+        <p>Conoce tus limites. Distingue lo que dominas de lo que solo conoces superficialmente.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#127922;</span>
+        <h4>Probabilistico</h4>
+        <p>Razona en probabilidades, no en certezas binarias. Asigna % a los resultados.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#129302;</span>
+        <h4>RLM: Verificacion</h4>
+        <p>Sub-LLMs frescos como jurado independiente para verificar conclusiones.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128279;</span>
+        <h4>RLM: Cadena</h4>
+        <p>Context Folding: subagentes frescos por paso para evitar degradacion del contexto.</p>
+      </div>
+      <div class="reasoning-card">
+        <span class="reasoning-icon">&#128296;</span>
+        <h4>RLM: Descomposicion</h4>
+        <p>Divide y conquista con subagentes paralelos para problemas complejos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MULTI-LLM ══════════ -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">COMPATIBLE</span>
+      <h2 class="section-title">Funciona con tu herramienta favorita</h2>
+      <p class="section-subtitle centered">Don Cheli no es un programa. Son archivos Markdown que cualquier agente de IA puede interpretar.</p>
+    </div>
+    <div class="llm-grid reveal">
+      <div class="llm-card">
+        <span class="llm-icon">&#129302;</span>
+        <h4>Claude Code</h4>
+        <p>Soporte nativo completo</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#128161;</span>
+        <h4>Google Antigravity</h4>
+        <p>Gemini con skills nativos</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#9000;</span>
+        <h4>Cursor</h4>
+        <p>Via AGENTS.md</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#128187;</span>
+        <h4>Codex</h4>
+        <p>Via AGENTS.md</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#128640;</span>
+        <h4>Warp</h4>
+        <p>Terminal con IA</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#9889;</span>
+        <h4>Amp</h4>
+        <p>Via prompt.md</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#9654;</span>
+        <h4>Continue.dev</h4>
+        <p>Extension VS Code</p>
+      </div>
+      <div class="llm-card">
+        <span class="llm-icon">&#128421;</span>
+        <h4>OpenCode</h4>
+        <p>Terminal nativo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSTALACION ══════════ -->
+<section id="instalar">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-tag">INSTALACION</span>
+      <h2 class="section-title">En 3 pasos. 2 minutos.</h2>
+      <p class="section-subtitle centered">Gratis, open source, sin dependencias pesadas. Solo necesitas Git y un agente de IA.</p>
+    </div>
+    <div class="install-steps reveal">
+      <div class="install-step">
+        <div class="step-num">1</div>
+        <h3>Clona el repo</h3>
+        <p>Descarga Don Cheli desde GitHub</p>
+      </div>
+      <div class="install-step">
+        <div class="step-num">2</div>
+        <h3>Ejecuta el instalador</h3>
+        <p>El instalador interactivo te guia paso a paso</p>
+      </div>
+      <div class="install-step">
+        <div class="step-num">3</div>
+        <h3>Empieza a usar</h3>
+        <p>Escribe /dc:comenzar en tu agente de IA</p>
+      </div>
+    </div>
+    <div class="install-code reveal">
+      <button class="copy-btn" onclick="copyInstall()">Copiar</button>
+      <span class="line"><span class="comment"># 1. Clonar</span></span>
+      <span class="line">git clone https://github.com/doncheli/don-cheli-sdd.git</span>
+      <span class="line">&nbsp;</span>
+      <span class="line"><span class="comment"># 2. Instalar (interactivo: elige idioma, herramienta y perfil)</span></span>
+      <span class="line">cd don-cheli-sdd && bash scripts/instalar.sh</span>
+      <span class="line">&nbsp;</span>
+      <span class="line"><span class="comment"># 3. En tu proyecto, abre tu agente IA y escribe:</span></span>
+      <span class="line">/dc:iniciar</span>
+    </div>
+    <div class="text-center reveal" style="margin-top: 32px;">
+      <p class="text-muted" style="margin-bottom: 16px;">O instalacion remota en una sola linea:</p>
+      <div class="install-code" style="display:inline-block; text-align:left;">
+        <span class="line">curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global --lang es</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section>
+  <div class="container">
+    <div class="text-center reveal">
+      <div style="background: linear-gradient(135deg, rgba(108,92,231,.15), rgba(0,206,201,.15)); border: 1px solid var(--accent); border-radius: var(--radius); padding: 60px 40px; max-width: 800px; margin: 0 auto;">
+        <h2 class="section-title" style="margin-bottom: 16px;">Listo para dejar de adivinar?</h2>
+        <p class="section-subtitle centered" style="margin-bottom: 32px;">Unete a los desarrolladores que ya usan Don Cheli para construir software profesional con IA.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/doncheli/don-cheli-sdd" class="btn btn-primary" target="_blank">&#128640; Empezar Ahora</a>
+          <a href="https://github.com/doncheli/don-cheli-sdd/stargazers" class="btn btn-secondary" target="_blank">&#11088; Star en GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">Don Cheli</div>
+    <p class="footer-tagline">Desarrollo Dirigido por Especificaciones</p>
+    <div class="footer-links">
+      <a href="https://github.com/doncheli/don-cheli-sdd" target="_blank">GitHub</a>
+      <a href="https://github.com/doncheli/don-cheli-sdd/blob/main/CHANGELOG.md" target="_blank">Changelog</a>
+      <a href="https://github.com/doncheli/don-cheli-sdd/blob/main/LICENSE" target="_blank">Apache 2.0</a>
+      <a href="https://doncheli.tv" target="_blank">doncheli.tv</a>
+    </div>
+    <p class="footer-copy">Hecho con &#10084; en Latinoamerica &mdash; &copy; 2026 Don Cheli. Open source para todos.</p>
+  </div>
+</footer>
+
+<script>
+  // ── Nav scroll effect ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ── Command tabs ──
+  function showPanel(name) {
+    document.querySelectorAll('.commands-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.cmd-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ── Copy install ──
+  function copyInstall() {
+    const text = 'git clone https://github.com/doncheli/don-cheli-sdd.git\ncd don-cheli-sdd && bash scripts/instalar.sh';
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = 'Copiado!';
+      setTimeout(() => btn.textContent = 'Copiar', 2000);
+    });
+  }
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Close mobile menu on link click ──
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>

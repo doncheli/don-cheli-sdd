@@ -494,7 +494,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             ALL_CMDS=""
             for cmd_file in "${SCRIPT_DIR}/comandos/especdev/"*.md; do
                 [ -f "$cmd_file" ] || continue
-                cmd_name="especdev:$(basename "$cmd_file" .md)"
+                cmd_name="dc:$(basename "$cmd_file" .md)"
                 ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
             done
             for cmd_file in "${SCRIPT_DIR}/comandos/razonar/"*.md; do
