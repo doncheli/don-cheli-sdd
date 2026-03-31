@@ -180,16 +180,16 @@ load test_helper
 
 # ─── Command counts ───────────────────────────────────────────────────────────
 
-@test "validar.sh output includes /especdev command count" {
+@test "validar.sh output includes /dc command count" {
     run bash -c "cd '$REPO_ROOT' && bash '$REPO_ROOT/scripts/validar.sh'"
-    [[ "$output" == *"Comandos /especdev:*:"* ]]
+    [[ "$output" == *"Comandos /dc:*:"* ]]
 }
 
-@test "validar.sh reports at least 40 /especdev commands" {
+@test "validar.sh reports at least 40 /dc commands" {
     run bash -c "cd '$REPO_ROOT' && bash '$REPO_ROOT/scripts/validar.sh'"
-    # Extract the count from the output line "Comandos /especdev:*: N"
+    # Extract the count from the output line "Comandos /dc:*: N"
     local count
-    count=$(echo "$output" | grep -oE 'Comandos /especdev:\*: [0-9]+' | grep -oE '[0-9]+$')
+    count=$(echo "$output" | grep -oE 'Comandos /dc:\*: [0-9]+' | grep -oE '[0-9]+$')
     [ -n "$count" ]
     [ "$count" -ge 40 ]
 }
