@@ -35,6 +35,40 @@ cleanup() {
 }
 trap cleanup EXIT
 
+# ═══════════════════════════════════════════════════════════════
+# Dependencies — install gum if interactive mode needs it
+# ═══════════════════════════════════════════════════════════════
+
+HAS_GUM=false
+if command -v gum &>/dev/null; then
+    HAS_GUM=true
+fi
+
+install_gum() {
+    if [ "$HAS_GUM" = true ]; then return 0; fi
+    echo -e "  📦 Installing gum (interactive UI)..."
+    if command -v brew &>/dev/null; then
+        brew install gum --quiet 2>/dev/null && HAS_GUM=true && return 0
+    fi
+    if command -v apt-get &>/dev/null; then
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg 2>/dev/null
+        echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list >/dev/null
+        sudo apt-get update -qq 2>/dev/null && sudo apt-get install -y -qq gum 2>/dev/null && HAS_GUM=true && return 0
+    fi
+    if command -v yum &>/dev/null; then
+        echo '[charm]
+name=Charm
+baseurl=https://repo.charm.sh/yum/
+enabled=1
+gpgcheck=1
+gpgkey=https://repo.charm.sh/yum/gpg.key' | sudo tee /etc/yum.repos.d/charm.repo >/dev/null
+        sudo yum install -y gum 2>/dev/null && HAS_GUM=true && return 0
+    fi
+    echo -e "  ${YELLOW:-}⚠ Could not install gum. Using fallback mode.${NC:-}"
+    return 1
+}
+
 # Colors
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -293,63 +327,110 @@ echo -e "${NC}"
 if [ "$INTERACTIVE_MODE" = true ]; then
     echo ""
 
+    # Try to install gum for better interactive UI
+    install_gum
+
     # Step 1: Tool Selection (if not provided via flag)
     if [ -z "$TOOLS_FLAG" ]; then
-        echo -e "  ${BOLD}¿Dónde quieres instalar Don Cheli SDD?${NC}"
-        echo ""
-        echo -e "     ${CYAN}1)${NC}  Claude Code     (CLAUDE.md + comandos)"
-        echo -e "     ${CYAN}2)${NC}  Codex           (AGENTS.md)"
-        echo -e "     ${CYAN}3)${NC}  Cursor          (.cursorrules)"
-        echo -e "     ${CYAN}4)${NC}  Antigravity     (GEMINI.md + .agent/)"
-        echo -e "     ${CYAN}5)${NC}  Windsurf        (.windsurf/rules/)"
-        echo -e "     ${CYAN}6)${NC}  Amp             (prompt.md)"
-        echo -e "     ${CYAN}7)${NC}  Continue.dev    (.continue/config/)"
-        echo -e "     ${CYAN}8)${NC}  OpenCode        (.opencode/ + @doncheli)"
-        echo -e "     ${CYAN}9)${NC}  Todos"
-        echo ""
-        echo -ne "  ${BOLD}▸ Elige (números separados por coma): ${NC}"
-        if ! read -r TOOLS_CHOICE < /dev/tty 2>/dev/null; then
-            TOOLS_CHOICE="9"
-        fi
+        if [ "$HAS_GUM" = true ]; then
+            TOOLS_RAW=$(printf "Claude Code\nCodex\nCursor\nAntigravity\nWindsurf\nAmp\nContinue.dev\nOpenCode\nTodos" | \
+                gum choose --no-limit \
+                --header "¿Dónde quieres instalar Don Cheli SDD?" \
+                --header.foreground="99" \
+                --cursor.foreground="212" \
+                --selected.foreground="120" \
+                < /dev/tty 2>/dev/null) || true
 
-        TOOLS_FLAG=""
-        for num in $(echo "$TOOLS_CHOICE" | tr ',' ' '); do
-            case "$num" in
-                1) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
-                2) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
-                3) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
-                4) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
-                5) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
-                6) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
-                7) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
-                8) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
-                9|all) TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
-            esac
-        done
+            TOOLS_FLAG=""
+            while IFS= read -r tool; do
+                case "$tool" in
+                    "Claude Code") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
+                    "Codex") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
+                    "Cursor") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
+                    "Antigravity") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
+                    "Windsurf") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
+                    "Amp") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
+                    "Continue.dev") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
+                    "OpenCode") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
+                    "Todos") TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+                esac
+            done <<< "$TOOLS_RAW"
+        else
+            echo -e "  ${BOLD}¿Dónde quieres instalar Don Cheli SDD?${NC}"
+            echo ""
+            echo -e "     ${CYAN}1)${NC}  Claude Code     (CLAUDE.md + comandos)"
+            echo -e "     ${CYAN}2)${NC}  Codex           (AGENTS.md)"
+            echo -e "     ${CYAN}3)${NC}  Cursor          (.cursorrules)"
+            echo -e "     ${CYAN}4)${NC}  Antigravity     (GEMINI.md + .agent/)"
+            echo -e "     ${CYAN}5)${NC}  Windsurf        (.windsurf/rules/)"
+            echo -e "     ${CYAN}6)${NC}  Amp             (prompt.md)"
+            echo -e "     ${CYAN}7)${NC}  Continue.dev    (.continue/config/)"
+            echo -e "     ${CYAN}8)${NC}  OpenCode        (.opencode/ + @doncheli)"
+            echo -e "     ${CYAN}9)${NC}  Todos"
+            echo ""
+            echo -ne "  ${BOLD}▸ Elige (números separados por coma): ${NC}"
+            if ! read -r TOOLS_CHOICE < /dev/tty 2>/dev/null; then
+                TOOLS_CHOICE="9"
+            fi
+
+            TOOLS_FLAG=""
+            for num in $(echo "$TOOLS_CHOICE" | tr ',' ' '); do
+                case "$num" in
+                    1) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
+                    2) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
+                    3) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
+                    4) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
+                    5) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
+                    6) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
+                    7) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
+                    8) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
+                    9|all) TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+                esac
+            done
+        fi
         [ -z "$TOOLS_FLAG" ] && TOOLS_FLAG="claude"
         echo -e "  ${GREEN}✓${NC} Herramientas: ${TOOLS_FLAG}"
     fi
 
     # Step 2: Profile Selection (if not provided via flag)
     if [ -z "$PROFILE_FLAG" ]; then
-        echo ""
-        echo -e "  ${BOLD}Elige tu perfil de desarrollador:${NC}"
-        echo ""
-        echo -e "     ${CYAN}1)${NC}  👻 Phantom Coder   ${DIM}[Full-stack]${NC}     Pipeline completo, TDD, quality gates"
-        echo -e "     ${CYAN}2)${NC}  💀 Reaper Sec      ${DIM}[Seguridad]${NC}      OWASP, auditoría, pentest workflow"
-        echo -e "     ${CYAN}3)${NC}  🏗  System Architect ${DIM}[Arquitectura]${NC}  Blueprints, SOLID, APIs, migraciones"
-        echo -e "     ${CYAN}4)${NC}  ⚡ Speedrunner      ${DIM}[MVP/Startup]${NC}   PoC, estimados, validación veloz"
-        echo -e "     ${CYAN}5)${NC}  🔮 The Oracle       ${DIM}[Razonamiento]${NC}  15 modelos mentales, análisis profundo"
-        echo -e "     ${CYAN}6)${NC}  🥷 Dev Dojo         ${DIM}[Aprendizaje]${NC}   Documentación viva, ADRs, Obsidian"
-        echo -e "     ${CYAN}7)${NC}  ⚙️  Custom           ${DIM}[Manual]${NC}        Seleccionar todo manualmente"
-        echo ""
-        echo -ne "  ${BOLD}▸ ${NC}"
-        if ! read -r PROFILE_CHOICE < /dev/tty 2>/dev/null; then
-            PROFILE_CHOICE="1"
-        fi
+        if [ "$HAS_GUM" = true ]; then
+            PROFILE_CHOICE=$(printf "👻 Phantom Coder  [Full-stack]    — Pipeline completo, TDD, quality gates\n💀 Reaper Sec     [Seguridad]     — OWASP, auditoría, pentest workflow\n🏗  System Architect [Arquitectura] — Blueprints, SOLID, APIs, migraciones\n⚡ Speedrunner     [MVP/Startup]   — PoC, estimados, validación veloz\n🔮 The Oracle      [Razonamiento]  — 15 modelos mentales, análisis profundo\n🥷 Dev Dojo        [Aprendizaje]   — Documentación viva, ADRs, Obsidian\n⚙️  Custom          [Manual]        — Seleccionar skills y comandos manualmente" | \
+                gum choose \
+                --header "Elige tu perfil de desarrollador:" \
+                --header.foreground="99" \
+                --cursor.foreground="212" \
+                < /dev/tty 2>/dev/null) || true
 
-        case "$PROFILE_CHOICE" in
-            1|phantom)   PROFILE_FLAG="phantom" ;;
+            case "$PROFILE_CHOICE" in
+                *Phantom*)   PROFILE_FLAG="phantom" ;;
+                *Reaper*)    PROFILE_FLAG="reaper" ;;
+                *Architect*) PROFILE_FLAG="architect" ;;
+                *Speedrun*)  PROFILE_FLAG="speedrun" ;;
+                *Oracle*)    PROFILE_FLAG="oracle" ;;
+                *Dojo*)      PROFILE_FLAG="dojo" ;;
+                *Custom*)    PROFILE_FLAG="custom" ;;
+                *)           PROFILE_FLAG="phantom" ;;
+            esac
+        else
+            echo ""
+            echo -e "  ${BOLD}Elige tu perfil de desarrollador:${NC}"
+            echo ""
+            echo -e "     ${CYAN}1)${NC}  👻 Phantom Coder   ${DIM}[Full-stack]${NC}     Pipeline completo, TDD, quality gates"
+            echo -e "     ${CYAN}2)${NC}  💀 Reaper Sec      ${DIM}[Seguridad]${NC}      OWASP, auditoría, pentest workflow"
+            echo -e "     ${CYAN}3)${NC}  🏗  System Architect ${DIM}[Arquitectura]${NC}  Blueprints, SOLID, APIs, migraciones"
+            echo -e "     ${CYAN}4)${NC}  ⚡ Speedrunner      ${DIM}[MVP/Startup]${NC}   PoC, estimados, validación veloz"
+            echo -e "     ${CYAN}5)${NC}  🔮 The Oracle       ${DIM}[Razonamiento]${NC}  15 modelos mentales, análisis profundo"
+            echo -e "     ${CYAN}6)${NC}  🥷 Dev Dojo         ${DIM}[Aprendizaje]${NC}   Documentación viva, ADRs, Obsidian"
+            echo -e "     ${CYAN}7)${NC}  ⚙️  Custom           ${DIM}[Manual]${NC}        Seleccionar todo manualmente"
+            echo ""
+            echo -ne "  ${BOLD}▸ ${NC}"
+            if ! read -r PROFILE_CHOICE < /dev/tty 2>/dev/null; then
+                PROFILE_CHOICE="1"
+            fi
+
+            case "$PROFILE_CHOICE" in
+                1|phantom)   PROFILE_FLAG="phantom" ;;
             2|reaper)    PROFILE_FLAG="reaper" ;;
             3|architect) PROFILE_FLAG="architect" ;;
             4|speedrun)  PROFILE_FLAG="speedrun" ;;
@@ -358,6 +439,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             7|custom)    PROFILE_FLAG="custom" ;;
             *)           PROFILE_FLAG="phantom" ;;
         esac
+        fi
         echo -e "  ${GREEN}✓${NC} Perfil: ${PROFILE_FLAG}"
     fi
 
@@ -372,12 +454,74 @@ if [ "$INTERACTIVE_MODE" = true ]; then
         SKILLS_COUNT=$(cat "$PROFILE_DIR/skills.txt" 2>/dev/null | wc -l | tr -d ' ')
         COMMANDS_COUNT=$(cat "$PROFILE_DIR/comandos.txt" 2>/dev/null | wc -l | tr -d ' ')
     else
+        # Custom profile — interactive skill/command selection
         PROFILE_NAME="Custom"
         PROFILE_EMOJI="⚙️"
-        PROFILE_SKILLS=""
-        PROFILE_COMMANDS=""
-        SKILLS_COUNT="todas"
-        COMMANDS_COUNT="todos"
+
+        # Try to install gum for interactive selection
+        install_gum
+
+        if [ "$HAS_GUM" = true ]; then
+            echo ""
+            echo -e "  ${BOLD}Selecciona las skills que necesitas:${NC}"
+            echo ""
+
+            # Build skills list from habilidades/ directory
+            ALL_SKILLS=""
+            for skill_dir in "${SCRIPT_DIR}/habilidades/"*/; do
+                [ -d "$skill_dir" ] || continue
+                skill_name=$(basename "$skill_dir")
+                ALL_SKILLS="${ALL_SKILLS}${skill_name}\n"
+            done
+
+            SELECTED_SKILLS_RAW=$(printf "%b" "$ALL_SKILLS" | sort | gum choose --no-limit \
+                --header "Skills — espacio para toggle, enter para confirmar" \
+                --header.foreground="99" \
+                --cursor.foreground="212" \
+                --selected.foreground="120" \
+                < /dev/tty 2>/dev/null) || true
+
+            PROFILE_SKILLS=$(echo "$SELECTED_SKILLS_RAW" | tr '\n' ',' | sed 's/,$//')
+            SKILLS_COUNT=$(echo "$SELECTED_SKILLS_RAW" | grep -c . || echo "0")
+
+            echo -e "  ${GREEN}✓${NC} ${SKILLS_COUNT} skills seleccionadas"
+            echo ""
+
+            echo -e "  ${BOLD}Selecciona los comandos que necesitas:${NC}"
+            echo ""
+
+            # Build commands list
+            ALL_CMDS=""
+            for cmd_file in "${SCRIPT_DIR}/comandos/especdev/"*.md; do
+                [ -f "$cmd_file" ] || continue
+                cmd_name="especdev:$(basename "$cmd_file" .md)"
+                ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
+            done
+            for cmd_file in "${SCRIPT_DIR}/comandos/razonar/"*.md; do
+                [ -f "$cmd_file" ] || continue
+                cmd_name="razonar:$(basename "$cmd_file" .md)"
+                ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
+            done
+
+            SELECTED_CMDS_RAW=$(printf "%b" "$ALL_CMDS" | sort | gum choose --no-limit \
+                --header "Comandos — espacio para toggle, enter para confirmar" \
+                --header.foreground="99" \
+                --cursor.foreground="212" \
+                --selected.foreground="120" \
+                < /dev/tty 2>/dev/null) || true
+
+            PROFILE_COMMANDS=$(echo "$SELECTED_CMDS_RAW" | tr '\n' ',' | sed 's/,$//')
+            COMMANDS_COUNT=$(echo "$SELECTED_CMDS_RAW" | grep -c . || echo "0")
+
+            echo -e "  ${GREEN}✓${NC} ${COMMANDS_COUNT} comandos seleccionados"
+        else
+            # Fallback without gum — install everything
+            echo -e "  ${YELLOW}⚠ gum no disponible. Instalando todas las skills y comandos.${NC}"
+            PROFILE_SKILLS=""
+            PROFILE_COMMANDS=""
+            SKILLS_COUNT="todas"
+            COMMANDS_COUNT="todos"
+        fi
     fi
 
     # Override with explicit flags if provided
