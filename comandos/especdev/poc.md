@@ -3,7 +3,7 @@ description: Modo Prueba de Concepto para validar viabilidad técnica antes de c
 i18n: true
 ---
 
-# /especdev:poc
+# /dc:poc
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Iniciar una Prueba de Concepto (PoC) para validar viabilidad técnica, explorar 
 ## Uso
 
 ```
-/especdev:poc <descripción de lo que se quiere validar>
-/especdev:poc --hipotesis "<lo que quiero demostrar>"
-/especdev:poc --tiempo 2h                                # Limitar timebox (default: 4h)
-/especdev:poc --graduar                                  # Convertir PoC exitoso en feature real
+/dc:poc <descripción de lo que se quiere validar>
+/dc:poc --hipotesis "<lo que quiero demostrar>"
+/dc:poc --tiempo 2h                                # Limitar timebox (default: 4h)
+/dc:poc --graduar                                  # Convertir PoC exitoso en feature real
 ```
 
 ## Cuándo Usar
@@ -176,7 +176,7 @@ Uno de 4 resultados posibles:
 ## Veredicto: ✅ VIABLE — Proceder con implementación
 
 **Recomendación:** Usar WebSockets para notificaciones real-time.
-**Próximo paso:** /especdev:comenzar Implementar notificaciones real-time con WebSockets
+**Próximo paso:** /dc:comenzar Implementar notificaciones real-time con WebSockets
 **Hallazgos a preservar:**
   - Config nginx necesaria → guardar en hallazgos.md
   - Usar ws@8.17+ (no 8.16) → guardar en hallazgos.md
@@ -185,7 +185,7 @@ Uno de 4 resultados posibles:
 
 | Veredicto | Significado | Acción |
 |-----------|-------------|--------|
-| ✅ **VIABLE** | Hipótesis confirmada, criterios cumplidos | Graduar a feature con `/especdev:poc --graduar` |
+| ✅ **VIABLE** | Hipótesis confirmada, criterios cumplidos | Graduar a feature con `/dc:poc --graduar` |
 | ⚠️ **VIABLE CON RESERVAS** | Funciona pero con limitaciones | Documentar limitaciones, decidir si proceder |
 | ❌ **NO VIABLE** | Hipótesis refutada | Documentar por qué, explorar alternativas |
 | 🔄 **INCONCLUSO** | Timebox agotado sin evidencia suficiente | Extender timebox o reformular hipótesis |
@@ -195,7 +195,7 @@ Uno de 4 resultados posibles:
 Cuando un PoC es VIABLE, se puede graduar a una feature real:
 
 ```bash
-/especdev:poc --graduar
+/dc:poc --graduar
 ```
 
 ### Flujo de Graduación
@@ -205,8 +205,8 @@ PoC VIABLE
   │
   ├── 1. Extraer hallazgos → .especdev/hallazgos.md
   ├── 2. Extraer decisiones técnicas → .especdev/memoria/decisiones.md
-  ├── 3. Crear propuesta desde PoC → /especdev:proponer (auto-generada)
-  ├── 4. Iniciar pipeline completo → /especdev:comenzar
+  ├── 3. Crear propuesta desde PoC → /dc:proponer (auto-generada)
+  ├── 4. Iniciar pipeline completo → /dc:comenzar
   │      (con contexto del PoC como input)
   └── 5. Archivar código PoC → poc/_archivo/<nombre>/
 ```
@@ -227,8 +227,8 @@ PoC VIABLE
 ## Integración con Pipeline
 
 ```
-/especdev:poc → hipótesis + código + veredicto
-  ├── ✅ VIABLE → /especdev:poc --graduar → /especdev:proponer → pipeline normal
+/dc:poc → hipótesis + código + veredicto
+  ├── ✅ VIABLE → /dc:poc --graduar → /dc:proponer → pipeline normal
   ├── ⚠️ CON RESERVAS → documentar → decisión del usuario
   ├── ❌ NO VIABLE → documentar → explorar alternativa
   └── 🔄 INCONCLUSO → reformular hipótesis → nuevo PoC
@@ -253,7 +253,7 @@ poc/
 ## Ejemplo Completo
 
 ```bash
-/especdev:poc --hipotesis "Podemos usar SQLite en vez de PostgreSQL para el MVP"
+/dc:poc --hipotesis "Podemos usar SQLite en vez de PostgreSQL para el MVP"
 
 === PoC: SQLite para MVP ===
 

@@ -5,7 +5,7 @@ Información de ejecución del proyecto: endpoints, variables de entorno, servic
 ## Endpoints Locales
 | Servicio | URL | Puerto |
 |----------|-----|--------|
-<!-- Se auto-genera durante /especdev:implementar -->
+<!-- Se auto-genera durante /dc:implementar -->
 
 ## Variables de Entorno Requeridas
 | Variable | Descripción | Origen |

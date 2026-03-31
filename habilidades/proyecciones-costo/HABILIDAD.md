@@ -49,6 +49,6 @@ Estado: ✅ Dentro del budget (75% usado)
 
 ## Integración
 
-- Se calcula automáticamente al completar cada slice en `/especdev:implementar`
-- Se incluye en `/especdev:cerrar-sesion`
+- Se calcula automáticamente al completar cada slice en `/dc:implementar`
+- Se incluye en `/dc:cerrar-sesion`
 - Si el costo proyectado excede el budget configurado, genera un `[checkpoint:decision]`

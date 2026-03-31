@@ -3,7 +3,7 @@ description: Recuperar sesión previa y generar reporte de puesta al día
 i18n: true
 ---
 
-# /especdev:continuar
+# /dc:continuar
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Recuperar el contexto de una sesión previa y generar un reporte de puesta al d�
 ## Uso
 
 ```
-/especdev:continuar
+/dc:continuar
 ```
 
 ## Comportamiento
@@ -56,4 +56,4 @@ Para verificar que el contexto está completo:
 **Estado del Contexto:**
 - ✅ Completo (5/5) → Listo para continuar
 - ⚠️ Parcial (3-4/5) → Proceder con precaución
-- ❌ Incompleto (0-2/5) → Ejecutar `/especdev:iniciar --reparar`
+- ❌ Incompleto (0-2/5) → Ejecutar `/dc:iniciar --reparar`

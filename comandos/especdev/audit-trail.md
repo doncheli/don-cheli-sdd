@@ -3,7 +3,7 @@ description: Generar y consultar el log de auditoría de decisiones asistidas po
 i18n: true
 ---
 
-# /especdev:audit-trail
+# /dc:audit-trail
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Registrar, almacenar y consultar todas las decisiones asistidas por IA durante e
 ## Uso
 
 ```
-/especdev:audit-trail                            # Ver entradas recientes (últimas 20)
-/especdev:audit-trail --registrar                # Registrar acción actual
-/especdev:audit-trail --filtro accion=generate   # Filtrar por tipo de acción
-/especdev:audit-trail --filtro artefacto=spec    # Filtrar por tipo de artefacto
-/especdev:audit-trail --filtro fecha=2026-03-28  # Filtrar por fecha
-/especdev:audit-trail --exportar csv             # Exportar como CSV
-/especdev:audit-trail --resumen                  # Estadísticas del proyecto
+/dc:audit-trail                            # Ver entradas recientes (últimas 20)
+/dc:audit-trail --registrar                # Registrar acción actual
+/dc:audit-trail --filtro accion=generate   # Filtrar por tipo de acción
+/dc:audit-trail --filtro artefacto=spec    # Filtrar por tipo de artefacto
+/dc:audit-trail --filtro fecha=2026-03-28  # Filtrar por fecha
+/dc:audit-trail --exportar csv             # Exportar como CSV
+/dc:audit-trail --resumen                  # Estadísticas del proyecto
 ```
 
 ## Comportamiento
@@ -85,7 +85,7 @@ session: dc-session-2026-03-28-a
 | AT-0046 | 2026-03-28 13:30 | `approve` | code | human | Implementación CrearUsuario aprobada tras verificación manual |
 | ...     | ...              | ...      | ...       | ...   | ... |
 
-→ Página 1 de 3 — `/especdev:audit-trail --pagina 2`
+→ Página 1 de 3 — `/dc:audit-trail --pagina 2`
 ```
 
 ## Output — Resumen Estadístico
@@ -121,9 +121,9 @@ Code: 21% modificado  → Normal para código de negocio complejo
 ## Integración con Pipeline
 
 El audit trail se actualiza automáticamente al ejecutar:
-- `/especdev:especificar` → registra `generate:spec`
-- `/especdev:implementar` → registra `generate:code` y `generate:test`
-- `/especdev:revisar` → registra `review:code`
+- `/dc:especificar` → registra `generate:spec`
+- `/dc:implementar` → registra `generate:code` y `generate:test`
+- `/dc:revisar` → registra `review:code`
 - Aprobación humana de cualquier artefacto → registra `approve`
 
 ## Guardrails

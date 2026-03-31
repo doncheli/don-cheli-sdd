@@ -3,7 +3,7 @@ description: Iniciar tarea con nivel de complejidad auto-detectado (0-4)
 i18n: true
 ---
 
-# /especdev:comenzar
+# /dc:comenzar
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Iniciar una tarea detectando automáticamente el nivel de complejidad (0-4) y ej
 ## Uso
 
 ```
-/especdev:comenzar <descripción de la tarea>
+/dc:comenzar <descripción de la tarea>
 ```
 
 ## Auto-Detección de Nivel
@@ -39,7 +39,7 @@ Nivel = max(puntuaciones)  // Conservador: gana la dimensión más alta
 | **3** | Complejo | 7 fases completas |
 | **4** | Producto | 7 fases + artefactos completos |
 
-**Detección de PoC:** Si la tarea es una pregunta ("¿se puede...?", "¿funciona...?", "¿vale la pena...?") o incluye palabras como "probar", "viabilidad", "validar", "explorar opción" → sugerir `/especdev:poc`.
+**Detección de PoC:** Si la tarea es una pregunta ("¿se puede...?", "¿funciona...?", "¿vale la pena...?") o incluye palabras como "probar", "viabilidad", "validar", "explorar opción" → sugerir `/dc:poc`.
 
 ## Comportamiento
 
@@ -53,7 +53,7 @@ Nivel = max(puntuaciones)  // Conservador: gana la dimensión más alta
 ## Ejemplo
 
 ```bash
-/especdev:comenzar Implementar autenticación JWT con refresh tokens
+/dc:comenzar Implementar autenticación JWT con refresh tokens
 
 === Evaluación de Complejidad ===
 

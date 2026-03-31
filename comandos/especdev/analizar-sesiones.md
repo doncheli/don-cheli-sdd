@@ -3,7 +3,7 @@ description: Analizar sesiones de Claude en el equipo para extraer patrones de u
 i18n: true
 ---
 
-# /especdev:analizar-sesiones
+# /dc:analizar-sesiones
 
 ## Objetivo
 
@@ -12,9 +12,9 @@ Escanear todas las sesiones de Claude en el equipo local, analizar patrones de u
 ## Uso
 
 ```
-/especdev:analizar-sesiones
-/especdev:analizar-sesiones --periodo <dias>
-/especdev:analizar-sesiones --formato <resumen|detallado|ejecutivo>
+/dc:analizar-sesiones
+/dc:analizar-sesiones --periodo <dias>
+/dc:analizar-sesiones --formato <resumen|detallado|ejecutivo>
 ```
 
 ## Comportamiento
@@ -151,8 +151,8 @@ Reglas que repito en cada sesión y deberían ser instrucciones permanentes:
 ## Integración con Don Cheli
 
 Este comando se integra con:
-- `/especdev:iniciar` → Las skills detectadas se sugieren al crear un proyecto nuevo
-- `/especdev:agente` → Los agentes detectados se agregan al sistema de agentes
-- `/especdev:estimar` → Los datos históricos alimentan estimados más precisos
+- `/dc:iniciar` → Las skills detectadas se sugieren al crear un proyecto nuevo
+- `/dc:agente` → Los agentes detectados se agregan al sistema de agentes
+- `/dc:estimar` → Los datos históricos alimentan estimados más precisos
 - **Reglas de Trabajo Globales** → Las reglas detectadas se incorporan automáticamente
 - **Optimización de Tokens** → Los patrones de consumo optimizan uso de modelos

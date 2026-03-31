@@ -3,7 +3,7 @@ description: Detectar ambigüedades y contradicciones en specs de forma exhausti
 i18n: true
 ---
 
-# /especdev:detectar-ambiguedad
+# /dc:detectar-ambiguedad
 
 ## Objetivo
 
@@ -14,8 +14,8 @@ Escanear specs en busca de ambigüedades, contradicciones, requisitos implícito
 ## Uso
 
 ```
-/especdev:detectar-ambiguedad @specs/features/<dominio>/<Feature>.feature
-/especdev:detectar-ambiguedad --todos   # Escanear todas las specs activas
+/dc:detectar-ambiguedad @specs/features/<dominio>/<Feature>.feature
+/dc:detectar-ambiguedad --todos   # Escanear todas las specs activas
 ```
 
 ## Qué Detecta

@@ -4,7 +4,7 @@
 
 Estas regras estabelecem um **padrão profissional de desenvolvimento** aplicável a todos os projetos que usam o Don Cheli. Enquanto a constituição define os *princípios*, estas regras definem as *práticas* concretas. O framework as carrega automaticamente e as aplica em cada sessão, eliminando a necessidade de repetir instruções manualmente.
 
-> **Uso:** Estas regras são carregadas automaticamente ao executar `/especdev:iniciar`. Podem ser personalizadas por projeto em `.especdev/config.yaml`.
+> **Uso:** Estas regras são carregadas automaticamente ao executar `/dc:iniciar`. Podem ser personalizadas por projeto em `.especdev/config.yaml`.
 
 ---
 

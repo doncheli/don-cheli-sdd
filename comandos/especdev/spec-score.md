@@ -3,7 +3,7 @@ description: Puntuación cuantitativa de calidad de especificaciones (0-100) con
 i18n: true
 ---
 
-# /especdev:spec-score
+# /dc:spec-score
 
 ## Objetivo
 
@@ -12,12 +12,12 @@ Evaluar la calidad de una especificación con una puntuación cuantitativa de 0 
 ## Uso
 
 ```
-/especdev:spec-score                               # Evaluar spec del proyecto actual
-/especdev:spec-score @docs/specs/checkout/spec.md # Evaluar un archivo específico
-/especdev:spec-score --historia US-042             # Evaluar una historia de usuario
-/especdev:spec-score --umbral 80                   # Cambiar umbral de aprobación
-/especdev:spec-score --comparar main               # Comparar contra versión en main
-/especdev:spec-score --formato ejecutivo           # Reporte simplificado para PMs
+/dc:spec-score                               # Evaluar spec del proyecto actual
+/dc:spec-score @docs/specs/checkout/spec.md # Evaluar un archivo específico
+/dc:spec-score --historia US-042             # Evaluar una historia de usuario
+/dc:spec-score --umbral 80                   # Cambiar umbral de aprobación
+/dc:spec-score --comparar main               # Comparar contra versión en main
+/dc:spec-score --formato ejecutivo           # Reporte simplificado para PMs
 ```
 
 ## Las 8 Métricas
@@ -40,7 +40,7 @@ Evaluar la calidad de una especificación con una puntuación cuantitativa de 0 
 | 90-100 | Excelente | Lista para implementar |
 | 80-89 | Buena | Revisar observaciones menores |
 | 60-79 | Necesita trabajo | Corregir antes de implementar |
-| 0-59 | Rechazada | Reescribir con `/especdev:especificar` |
+| 0-59 | Rechazada | Reescribir con `/dc:especificar` |
 
 ## Comportamiento
 
@@ -164,20 +164,20 @@ Independencia   [█████░░░░░] 55
 1. Resolver ambigüedades (impacto: +15 pts estimados)
 2. Desacoplar dependencia con US-031 (impacto: +8 pts)
 3. Agregar SLAs en criterios de performance (impacto: +5 pts)
-4. Re-evaluar con `/especdev:spec-score` → objetivo: ≥ 85
+4. Re-evaluar con `/dc:spec-score` → objetivo: ≥ 85
 ```
 
 ## Integración con Don Cheli
 
 ```
-/especdev:spec-score → score < 60
-  → /especdev:clarificar → resolver ambigüedades
-  → /especdev:especificar → reescribir spec
-  → /especdev:spec-score → re-evaluar
+/dc:spec-score → score < 60
+  → /dc:clarificar → resolver ambigüedades
+  → /dc:especificar → reescribir spec
+  → /dc:spec-score → re-evaluar
 
-/especdev:spec-score → score ≥ 80
-  → /especdev:desglosar → convertir en tareas
-  → /especdev:implementar → desarrollo con TDD
+/dc:spec-score → score ≥ 80
+  → /dc:desglosar → convertir en tareas
+  → /dc:implementar → desarrollo con TDD
 ```
 
 ## Modelo Recomendado

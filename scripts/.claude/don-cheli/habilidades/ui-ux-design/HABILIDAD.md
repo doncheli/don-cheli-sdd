@@ -8,7 +8,7 @@
 
 ## Propósito
 
-Generar sistemas de diseño completos (estilos, colores, tipografía, patrones) a partir de la descripción del producto. Complementa `/especdev:contrato-ui` que **bloquea** estándares — esta habilidad **genera** las opciones.
+Generar sistemas de diseño completos (estilos, colores, tipografía, patrones) a partir de la descripción del producto. Complementa `/dc:contrato-ui` que **bloquea** estándares — esta habilidad **genera** las opciones.
 
 ## Relación con contrato-ui
 
@@ -36,7 +36,7 @@ ui-ux-design (GENERAR)  →  contrato-ui (BLOQUEAR)  →  implementar (CODEAR)
 3. Presentar 3 opciones de sistema de diseño
 4. Usuario elige
 5. Generar tokens CSS + guía de componentes
-6. (Opcional) Bloquear con /especdev:contrato-ui
+6. (Opcional) Bloquear con /dc:contrato-ui
 ```
 
 ## Output

@@ -54,8 +54,8 @@ El DevLog es una bitácora cronológica de TODOS los cambios significativos del 
 ## Auto-Registro
 
 El DevLog se actualiza automáticamente cuando:
-1. `/especdev:archivar` completa un cambio
-2. `/especdev:aplicar` termina una implementación
+1. `/dc:archivar` completa un cambio
+2. `/dc:aplicar` termina una implementación
 3. Se crea un commit significativo
 
 ## Ubicación

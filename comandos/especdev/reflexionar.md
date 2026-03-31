@@ -3,7 +3,7 @@ description: Reflexionar sobre una tarea para mejorar calidad (+8-21%)
 i18n: true
 ---
 
-# /especdev:reflexionar
+# /dc:reflexionar
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Aplicar reflexión estructurada sobre una tarea completada para mejorar la calid
 ## Uso
 
 ```
-/especdev:reflexionar [tema]
+/dc:reflexionar [tema]
 ```
 
 ## Las 4 Preguntas

@@ -46,10 +46,10 @@ Requerimiento → .feature (Gherkin) → .plan.md (Blueprint) → .tasks.md (Tar
 
 | Tag | Significado | Quién lo Pone |
 |-----|-------------|---------------|
-| `@borrador` | Spec en progreso, no lista | `/especdev:especificar` |
-| `@clarificada` | Ambigüedades resueltas | `/especdev:clarificar` |
+| `@borrador` | Spec en progreso, no lista | `/dc:especificar` |
+| `@clarificada` | Ambigüedades resueltas | `/dc:clarificar` |
 | `@lista` | Aprobada para implementación | Puerta de Calidad |
-| `@implementada` | Código escrito y tests pasan | `/especdev:implementar` |
+| `@implementada` | Código escrito y tests pasan | `/dc:implementar` |
 | `@provisional` | Schema DBML no ratificado | Auto-generado |
 
 ## Propiedad de Archivos

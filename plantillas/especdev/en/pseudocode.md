@@ -32,4 +32,4 @@ WHEN user does X
 - [Data 2] ← [Source]
 
 ---
-*Generated with `/especdev:pseudocodigo` between specifying and planning.*
+*Generated with `/dc:pseudocodigo` between specifying and planning.*

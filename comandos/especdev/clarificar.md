@@ -3,7 +3,7 @@ description: Detectar ambigüedades en una especificación, ejecutar Auto-QA y r
 i18n: true
 ---
 
-# /especdev:clarificar
+# /dc:clarificar
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ Analizar una especificación Gherkin actuando como **Ingeniero QA Estricto**: de
 ## Uso
 
 ```
-/especdev:clarificar @specs/features/<dominio>/<Feature>.feature
+/dc:clarificar @specs/features/<dominio>/<Feature>.feature
 ```
 
 ## Comportamiento

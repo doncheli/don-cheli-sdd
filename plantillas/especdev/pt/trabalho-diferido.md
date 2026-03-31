@@ -14,4 +14,4 @@ Trabalho descoberto durante fixes, PoCs ou implementação que está FORA do esc
 
 ---
 
-<!-- O trabalho diferido é registrado automaticamente durante /especdev:poc, /especdev:rapido e /especdev:implementar -->
+<!-- O trabalho diferido é registrado automaticamente durante /dc:poc, /dc:rapido e /dc:implementar -->

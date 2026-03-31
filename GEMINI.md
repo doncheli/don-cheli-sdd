@@ -59,7 +59,7 @@ Invoke skills with `@skill-name` syntax (e.g., `@doncheli-spec`, `@doncheli-revi
 
 ## Workflows
 
-Slash commands are in `.agent/workflows/`. They orchestrate multi-step processes using skills. Available commands map to `/especdev:*` commands from the framework.
+Slash commands are in `.agent/workflows/`. They orchestrate multi-step processes using skills. Available commands map to `/dc:*` commands from the framework.
 
 ## Available Skills (13)
 

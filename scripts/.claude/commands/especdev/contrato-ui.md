@@ -3,7 +3,7 @@ description: Bloquear estándares visuales antes de codear frontend (UI Design C
 i18n: true
 ---
 
-# /especdev:contrato-ui
+# /dc:contrato-ui
 
 ## Objetivo
 
@@ -14,10 +14,10 @@ Definir y bloquear los estándares visuales de una feature frontend **antes** de
 ## Uso
 
 ```
-/especdev:contrato-ui                          # Crear contrato para el proyecto
-/especdev:contrato-ui @specs/features/ui/      # Crear para un módulo específico
-/especdev:contrato-ui --desde @figma-export    # Derivar de un export de Figma
-/especdev:contrato-ui --extender               # Extender contrato existente
+/dc:contrato-ui                          # Crear contrato para el proyecto
+/dc:contrato-ui @specs/features/ui/      # Crear para un módulo específico
+/dc:contrato-ui --desde @figma-export    # Derivar de un export de Figma
+/dc:contrato-ui --extender               # Extender contrato existente
 ```
 
 ## Por Qué Existe
@@ -206,16 +206,16 @@ YAML completo con las 6 dimensiones definidas arriba.
 ## Integración con Pipeline
 
 ```
-/especdev:contrato-ui → contrato-ui.yaml + tokens.css
-  → /especdev:especificar → escenarios referencian tokens
-  → /especdev:planificar-tecnico → plan incluye contrato como dependencia
-  → /especdev:implementar → agente usa tokens, NO inventa estilos
-  → /especdev:revisar → verifica cumplimiento del contrato
+/dc:contrato-ui → contrato-ui.yaml + tokens.css
+  → /dc:especificar → escenarios referencian tokens
+  → /dc:planificar-tecnico → plan incluye contrato como dependencia
+  → /dc:implementar → agente usa tokens, NO inventa estilos
+  → /dc:revisar → verifica cumplimiento del contrato
 ```
 
 ## Verificación de Cumplimiento
 
-Durante `/especdev:revisar`, se verifica:
+Durante `/dc:revisar`, se verifica:
 
 | Verificación | Criterio | Severidad |
 |--------------|----------|-----------|

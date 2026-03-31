@@ -3,11 +3,11 @@ description: Ejecutar tareas TDD fase por fase dentro de Docker hasta que todos 
 i18n: true
 ---
 
-# /especdev:implementar
+# /dc:implementar
 
 ## Objetivo
 
-Ejecutar las tareas generadas por `/especdev:desglosar` de forma automatizada, siguiendo el ciclo TDD (RED → GREEN → REFACTOR) dentro de un entorno Docker aislado, con checkpoints formalizados para intervención humana.
+Ejecutar las tareas generadas por `/dc:desglosar` de forma automatizada, siguiendo el ciclo TDD (RED → GREEN → REFACTOR) dentro de un entorno Docker aislado, con checkpoints formalizados para intervención humana.
 
 > Adaptado del comando `speckit.implement` de Specular.
 > Mejorado con Taxonomía de Checkpoints de Get Shit Done (gsd-build/get-shit-done).
@@ -15,9 +15,9 @@ Ejecutar las tareas generadas por `/especdev:desglosar` de forma automatizada, s
 ## Uso
 
 ```
-/especdev:implementar @specs/features/<dominio>/<Feature>.tasks.md
-/especdev:implementar --fase <numero>
-/especdev:implementar --seco   # Solo mostrar plan sin ejecutar
+/dc:implementar @specs/features/<dominio>/<Feature>.tasks.md
+/dc:implementar --fase <numero>
+/dc:implementar --seco   # Solo mostrar plan sin ejecutar
 ```
 
 ## Comportamiento
@@ -161,7 +161,7 @@ Integración con **Detección de Loops** (habilidad): si se detecta un loop, esc
 ## Ejemplo
 
 ```bash
-/especdev:implementar @specs/features/usuario/CrearUsuario.tasks.md
+/dc:implementar @specs/features/usuario/CrearUsuario.tasks.md
 
 === Implementando: CrearUsuario ===
 

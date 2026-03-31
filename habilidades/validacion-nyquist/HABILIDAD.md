@@ -35,12 +35,12 @@ Con Nyquist:
 
 ## Cuándo se Ejecuta
 
-La validación Nyquist se ejecuta como **puerta de calidad** entre `/especdev:desglosar` y `/especdev:implementar`:
+La validación Nyquist se ejecuta como **puerta de calidad** entre `/dc:desglosar` y `/dc:implementar`:
 
 ```
-/especdev:desglosar → .tasks.md
+/dc:desglosar → .tasks.md
   → [VALIDACIÓN NYQUIST] ← aquí
-  → /especdev:implementar
+  → /dc:implementar
 ```
 
 ## Proceso de Validación

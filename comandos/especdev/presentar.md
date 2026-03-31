@@ -3,7 +3,7 @@ description: Generar presentación interactiva HTML desde contenido del proyecto
 i18n: true
 ---
 
-# /especdev:presentar
+# /dc:presentar
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Generar presentaciones interactivas como archivos HTML autocontenidos — sin Po
 ## Uso
 
 ```
-/especdev:presentar <tema o descripción>
-/especdev:presentar --tema "bold-signal"
-/especdev:presentar --desde pptx input.pptx
-/especdev:presentar --actualizar docs/presentacion/mi-presentacion.html
+/dc:presentar <tema o descripción>
+/dc:presentar --tema "bold-signal"
+/dc:presentar --desde pptx input.pptx
+/dc:presentar --actualizar docs/presentacion/mi-presentacion.html
 ```
 
 ## Parámetros
@@ -71,5 +71,5 @@ Lee `habilidades/presentaciones/HABILIDAD.md` para la referencia técnica comple
 ## Ejemplo
 
 ```
-/especdev:presentar "Demo de Don Cheli para conferencia de devs" --tema terminal-green --slides 12
+/dc:presentar "Demo de Don Cheli para conferencia de devs" --tema terminal-green --slides 12
 ```

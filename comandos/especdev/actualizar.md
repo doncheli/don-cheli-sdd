@@ -3,7 +3,7 @@ description: Detectar actualizaciones del framework Don Cheli y aplicarlas
 i18n: true
 ---
 
-# /especdev:actualizar
+# /dc:actualizar
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Verificar si hay actualizaciones disponibles en el repositorio de Don Cheli y of
 ## Uso
 
 ```
-/especdev:actualizar
-/especdev:actualizar --verificar    # Solo verificar, no aplicar
-/especdev:actualizar --forzar       # Aplicar sin confirmar
-/especdev:actualizar --auto         # Auto-actualizar con auditoría de seguridad (usado por auto-check de sesión)
+/dc:actualizar
+/dc:actualizar --verificar    # Solo verificar, no aplicar
+/dc:actualizar --forzar       # Aplicar sin confirmar
+/dc:actualizar --auto         # Auto-actualizar con auditoría de seguridad (usado por auto-check de sesión)
 ```
 
 ## Proceso
@@ -80,7 +80,7 @@ Antes de aplicar cualquier actualización, ejecutar auditoría de seguridad sobr
    git clone --depth 1 https://github.com/doncheli/don-cheli-sdd.git "$TEMP"
 
 3. AUDITAR — Análisis de seguridad sobre archivos cambiados
-   Ejecutar /especdev:auditar-seguridad sobre $TEMP con:
+   Ejecutar /dc:auditar-seguridad sobre $TEMP con:
    - Buscar secretos hardcoded (API keys, tokens, passwords)
    - Buscar inyección de comandos en scripts (exec, eval, spawn)
    - Verificar que scripts de instalación no ejecuten código arbitrario

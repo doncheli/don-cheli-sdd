@@ -3,7 +3,7 @@ description: Detectar actualizaciones del framework Don Cheli y aplicarlas
 i18n: true
 ---
 
-# /especdev:actualizar
+# /dc:actualizar
 
 ## Objetivo
 
@@ -12,9 +12,9 @@ Verificar si hay actualizaciones disponibles en el repositorio de Don Cheli y of
 ## Uso
 
 ```
-/especdev:actualizar
-/especdev:actualizar --verificar    # Solo verificar, no aplicar
-/especdev:actualizar --forzar       # Aplicar sin confirmar
+/dc:actualizar
+/dc:actualizar --verificar    # Solo verificar, no aplicar
+/dc:actualizar --forzar       # Aplicar sin confirmar
 ```
 
 ## Proceso

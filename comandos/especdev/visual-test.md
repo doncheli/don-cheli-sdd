@@ -3,7 +3,7 @@ description: Testing visual de componentes UI y páginas con detección de regre
 i18n: true
 ---
 
-# /especdev:visual-test
+# /dc:visual-test
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Ejecutar pruebas visuales de componentes UI y páginas completas, comparando cap
 ## Uso
 
 ```
-/especdev:visual-test                              # Testear todos los componentes registrados
-/especdev:visual-test --pagina /checkout           # Testear una página específica
-/especdev:visual-test --componente Button          # Testear un componente
-/especdev:visual-test --breakpoints                # Testear todos los breakpoints responsive
-/especdev:visual-test --baseline                   # Capturar nuevas líneas base
-/especdev:visual-test --diff-only                  # Mostrar solo cambios detectados
-/especdev:visual-test --umbral 2.5                 # Tolerancia de diferencia en % (default: 1%)
+/dc:visual-test                              # Testear todos los componentes registrados
+/dc:visual-test --pagina /checkout           # Testear una página específica
+/dc:visual-test --componente Button          # Testear un componente
+/dc:visual-test --breakpoints                # Testear todos los breakpoints responsive
+/dc:visual-test --baseline                   # Capturar nuevas líneas base
+/dc:visual-test --diff-only                  # Mostrar solo cambios detectados
+/dc:visual-test --umbral 2.5                 # Tolerancia de diferencia en % (default: 1%)
 ```
 
 ## Comportamiento
@@ -136,7 +136,7 @@ interacciones:
 ### Próximos Pasos
 - Corregir regresión en Checkout mobile antes de merge
 - Revisar cambio en Header y actualizar baseline si es intencional
-- Ejecutar `/especdev:visual-test --baseline` después de corregir
+- Ejecutar `/dc:visual-test --baseline` después de corregir
 ```
 
 ## Almacenamiento
@@ -157,10 +157,10 @@ interacciones:
 ## Integración con Don Cheli
 
 ```
-/especdev:visual-test → detecta regresión
-  → /especdev:desglosar → tarea de corrección
-  → /especdev:implementar → fix con TDD
-  → /especdev:visual-test --baseline → actualizar referencia
+/dc:visual-test → detecta regresión
+  → /dc:desglosar → tarea de corrección
+  → /dc:implementar → fix con TDD
+  → /dc:visual-test --baseline → actualizar referencia
 ```
 
 Ejecutar automáticamente:

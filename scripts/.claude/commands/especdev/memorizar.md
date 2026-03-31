@@ -3,7 +3,7 @@ description: Guardar insights importantes para referencia futura
 i18n: true
 ---
 
-# /especdev:memorizar
+# /dc:memorizar
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Guardar un insight o aprendizaje importante en `.especdev/hallazgos.md` para que
 ## Uso
 
 ```
-/especdev:memorizar <insight>
+/dc:memorizar <insight>
 ```
 
 ## Ejemplo
 
 ```bash
-/especdev:memorizar "Los índices compuestos en MongoDB mejoran 10x las consultas de búsqueda con filtros múltiples"
+/dc:memorizar "Los índices compuestos en MongoDB mejoran 10x las consultas de búsqueda con filtros múltiples"
 ```
 
 Agrega al archivo `.especdev/hallazgos.md`:

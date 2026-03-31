@@ -54,7 +54,7 @@ UTIL_COUNT=$(find comandos/ -maxdepth 1 -name "*.md" 2>/dev/null | wc -l | tr -d
 
 echo ""
 echo "Resumen:"
-echo "- Comandos /especdev:*: $ESPECDEV_COUNT"
+echo "- Comandos /dc:*: $ESPECDEV_COUNT"
 echo "- Comandos /razonar:*: $RAZONAR_COUNT"
 echo "- Comandos utilidad: $UTIL_COUNT"
 echo "- Errores: $ERRORES"

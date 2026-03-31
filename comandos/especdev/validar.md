@@ -3,7 +3,7 @@ description: Validar la conformidad de archivos .especdev/
 i18n: true
 ---
 
-# /especdev:validar
+# /dc:validar
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Verificar que los archivos de `.especdev/` están completos y conformes.
 ## Uso
 
 ```
-/especdev:validar
+/dc:validar
 ```
 
 ## Verificaciones

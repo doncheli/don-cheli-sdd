@@ -14,4 +14,4 @@ Append-only log of technical and product decisions. Never deleted — only new o
 
 ---
 
-<!-- Decisions are added here with /especdev:memorizar -->
+<!-- Decisions are added here with /dc:memorizar -->

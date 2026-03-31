@@ -3,7 +3,7 @@ description: Auditoría de seguridad estática del código (OWASP Top 10, SecDev
 i18n: true
 ---
 
-# /especdev:auditar-seguridad
+# /dc:auditar-seguridad
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Realizar una auditoría de seguridad estática del código, identificando vulner
 ## Uso
 
 ```
-/especdev:auditar-seguridad                                # Auditar proyecto completo
-/especdev:auditar-seguridad @src/services/auth/            # Auditar módulo específico
-/especdev:auditar-seguridad --foco inyeccion               # Enfocarse en un tipo
-/especdev:auditar-seguridad --severidad critica            # Solo hallazgos críticos
+/dc:auditar-seguridad                                # Auditar proyecto completo
+/dc:auditar-seguridad @src/services/auth/            # Auditar módulo específico
+/dc:auditar-seguridad --foco inyeccion               # Enfocarse en un tipo
+/dc:auditar-seguridad --severidad critica            # Solo hallazgos críticos
 ```
 
 ## Categorías de Auditoría (OWASP Top 10 + extras)
@@ -205,10 +205,10 @@ cursor.execute(query, (f"%{search_term}%",))
 ## Integración con Pipeline
 
 ```
-/especdev:auditar-seguridad → reporte
-  → /especdev:desglosar → tareas de remediación
-  → /especdev:implementar → fixes con TDD
-  → /especdev:auditar-seguridad → verificar fixes
+/dc:auditar-seguridad → reporte
+  → /dc:desglosar → tareas de remediación
+  → /dc:implementar → fixes con TDD
+  → /dc:auditar-seguridad → verificar fixes
 ```
 
 Se recomienda ejecutar **antes de cada PR** que toque:

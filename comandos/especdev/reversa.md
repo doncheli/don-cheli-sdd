@@ -3,7 +3,7 @@ description: Extraer arquitectura de un codebase existente (ingeniería inversa)
 i18n: true
 ---
 
-# /especdev:reversa
+# /dc:reversa
 
 ## Objetivo
 
@@ -14,10 +14,10 @@ Analizar un codebase existente y extraer su arquitectura implícita: componentes
 ## Uso
 
 ```
-/especdev:reversa                          # Analizar el proyecto actual
-/especdev:reversa @ruta/al/proyecto        # Analizar un proyecto específico
-/especdev:reversa --profundidad superficial # Solo estructura de alto nivel
-/especdev:reversa --profundidad profunda    # Incluir flujo de datos y dependencias
+/dc:reversa                          # Analizar el proyecto actual
+/dc:reversa @ruta/al/proyecto        # Analizar un proyecto específico
+/dc:reversa --profundidad superficial # Solo estructura de alto nivel
+/dc:reversa --profundidad profunda    # Incluir flujo de datos y dependencias
 ```
 
 ## Por Qué Existe

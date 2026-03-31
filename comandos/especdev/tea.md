@@ -3,24 +3,24 @@ description: Testing Autónomo End-to-End — genera, ejecuta y reporta tests au
 i18n: true
 ---
 
-# /especdev:tea
+# /dc:tea
 
 ## Objetivo
 
-Módulo de Testing Autónomo End-to-End (TEA): genera archivos de test, los ejecuta y produce un reporte de resultados y cobertura. Integra con el pipeline TDD del framework, se ejecuta tras `/especdev:implementar` y auto-detecta el framework de testing del proyecto.
+Módulo de Testing Autónomo End-to-End (TEA): genera archivos de test, los ejecuta y produce un reporte de resultados y cobertura. Integra con el pipeline TDD del framework, se ejecuta tras `/dc:implementar` y auto-detecta el framework de testing del proyecto.
 
 ## Uso
 
 ```
-/especdev:tea                                   # Ejecutar ciclo completo
-/especdev:tea @specs/features/pagos/            # Solo dominio específico
-/especdev:tea --fase analizar                   # Solo fase 1
-/especdev:tea --fase generar                    # Solo fase 2
-/especdev:tea --fase ejecutar                   # Solo fase 3
-/especdev:tea --tipo unit                       # Solo tests unitarios
-/especdev:tea --tipo integration                # Solo tests de integración
-/especdev:tea --tipo contract                   # Solo tests de contrato
-/especdev:tea --seco                            # Mostrar plan sin ejecutar
+/dc:tea                                   # Ejecutar ciclo completo
+/dc:tea @specs/features/pagos/            # Solo dominio específico
+/dc:tea --fase analizar                   # Solo fase 1
+/dc:tea --fase generar                    # Solo fase 2
+/dc:tea --fase ejecutar                   # Solo fase 3
+/dc:tea --tipo unit                       # Solo tests unitarios
+/dc:tea --tipo integration                # Solo tests de integración
+/dc:tea --tipo contract                   # Solo tests de contrato
+/dc:tea --seco                            # Mostrar plan sin ejecutar
 ```
 
 ## Comportamiento — 4 Fases
@@ -146,7 +146,7 @@ AssertionError: Expected ValueError, got None
 para montos negativos. Revisar validación en `src/services/payment_service.py:47`
 
 **Acción recomendada:**
-→ `/especdev:implementar` para corregir `PaymentService.refund()` (validación de monto)
+→ `/dc:implementar` para corregir `PaymentService.refund()` (validación de monto)
 → Cobertura de branches al 79% — agregar tests para ramas `else` en `apply_coupon()`
 ```
 
@@ -174,10 +174,10 @@ para montos negativos. Revisar validación en `src/services/payment_service.py:4
 ## Integración con Pipeline
 
 ```
-/especdev:implementar → código + tests manuales
-  → /especdev:tea → validar cobertura completa
-  → /especdev:drift → verificar cierre de brechas
-  → /especdev:pr-review → revisión pre-PR
+/dc:implementar → código + tests manuales
+  → /dc:tea → validar cobertura completa
+  → /dc:drift → verificar cierre de brechas
+  → /dc:pr-review → revisión pre-PR
 ```
 
 ## Guardrails

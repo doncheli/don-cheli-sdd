@@ -3,12 +3,12 @@ description: Ver detalles de una sesión pasada
 i18n: true
 ---
 
-# /especdev:retro
+# /dc:retro
 
 ## Uso
 
 ```
-/especdev:retro <sesion>
+/dc:retro <sesion>
 ```
 
 Muestra los detalles de una sesión pasada almacenada en `.especdev/historial/`.

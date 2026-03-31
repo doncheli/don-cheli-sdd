@@ -3,7 +3,7 @@ description: Capturar ideas y notas sin interrumpir el flujo de trabajo
 i18n: true
 ---
 
-# /especdev:capturar
+# /dc:capturar
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Fire-and-forget de ideas durante cualquier fase de trabajo. Permite anotar pensa
 ## Uso
 
 ```
-/especdev:capturar "Deberíamos agregar rate limiting en el login"
-/especdev:capturar --tipo bug "El endpoint /users devuelve 500 con deviceId vacío"
-/especdev:capturar --listar
-/especdev:capturar --procesar
+/dc:capturar "Deberíamos agregar rate limiting en el login"
+/dc:capturar --tipo bug "El endpoint /users devuelve 500 con deviceId vacío"
+/dc:capturar --listar
+/dc:capturar --procesar
 ```
 
 ## Clasificación Automática
@@ -56,6 +56,6 @@ Cada captura se clasifica en una de 5 categorías:
 
 ## Integración con Pipeline
 
-- Durante `/especdev:implementar`: las capturas se revisan al final de cada tarea
-- Durante `/especdev:revisar`: las capturas tipo `defer` se incluyen como observaciones
-- Con `/especdev:cerrar-sesion`: las capturas pendientes se transfieren al traspaso
+- Durante `/dc:implementar`: las capturas se revisan al final de cada tarea
+- Durante `/dc:revisar`: las capturas tipo `defer` se incluyen como observaciones
+- Con `/dc:cerrar-sesion`: las capturas pendientes se transfieren al traspaso

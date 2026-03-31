@@ -3,17 +3,17 @@ description: Discusión multi-perspectiva exploratoria con roles senior sobre un
 i18n: true
 ---
 
-# /especdev:mesa-redonda
+# /dc:mesa-redonda
 
 ## Objetivo
 
-Iniciar una discusión exploratoria multi-perspectiva donde roles senior comparten su visión sobre un tema. A diferencia de `/especdev:debate` (que busca tensión adversarial), la mesa redonda busca **explorar opciones** y construir sobre las ideas de los demás.
+Iniciar una discusión exploratoria multi-perspectiva donde roles senior comparten su visión sobre un tema. A diferencia de `/dc:debate` (que busca tensión adversarial), la mesa redonda busca **explorar opciones** y construir sobre las ideas de los demás.
 
 ## Uso
 
 ```
-/especdev:mesa-redonda "<tema>"
-/especdev:mesa-redonda --roles "CPO,Arquitecto,Negocio" "<tema>"
+/dc:mesa-redonda "<tema>"
+/dc:mesa-redonda --roles "CPO,Arquitecto,Negocio" "<tema>"
 ```
 
 ## Roles Disponibles
@@ -33,7 +33,7 @@ Default: CPO, Arquitecto, UX Lead, Negocio.
 ## Ejemplo
 
 ```bash
-/especdev:mesa-redonda "¿Deberíamos usar microservicios o monolito?"
+/dc:mesa-redonda "¿Deberíamos usar microservicios o monolito?"
 
 === Mesa Redonda ===
 Tema: ¿Microservicios o monolito?

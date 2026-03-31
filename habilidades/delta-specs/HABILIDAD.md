@@ -77,7 +77,7 @@ El sistema DEBE permitir autenticación via Google y GitHub OAuth2.
 1. Specs describen comportamiento actual
 2. Delta specs proponen modificaciones
 3. Implementación hace los cambios reales
-4. /especdev:archivar merge deltas en specs principales
+4. /dc:archivar merge deltas en specs principales
 5. Specs ahora describen el nuevo comportamiento
 6. Siguiente cambio se basa en specs actualizadas
 ```
@@ -95,8 +95,8 @@ El sistema DEBE permitir autenticación via Google y GitHub OAuth2.
 ## Integración con el Pipeline
 
 ```
-/especdev:proponer → propuesta.md
-→ /especdev:especificar → delta-spec.md (NO spec completa)
-→ /especdev:implementar → código
-→ /especdev:archivar → merge delta en spec principal
+/dc:proponer → propuesta.md
+→ /dc:especificar → delta-spec.md (NO spec completa)
+→ /dc:implementar → código
+→ /dc:archivar → merge delta en spec principal
 ```

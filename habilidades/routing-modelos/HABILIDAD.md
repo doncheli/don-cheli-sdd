@@ -73,7 +73,7 @@ Si una tarea falla con el modelo seleccionado (e.g., haiku genera código incorr
 
 ## Integración
 
-- Se ejecuta automáticamente al inicio de cada tarea en `/especdev:implementar`
+- Se ejecuta automáticamente al inicio de cada tarea en `/dc:implementar`
 - El usuario puede override con `--modelo opus` en cualquier comando
-- Se reporta en `/especdev:cerrar-sesion` y `proyecciones-costo`
+- Se reporta en `/dc:cerrar-sesion` y `proyecciones-costo`
 - Nunca overridea la regla: "Opus requiere confirmación del usuario"

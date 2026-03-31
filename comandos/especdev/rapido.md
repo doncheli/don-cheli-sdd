@@ -3,7 +3,7 @@ description: Modo rápido para tareas pequeñas y bien definidas (Nivel 1)
 i18n: true
 ---
 
-# /especdev:rapido
+# /dc:rapido
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Iniciar modo rápido (Nivel 1 - Micro) para tareas pequeñas y bien definidas.
 ## Uso
 
 ```
-/especdev:rapido <descripción de la tarea>
+/dc:rapido <descripción de la tarea>
 ```
 
 ## Cuándo Usar
@@ -58,7 +58,7 @@ Iniciar modo rápido (Nivel 1 - Micro) para tareas pequeñas y bien definidas.
 
 ## Escalamiento Automático
 
-Si se detecta complejidad → auto-escalar a `/especdev:completo`
+Si se detecta complejidad → auto-escalar a `/dc:completo`
 
 ```
 ¿Puedo resolver esto en < 5 min sin cambiar cómo las cosas trabajan juntas?

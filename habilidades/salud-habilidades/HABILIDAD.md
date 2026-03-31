@@ -52,12 +52,12 @@ Después de cada uso de habilidad, registrar en `.especdev/metricas.json`:
 
 Recomendaciones:
 - optimizacion-tokens: reducir contexto cargado (actualmente carga 3 archivos completos)
-- code-rag: considerar activar automáticamente en /especdev:minar-referencias
+- code-rag: considerar activar automáticamente en /dc:minar-referencias
 ```
 
 ## Integración
 
 - Se activa automáticamente si `metricas.habilitado: true` en config.yaml
 - Los datos se guardan en `.especdev/metricas.json`
-- Se reporta con `/especdev:diagnostico --habilidades` o `/especdev:doctor`
+- Se reporta con `/dc:diagnostico --habilidades` o `/dc:doctor`
 - Las habilidades con < 70% success rate se agregan a `.especdev/skill-review-queue.md`

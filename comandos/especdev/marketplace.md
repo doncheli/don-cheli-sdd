@@ -3,7 +3,7 @@ description: Instalar y gestionar skills desde el marketplace de Anthropic y la 
 i18n: true
 ---
 
-# /especdev:marketplace
+# /dc:marketplace
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Conectar Don Cheli con el ecosystem de Skills de Anthropic y la comunidad. Permi
 ## Uso
 
 ```
-/especdev:marketplace                              # Listar skills disponibles
-/especdev:marketplace --instalar <nombre>          # Instalar skill específica
-/especdev:marketplace --buscar "weekly report"     # Buscar skills
-/especdev:marketplace --fuente anthropic            # Solo skills oficiales
-/especdev:marketplace --fuente comunidad            # Solo skills de la comunidad
-/especdev:marketplace --exportar <skill>           # Exportar skill para compartir
-/especdev:marketplace --verificar                  # Verificar integridad de skills instaladas
+/dc:marketplace                              # Listar skills disponibles
+/dc:marketplace --instalar <nombre>          # Instalar skill específica
+/dc:marketplace --buscar "weekly report"     # Buscar skills
+/dc:marketplace --fuente anthropic            # Solo skills oficiales
+/dc:marketplace --fuente comunidad            # Solo skills de la comunidad
+/dc:marketplace --exportar <skill>           # Exportar skill para compartir
+/dc:marketplace --verificar                  # Verificar integridad de skills instaladas
 ```
 
 ## Fuentes de Skills
@@ -43,7 +43,7 @@ Conectar Don Cheli con el ecosystem de Skills de Anthropic y la comunidad. Permi
 
 ### Instalar desde Anthropic
 ```bash
-/especdev:marketplace --instalar document-skills --fuente anthropic
+/dc:marketplace --instalar document-skills --fuente anthropic
 ```
 1. Clonar el repo oficial (o fetch selectivo)
 2. Copiar la skill a `.claude/skills/`
@@ -52,7 +52,7 @@ Conectar Don Cheli con el ecosystem de Skills de Anthropic y la comunidad. Permi
 
 ### Instalar desde Comunidad
 ```bash
-/especdev:marketplace --instalar weekly-report-generator --fuente comunidad
+/dc:marketplace --instalar weekly-report-generator --fuente comunidad
 ```
 1. Descargar la skill
 2. **Escaneo de seguridad:** Verificar que no contenga scripts maliciosos
@@ -61,7 +61,7 @@ Conectar Don Cheli con el ecosystem de Skills de Anthropic y la comunidad. Permi
 
 ### Exportar skill propia
 ```bash
-/especdev:marketplace --exportar mi-skill
+/dc:marketplace --exportar mi-skill
 ```
 1. Empaquetar la skill como ZIP
 2. Generar README con instrucciones de instalación
@@ -79,7 +79,7 @@ Don Cheli lee ambos formatos automáticamente. Al instalar una skill en formato 
 ## Inventario Local
 
 ```bash
-/especdev:marketplace --listar
+/dc:marketplace --listar
 ```
 
 ```

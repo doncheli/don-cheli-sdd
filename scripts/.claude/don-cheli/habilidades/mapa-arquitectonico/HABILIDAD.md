@@ -64,8 +64,8 @@ Cada componente tiene un mapeo de propiedad con niveles de confianza:
 ## Auto-Actualización
 
 El mapa se actualiza cuando:
-1. `/especdev:reversa` se ejecuta manualmente
-2. `/especdev:archivar` completa un cambio
+1. `/dc:reversa` se ejecuta manualmente
+2. `/dc:archivar` completa un cambio
 3. Git push (si `auto_sync: true` en WORKFLOW.md)
 
 ### Reglas de Actualización (De DevilDev)
@@ -78,7 +78,7 @@ El mapa se actualiza cuando:
 ## Comandos Relacionados
 
 ```
-/especdev:reversa → generar mapa desde cero (para proyectos existentes)
-/especdev:explorar → leer el mapa para entender el proyecto
-/especdev:diseñar → proponer cambios al mapa (ADRs)
+/dc:reversa → generar mapa desde cero (para proyectos existentes)
+/dc:explorar → leer el mapa para entender el proyecto
+/dc:diseñar → proponer cambios al mapa (ADRs)
 ```

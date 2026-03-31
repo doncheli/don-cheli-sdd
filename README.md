@@ -431,7 +431,7 @@ This allows having dozens of skills without impacting the context window.
 
 ## Commands (85+)
 
-> **Backward compatible:** All `/dc:*` commands are also available as `/especdev:*` for backward compatibility.
+> **Backward compatible:** All `/dc:*` commands are also available as `/dc:*` for backward compatibility.
 
 <details>
 <summary><strong>Main (32)</strong></summary>
@@ -631,7 +631,7 @@ Don Cheli works natively with multiple AI agents and IDEs. All content adapts to
 ### What you get
 - `CLAUDE.md` — Framework instructions (translated to installed language)
 - 85+ slash commands via `/dc:*` (translated names per locale)
-- `/especdev:*` — Backward-compatible alias
+- `/dc:*` — Backward-compatible alias
 - `/razonar:*` — 15 reasoning models
 - 43 modular skills in `habilidades/` (or `skills/` in EN)
 - 7 specialized agents (planner, architect, executor, reviewer, tester, documenter, estimator)

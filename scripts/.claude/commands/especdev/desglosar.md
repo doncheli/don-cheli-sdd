@@ -3,7 +3,7 @@ description: Dividir un blueprint técnico en tareas con TDD (RED→GREEN) y mar
 i18n: true
 ---
 
-# /especdev:desglosar
+# /dc:desglosar
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ Convertir un blueprint técnico en una lista de tareas ordenadas con enfoque TDD
 ## Uso
 
 ```
-/especdev:desglosar @specs/features/<dominio>/<Feature>.plan.md
+/dc:desglosar @specs/features/<dominio>/<Feature>.plan.md
 ```
 
 ## Formato de Tareas

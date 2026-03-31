@@ -59,7 +59,7 @@ Invoque as habilidades com a sintaxe `@nome-habilidade` (por exemplo, `@doncheli
 
 ## Fluxos de Trabalho
 
-Os comandos slash estão em `.agent/workflows/`. Eles orquestram processos de múltiplas etapas usando habilidades. Os comandos disponíveis mapeiam para os comandos `/especdev:*` do framework.
+Os comandos slash estão em `.agent/workflows/`. Eles orquestram processos de múltiplas etapas usando habilidades. Os comandos disponíveis mapeiam para os comandos `/dc:*` do framework.
 
 ## Habilidades Disponíveis (13)
 

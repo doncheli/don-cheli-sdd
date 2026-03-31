@@ -3,7 +3,7 @@ description: Archivar specs completadas y sincronizar delta specs con specs prin
 i18n: true
 ---
 
-# /especdev:archivar
+# /dc:archivar
 
 ## Objetivo
 
@@ -14,8 +14,8 @@ Sincronizar las specs delta (cambios incrementales) con las specs principales y 
 ## Uso
 
 ```
-/especdev:archivar @specs/features/<dominio>/<Feature>.feature
-/especdev:archivar --todo   # Archivar todas las features @implementada
+/dc:archivar @specs/features/<dominio>/<Feature>.feature
+/dc:archivar --todo   # Archivar todas las features @implementada
 ```
 
 ## Comportamiento
@@ -64,6 +64,6 @@ specs/
 ## Valor para el Framework
 
 Los datos archivados alimentan:
-- `/especdev:estimar` → datos históricos para estimados más precisos
-- `/especdev:analizar-sesiones` → patrones de desarrollo
+- `/dc:estimar` → datos históricos para estimados más precisos
+- `/dc:analizar-sesiones` → patrones de desarrollo
 - Memoria persistente → decisiones y convenciones aprendidas

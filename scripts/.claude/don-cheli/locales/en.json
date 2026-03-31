@@ -14,7 +14,7 @@
     "commands_path": "Commands: {{path}}",
     "step_structure": "Creating structure...",
     "step_commands": "Copying commands...",
-    "step_commands_done": "{{count}} commands /especdev:*",
+    "step_commands_done": "{{count}} commands /dc:*",
     "step_reasoning_done": "{{count}} commands /razonar:*",
     "step_skills": "Copying skills...",
     "step_skills_done": "{{count}} skills",
@@ -40,7 +40,7 @@
     "structure_commands": "commands",
     "next_steps_title": "Next steps:",
     "next_step_1": "Restart Claude Code",
-    "next_step_2": "In any project run: /especdev:iniciar",
+    "next_step_2": "In any project run: /dc:iniciar",
     "farewell": "Stop guessing. Start Engineering!"
   },
   "framework": {

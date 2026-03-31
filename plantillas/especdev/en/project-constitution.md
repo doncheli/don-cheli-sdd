@@ -50,4 +50,4 @@ Immutable principles that govern ALL project decisions. Validated at every phase
 -
 
 ---
-*This file is generated with `/especdev:iniciar` and validated at every quality gate.*
+*This file is generated with `/dc:iniciar` and validated at every quality gate.*

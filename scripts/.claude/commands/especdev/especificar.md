@@ -3,7 +3,7 @@ description: Crear especificación Gherkin desde un requerimiento con schema DBM
 i18n: true
 ---
 
-# /especdev:especificar
+# /dc:especificar
 
 ## Objetivo
 
@@ -15,7 +15,7 @@ Convertir un requerimiento en lenguaje natural a una especificación Gherkin est
 ## Uso
 
 ```
-/especdev:especificar Tipo: <COMANDO|CONSULTA|EVENTO> Feature: <dominio/Nombre> Dominio: <dominio> Requerimiento: <descripción> Contexto: @<archivo-referencia>
+/dc:especificar Tipo: <COMANDO|CONSULTA|EVENTO> Feature: <dominio/Nombre> Dominio: <dominio> Requerimiento: <descripción> Contexto: @<archivo-referencia>
 ```
 
 ## Comportamiento
@@ -40,7 +40,7 @@ Convertir un requerimiento en lenguaje natural a una especificación Gherkin est
 
 ```dbml
 // specs/db_schema/usuario.dbml
-// @provisional — Auto-generado por /especdev:especificar
+// @provisional — Auto-generado por /dc:especificar
 
 Table usuario @provisional {
   id uuid [pk, default: `gen_random_uuid()`]
@@ -158,7 +158,7 @@ Usar `[NECESITA CLARIFICACIÓN]` inline cuando:
 - Falta información para definir el comportamiento exacto
 - Hay múltiples interpretaciones posibles
 
-Estos marcadores se resuelven durante `/especdev:clarificar` y DEBEN estar vacíos antes de avanzar a `/especdev:planificar-tecnico`.
+Estos marcadores se resuelven durante `/dc:clarificar` y DEBEN estar vacíos antes de avanzar a `/dc:planificar-tecnico`.
 
 ## Artefactos Generados
 
@@ -171,17 +171,17 @@ Estos marcadores se resuelven durante `/especdev:clarificar` y DEBEN estar vací
 ## Pipeline Completo
 
 ```
-/especdev:especificar → .feature + .dbml(@provisional)
-→ /especdev:clarificar → .feature(@lista) + Auto-QA
-→ /especdev:planificar-tecnico → .plan.md (ratifica @provisional)
-→ /especdev:desglosar → .tasks.md
-→ /especdev:implementar → código + tests en Docker
-→ /especdev:revisar → review.md + test-report.html
+/dc:especificar → .feature + .dbml(@provisional)
+→ /dc:clarificar → .feature(@lista) + Auto-QA
+→ /dc:planificar-tecnico → .plan.md (ratifica @provisional)
+→ /dc:desglosar → .tasks.md
+→ /dc:implementar → código + tests en Docker
+→ /dc:revisar → review.md + test-report.html
 ```
 
 ## Puerta de Calidad
 
-Este comando produce el tag `@borrador`. El spec DEBE pasar por `/especdev:clarificar` para obtener el tag `@lista` antes de avanzar a la fase Plan.
+Este comando produce el tag `@borrador`. El spec DEBE pasar por `/dc:clarificar` para obtener el tag `@lista` antes de avanzar a la fase Plan.
 
 **Criterios de la Puerta 1 (Completitud de Spec):**
 - Cada prioridad P1 tiene al menos un happy path y un sad path

@@ -3,7 +3,7 @@ description: Diagnosticar y reparar problemas del framework, git y entorno
 i18n: true
 ---
 
-# /especdev:doctor
+# /dc:doctor
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Detectar y reparar automáticamente problemas comunes del framework, estado de g
 ## Uso
 
 ```
-/especdev:doctor                  # Diagnóstico completo + reparación automática
-/especdev:doctor --solo-diagnostico   # Solo reportar, no reparar
-/especdev:doctor --git            # Solo problemas de git
-/especdev:doctor --framework      # Solo problemas del framework
+/dc:doctor                  # Diagnóstico completo + reparación automática
+/dc:doctor --solo-diagnostico   # Solo reportar, no reparar
+/dc:doctor --git            # Solo problemas de git
+/dc:doctor --framework      # Solo problemas del framework
 ```
 
 ## Checks Realizados

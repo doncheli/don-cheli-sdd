@@ -3,7 +3,7 @@ description: Detectar divergencias entre specs Gherkin e implementación real
 i18n: true
 ---
 
-# /especdev:drift
+# /dc:drift
 
 ## Objetivo
 
@@ -12,11 +12,11 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 ## Uso
 
 ```
-/especdev:drift                             # Analizar todo el proyecto
-/especdev:drift @specs/features/pagos/      # Analizar dominio específico
-/especdev:drift --severidad critica         # Solo brechas críticas
-/especdev:drift --formato tabla             # Output en tabla (default)
-/especdev:drift --formato json              # Output en JSON (para CI)
+/dc:drift                             # Analizar todo el proyecto
+/dc:drift @specs/features/pagos/      # Analizar dominio específico
+/dc:drift --severidad critica         # Solo brechas críticas
+/dc:drift --formato tabla             # Output en tabla (default)
+/dc:drift --formato json              # Output en JSON (para CI)
 ```
 
 ## Comportamiento
@@ -102,7 +102,7 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 2. **Próximo sprint:** Documentar en Gherkin los 6 tests huérfanos o eliminarlos
 3. **Backlog:** Completar los 12 casos de cobertura parcial
 
-→ Ejecutar `/especdev:desglosar` para convertir brechas en tareas
+→ Ejecutar `/dc:desglosar` para convertir brechas en tareas
 ```
 
 ## Almacenamiento
@@ -117,13 +117,13 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 ## Integración con Pipeline
 
 ```
-/especdev:drift → detectar brechas
-  → /especdev:desglosar → crear tareas para cerrar brechas
-  → /especdev:tea → ejecutar tests generados
-  → /especdev:drift → verificar que brecha se cerró
+/dc:drift → detectar brechas
+  → /dc:desglosar → crear tareas para cerrar brechas
+  → /dc:tea → ejecutar tests generados
+  → /dc:drift → verificar que brecha se cerró
 ```
 
-Ejecutar automáticamente antes de `/especdev:implementar` y después de cada merge.
+Ejecutar automáticamente antes de `/dc:implementar` y después de cada merge.
 
 ## Guardrails
 

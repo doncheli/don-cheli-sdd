@@ -50,4 +50,4 @@ Principios inmutables que rigen TODAS las decisiones del proyecto. Se validan en
 -
 
 ---
-*Este archivo se genera con `/especdev:iniciar` y se valida en cada puerta de calidad.*
+*Este archivo se genera con `/dc:iniciar` y se valida en cada puerta de calidad.*

@@ -3,7 +3,7 @@ description: Peer review estricto con análisis de rendimiento, arquitectura, se
 i18n: true
 ---
 
-# /especdev:revisar
+# /dc:revisar
 
 ## Objetivo
 
@@ -12,12 +12,12 @@ Generar un peer review estricto asumiendo el rol de **Arquitecto de Software / L
 ## Uso
 
 ```
-/especdev:revisar
-/especdev:revisar @specs/features/<dominio>/<Feature>.tasks.md
-/especdev:revisar --rigor alto                   # Review de arquitecto senior
-/especdev:revisar --rigor estandar               # Review estándar (default)
-/especdev:revisar --foco rendimiento             # Enfocarse en performance
-/especdev:revisar --foco seguridad               # Enfocarse en seguridad
+/dc:revisar
+/dc:revisar @specs/features/<dominio>/<Feature>.tasks.md
+/dc:revisar --rigor alto                   # Review de arquitecto senior
+/dc:revisar --rigor estandar               # Review estándar (default)
+/dc:revisar --foco rendimiento             # Enfocarse en performance
+/dc:revisar --foco seguridad               # Enfocarse en seguridad
 ```
 
 ## Dimensiones del Review
@@ -204,8 +204,8 @@ for user in users:
 ## Integración con Pipeline
 
 ```
-/especdev:implementar → código completo
-  → /especdev:revisar → reporte de review
+/dc:implementar → código completo
+  → /dc:revisar → reporte de review
   → ¿Aprobado?
      ├── ✅ APROBADO → listo para PR
      ├── ⚠️ CON OBSERVACIONES → corregir hallazgos → re-revisar

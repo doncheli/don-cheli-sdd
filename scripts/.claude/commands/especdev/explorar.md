@@ -3,7 +3,7 @@ description: Explorar e investigar el codebase antes de proponer cambios
 i18n: true
 ---
 
-# /especdev:explorar
+# /dc:explorar
 
 ## Objetivo
 
@@ -15,9 +15,9 @@ Investigar el codebase existente antes de comprometer un cambio. Entender la arq
 ## Uso
 
 ```
-/especdev:explorar <área o concepto a investigar>
-/especdev:explorar --profundidad <superficial|media|profunda>
-/especdev:explorar --modo supuestos                            # Modo Supuestos (nuevo)
+/dc:explorar <área o concepto a investigar>
+/dc:explorar --profundidad <superficial|media|profunda>
+/dc:explorar --modo supuestos                            # Modo Supuestos (nuevo)
 ```
 
 ## Dos Modos de Exploración
@@ -168,8 +168,8 @@ app/
 ## Integración con Pipeline
 
 ```
-/especdev:explorar → hallazgos.md
-→ /especdev:proponer → propuesta de cambio
-→ /especdev:especificar → .feature
+/dc:explorar → hallazgos.md
+→ /dc:proponer → propuesta de cambio
+→ /dc:especificar → .feature
 → ... (pipeline normal)
 ```

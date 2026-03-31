@@ -4,4 +4,4 @@ Descobertas e insights do projeto. Atualizado continuamente.
 
 ---
 
-<!-- Descobertas são adicionadas aqui com /especdev:memorizar -->
+<!-- Descobertas são adicionadas aqui com /dc:memorizar -->

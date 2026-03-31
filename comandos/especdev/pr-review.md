@@ -3,7 +3,7 @@ description: Revisión automatizada de Pull Requests con análisis de cobertura,
 i18n: true
 ---
 
-# /especdev:pr-review
+# /dc:pr-review
 
 ## Objetivo
 
@@ -12,12 +12,12 @@ Revisar automáticamente un Pull Request de GitHub analizando el diff, delta de 
 ## Uso
 
 ```
-/especdev:pr-review                       # Revisar PR del branch actual
-/especdev:pr-review 42                    # Revisar PR #42
-/especdev:pr-review --repo owner/repo 42  # PR de otro repositorio
-/especdev:pr-review --dimensiones tests,security  # Solo dimensiones específicas
-/especdev:pr-review --auto-aprobar        # Aprobar si todos los checks pasan
-/especdev:pr-review --seco                # Mostrar análisis sin publicar comentarios
+/dc:pr-review                       # Revisar PR del branch actual
+/dc:pr-review 42                    # Revisar PR #42
+/dc:pr-review --repo owner/repo 42  # PR de otro repositorio
+/dc:pr-review --dimensiones tests,security  # Solo dimensiones específicas
+/dc:pr-review --auto-aprobar        # Aprobar si todos los checks pasan
+/dc:pr-review --seco                # Mostrar análisis sin publicar comentarios
 ```
 
 ## Pre-requisitos
@@ -87,7 +87,7 @@ Verificar:
 
 ### 4. Security
 ```
-Verificar (subset de /especdev:auditar-seguridad):
+Verificar (subset de /dc:auditar-seguridad):
   - Sin credenciales o tokens en el diff
   - Input validado antes de usarse en queries o comandos
   - Auth/authz verificado en endpoints nuevos
@@ -184,8 +184,8 @@ pr_review:
 ## Integración con Pipeline
 
 ```
-/especdev:tea → validar cobertura local
-  → /especdev:pr-review → revisión completa
+/dc:tea → validar cobertura local
+  → /dc:pr-review → revisión completa
   → gh pr review --approve → merge
 ```
 

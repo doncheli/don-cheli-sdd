@@ -5,7 +5,7 @@ Project execution information: endpoints, environment variables, services, ports
 ## Local Endpoints
 | Service | URL | Port |
 |---------|-----|------|
-<!-- Auto-generated during /especdev:implementar -->
+<!-- Auto-generated during /dc:implementar -->
 
 ## Required Environment Variables
 | Variable | Description | Source |

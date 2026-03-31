@@ -50,4 +50,4 @@ Princípios imutáveis que regem TODAS as decisões do projeto. Validados em cad
 -
 
 ---
-*Este arquivo é gerado com `/especdev:iniciar` e validado em cada porta de qualidade.*
+*Este arquivo é gerado com `/dc:iniciar` e validado em cada porta de qualidade.*

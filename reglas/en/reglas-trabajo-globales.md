@@ -4,7 +4,7 @@
 
 These rules establish a **professional development standard** that applies to all projects using Don Cheli. While the constitution defines the *principles*, these rules define the concrete *practices*. The framework loads them automatically and applies them in every session, eliminating the need to repeat instructions manually.
 
-> **Usage:** These rules are loaded automatically when running `/especdev:start`. They can be customized per project in `.especdev/config.yaml`.
+> **Usage:** These rules are loaded automatically when running `/dc:start`. They can be customized per project in `.especdev/config.yaml`.
 
 ---
 

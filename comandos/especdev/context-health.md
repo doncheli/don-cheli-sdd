@@ -3,7 +3,7 @@ description: Dashboard de salud del contexto activo con predicción de degradaci
 i18n: true
 ---
 
-# /especdev:context-health
+# /dc:context-health
 
 ## Objetivo
 
@@ -12,12 +12,12 @@ Mostrar el estado de salud de la ventana de contexto en la sesión actual: porce
 ## Uso
 
 ```
-/especdev:context-health                           # Dashboard completo
-/especdev:context-health --rapido                  # Solo semáforo + número
-/especdev:context-health --sugerir                 # Recomendaciones accionables
-/especdev:context-health --historial               # Patrones entre sesiones
-/especdev:context-health --simular 20000           # Simular con N tokens adicionales
-/especdev:context-health --exportar                # Guardar estado para análisis
+/dc:context-health                           # Dashboard completo
+/dc:context-health --rapido                  # Solo semáforo + número
+/dc:context-health --sugerir                 # Recomendaciones accionables
+/dc:context-health --historial               # Patrones entre sesiones
+/dc:context-health --simular 20000           # Simular con N tokens adicionales
+/dc:context-health --exportar                # Guardar estado para análisis
 ```
 
 ## Comportamiento
@@ -132,7 +132,7 @@ Eficiencia: ⚠️ Regular — 38% de tokens son innecesarios
 4. **Guardar en memoria persistente** antes de compactar:
    - Decisión de arquitectura de turno 6: "usar Strategy pattern para payment gateways"
    - Lista de edge cases identificados en turno 9
-   - Ejecutar `/especdev:memorizar` para persistir
+   - Ejecutar `/dc:memorizar` para persistir
 
 ---
 
@@ -194,13 +194,13 @@ Eficiencia: ⚠️ Regular — 38% de tokens son innecesarios
 ## Integración con Don Cheli
 
 ```
-/especdev:context-health --rapido → 🔴
-  → /especdev:memorizar → guardar contexto clave
+/dc:context-health --rapido → 🔴
+  → /dc:memorizar → guardar contexto clave
   → /compact → comprimir conversación
   → continuar con contexto saludable
 
-/especdev:context-health --historial → sesiones pesadas detectadas
-  → /especdev:analizar-sesiones → análisis profundo de patrones
+/dc:context-health --historial → sesiones pesadas detectadas
+  → /dc:analizar-sesiones → análisis profundo de patrones
   → ajustar hábitos de trabajo
 ```
 

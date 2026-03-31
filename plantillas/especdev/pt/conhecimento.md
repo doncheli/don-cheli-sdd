@@ -16,4 +16,4 @@ Padrões, convenções e aprendizados cross-sessão do projeto. Acumulado e atua
 
 ---
 
-<!-- O conhecimento é atualizado com /especdev:memorizar e /especdev:cerrar-sesion -->
+<!-- O conhecimento é atualizado com /dc:memorizar e /dc:cerrar-sesion -->

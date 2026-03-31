@@ -27,7 +27,7 @@ Lee bajo demanda:
 
 ## Comandos
 - `/dc:*` — Prefijo principal (72+ comandos)
-- `/especdev:*` — Alias retrocompatible
+- `/dc:*` — Alias retrocompatible
 - `/razonar:*` — 15 modelos de razonamiento
 
 ## Auto-actualización al inicio de sesión

@@ -81,7 +81,7 @@ El contexto principal se mantiene limpio.
 ### Solución
 
 1. Compactar manualmente
-2. Si persiste → sesión nueva con `/especdev:traspasar`
+2. Si persiste → sesión nueva con `/dc:traspasar`
 3. Si es recurrente → reducir system prompt, desactivar MCPs
 
 ## Integración con Don Cheli

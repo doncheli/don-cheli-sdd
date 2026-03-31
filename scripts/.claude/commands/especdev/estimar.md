@@ -3,7 +3,7 @@ description: Generar estimados de desarrollo usando múltiples modelos de estima
 i18n: true
 ---
 
-# /especdev:estimar
+# /dc:estimar
 
 ## Objetivo
 
@@ -12,9 +12,9 @@ Generar estimados de desarrollo profesionales usando múltiples modelos de estim
 ## Uso
 
 ```
-/especdev:estimar <prd.md | feature | tarea>
-/especdev:estimar --modelo <puntos-funcion|poker|cocomo|historico>
-/especdev:estimar --formato <resumen|detallado|ejecutivo>
+/dc:estimar <prd.md | feature | tarea>
+/dc:estimar --modelo <puntos-funcion|poker|cocomo|historico>
+/dc:estimar --formato <resumen|detallado|ejecutivo>
 ```
 
 ## Modelos de Estimación

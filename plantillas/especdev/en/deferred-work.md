@@ -14,4 +14,4 @@ Work discovered during fixes, PoCs, or implementation that is OUTSIDE the curren
 
 ---
 
-<!-- Deferred work is automatically logged during /especdev:poc, /especdev:rapido and /especdev:implementar -->
+<!-- Deferred work is automatically logged during /dc:poc, /dc:rapido and /dc:implementar -->

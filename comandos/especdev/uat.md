@@ -3,7 +3,7 @@ description: Generar scripts de User Acceptance Testing para validación humana
 i18n: true
 ---
 
-# /especdev:uat
+# /dc:uat
 
 ## Objetivo
 
@@ -12,9 +12,9 @@ Generar automáticamente un script de pruebas de aceptación (UAT) ejecutable po
 ## Uso
 
 ```
-/especdev:uat                           # Genera UAT para el slice actual
-/especdev:uat @specs/features/auth/     # Genera UAT para un dominio específico
-/especdev:uat --formato checklist       # Solo checklist sin narrativa
+/dc:uat                           # Genera UAT para el slice actual
+/dc:uat @specs/features/auth/     # Genera UAT para un dominio específico
+/dc:uat --formato checklist       # Solo checklist sin narrativa
 ```
 
 ## Comportamiento
@@ -79,6 +79,6 @@ Generar automáticamente un script de pruebas de aceptación (UAT) ejecutable po
 
 ## Integración
 
-- Se genera automáticamente al completar `/especdev:implementar` para cada feature
+- Se genera automáticamente al completar `/dc:implementar` para cada feature
 - Se incluye en la descripción del PR como evidencia de testing manual
-- Se archiva con `/especdev:archivar`
+- Se archiva con `/dc:archivar`

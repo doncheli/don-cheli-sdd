@@ -44,13 +44,13 @@ hooks:
   # Pre-commit — run before each commit
   pre_commit:
     - nombre: "Guardian"
-      comando: "/especdev:guardian"
+      comando: "/dc:guardian"
 ```
 
 ## Execution Flow
 
 ```
-/especdev:implementar
+/dc:implementar
     │
     ├── ... (implement tasks) ...
     │

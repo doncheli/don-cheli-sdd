@@ -69,13 +69,13 @@ Puedes tener múltiples cambios activos simultáneamente:
 
 ```bash
 # Trabajando en oauth...
-/especdev:aplicar agregar-oauth
+/dc:aplicar agregar-oauth
 
 # Interrupción urgente
-/especdev:aplicar corregir-timeout
+/dc:aplicar corregir-timeout
 
 # Volver a oauth
-/especdev:aplicar agregar-oauth
+/dc:aplicar agregar-oauth
 # → Retoma donde se quedó (tarea 3/5)
 ```
 
@@ -84,7 +84,7 @@ Puedes tener múltiples cambios activos simultáneamente:
 Cuando tienes múltiples cambios completados:
 
 ```bash
-/especdev:archivar --masivo
+/dc:archivar --masivo
 
 # Detecta conflictos si múltiples cambios tocan las mismas specs
 # Resuelve en orden cronológico

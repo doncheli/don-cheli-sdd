@@ -3,18 +3,18 @@ description: Generar documento de traspaso estructurado para retomar en la próx
 i18n: true
 ---
 
-# /especdev:traspasar
+# /dc:traspasar
 
 ## Objetivo
 
-Generar un documento de traspaso estructurado que permite a la **siguiente sesión** (o agente) retomar exactamente donde se dejó. Diferente de `/especdev:cerrar-sesion` que es un checklist para ti — el traspaso es un documento escrito para **el siguiente lector**.
+Generar un documento de traspaso estructurado que permite a la **siguiente sesión** (o agente) retomar exactamente donde se dejó. Diferente de `/dc:cerrar-sesion` que es un checklist para ti — el traspaso es un documento escrito para **el siguiente lector**.
 
 > Adaptado de `session-handoff` de Pro-Workflow.
 
 ## Uso
 
 ```
-/especdev:traspasar
+/dc:traspasar
 ```
 
 ## Output

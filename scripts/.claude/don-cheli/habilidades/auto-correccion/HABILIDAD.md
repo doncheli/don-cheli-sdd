@@ -92,9 +92,9 @@ Las reglas se guardan en `.especdev/memoria/aprendizajes.md`:
 ## Búsqueda de Reglas
 
 ```
-/especdev:buscar-regla testing           # Reglas de testing
-/especdev:buscar-regla "rutas archivos"  # Búsqueda exacta
-/especdev:buscar-regla --todas           # Listar todas
+/dc:buscar-regla testing           # Reglas de testing
+/dc:buscar-regla "rutas archivos"  # Búsqueda exacta
+/dc:buscar-regla --todas           # Listar todas
 ```
 
 ## Guardrails

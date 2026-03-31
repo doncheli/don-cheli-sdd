@@ -47,7 +47,7 @@ Documentan el **por qué** detrás de decisiones técnicas.
 - Elección de tecnología/librería
 - Decisión arquitectónica (monolito vs micro, REST vs GraphQL)
 - Trade-off significativo con alternativas válidas
-- Checkpoint tipo `decisión` en `/especdev:implementar`
+- Checkpoint tipo `decisión` en `/dc:implementar`
 
 **Cuándo NO crear:**
 - Decisiones obvias sin alternativas reales
@@ -58,7 +58,7 @@ Documentan el **por qué** detrás de decisiones técnicas.
 
 Generación automática de especificaciones de API desde los contratos del plan.
 
-**Trigger:** Después de `/especdev:planificar-tecnico` si el plan incluye contratos API.
+**Trigger:** Después de `/dc:planificar-tecnico` si el plan incluye contratos API.
 
 ```yaml
 # specs/api/openapi.yaml (auto-generado)
@@ -122,7 +122,7 @@ components:
 
 **Ubicación:** `specs/api/openapi.yaml`
 
-**Auto-actualización:** Cuando `/especdev:planificar-tecnico` genera un nuevo contrato API, el OpenAPI spec se actualiza automáticamente.
+**Auto-actualización:** Cuando `/dc:planificar-tecnico` genera un nuevo contrato API, el OpenAPI spec se actualiza automáticamente.
 
 ### 3. Docstrings/JSDoc Significativos
 
@@ -216,10 +216,10 @@ Código cambia → ¿Docs afectadas?
 ## Integración con Pipeline
 
 ```
-/especdev:planificar-tecnico → genera OpenAPI si hay API
-/especdev:implementar (checkpoint:decisión) → genera ADR
-/especdev:revisar → verifica frescura de docs
-/especdev:archivar → snapshot de docs con versión
+/dc:planificar-tecnico → genera OpenAPI si hay API
+/dc:implementar (checkpoint:decisión) → genera ADR
+/dc:revisar → verifica frescura de docs
+/dc:archivar → snapshot de docs con versión
 ```
 
 ## Guardrails

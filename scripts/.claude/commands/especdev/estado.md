@@ -3,7 +3,7 @@ description: Mostrar el estado actual del proyecto Don Cheli
 i18n: true
 ---
 
-# /especdev:estado
+# /dc:estado
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Mostrar un resumen del estado actual del proyecto según los archivos de `.espec
 ## Uso
 
 ```
-/especdev:estado
+/dc:estado
 ```
 
 ## Comportamiento

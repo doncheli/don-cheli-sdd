@@ -95,7 +95,7 @@ El código generado NO DEBE introducir patrones que conflicten con las dependenc
 
 ## VIII. Protocolo de Clarificación (Auto-QA)
 
-Al ejecutar `/especdev:clarificar`, el agente actúa como **Ingeniero QA Estricto** y ejecuta obligatoriamente:
+Al ejecutar `/dc:clarificar`, el agente actúa como **Ingeniero QA Estricto** y ejecuta obligatoriamente:
 
 1. **Verificación de Consistencia Schema-Spec:**
    - Escanear todos los campos en el Gherkin

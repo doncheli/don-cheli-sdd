@@ -3,7 +3,7 @@ description: Generar pseudocódigo agnóstico de tecnología desde las specs ant
 i18n: true
 ---
 
-# /especdev:pseudocodigo
+# /dc:pseudocodigo
 
 ## Objetivo
 
@@ -14,8 +14,8 @@ Inspirado en la fase "P" (Pseudocode) del framework SPARC.
 ## Uso
 
 ```
-/especdev:pseudocodigo                    # Desde las specs del sprint actual
-/especdev:pseudocodigo @specs/auth/       # Para un dominio específico
+/dc:pseudocodigo                    # Desde las specs del sprint actual
+/dc:pseudocodigo @specs/auth/       # Para un dominio específico
 ```
 
 ## Comportamiento

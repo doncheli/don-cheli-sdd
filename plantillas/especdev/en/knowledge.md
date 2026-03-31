@@ -16,4 +16,4 @@ Patterns, conventions and cross-session learnings for the project. Continuously 
 
 ---
 
-<!-- Knowledge is updated with /especdev:memorizar and /especdev:cerrar-sesion -->
+<!-- Knowledge is updated with /dc:memorizar and /dc:cerrar-sesion -->

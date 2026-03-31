@@ -3,7 +3,7 @@ description: Cargar un agente especializado para una tarea específica
 i18n: true
 ---
 
-# /especdev:agente
+# /dc:agente
 
 ## Objetivo
 
@@ -12,8 +12,8 @@ Cargar un agente especializado con el modelo óptimo para una tarea específica.
 ## Uso
 
 ```
-/especdev:agente <nombre>
-/especdev:agente restablecer
+/dc:agente <nombre>
+/dc:agente restablecer
 ```
 
 ## Agentes Disponibles

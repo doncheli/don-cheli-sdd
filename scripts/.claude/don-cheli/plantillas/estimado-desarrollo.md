@@ -1,7 +1,7 @@
 # Estimado de Desarrollo: [Nombre del Proyecto]
 
 **Fecha:** [fecha]
-**Generado por:** `/especdev:estimar`
+**Generado por:** `/dc:estimar`
 
 ## Resumen Ejecutivo
 

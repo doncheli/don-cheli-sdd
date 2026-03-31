@@ -19,7 +19,7 @@ Don Cheli tiene la Constitución (Art. II: Precisión Quirúrgica, Art. III: Plu
 
 ## Cuándo Activar
 
-- Al detectar code smells durante `/especdev:revisar`
+- Al detectar code smells durante `/dc:revisar`
 - Cuando un módulo supera umbrales de complejidad
 - Antes de agregar funcionalidad a código legacy
 - Cuando el usuario solicita refactorización explícitamente

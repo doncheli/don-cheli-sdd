@@ -22,9 +22,9 @@ Permite generar presentaciones interactivas de proyectos, demos, pitches y docum
 ## Uso
 
 ```
-/especdev:presentar <tema o archivo>
-/especdev:presentar --tema "bold-signal"     # Elegir tema visual
-/especdev:presentar --desde pptx input.pptx  # Convertir desde PowerPoint
+/dc:presentar <tema o archivo>
+/dc:presentar --tema "bold-signal"     # Elegir tema visual
+/dc:presentar --desde pptx input.pptx  # Convertir desde PowerPoint
 ```
 
 ## Tecnología

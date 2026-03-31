@@ -3,7 +3,7 @@ description: Crear propuesta de cambio con intención, alcance y enfoque antes d
 i18n: true
 ---
 
-# /especdev:proponer
+# /dc:proponer
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ Crear una propuesta de cambio estructurada ANTES de escribir la especificación 
 ## Uso
 
 ```
-/especdev:proponer <descripción del cambio>
+/dc:proponer <descripción del cambio>
 ```
 
 ## Por Qué Existe
@@ -63,7 +63,7 @@ Los usuarios piden login social. El 60% abandona el registro manual.
 ## Integración
 
 ```
-/especdev:explorar → hallazgos.md
-→ /especdev:proponer → propuesta.md (ESTE COMANDO)
-→ /especdev:especificar → .feature (solo después de aprobar propuesta)
+/dc:explorar → hallazgos.md
+→ /dc:proponer → propuesta.md (ESTE COMANDO)
+→ /dc:especificar → .feature (solo después de aprobar propuesta)
 ```

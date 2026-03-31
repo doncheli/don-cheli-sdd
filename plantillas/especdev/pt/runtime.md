@@ -5,7 +5,7 @@ Informações de execução do projeto: endpoints, variáveis de ambiente, servi
 ## Endpoints Locais
 | Serviço | URL | Porta |
 |---------|-----|-------|
-<!-- Auto-gerado durante /especdev:implementar -->
+<!-- Auto-gerado durante /dc:implementar -->
 
 ## Variáveis de Ambiente Requeridas
 | Variável | Descrição | Origem |

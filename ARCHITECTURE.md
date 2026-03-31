@@ -206,4 +206,4 @@ Don Cheli es un framework de Desarrollo Dirigido por Especificaciones (SDD) que 
 3. **On-demand, no eager.** Leer archivos cuando se necesitan, no al inicio.
 4. **El modelo más barato que funcione.** Haiku/Flash primero, escalar solo si falla.
 5. **Estado explícito en archivos.** Nada implícito, nada en memoria volátil.
-6. **Retrocompatible por defecto.** Los alias (`/especdev:*` → `/dc:*`) sobreviven a los renames.
+6. **Retrocompatible por defecto.** Los alias (`/dc:*` → `/dc:*`) sobreviven a los renames.

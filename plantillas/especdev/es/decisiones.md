@@ -14,4 +14,4 @@ Registro append-only de decisiones técnicas y de producto. Nunca se borra — s
 
 ---
 
-<!-- Las decisiones se agregan aquí con /especdev:memorizar -->
+<!-- Las decisiones se agregan aquí con /dc:memorizar -->

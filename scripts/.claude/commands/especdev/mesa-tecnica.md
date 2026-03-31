@@ -3,20 +3,20 @@ description: Mesa técnica de expertos senior de desarrollo para decisiones de i
 i18n: true
 ---
 
-# /especdev:mesa-tecnica
+# /dc:mesa-tecnica
 
 ## Objetivo
 
 Convocar una mesa de expertos técnicos senior — todos con +15 años de experiencia en su área — para discutir decisiones de implementación, patrones de código, elección de stack, performance, y problemas técnicos complejos. Cada experto aporta desde la trinchera: código real, incidentes vividos, y lecciones aprendidas.
 
-A diferencia de `/especdev:debate` (tensión adversarial cross-funcional) y `/especdev:mesa-redonda` (exploración producto-negocio), la mesa técnica es **100% ingeniería**: cómo se construye, cómo escala, cómo se mantiene.
+A diferencia de `/dc:debate` (tensión adversarial cross-funcional) y `/dc:mesa-redonda` (exploración producto-negocio), la mesa técnica es **100% ingeniería**: cómo se construye, cómo escala, cómo se mantiene.
 
 ## Uso
 
 ```
-/especdev:mesa-tecnica "<tema>"
-/especdev:mesa-tecnica --roles "Backend,Frontend,Arquitecto" "<tema>"
-/especdev:mesa-tecnica --preset infra "<tema>"
+/dc:mesa-tecnica "<tema>"
+/dc:mesa-tecnica --roles "Backend,Frontend,Arquitecto" "<tema>"
+/dc:mesa-tecnica --preset infra "<tema>"
 ```
 
 ## Roles Disponibles

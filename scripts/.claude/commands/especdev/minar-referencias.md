@@ -3,7 +3,7 @@ description: Buscar repos open-source relevantes como referencia antes de implem
 i18n: true
 ---
 
-# /especdev:minar-referencias
+# /dc:minar-referencias
 
 ## Objetivo
 
@@ -14,10 +14,10 @@ Buscar y evaluar repositorios open-source, snippets y patrones de referencia rel
 ## Uso
 
 ```
-/especdev:minar-referencias "webhook handler con verificación de firma"
-/especdev:minar-referencias "rate limiter con sliding window"
-/especdev:minar-referencias --stack node,typescript "auth con JWT refresh"
-/especdev:minar-referencias --max 5 "graphql subscriptions"
+/dc:minar-referencias "webhook handler con verificación de firma"
+/dc:minar-referencias "rate limiter con sliding window"
+/dc:minar-referencias --stack node,typescript "auth con JWT refresh"
+/dc:minar-referencias --max 5 "graphql subscriptions"
 ```
 
 ## Por Qué Existe
@@ -160,20 +160,20 @@ function verifySignature(payload: string, header: string, secret: string): boole
 | Idempotencia | Idempotency key en header | svix/svix-webhooks |
 
 ## Próximo Paso
-→ `/especdev:especificar` usando estas referencias como base
-→ O `/especdev:planificar-tecnico` para incorporar los patrones al blueprint
+→ `/dc:especificar` usando estas referencias como base
+→ O `/dc:planificar-tecnico` para incorporar los patrones al blueprint
 ```
 
 ## Integración con Pipeline
 
 ```
-/especdev:minar-referencias → referencias
-  → /especdev:especificar → specs informadas
-  → /especdev:planificar-tecnico → plan con patrones reales
+/dc:minar-referencias → referencias
+  → /dc:especificar → specs informadas
+  → /dc:planificar-tecnico → plan con patrones reales
   → CodeRAG → indexar patrones útiles para futuro
 
-/especdev:minar-referencias → referencias
-  → /especdev:estimar → estimados más precisos (complejidad real)
+/dc:minar-referencias → referencias
+  → /dc:estimar → estimados más precisos (complejidad real)
 ```
 
 ## Integración con CodeRAG

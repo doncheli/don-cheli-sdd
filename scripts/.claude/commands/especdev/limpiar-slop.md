@@ -3,7 +3,7 @@ description: Eliminar slop de código generado por IA antes de commits
 i18n: true
 ---
 
-# /especdev:limpiar-slop
+# /dc:limpiar-slop
 
 ## Objetivo
 
@@ -14,9 +14,9 @@ Detectar y eliminar **slop** — código innecesario, verbose, o sobre-ingenieri
 ## Uso
 
 ```
-/especdev:limpiar-slop                    # Limpiar branch actual
-/especdev:limpiar-slop --preview          # Solo mostrar, no editar
-/especdev:limpiar-slop --archivo archivo  # Limpiar un solo archivo
+/dc:limpiar-slop                    # Limpiar branch actual
+/dc:limpiar-slop --preview          # Solo mostrar, no editar
+/dc:limpiar-slop --archivo archivo  # Limpiar un solo archivo
 ```
 
 ## Qué es Slop

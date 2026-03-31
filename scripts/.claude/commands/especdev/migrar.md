@@ -3,7 +3,7 @@ description: Planificar y ejecutar migración entre stacks tecnológicos o versi
 i18n: true
 ---
 
-# /especdev:migrar
+# /dc:migrar
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Planificar y ejecutar migraciones de stacks tecnológicos (Vue→React, Express�
 ## Uso
 
 ```
-/especdev:migrar --de "Vue 3" --a "React 19"
-/especdev:migrar --de "Express 4" --a "Fastify 5"
-/especdev:migrar --de "Next.js 14" --a "Next.js 15"
-/especdev:migrar --de "Python 3.9" --a "Python 3.12"
-/especdev:migrar --de "REST" --a "GraphQL"
-/especdev:migrar --de "JavaScript" --a "TypeScript"
-/especdev:migrar --solo-plan                          # Solo generar plan, no ejecutar
+/dc:migrar --de "Vue 3" --a "React 19"
+/dc:migrar --de "Express 4" --a "Fastify 5"
+/dc:migrar --de "Next.js 14" --a "Next.js 15"
+/dc:migrar --de "Python 3.9" --a "Python 3.12"
+/dc:migrar --de "REST" --a "GraphQL"
+/dc:migrar --de "JavaScript" --a "TypeScript"
+/dc:migrar --solo-plan                          # Solo generar plan, no ejecutar
 ```
 
 ## Tipos de Migración
@@ -219,11 +219,11 @@ migrate: /dashboard route vue-router→react-router
 ## Integración con Pipeline
 
 ```
-/especdev:migrar → inventario + equivalencias + plan
-  → /especdev:poc (opcional) → validar enfoque en módulo piloto
-  → /especdev:implementar → ejecutar por waves
-  → /especdev:auditar-seguridad → verificar que migración no introduce vulnerabilidades
-  → /especdev:revisar → review final
+/dc:migrar → inventario + equivalencias + plan
+  → /dc:poc (opcional) → validar enfoque en módulo piloto
+  → /dc:implementar → ejecutar por waves
+  → /dc:auditar-seguridad → verificar que migración no introduce vulnerabilidades
+  → /dc:revisar → review final
 ```
 
 ## Guardrails

@@ -3,7 +3,7 @@ description: Detectar y cuantificar deuda técnica, con clasificación especial 
 i18n: true
 ---
 
-# /especdev:tech-debt
+# /dc:tech-debt
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Escanear la base de código en busca de deuda técnica, con énfasis en patrones
 ## Uso
 
 ```
-/especdev:tech-debt                                # Escaneo completo del proyecto
-/especdev:tech-debt @src/services/                 # Escanear módulo específico
-/especdev:tech-debt --tipo duplicacion             # Enfocarse en un tipo
-/especdev:tech-debt --origen ia                    # Solo deuda introducida por IA
-/especdev:tech-debt --formato ejecutivo            # Reporte simplificado para management
-/especdev:tech-debt --umbral-score 30              # Alertar si score supera umbral
-/especdev:tech-debt --comparar main                # Delta de deuda vs rama base
+/dc:tech-debt                                # Escaneo completo del proyecto
+/dc:tech-debt @src/services/                 # Escanear módulo específico
+/dc:tech-debt --tipo duplicacion             # Enfocarse en un tipo
+/dc:tech-debt --origen ia                    # Solo deuda introducida por IA
+/dc:tech-debt --formato ejecutivo            # Reporte simplificado para management
+/dc:tech-debt --umbral-score 30              # Alertar si score supera umbral
+/dc:tech-debt --comparar main                # Delta de deuda vs rama base
 ```
 
 ## Categorías de Deuda Detectadas
@@ -198,12 +198,12 @@ Se generaron 55 ítems en `.especdev/tech-debt-backlog.md` listos para importar 
 ## Integración con Don Cheli
 
 ```
-/especdev:tech-debt → ítems críticos detectados
-  → /especdev:desglosar → crear tareas en backlog
-  → /especdev:implementar → refactor con TDD
-  → /especdev:tech-debt --comparar main → verificar reducción
+/dc:tech-debt → ítems críticos detectados
+  → /dc:desglosar → crear tareas en backlog
+  → /dc:implementar → refactor con TDD
+  → /dc:tech-debt --comparar main → verificar reducción
 
-/especdev:tech-debt --formato ejecutivo → reporte para management
+/dc:tech-debt --formato ejecutivo → reporte para management
   → decisión de sprint de deuda técnica
 ```
 

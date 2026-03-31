@@ -3,7 +3,7 @@ description: Generar blueprint técnico desde una especificación Gherkin
 i18n: true
 ---
 
-# /especdev:planificar-tecnico
+# /dc:planificar-tecnico
 
 ## Objetivo
 
@@ -14,12 +14,12 @@ Generar un blueprint técnico (contratos API, modelos, arquitectura de servicios
 ## Uso
 
 ```
-/especdev:planificar-tecnico @specs/features/<dominio>/<Feature>.feature
+/dc:planificar-tecnico @specs/features/<dominio>/<Feature>.feature
 ```
 
 ## Comportamiento
 
-1. **Verificar Puerta 2** — El `.feature` debe tener tag `@lista` (pasó `/especdev:clarificar`)
+1. **Verificar Puerta 2** — El `.feature` debe tener tag `@lista` (pasó `/dc:clarificar`)
 2. **Verificar** que no hay marcadores `[NECESITA CLARIFICACIÓN]` pendientes
 3. **Ejecutar Chequeo de Constitución** — Validar contra los principios de `reglas/constitucion.md`
 4. **Documentar Contexto Técnico** — Stack, dependencias, restricciones

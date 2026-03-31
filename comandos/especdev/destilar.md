@@ -3,22 +3,22 @@ description: Extraer especificaciones compactas desde código existente (Bluepri
 i18n: true
 ---
 
-# /especdev:destilar
+# /dc:destilar
 
 ## Objetivo
 
-Analizar un codebase existente y extraer un **blueprint compacto**: especificaciones, contratos, reglas de negocio y decisiones arquitectónicas implícitas en el código. Es ingeniería inversa de specs, no de arquitectura (para eso existe `/especdev:reversa`).
+Analizar un codebase existente y extraer un **blueprint compacto**: especificaciones, contratos, reglas de negocio y decisiones arquitectónicas implícitas en el código. Es ingeniería inversa de specs, no de arquitectura (para eso existe `/dc:reversa`).
 
 > Adaptado de DeepCode (HKUDS/DeepCode) — Blueprint Distillation: "comprimir código fuente para extraer especificaciones esenciales, filtrando ruido y preservando patrones críticos."
 
 ## Uso
 
 ```
-/especdev:destilar                             # Destilar el proyecto actual
-/especdev:destilar @ruta/al/modulo             # Destilar un módulo específico
-/especdev:destilar --formato gherkin           # Output en formato Gherkin
-/especdev:destilar --formato resumen           # Output como resumen ejecutivo
-/especdev:destilar --formato contratos         # Solo interfaces y contratos
+/dc:destilar                             # Destilar el proyecto actual
+/dc:destilar @ruta/al/modulo             # Destilar un módulo específico
+/dc:destilar --formato gherkin           # Output en formato Gherkin
+/dc:destilar --formato resumen           # Output como resumen ejecutivo
+/dc:destilar --formato contratos         # Solo interfaces y contratos
 ```
 
 ## Por Qué Existe
@@ -30,9 +30,9 @@ Analizar un codebase existente y extraer un **blueprint compacto**: especificaci
 | Onboarding de nuevo dev | Semanas entendiendo el código | Blueprint + mapa en 1 hora |
 | Rewrite parcial | ¿Qué comportamiento preservar? | Contratos explícitos |
 
-## Diferencia con `/especdev:reversa`
+## Diferencia con `/dc:reversa`
 
-| Aspecto | `/especdev:reversa` | `/especdev:destilar` |
+| Aspecto | `/dc:reversa` | `/dc:destilar` |
 |---------|--------------------|--------------------|
 | **Foco** | Arquitectura (componentes, conexiones) | Comportamiento (reglas, contratos) |
 | **Output** | Mapa de componentes | Especificaciones compactas |
@@ -182,10 +182,10 @@ Procesar pagos a través de Stripe con reintentos y conversión de moneda.
 ## Integración con Pipeline
 
 ```
-/especdev:destilar → blueprint
-  → /especdev:especificar → .feature (informada por blueprint)
-  → /especdev:clarificar → validar contra blueprint
-  → /especdev:planificar-tecnico → usar contratos como base
+/dc:destilar → blueprint
+  → /dc:especificar → .feature (informada por blueprint)
+  → /dc:clarificar → validar contra blueprint
+  → /dc:planificar-tecnico → usar contratos como base
 ```
 
 El blueprint alimenta el pipeline de specs, cerrando el ciclo:

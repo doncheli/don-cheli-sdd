@@ -3,12 +3,12 @@ description: Listar sesiones pasadas guardadas en el historial
 i18n: true
 ---
 
-# /especdev:historial
+# /dc:historial
 
 ## Uso
 
 ```
-/especdev:historial
+/dc:historial
 ```
 
 Lista las sesiones almacenadas en `.especdev/historial/`.

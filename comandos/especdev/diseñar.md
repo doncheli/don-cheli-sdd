@@ -3,7 +3,7 @@ description: Diseño técnico con decisiones de arquitectura documentadas
 i18n: true
 ---
 
-# /especdev:diseñar
+# /dc:diseñar
 
 ## Objetivo
 
@@ -14,12 +14,12 @@ Crear un documento de diseño técnico entre la planificación y el desglose de 
 ## Uso
 
 ```
-/especdev:diseñar @specs/features/<dominio>/<Feature>.plan.md
+/dc:diseñar @specs/features/<dominio>/<Feature>.plan.md
 ```
 
 ## Diferencia con planificar-tecnico
 
-| `/especdev:planificar-tecnico` | `/especdev:diseñar` |
+| `/dc:planificar-tecnico` | `/dc:diseñar` |
 |-------------------------------|---------------------|
 | Blueprint: contratos API, modelos, servicios | Decisiones de arquitectura y trade-offs |
 | QUÉ vamos a construir | CÓMO y POR QUÉ así |

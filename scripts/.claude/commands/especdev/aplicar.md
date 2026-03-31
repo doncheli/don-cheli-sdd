@@ -3,7 +3,7 @@ description: Aplicar (implementar) tareas de un cambio específico
 i18n: true
 ---
 
-# /especdev:aplicar
+# /dc:aplicar
 
 ## Objetivo
 
@@ -14,14 +14,14 @@ Implementar las tareas de un cambio específico, con soporte para cambios parale
 ## Uso
 
 ```
-/especdev:aplicar                     # Implementar el cambio activo
-/especdev:aplicar <nombre-cambio>     # Implementar un cambio específico
-/especdev:aplicar --continuar         # Retomar donde se dejó
+/dc:aplicar                     # Implementar el cambio activo
+/dc:aplicar <nombre-cambio>     # Implementar un cambio específico
+/dc:aplicar --continuar         # Retomar donde se dejó
 ```
 
-## Diferencia con /especdev:implementar
+## Diferencia con /dc:implementar
 
-| `/especdev:implementar` | `/especdev:aplicar` |
+| `/dc:implementar` | `/dc:aplicar` |
 |------------------------|---------------------|
 | Trabaja con .tasks.md clásico | Trabaja con carpeta de cambio |
 | Un cambio a la vez | Múltiples cambios en paralelo |
@@ -63,11 +63,11 @@ Progreso: 4/8 tareas completadas (50%)
 
 ```bash
 # Trabajando en dark mode...
-/especdev:aplicar agregar-dark-mode   # tarea 4/8
+/dc:aplicar agregar-dark-mode   # tarea 4/8
 
 # Interrumpido por bug urgente
-/especdev:aplicar corregir-login      # empieza desde tarea 1/3
+/dc:aplicar corregir-login      # empieza desde tarea 1/3
 
 # Bug corregido, volver a dark mode
-/especdev:aplicar agregar-dark-mode   # retoma en tarea 5/8
+/dc:aplicar agregar-dark-mode   # retoma en tarea 5/8
 ```

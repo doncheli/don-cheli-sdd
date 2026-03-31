@@ -44,7 +44,7 @@ Sin Engram, cada sesión de IA empieza de cero. El agente "olvida" decisiones, b
 
 En cada sesión, Don Cheli automáticamente:
 
-1. **Lee** los archivos de memoria al comenzar (`/especdev:continuar`)
+1. **Lee** los archivos de memoria al comenzar (`/dc:continuar`)
 2. **Registra** nuevas decisiones cuando se toman
 3. **Actualiza** convenciones cuando se establecen
 4. **Guarda** log de sesión al completar
@@ -53,10 +53,10 @@ En cada sesión, Don Cheli automáticamente:
 
 | Comando | Qué Hace |
 |---------|----------|
-| `/especdev:memorizar <insight>` | Guardar un insight manualmente |
-| `/especdev:continuar` | Cargar memoria y contexto de sesión previa |
-| `/especdev:donde-estoy` | Test rápido de 5 preguntas para verificar contexto |
-| `/especdev:traspaso` | Generar handoff completo de contexto |
+| `/dc:memorizar <insight>` | Guardar un insight manualmente |
+| `/dc:continuar` | Cargar memoria y contexto de sesión previa |
+| `/dc:donde-estoy` | Test rápido de 5 preguntas para verificar contexto |
+| `/dc:traspaso` | Generar handoff completo de contexto |
 
 ### Ejemplo de Uso
 
@@ -69,7 +69,7 @@ En cada sesión, Don Cheli automáticamente:
 - **Contexto:** Se necesita abstraer la capa de datos
 - **Decisión:** Repository Pattern con inyección de dependencias
 - **Razón:** Facilita testing y cambio de BD
-- **Registrado por:** /especdev:memorizar
+- **Registrado por:** /dc:memorizar
 
 ### 2026-03-20: No usar ORM
 - **Contexto:** El equipo prefiere SQL directo

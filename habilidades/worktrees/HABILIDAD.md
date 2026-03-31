@@ -75,6 +75,6 @@ Tarea C (independiente)  →  Worktree C  →  Subagente C
 
 ## Integración con Don Cheli
 
-- `/especdev:implementar` puede usar worktrees para tareas `[P]` (paralelas)
-- `/especdev:poc` crea worktree automáticamente en `poc/<nombre>`
+- `/dc:implementar` puede usar worktrees para tareas `[P]` (paralelas)
+- `/dc:poc` crea worktree automáticamente en `poc/<nombre>`
 - Subagentes ejecutores reciben worktree aislado por defecto

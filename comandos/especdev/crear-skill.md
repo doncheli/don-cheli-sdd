@@ -3,7 +3,7 @@ description: Crear, probar y mejorar habilidades (skills) de forma iterativa
 i18n: true
 ---
 
-# /especdev:crear-skill
+# /dc:crear-skill
 
 ## Objetivo
 
@@ -14,11 +14,11 @@ Compatible con el formato oficial de Anthropic Skills y con el formato HABILIDAD
 ## Uso
 
 ```
-/especdev:crear-skill "Generador de reportes semanales del equipo"
-/especdev:crear-skill --desde-patron           # Detectar tarea repetitiva y convertirla en skill
-/especdev:crear-skill --formato anthropic       # Generar solo SKILL.md (formato Anthropic)
-/especdev:crear-skill --formato doncheli        # Generar HABILIDAD.md (formato Don Cheli, default)
-/especdev:crear-skill --formato dual            # Generar ambos formatos
+/dc:crear-skill "Generador de reportes semanales del equipo"
+/dc:crear-skill --desde-patron           # Detectar tarea repetitiva y convertirla en skill
+/dc:crear-skill --formato anthropic       # Generar solo SKILL.md (formato Anthropic)
+/dc:crear-skill --formato doncheli        # Generar HABILIDAD.md (formato Don Cheli, default)
+/dc:crear-skill --formato dual            # Generar ambos formatos
 ```
 
 ## Proceso (5 fases iterativas)
@@ -145,4 +145,4 @@ Si el SKILL.md supera 500 líneas, separar material de referencia:
 
 - Las skills creadas se guardan en `.claude/skills/` (formato Anthropic) o en `habilidades/` (formato Don Cheli)
 - Compatible con el marketplace oficial de Anthropic: `https://github.com/anthropics/skills`
-- Se pueden compartir vía `/especdev:archivar` o exportar como ZIP
+- Se pueden compartir vía `/dc:archivar` o exportar como ZIP

@@ -3,7 +3,7 @@ description: Incorporar nuevo desarrollador al proyecto con contexto completo
 i18n: true
 ---
 
-# /especdev:incorporar
+# /dc:incorporar
 
 ## Objetivo
 
@@ -14,9 +14,9 @@ Generar un briefing completo del proyecto para incorporar a un nuevo desarrollad
 ## Uso
 
 ```
-/especdev:incorporar
-/especdev:incorporar --rol <backend|frontend|fullstack|devops>
-/especdev:incorporar --profundidad <rapido|completo>
+/dc:incorporar
+/dc:incorporar --rol <backend|frontend|fullstack|devops>
+/dc:incorporar --profundidad <rapido|completo>
 ```
 
 ## Output (modo rápido)

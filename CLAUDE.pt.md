@@ -27,7 +27,7 @@ Ler sob demanda:
 
 ## Comandos
 - `/dc:*` — Prefixo principal (72+ comandos)
-- `/especdev:*` — Alias retrocompatível
+- `/dc:*` — Alias retrocompatível
 - `/razonar:*` — 15 modelos de raciocínio
 
 ## Auto-check de Atualizações

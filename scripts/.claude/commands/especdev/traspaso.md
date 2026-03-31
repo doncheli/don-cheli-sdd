@@ -3,7 +3,7 @@ description: Generar handoff de contexto para transferencia de sesión
 i18n: true
 ---
 
-# /especdev:traspaso
+# /dc:traspaso
 
 ## Objetivo
 
@@ -12,10 +12,10 @@ Generar un documento estructurado para transferir contexto entre sesiones o agen
 ## Uso
 
 ```
-/especdev:traspaso
-/especdev:traspaso --guardar
-/especdev:traspaso --formato md
-/especdev:traspaso --destino agente
+/dc:traspaso
+/dc:traspaso --guardar
+/dc:traspaso --formato md
+/dc:traspaso --destino agente
 ```
 
 ## Output

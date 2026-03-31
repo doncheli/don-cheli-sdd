@@ -95,7 +95,7 @@ Generated code MUST NOT introduce patterns that conflict with the installed depe
 
 ## VIII. Clarification Protocol (Auto-QA)
 
-When running `/especdev:clarify`, the agent acts as a **Strict QA Engineer** and mandatorily executes:
+When running `/dc:clarify`, the agent acts as a **Strict QA Engineer** and mandatorily executes:
 
 1. **Schema-Spec Consistency Check:**
    - Scan all fields in the Gherkin

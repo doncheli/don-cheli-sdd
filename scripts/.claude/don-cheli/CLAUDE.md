@@ -54,9 +54,9 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 
 ## Comandos Disponibles
 
-**Prefijo corto:** `/dc:*` (alias de `/especdev:*` — ambos funcionan)
+**Prefijo corto:** `/dc:*` (alias de `/dc:*` — ambos funcionan)
 
-- `/dc:*` o `/especdev:*` — Comandos del framework (iniciar, comenzar, estimar, presentar, etc.)
+- `/dc:*` o `/dc:*` — Comandos del framework (iniciar, comenzar, estimar, presentar, etc.)
 - `/dc:planning` — Planning semanal de equipo con RFCs, priorización WSJF y asignación
 - `/dc:mesa-tecnica` — Mesa de expertos senior de desarrollo
 - `/dc:analizar-sesiones` — Analizar patrones de uso y generar recomendaciones

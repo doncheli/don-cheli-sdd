@@ -14,7 +14,7 @@
     "commands_path": "Comandos: {{path}}",
     "step_structure": "Criando estrutura...",
     "step_commands": "Copiando comandos...",
-    "step_commands_done": "{{count}} comandos /especdev:*",
+    "step_commands_done": "{{count}} comandos /dc:*",
     "step_reasoning_done": "{{count}} comandos /razonar:*",
     "step_skills": "Copiando habilidades...",
     "step_skills_done": "{{count}} habilidades",
@@ -40,7 +40,7 @@
     "structure_commands": "comandos",
     "next_steps_title": "Próximos passos:",
     "next_step_1": "Reinicie o Claude Code",
-    "next_step_2": "Em qualquer projeto execute: /especdev:iniciar",
+    "next_step_2": "Em qualquer projeto execute: /dc:iniciar",
     "farewell": "Pare de adivinhar. Comece a fazer engenharia!"
   },
   "framework": {

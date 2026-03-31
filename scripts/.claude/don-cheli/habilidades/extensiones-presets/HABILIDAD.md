@@ -53,16 +53,16 @@ dependencias:
 
 ```bash
 # Agregar extensión desde repo
-/especdev:extension agregar @github:usuario/especdev-django
+/dc:extension agregar @github:usuario/especdev-django
 
 # Agregar extensión local
-/especdev:extension agregar ./mis-extensiones/django/
+/dc:extension agregar ./mis-extensiones/django/
 
 # Listar extensiones
-/especdev:extension listar
+/dc:extension listar
 
 # Remover
-/especdev:extension remover django
+/dc:extension remover django
 ```
 
 ## Presets — Personalizar Flujos Existentes

@@ -118,9 +118,9 @@ CodeRAG se activa automáticamente durante:
 
 | Momento | Trigger |
 |---------|---------|
-| `/especdev:planificar-tecnico` | Buscar patrones arquitectónicos relevantes |
-| `/especdev:implementar` | Inyectar snippets de referencia |
-| `/especdev:desglosar` | Informar complejidad real basada en código similar |
+| `/dc:planificar-tecnico` | Buscar patrones arquitectónicos relevantes |
+| `/dc:implementar` | Inyectar snippets de referencia |
+| `/dc:desglosar` | Informar complejidad real basada en código similar |
 | Manual | `Consulta CodeRAG: <query>` |
 
 ### Cómo Recuperar
@@ -258,9 +258,9 @@ CodeRAG + LightRAG:
 
 | Acción | Cuándo |
 |--------|--------|
-| **Crear** | `/especdev:iniciar` si se configuran fuentes |
+| **Crear** | `/dc:iniciar` si se configuran fuentes |
 | **Actualizar** | Manualmente o al detectar cambios en fuentes |
-| **Limpiar** | `/especdev:archivar` al completar proyecto |
+| **Limpiar** | `/dc:archivar` al completar proyecto |
 | **Exportar** | Para compartir índice entre proyectos similares |
 
 ## Límites de Tokens

@@ -27,7 +27,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ## [1.13.0] - 2026-03-24
 ### Añadido
-- `/dc:` como prefijo principal (más corto y memorable), `/especdev:` queda como alias retrocompatible
+- `/dc:` como prefijo principal (más corto y memorable), `/dc:` queda como alias retrocompatible
 - Nuevo comando `/dc:planning` — planning semanal de equipo con RFCs, WSJF y asignación
 - Nueva habilidad `planning-equipo` — capacidad, RFCs, retrospectiva automática
 - Comandos i18n: nombres traducidos por idioma de instalación (EN: `/dc:init`, PT: `/dc:começar`)
@@ -115,7 +115,7 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 ## [1.6.0] - 2026-03-21
 ### Añadido
 - Release inicial de Don Cheli — SDD Framework
-- 55+ comandos `/especdev:*` para el ciclo completo de desarrollo
+- 55+ comandos `/dc:*` para el ciclo completo de desarrollo
 - 15 modelos de razonamiento `/razonar:*`
 - 40+ habilidades modulares
 - 4 modelos de estimación (COCOMO, Planning Poker, Function Points, Histórico)

@@ -25,7 +25,7 @@ Mejorar calidad de output (+8-21%) mediante auto-reflexión estructurada.
 
 ## Modo Adversarial
 
-Cuando se activa el modo adversarial (automáticamente en `/especdev:revisar` o manualmente con `--adversarial`):
+Cuando se activa el modo adversarial (automáticamente en `/dc:revisar` o manualmente con `--adversarial`):
 
 1. **Obligación de hallazgo:** DEBE encontrar al menos 1 problema concreto. "Todo bien" no es aceptable.
 2. **Re-examinación forzada:** Si la primera pasada no encuentra nada, ejecutar una segunda con estos ángulos:

@@ -326,7 +326,7 @@ Isso permite ter dezenas de skills sem impactar a janela de contexto.
 
 ## Comandos (85+)
 
-> **Retrocompatível:** Todos os comandos `/dc:*` também estão disponíveis como `/especdev:*` por retrocompatibilidade.
+> **Retrocompatível:** Todos os comandos `/dc:*` também estão disponíveis como `/dc:*` por retrocompatibilidade.
 
 <details>
 <summary><strong>Principais (29)</strong></summary>

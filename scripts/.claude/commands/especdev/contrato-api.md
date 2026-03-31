@@ -3,7 +3,7 @@ description: Diseñar contratos de API, webhooks e integraciones con manejo de e
 i18n: true
 ---
 
-# /especdev:contrato-api
+# /dc:contrato-api
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Diseñar contratos de API completos (REST o GraphQL), definir webhooks, planific
 ## Uso
 
 ```
-/especdev:contrato-api <descripción de la integración>
-/especdev:contrato-api --tipo rest "Integración con Stripe para pagos"
-/especdev:contrato-api --tipo graphql "API de catálogo de productos"
-/especdev:contrato-api --tipo webhook "Recibir eventos de Shopify"
+/dc:contrato-api <descripción de la integración>
+/dc:contrato-api --tipo rest "Integración con Stripe para pagos"
+/dc:contrato-api --tipo graphql "API de catálogo de productos"
+/dc:contrato-api --tipo webhook "Recibir eventos de Shopify"
 ```
 
-## Diferencia con `/especdev:planificar-tecnico`
+## Diferencia con `/dc:planificar-tecnico`
 
 | Aspecto | `planificar-tecnico` | `contrato-api` |
 |---------|---------------------|----------------|
@@ -206,9 +206,9 @@ specs/api/
 ## Integración con Pipeline
 
 ```
-/especdev:contrato-api → contrato + OpenAPI parcial
-  → /especdev:planificar-tecnico → incorpora contrato al plan
-  → /especdev:desglosar → tareas incluyen implementación del contrato
+/dc:contrato-api → contrato + OpenAPI parcial
+  → /dc:planificar-tecnico → incorpora contrato al plan
+  → /dc:desglosar → tareas incluyen implementación del contrato
   → Documentación Viva → actualiza OpenAPI global
 ```
 

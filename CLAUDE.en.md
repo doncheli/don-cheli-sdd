@@ -27,7 +27,7 @@ Read on demand:
 
 ## Commands
 - `/dc:*` — Primary prefix (72+ commands)
-- `/especdev:*` — Backward-compatible alias
+- `/dc:*` — Backward-compatible alias
 - `/razonar:*` — 15 reasoning models
 
 ## Auto-check for Updates

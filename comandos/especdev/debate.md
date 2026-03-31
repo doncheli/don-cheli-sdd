@@ -3,7 +3,7 @@ description: Deliberación multi-rol con tensiones explícitas para decisiones d
 i18n: true
 ---
 
-# /especdev:debate
+# /dc:debate
 
 ## Objetivo
 
@@ -14,9 +14,9 @@ Inspirado en el "Party Mode" del framework BMAD.
 ## Uso
 
 ```
-/especdev:debate "¿Monolito o microservicios para el MVP?"
-/especdev:debate "¿PostgreSQL o MongoDB para este caso de uso?"
-/especdev:debate --roles "CPO,Arquitecto,UX,Negocio"
+/dc:debate "¿Monolito o microservicios para el MVP?"
+/dc:debate "¿PostgreSQL o MongoDB para este caso de uso?"
+/dc:debate --roles "CPO,Arquitecto,UX,Negocio"
 ```
 
 ## Comportamiento

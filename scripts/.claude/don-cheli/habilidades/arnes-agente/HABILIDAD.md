@@ -117,9 +117,9 @@ MELI define 3 niveles de madurez en el uso de specs:
 
 | Nivel | Comando | Acción |
 |-------|---------|--------|
-| 1 | `/especdev:especificar` → `/especdev:implementar` | Spec → código (spec se archiva) |
+| 1 | `/dc:especificar` → `/dc:implementar` | Spec → código (spec se archiva) |
 | 2 | Agregar regla en hooks/parar.yml | Verificar que spec se actualiza con cada cambio |
-| 3 | `/especdev:implementar --desde-spec` | Re-generar código desde spec actualizada |
+| 3 | `/dc:implementar --desde-spec` | Re-generar código desde spec actualizada |
 
 ## Prevención de Context Rot
 

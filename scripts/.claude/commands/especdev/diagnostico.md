@@ -3,7 +3,7 @@ description: Verificar la salud del setup de Don Cheli en el proyecto actual
 i18n: true
 ---
 
-# /especdev:diagnostico
+# /dc:diagnostico
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Verificar que el setup de Don Cheli en el proyecto está completo y funcional. D
 ## Uso
 
 ```
-/especdev:diagnostico
+/dc:diagnostico
 ```
 
 ## Comportamiento
@@ -47,7 +47,7 @@ Verificando configuración...
 Verificando entorno...
   ✅ Git inicializado
   ✅ Branch actual: feature/auth
-  ✅ Docker disponible (para /especdev:implementar)
+  ✅ Docker disponible (para /dc:implementar)
   ⚠️ Docker Compose no encontrado (opcional)
   ✅ Node/Python/Go detectado (según stack)
   ✅ Linter configurado
@@ -78,7 +78,7 @@ Verificando pipeline...
 
 ### Warnings
 1. `idioma` no definido en config.yaml → agregar `idioma: "es"`
-2. Docker Compose no encontrado → instalar para usar `/especdev:implementar`
+2. Docker Compose no encontrado → instalar para usar `/dc:implementar`
 
 ### Resultado: ✅ SALUDABLE (2 warnings menores)
 ```
@@ -89,4 +89,4 @@ Verificando pipeline...
 |-----------|-------------|
 | ✅ **SALUDABLE** | Todo funciona, warnings son opcionales |
 | ⚠️ **FUNCIONAL** | Funciona pero con limitaciones |
-| ❌ **REQUIERE ATENCIÓN** | Archivos críticos faltantes, ejecutar `/especdev:iniciar` |
+| ❌ **REQUIERE ATENCIÓN** | Archivos críticos faltantes, ejecutar `/dc:iniciar` |

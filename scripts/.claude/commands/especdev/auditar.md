@@ -3,13 +3,13 @@ description: Auditar componentes del framework
 i18n: true
 ---
 
-# /especdev:auditar
+# /dc:auditar
 
 ## Uso
 
 ```
-/especdev:auditar [componente]
-/especdev:auditar todo
+/dc:auditar [componente]
+/dc:auditar todo
 ```
 
 Audita la integridad de comandos, habilidades y configuración del framework.

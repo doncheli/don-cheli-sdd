@@ -59,7 +59,7 @@ Invoca las habilidades con la sintaxis `@nombre-habilidad` (por ejemplo, `@donch
 
 ## Flujos de Trabajo
 
-Los comandos de barra están en `.agent/workflows/`. Orquestan procesos de múltiples pasos usando habilidades. Los comandos disponibles corresponden a los comandos `/especdev:*` del framework.
+Los comandos de barra están en `.agent/workflows/`. Orquestan procesos de múltiples pasos usando habilidades. Los comandos disponibles corresponden a los comandos `/dc:*` del framework.
 
 ## Habilidades Disponibles (13)
 

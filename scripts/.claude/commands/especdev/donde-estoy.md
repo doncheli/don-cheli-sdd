@@ -3,7 +3,7 @@ description: Test rápido de 5 preguntas para verificar contexto
 i18n: true
 ---
 
-# /especdev:donde-estoy
+# /dc:donde-estoy
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Ejecutar un test rápido de 5 preguntas para verificar que el contexto de trabaj
 ## Uso
 
 ```
-/especdev:donde-estoy
+/dc:donde-estoy
 ```
 
 ## Las 5 Preguntas
@@ -29,4 +29,4 @@ Ejecutar un test rápido de 5 preguntas para verificar que el contexto de trabaj
 
 - ✅ 5/5 → Listo para continuar
 - ⚠️ 3-4/5 → Proceder con precaución
-- ❌ 0-2/5 → Ejecutar `/especdev:iniciar --reparar`
+- ❌ 0-2/5 → Ejecutar `/dc:iniciar --reparar`

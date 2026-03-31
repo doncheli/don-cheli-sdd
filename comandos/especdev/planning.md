@@ -3,25 +3,25 @@ description: Planning semanal de equipo con revisión de RFCs, priorización, as
 i18n: true
 ---
 
-# /especdev:planning
+# /dc:planning
 
 ## Objetivo
 
 Facilitar el planning semanal de un equipo de desarrollo: revisar RFCs pendientes, priorizar trabajo, asignar tareas a responsables individuales, parejas o squads, y generar un plan accionable con compromisos claros.
 
-A diferencia de `/especdev:estimar` (esfuerzo por tarea) o `/especdev:debate` (decisiones técnicas), el planning opera a **nivel de equipo y sprint**: qué se hace, quién lo hace, en qué orden, y qué se deja fuera.
+A diferencia de `/dc:estimar` (esfuerzo por tarea) o `/dc:debate` (decisiones técnicas), el planning opera a **nivel de equipo y sprint**: qué se hace, quién lo hace, en qué orden, y qué se deja fuera.
 
 ## Uso
 
 ```
-/especdev:planning                                    # Planning completo (interactivo)
-/especdev:planning --semana "2026-03-24"              # Planning para semana específica
-/especdev:planning --equipo "Ana,Carlos,Luis,María"   # Definir equipo
-/especdev:planning --capacidad "Ana:4d,Carlos:3d"     # Capacidad por persona (días disponibles)
-/especdev:planning --rfcs "RFC-012,RFC-015,RFC-018"   # RFCs a revisar
-/especdev:planning --modo revision                    # Solo revisión de RFCs (sin asignación)
-/especdev:planning --modo asignacion                  # Solo asignación (RFCs ya priorizados)
-/especdev:planning --modo seguimiento                 # Revisar avance del planning anterior
+/dc:planning                                    # Planning completo (interactivo)
+/dc:planning --semana "2026-03-24"              # Planning para semana específica
+/dc:planning --equipo "Ana,Carlos,Luis,María"   # Definir equipo
+/dc:planning --capacidad "Ana:4d,Carlos:3d"     # Capacidad por persona (días disponibles)
+/dc:planning --rfcs "RFC-012,RFC-015,RFC-018"   # RFCs a revisar
+/dc:planning --modo revision                    # Solo revisión de RFCs (sin asignación)
+/dc:planning --modo asignacion                  # Solo asignación (RFCs ya priorizados)
+/dc:planning --modo seguimiento                 # Revisar avance del planning anterior
 ```
 
 ## Proceso (4 Fases)
@@ -247,11 +247,11 @@ Lee el planning de la semana actual (`.especdev/plannings/`) y genera reporte de
 
 | Comando | Cuándo usarlo junto con planning |
 |---------|----------------------------------|
-| `/especdev:estimar` | Para estimar RFCs grandes antes del planning |
-| `/especdev:debate` | Para resolver desacuerdos técnicos sobre un RFC |
-| `/especdev:mesa-tecnica` | Para profundizar en la implementación de un RFC priorizado |
-| `/especdev:desglosar` | Para dividir un RFC priorizado en tareas TDD |
-| `/especdev:contrato-api` | Para definir interfaces antes de asignar a parejas/squads |
+| `/dc:estimar` | Para estimar RFCs grandes antes del planning |
+| `/dc:debate` | Para resolver desacuerdos técnicos sobre un RFC |
+| `/dc:mesa-tecnica` | Para profundizar en la implementación de un RFC priorizado |
+| `/dc:desglosar` | Para dividir un RFC priorizado en tareas TDD |
+| `/dc:contrato-api` | Para definir interfaces antes de asignar a parejas/squads |
 
 ## Modelo recomendado
 

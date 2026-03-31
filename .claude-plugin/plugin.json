@@ -34,7 +34,7 @@
   "categories": ["development", "productivity", "testing"],
   "commands": {
     "prefix": "/dc:",
-    "aliases": ["/especdev:"],
+    "aliases": ["/dc:"],
     "source_dir": "comandos/",
     "namespaces": {
       "especdev": "comandos/especdev/",

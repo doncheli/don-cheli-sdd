@@ -3,7 +3,7 @@ description: Documentar qué datos toca el framework, qué sale a APIs externas 
 i18n: true
 ---
 
-# /especdev:data-policy
+# /dc:data-policy
 
 ## Objetivo
 
@@ -12,11 +12,11 @@ Escanear el proyecto para identificar qué datos se procesan, qué fluye hacia p
 ## Uso
 
 ```
-/especdev:data-policy                         # Escanear y generar política completa
-/especdev:data-policy --solo-escanear         # Solo mostrar hallazgos, sin generar doc
-/especdev:data-policy --formato privacy       # Generar PRIVACY.md (orientado a usuarios)
-/especdev:data-policy --formato data-policy   # Generar DATA-POLICY.md (técnico, default)
-/especdev:data-policy --actualizar            # Actualizar doc existente con nuevos hallazgos
+/dc:data-policy                         # Escanear y generar política completa
+/dc:data-policy --solo-escanear         # Solo mostrar hallazgos, sin generar doc
+/dc:data-policy --formato privacy       # Generar PRIVACY.md (orientado a usuarios)
+/dc:data-policy --formato data-policy   # Generar DATA-POLICY.md (técnico, default)
+/dc:data-policy --actualizar            # Actualizar doc existente con nuevos hallazgos
 ```
 
 ## Comportamiento
@@ -206,9 +206,9 @@ proyecto/
 ## Integración con Pipeline
 
 ```
-/especdev:auditar-seguridad → detectar vulnerabilidades de seguridad
-  → /especdev:data-policy → documentar flujos de datos
-  → /especdev:pr-review → verificar que PRs no introducen nuevos flujos no documentados
+/dc:auditar-seguridad → detectar vulnerabilidades de seguridad
+  → /dc:data-policy → documentar flujos de datos
+  → /dc:pr-review → verificar que PRs no introducen nuevos flujos no documentados
 ```
 
 Ejecutar al inicio del proyecto y cada vez que se agrega una integración externa.

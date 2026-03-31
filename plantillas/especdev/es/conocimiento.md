@@ -16,4 +16,4 @@ Patrones, convenciones y aprendizajes cross-sesión del proyecto. Se acumula y a
 
 ---
 
-<!-- El conocimiento se actualiza con /especdev:memorizar y /especdev:cerrar-sesion -->
+<!-- El conocimiento se actualiza con /dc:memorizar y /dc:cerrar-sesion -->

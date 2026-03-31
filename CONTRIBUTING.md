@@ -26,7 +26,7 @@
 description: Descripción breve del comando
 ---
 
-# /especdev:nombre
+# /dc:nombre
 
 ## Objetivo
 [Qué hace el comando]

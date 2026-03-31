@@ -3,7 +3,7 @@ description: Modo completo para proyectos grandes y complejos (Nivel 3)
 i18n: true
 ---
 
-# /especdev:completo
+# /dc:completo
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Iniciar modo completo (Nivel 3 - Complejo) para proyectos que requieren las 7 fa
 ## Uso
 
 ```
-/especdev:completo <descripción del proyecto>
+/dc:completo <descripción del proyecto>
 ```
 
 ## Las 7 Fases
@@ -46,4 +46,4 @@ Cada fase requiere criterios de Avance/No-Avance:
 
 ## Des-escalamiento
 
-Si después de la Estrategia el alcance es menor → des-escalar a `/especdev:rapido`
+Si después de la Estrategia el alcance es menor → des-escalar a `/dc:rapido`

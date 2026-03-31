@@ -3,7 +3,7 @@ description: Crear todos los artefactos de planificación de un golpe (fast-forw
 i18n: true
 ---
 
-# /especdev:avance-rapido
+# /dc:avance-rapido
 
 ## Objetivo
 
@@ -14,17 +14,17 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 ## Uso
 
 ```
-/especdev:avance-rapido <nombre-del-cambio>
-/especdev:avance-rapido agregar-dark-mode
+/dc:avance-rapido <nombre-del-cambio>
+/dc:avance-rapido agregar-dark-mode
 ```
 
 ## Cuándo Usar
 
 | Situación | Comando |
 |-----------|---------|
-| Sabes exactamente qué quieres | `/especdev:avance-rapido` ← ESTE |
-| Requisitos poco claros, necesitas investigar | `/especdev:explorar` primero |
-| Quieres ir paso a paso revisando | `/especdev:proponer` + `/especdev:continuar` |
+| Sabes exactamente qué quieres | `/dc:avance-rapido` ← ESTE |
+| Requisitos poco claros, necesitas investigar | `/dc:explorar` primero |
+| Quieres ir paso a paso revisando | `/dc:proponer` + `/dc:continuar` |
 
 ## Comportamiento
 
@@ -48,17 +48,17 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 ✅ tareas.md — 4 fases, 8 tareas
 
 ¡Listo para implementar!
-→ /especdev:aplicar agregar-dark-mode
+→ /dc:aplicar agregar-dark-mode
 ```
 
 ## Pipeline Rápido vs Completo
 
 ```
 RÁPIDO (scope claro):
-/especdev:avance-rapido → /especdev:aplicar → /especdev:archivar
+/dc:avance-rapido → /dc:aplicar → /dc:archivar
 
 COMPLETO (scope incierto):
-/especdev:explorar → /especdev:proponer → /especdev:especificar
-→ /especdev:clarificar → /especdev:diseñar → /especdev:desglosar
-→ /especdev:implementar → /especdev:revisar → /especdev:archivar
+/dc:explorar → /dc:proponer → /dc:especificar
+→ /dc:clarificar → /dc:diseñar → /dc:desglosar
+→ /dc:implementar → /dc:revisar → /dc:archivar
 ```

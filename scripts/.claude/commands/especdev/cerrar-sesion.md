@@ -3,7 +3,7 @@ description: Ritual de cierre de sesión con auditoría, calidad, aprendizajes y
 i18n: true
 ---
 
-# /especdev:cerrar-sesion
+# /dc:cerrar-sesion
 
 ## Objetivo
 
@@ -14,7 +14,7 @@ Ritual de fin de sesión que audita cambios, ejecuta checks de calidad, captura 
 ## Uso
 
 ```
-/especdev:cerrar-sesion
+/dc:cerrar-sesion
 ```
 
 ## Checklist (obligatorio — no saltar pasos)

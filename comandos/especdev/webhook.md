@@ -3,7 +3,7 @@ description: Configurar triggers externos (GitHub, Slack, Linear, PagerDuty) par
 i18n: true
 ---
 
-# /especdev:webhook
+# /dc:webhook
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Config
 ## Uso
 
 ```
-/especdev:webhook --listar                          # Ver todos los webhooks configurados
-/especdev:webhook --agregar github:pr_opened        # Configurar nuevo evento
-/especdev:webhook --eliminar wh-003                 # Eliminar configuración por ID
-/especdev:webhook --probar wh-001                   # Enviar evento de prueba
-/especdev:webhook --log                             # Ver log de eventos recibidos
-/especdev:webhook --estado                          # Dashboard de salud de webhooks
-/especdev:webhook --exportar                        # Exportar config para compartir con equipo
+/dc:webhook --listar                          # Ver todos los webhooks configurados
+/dc:webhook --agregar github:pr_opened        # Configurar nuevo evento
+/dc:webhook --eliminar wh-003                 # Eliminar configuración por ID
+/dc:webhook --probar wh-001                   # Enviar evento de prueba
+/dc:webhook --log                             # Ver log de eventos recibidos
+/dc:webhook --estado                          # Dashboard de salud de webhooks
+/dc:webhook --exportar                        # Exportar config para compartir con equipo
 ```
 
 ## Fuentes de Eventos Soportadas

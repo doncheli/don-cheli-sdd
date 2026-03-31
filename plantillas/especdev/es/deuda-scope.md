@@ -14,4 +14,4 @@ Trabajo descubierto durante fixes, PoCs o implementación que está FUERA del al
 
 ---
 
-<!-- La deuda de scope se registra automáticamente durante /especdev:poc, /especdev:rapido y /especdev:implementar -->
+<!-- La deuda de scope se registra automáticamente durante /dc:poc, /dc:rapido y /dc:implementar -->

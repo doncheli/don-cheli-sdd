@@ -3,7 +3,7 @@ description: Revisión de código IA como pre-commit hook — Guardian Angel
 i18n: true
 ---
 
-# /especdev:guardian
+# /dc:guardian
 
 ## Objetivo
 
@@ -14,10 +14,10 @@ Ejecutar revisión de código automatizada usando IA como puerta de calidad ante
 ## Uso
 
 ```
-/especdev:guardian                    # Revisar archivos staged
-/especdev:guardian --modo pr          # Revisar todos los cambios del branch vs base
-/especdev:guardian --modo ci          # Para integración continua
-/especdev:guardian --instalar-hook    # Instalar como pre-commit hook
+/dc:guardian                    # Revisar archivos staged
+/dc:guardian --modo pr          # Revisar todos los cambios del branch vs base
+/dc:guardian --modo ci          # Para integración continua
+/dc:guardian --instalar-hook    # Instalar como pre-commit hook
 ```
 
 ## Cómo Funciona
@@ -27,7 +27,7 @@ git add <archivos>
 git commit -m "feat: agregar login"
     │
     ├── Hook pre-commit se activa
-    │   └── /especdev:guardian
+    │   └── /dc:guardian
     │       ├── Lee archivos staged
     │       ├── Lee reglas de .especdev/estandares.md
     │       ├── Envía al LLM para revisión

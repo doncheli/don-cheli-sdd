@@ -32,4 +32,4 @@ QUANDO usuário faz X
 - [Dado 2] ← [Fonte]
 
 ---
-*Gerado com `/especdev:pseudocodigo` entre especificar e planejar.*
+*Gerado com `/dc:pseudocodigo` entre especificar e planejar.*

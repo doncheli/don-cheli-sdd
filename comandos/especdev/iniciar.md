@@ -3,7 +3,7 @@ description: Inicializar Don Cheli en un proyecto nuevo o existente
 i18n: true
 ---
 
-# /especdev:iniciar
+# /dc:iniciar
 
 ## Objetivo
 
@@ -12,7 +12,7 @@ Crear el directorio `.especdev/` con todos los archivos de contexto necesarios p
 ## Uso
 
 ```
-/especdev:iniciar [opciones]
+/dc:iniciar [opciones]
 ```
 
 ### Opciones
@@ -66,7 +66,7 @@ Crear el directorio `.especdev/` con todos los archivos de contexto necesarios p
 ## Ejemplo
 
 ```bash
-/especdev:iniciar --tipo servicio --nombre "api-pagos" --gitignore
+/dc:iniciar --tipo servicio --nombre "api-pagos" --gitignore
 ```
 
 Output:

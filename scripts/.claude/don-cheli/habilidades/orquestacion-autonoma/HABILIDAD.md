@@ -119,6 +119,6 @@ concurrencia:
 
 | Situación | Comando |
 |-----------|---------|
-| Una tarea a la vez, manual | `/especdev:implementar` |
-| Pipeline completo, un cambio | `/especdev:aplicar` |
+| Una tarea a la vez, manual | `/dc:implementar` |
+| Pipeline completo, un cambio | `/dc:aplicar` |
 | Múltiples issues del tracker, autónomo | **Orquestación** |

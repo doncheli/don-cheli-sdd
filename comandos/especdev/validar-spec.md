@@ -3,20 +3,20 @@ description: Validar la calidad y completitud de una especificación antes de pl
 i18n: true
 ---
 
-# /especdev:validar-spec
+# /dc:validar-spec
 
 ## Objetivo
 
-Ejecutar una validación multi-capa sobre las especificaciones ANTES de desglosar en tareas. Detecta problemas que `/especdev:clarificar` no cubre: implementation leakage, measurability, completeness, y adherencia a la constitución del proyecto.
+Ejecutar una validación multi-capa sobre las especificaciones ANTES de desglosar en tareas. Detecta problemas que `/dc:clarificar` no cubre: implementation leakage, measurability, completeness, y adherencia a la constitución del proyecto.
 
 Inspirado en los 13 pasos de validación del framework BMAD.
 
 ## Uso
 
 ```
-/especdev:validar-spec                              # Validar todas las specs activas
-/especdev:validar-spec @specs/features/auth/         # Validar un dominio
-/especdev:validar-spec --strict                      # Modo estricto (0 warnings permitidos)
+/dc:validar-spec                              # Validar todas las specs activas
+/dc:validar-spec @specs/features/auth/         # Validar un dominio
+/dc:validar-spec --strict                      # Modo estricto (0 warnings permitidos)
 ```
 
 ## Validaciones (8 checks)
@@ -50,7 +50,7 @@ Inspirado en los 13 pasos de validación del framework BMAD.
 ✅ PASS: Scope Alignment
 
 Resultado: ⚠️ PASA CON WARNINGS (2 warnings, 0 errores)
-→ Corregir warnings antes de /especdev:desglosar para máxima calidad
+→ Corregir warnings antes de /dc:desglosar para máxima calidad
 ```
 
 ## Integración

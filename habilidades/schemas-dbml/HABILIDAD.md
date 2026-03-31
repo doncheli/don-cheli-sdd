@@ -44,7 +44,7 @@ Table usuario {
 ### 1. Provisional (`@provisional`)
 
 ```dbml
-// @provisional — Auto-generado por /especdev:especificar
+// @provisional — Auto-generado por /dc:especificar
 Table orden @provisional {
   id uuid [pk]
   usuario_id uuid [ref: > usuario.id]
@@ -70,7 +70,7 @@ Table orden {
 }
 ```
 
-- Revisado durante `/especdev:clarificar` o `/especdev:planificar-tecnico`
+- Revisado durante `/dc:clarificar` o `/dc:planificar-tecnico`
 - Se convierte en **Verdad Absoluta**
 - Extensión solo con `@provisional` en las NUEVAS partes
 - Renombrar campos requiere nota de migración

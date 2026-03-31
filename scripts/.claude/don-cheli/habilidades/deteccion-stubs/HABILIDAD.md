@@ -89,8 +89,8 @@ Detectar que los componentes están realmente conectados:
 
 | Momento | Trigger |
 |---------|---------|
-| **Post-implementación** | Después de cada tarea GREEN en `/especdev:implementar` |
-| **Pre-revisión** | Antes de `/especdev:revisar` |
+| **Post-implementación** | Después de cada tarea GREEN en `/dc:implementar` |
+| **Pre-revisión** | Antes de `/dc:revisar` |
 | **Pre-merge** | Como parte de la Puerta 6 (Merge de Código) |
 
 ## Flujo de Detección
@@ -150,13 +150,13 @@ Stubs detectados: 3
 ## Integración con Pipeline
 
 ```
-/especdev:implementar (cada tarea GREEN)
+/dc:implementar (cada tarea GREEN)
   → [DETECCIÓN STUBS] ← automática
   → ¿Stubs encontrados?
      ├── SÍ → Tarea regresa a RED (implementar de verdad)
      └── NO → Tarea completa, siguiente tarea
 
-/especdev:revisar
+/dc:revisar
   → [DETECCIÓN STUBS] ← segunda pasada
   → Reporte incluido en review
 ```
