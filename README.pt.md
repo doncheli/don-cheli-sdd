@@ -131,16 +131,16 @@ Passo 3: Confirmar → Resumo de tudo selecionado
 ```
 
 <details>
-<summary><strong>6 perfis de desenvolvedor</strong></summary>
+<summary><strong>6 perfis de desenvolvedor — skills e raciocínio por perfil</strong></summary>
 
-| Perfil | Tag | Para quem |
-|--------|-----|-----------|
-| 👻 Phantom Coder | Full-stack | Projetos reais com TDD e quality gates |
-| 💀 Reaper Sec | Segurança | Hackers que também constroem |
-| 🏗 System Architect | Arquitetura | Quem projeta, não quem remendam |
-| ⚡ Speedrunner | MVP/Startup | Lançar primeiro, refinar depois |
-| 🔮 The Oracle | Raciocínio | Decisões difíceis com 15 modelos mentais |
-| 🥷 Dev Dojo | Aprendizagem | Crescer enquanto constrói |
+| Perfil | Tag | Skills | Modelos de Raciocínio |
+|--------|-----|--------|----------------------|
+| 👻 **Phantom Coder** | Full-stack | Leis de Ferro, Validação Nyquist, Detecção de Stubs, Detecção de Loops, Portões de Qualidade, Engenharia de Contexto, Otimizador de Contexto, Mapa Arquitetônico, Orquestração Autônoma, Otimização de Tokens, Permissões de Segurança, Auto-correção, Recuperação de Sessão | Primeiros Princípios, Pré-mortem, 5 Porquês |
+| 💀 **Reaper Sec** | Segurança | Permissões de Segurança, Leis de Ferro, Portões de Qualidade, Detecção de Stubs, Engenharia de Contexto, CodeRAG, Rastreabilidade | Pré-mortem, Inversão, Primeiros Princípios, 5 Porquês |
+| 🏗 **System Architect** | Arquitetura | Mapa Arquitetônico, Refatoração SOLID, Esquemas DBML, Engenharia de Contexto, Documentação Viva, Rastreabilidade, Design UI/UX, CodeRAG | Primeiros Princípios, Segunda Ordem, Mapa-Território, Reversibilidade |
+| ⚡ **Speedrunner** | MVP/Startup | Otimização de Tokens, Contabilidade de Tokens, Rigor Progressivo, Orquestração Autônoma, Recuperação de Sessão, Brainstorming | Pré-mortem, Pareto, Custo de Oportunidade, Minimizar Arrependimento |
+| 🔮 **The Oracle** | Raciocínio | Raciocínio, Estimação, Reflexão, Engenharia de Contexto, Brainstorming, Documentação Viva, Rastreabilidade | Todos os 15 modelos (Primeiros Princípios, Pré-mortem, 5 Porquês, Pareto, Inversão, Segunda Ordem, Custo de Oportunidade, Reversibilidade, Minimizar Arrependimento, Círculo de Competência, Mapa-Território, Probabilístico, RLM Cadeia de Pensamento, RLM Decomposição, RLM Verificação) |
+| 🥷 **Dev Dojo** | Aprendizagem | Documentação Viva, DevLog, Rastreabilidade, Engenharia de Contexto, Memória Persistente, Obsidian, Reflexão, Estimação, Design UI/UX | Primeiros Princípios, 5 Porquês, Segunda Ordem, Mapa-Território |
 
 </details>
 

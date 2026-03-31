@@ -205,16 +205,16 @@ Step 3: Confirm → Summary of everything selected
 ```
 
 <details>
-<summary><strong>6 developer profiles</strong></summary>
+<summary><strong>6 developer profiles — skills & reasoning per profile</strong></summary>
 
-| Profile | Tag | For whom |
-|---------|-----|----------|
-| 👻 Phantom Coder | Full-stack | Real projects with TDD and quality gates |
-| 💀 Reaper Sec | Security | Hackers who also build |
-| 🏗 System Architect | Architecture | The one who designs, not patches |
-| ⚡ Speedrunner | MVP/Startup | Launch first, refine later |
-| 🔮 The Oracle | Reasoning | Hard decisions with 15 mental models |
-| 🥷 Dev Dojo | Learning | Grow while you build |
+| Profile | Tag | Skills | Reasoning Models |
+|---------|-----|--------|-----------------|
+| 👻 **Phantom Coder** | Full-stack | Iron Laws, Nyquist Validation, Stub Detection, Loop Detection, Quality Gates, Context Engineering, Context Optimizer, Architectural Map, Autonomous Orchestration, Token Optimization, Security Permissions, Auto-correction, Session Recovery | First Principles, Pre-mortem, 5 Whys |
+| 💀 **Reaper Sec** | Security | Security Permissions, Iron Laws, Quality Gates, Stub Detection, Context Engineering, CodeRAG, Traceability | Pre-mortem, Inversion, First Principles, 5 Whys |
+| 🏗 **System Architect** | Architecture | Architectural Map, SOLID Refactoring, DBML Schemas, Context Engineering, Living Documentation, Traceability, UI/UX Design, CodeRAG | First Principles, Second Order, Map-Territory, Reversibility |
+| ⚡ **Speedrunner** | MVP/Startup | Token Optimization, Token Accounting, Progressive Rigor, Autonomous Orchestration, Session Recovery, Brainstorming | Pre-mortem, Pareto, Opportunity Cost, Minimize Regret |
+| 🔮 **The Oracle** | Reasoning | Reasoning, Estimation, Reflection, Context Engineering, Brainstorming, Living Documentation, Traceability | All 15 models (First Principles, Pre-mortem, 5 Whys, Pareto, Inversion, Second Order, Opportunity Cost, Reversibility, Minimize Regret, Circle of Competence, Map-Territory, Probabilistic, RLM Chain of Thought, RLM Decomposition, RLM Verification) |
+| 🥷 **Dev Dojo** | Learning | Living Documentation, DevLog, Traceability, Context Engineering, Persistent Memory, Obsidian, Reflection, Estimation, UI/UX Design | First Principles, 5 Whys, Second Order, Map-Territory |
 
 </details>
 

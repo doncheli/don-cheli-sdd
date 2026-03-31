@@ -131,16 +131,16 @@ Paso 3: Confirmar → Resumen de todo lo seleccionado
 ```
 
 <details>
-<summary><strong>6 perfiles de desarrollador</strong></summary>
+<summary><strong>6 perfiles de desarrollador — skills y razonamiento por perfil</strong></summary>
 
-| Perfil | Tag | Para quién |
-|--------|-----|-----------|
-| 👻 Phantom Coder | Full-stack | Proyectos reales con TDD y quality gates |
-| 💀 Reaper Sec | Seguridad | Hackers que también construyen |
-| 🏗 System Architect | Arquitectura | El que diseña, no el que parchea |
-| ⚡ Speedrunner | MVP/Startup | Lanzar primero, refinar después |
-| 🔮 The Oracle | Razonamiento | Decisiones difíciles con 15 modelos mentales |
-| 🥷 Dev Dojo | Aprendizaje | Crecer mientras construyes |
+| Perfil | Tag | Skills | Modelos de Razonamiento |
+|--------|-----|--------|------------------------|
+| 👻 **Phantom Coder** | Full-stack | Leyes de Hierro, Validación Nyquist, Detección de Stubs, Detección de Loops, Puertas de Calidad, Ingeniería de Contexto, Optimizador de Contexto, Mapa Arquitectónico, Orquestación Autónoma, Optimización de Tokens, Permisos de Seguridad, Auto-corrección, Recuperación de Sesión | Primeros Principios, Pre-mortem, 5 Porqués |
+| 💀 **Reaper Sec** | Seguridad | Permisos de Seguridad, Leyes de Hierro, Puertas de Calidad, Detección de Stubs, Ingeniería de Contexto, CodeRAG, Trazabilidad | Pre-mortem, Inversión, Primeros Principios, 5 Porqués |
+| 🏗 **System Architect** | Arquitectura | Mapa Arquitectónico, Refactorización SOLID, Esquemas DBML, Ingeniería de Contexto, Documentación Viva, Trazabilidad, Diseño UI/UX, CodeRAG | Primeros Principios, Segundo Orden, Mapa-Territorio, Reversibilidad |
+| ⚡ **Speedrunner** | MVP/Startup | Optimización de Tokens, Contabilidad de Tokens, Rigor Progresivo, Orquestación Autónoma, Recuperación de Sesión, Brainstorming | Pre-mortem, Pareto, Costo de Oportunidad, Minimizar Arrepentimiento |
+| 🔮 **The Oracle** | Razonamiento | Razonamiento, Estimación, Reflexión, Ingeniería de Contexto, Brainstorming, Documentación Viva, Trazabilidad | Los 15 modelos (Primeros Principios, Pre-mortem, 5 Porqués, Pareto, Inversión, Segundo Orden, Costo de Oportunidad, Reversibilidad, Minimizar Arrepentimiento, Círculo de Competencia, Mapa-Territorio, Probabilístico, RLM Cadena de Pensamiento, RLM Descomposición, RLM Verificación) |
+| 🥷 **Dev Dojo** | Aprendizaje | Documentación Viva, DevLog, Trazabilidad, Ingeniería de Contexto, Memoria Persistente, Obsidian, Reflexión, Estimación, Diseño UI/UX | Primeros Principios, 5 Porqués, Segundo Orden, Mapa-Territorio |
 
 </details>
 
