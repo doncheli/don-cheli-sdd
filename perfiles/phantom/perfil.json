@@ -1,0 +1,21 @@
+{
+  "id": "phantom",
+  "nombre": "Phantom Coder",
+  "emoji": "👻",
+  "tag": "Full-stack",
+  "descripcion": "Pipeline completo, TDD, quality gates, deploy.",
+  "skills": [
+    "leyes-hierro", "validacion-nyquist", "deteccion-stubs", "deteccion-loops",
+    "puertas-calidad", "ingenieria-contexto", "optimizador-contexto",
+    "mapa-arquitectonico", "orquestacion-autonoma", "optimizacion-tokens",
+    "permisos-seguridad", "auto-correccion", "recuperacion-sesion"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "especificar", "clarificar", "planificar-tecnico",
+    "desglosar", "implementar", "revisar", "diagnostico", "estado", "continuar",
+    "cerrar-sesion", "avance-rapido", "guardian", "limpiar-slop", "drift", "tea"
+  ],
+  "razonamiento": [
+    "primeros-principios", "pre-mortem", "5-porques"
+  ]
+}

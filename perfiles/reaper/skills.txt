@@ -1,0 +1,7 @@
+permisos-seguridad
+leyes-hierro
+puertas-calidad
+deteccion-stubs
+ingenieria-contexto
+code-rag
+trazabilidad

@@ -1,0 +1,20 @@
+{
+  "id": "dojo",
+  "nombre": "Dev Dojo",
+  "emoji": "🥷",
+  "tag": "Aprendizaje",
+  "descripcion": "Crecer mientras construyes. Documentación viva, ADRs, Obsidian.",
+  "skills": [
+    "documentacion-viva", "devlog", "trazabilidad", "ingenieria-contexto",
+    "memoria-persistente", "obsidian", "reflexion", "estimacion",
+    "ui-ux-design"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "estado", "diagnostico", "continuar",
+    "reflexionar", "especificar", "implementar", "revisar", "memorizar",
+    "incorporar", "presentar", "diagram", "changelog-auto"
+  ],
+  "razonamiento": [
+    "primeros-principios", "5-porques", "segundo-orden", "mapa-territorio"
+  ]
+}

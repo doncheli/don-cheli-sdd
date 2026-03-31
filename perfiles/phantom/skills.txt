@@ -1,0 +1,13 @@
+leyes-hierro
+validacion-nyquist
+deteccion-stubs
+deteccion-loops
+puertas-calidad
+ingenieria-contexto
+optimizador-contexto
+mapa-arquitectonico
+orquestacion-autonoma
+optimizacion-tokens
+permisos-seguridad
+auto-correccion
+recuperacion-sesion

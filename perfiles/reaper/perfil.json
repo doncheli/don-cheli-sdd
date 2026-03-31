@@ -1,0 +1,19 @@
+{
+  "id": "reaper",
+  "nombre": "Reaper Sec",
+  "emoji": "💀",
+  "tag": "Seguridad",
+  "descripcion": "OWASP, auditoría, pentest workflow, seguridad ofensiva y defensiva.",
+  "skills": [
+    "permisos-seguridad", "leyes-hierro", "puertas-calidad", "deteccion-stubs",
+    "ingenieria-contexto", "code-rag", "trazabilidad"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "auditar-seguridad", "contrato-api", "explorar",
+    "reversa", "revisar", "especificar", "implementar", "data-policy",
+    "pr-review", "drift"
+  ],
+  "razonamiento": [
+    "pre-mortem", "inversion", "primeros-principios", "5-porques"
+  ]
+}

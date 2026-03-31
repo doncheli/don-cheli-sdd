@@ -1,0 +1,21 @@
+{
+  "id": "architect",
+  "nombre": "System Architect",
+  "emoji": "🏗",
+  "tag": "Arquitectura",
+  "descripcion": "Blueprints, SOLID, APIs, migraciones, diseño de sistemas.",
+  "skills": [
+    "mapa-arquitectonico", "refactorizacion-solid", "esquemas-dbml",
+    "ingenieria-contexto", "documentacion-viva", "trazabilidad",
+    "ui-ux-design", "code-rag"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "especificar", "planificar-tecnico", "reversa",
+    "destilar", "contrato-api", "contrato-ui", "estimar", "agente",
+    "mesa-redonda", "mesa-tecnica", "migrar", "diagram", "spec-score",
+    "implementar", "revisar", "debate"
+  ],
+  "razonamiento": [
+    "primeros-principios", "segundo-orden", "mapa-territorio", "reversibilidad"
+  ]
+}

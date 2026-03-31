@@ -1,0 +1,15 @@
+especdev:iniciar
+especdev:comenzar
+especdev:poc
+especdev:estimar
+especdev:rapido
+especdev:estado
+especdev:avance-rapido
+especdev:especificar
+especdev:implementar
+especdev:changelog-auto
+especdev:context-health
+razonar:pre-mortem
+razonar:pareto
+razonar:costo-oportunidad
+razonar:minimizar-arrepentimiento

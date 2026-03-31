@@ -182,6 +182,35 @@ for arg in "$@"; do
     PREV="$arg"
 done
 
+# Parse new interactive flags
+TOOLS_FLAG=""
+PROFILE_FLAG=""
+SKILLS_FLAG=""
+COMMANDS_FLAG=""
+DRY_RUN=false
+INTERACTIVE_MODE=false
+
+PREV=""
+for arg in "$@"; do
+    case "$arg" in
+        --tools=*) TOOLS_FLAG="${arg#*=}"; INTERACTIVE_MODE=true ;;
+        --profile=*) PROFILE_FLAG="${arg#*=}"; INTERACTIVE_MODE=true ;;
+        --skills=*) SKILLS_FLAG="${arg#*=}"; INTERACTIVE_MODE=true ;;
+        --comandos=*) COMMANDS_FLAG="${arg#*=}"; INTERACTIVE_MODE=true ;;
+        --dry-run) DRY_RUN=true; INTERACTIVE_MODE=true ;;
+    esac
+    if [ "$PREV" = "--tools" ]; then TOOLS_FLAG="$arg"; INTERACTIVE_MODE=true; fi
+    if [ "$PREV" = "--profile" ]; then PROFILE_FLAG="$arg"; INTERACTIVE_MODE=true; fi
+    if [ "$PREV" = "--skills" ]; then SKILLS_FLAG="$arg"; INTERACTIVE_MODE=true; fi
+    if [ "$PREV" = "--comandos" ]; then COMMANDS_FLAG="$arg"; INTERACTIVE_MODE=true; fi
+    PREV="$arg"
+done
+
+# If no flags at all (pure invocation without --global or --lang), enable interactive
+if [ $# -eq 0 ]; then
+    INTERACTIVE_MODE=true
+fi
+
 clear 2>/dev/null || true
 echo ""
 echo -e "${CYAN}${BOLD}"
@@ -256,6 +285,144 @@ printf "  │  %-53s │\n" "$BANNER_1"
 printf "  │  %-53s │\n" "$BANNER_2"
 echo "  └───────────────────────────────────────────────────────┘"
 echo -e "${NC}"
+
+# ═══════════════════════════════════════════════════════════════
+# INTERACTIVE MODE (perfiles)
+# ═══════════════════════════════════════════════════════════════
+
+if [ "$INTERACTIVE_MODE" = true ]; then
+    echo ""
+
+    # Step 1: Tool Selection (if not provided via flag)
+    if [ -z "$TOOLS_FLAG" ]; then
+        echo -e "  ${BOLD}¿Dónde quieres instalar Don Cheli SDD?${NC}"
+        echo ""
+        echo -e "     ${CYAN}1)${NC}  Claude Code     (CLAUDE.md + comandos)"
+        echo -e "     ${CYAN}2)${NC}  Codex           (AGENTS.md)"
+        echo -e "     ${CYAN}3)${NC}  Cursor          (.cursorrules)"
+        echo -e "     ${CYAN}4)${NC}  Antigravity     (GEMINI.md + .agent/)"
+        echo -e "     ${CYAN}5)${NC}  Windsurf        (.windsurf/rules/)"
+        echo -e "     ${CYAN}6)${NC}  Amp             (prompt.md)"
+        echo -e "     ${CYAN}7)${NC}  Continue.dev    (.continue/config/)"
+        echo -e "     ${CYAN}8)${NC}  OpenCode        (.opencode/ + @doncheli)"
+        echo -e "     ${CYAN}9)${NC}  Todos"
+        echo ""
+        echo -ne "  ${BOLD}▸ Elige (números separados por coma): ${NC}"
+        if ! read -r TOOLS_CHOICE < /dev/tty 2>/dev/null; then
+            TOOLS_CHOICE="9"
+        fi
+
+        TOOLS_FLAG=""
+        for num in $(echo "$TOOLS_CHOICE" | tr ',' ' '); do
+            case "$num" in
+                1) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
+                2) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
+                3) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
+                4) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
+                5) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
+                6) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
+                7) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
+                8) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
+                9|all) TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+            esac
+        done
+        [ -z "$TOOLS_FLAG" ] && TOOLS_FLAG="claude"
+        echo -e "  ${GREEN}✓${NC} Herramientas: ${TOOLS_FLAG}"
+    fi
+
+    # Step 2: Profile Selection (if not provided via flag)
+    if [ -z "$PROFILE_FLAG" ]; then
+        echo ""
+        echo -e "  ${BOLD}Elige tu perfil de desarrollador:${NC}"
+        echo ""
+        echo -e "     ${CYAN}1)${NC}  👻 Phantom Coder   ${DIM}[Full-stack]${NC}     Pipeline completo, TDD, quality gates"
+        echo -e "     ${CYAN}2)${NC}  💀 Reaper Sec      ${DIM}[Seguridad]${NC}      OWASP, auditoría, pentest workflow"
+        echo -e "     ${CYAN}3)${NC}  🏗  System Architect ${DIM}[Arquitectura]${NC}  Blueprints, SOLID, APIs, migraciones"
+        echo -e "     ${CYAN}4)${NC}  ⚡ Speedrunner      ${DIM}[MVP/Startup]${NC}   PoC, estimados, validación veloz"
+        echo -e "     ${CYAN}5)${NC}  🔮 The Oracle       ${DIM}[Razonamiento]${NC}  15 modelos mentales, análisis profundo"
+        echo -e "     ${CYAN}6)${NC}  🥷 Dev Dojo         ${DIM}[Aprendizaje]${NC}   Documentación viva, ADRs, Obsidian"
+        echo -e "     ${CYAN}7)${NC}  ⚙️  Custom           ${DIM}[Manual]${NC}        Seleccionar todo manualmente"
+        echo ""
+        echo -ne "  ${BOLD}▸ ${NC}"
+        if ! read -r PROFILE_CHOICE < /dev/tty 2>/dev/null; then
+            PROFILE_CHOICE="1"
+        fi
+
+        case "$PROFILE_CHOICE" in
+            1|phantom)   PROFILE_FLAG="phantom" ;;
+            2|reaper)    PROFILE_FLAG="reaper" ;;
+            3|architect) PROFILE_FLAG="architect" ;;
+            4|speedrun)  PROFILE_FLAG="speedrun" ;;
+            5|oracle)    PROFILE_FLAG="oracle" ;;
+            6|dojo)      PROFILE_FLAG="dojo" ;;
+            7|custom)    PROFILE_FLAG="custom" ;;
+            *)           PROFILE_FLAG="phantom" ;;
+        esac
+        echo -e "  ${GREEN}✓${NC} Perfil: ${PROFILE_FLAG}"
+    fi
+
+    # Load profile data
+    PROFILE_DIR="${SCRIPT_DIR}/perfiles/${PROFILE_FLAG}"
+    if [ -d "$PROFILE_DIR" ] && [ "$PROFILE_FLAG" != "custom" ]; then
+        PROFILE_NAME=$(python3 -c "import json; print(json.load(open('$PROFILE_DIR/perfil.json'))['nombre'])" 2>/dev/null || echo "$PROFILE_FLAG")
+        PROFILE_EMOJI=$(python3 -c "import json; print(json.load(open('$PROFILE_DIR/perfil.json'))['emoji'])" 2>/dev/null || echo "")
+        PROFILE_SKILLS=$(cat "$PROFILE_DIR/skills.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+        PROFILE_COMMANDS=$(cat "$PROFILE_DIR/comandos.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+
+        SKILLS_COUNT=$(cat "$PROFILE_DIR/skills.txt" 2>/dev/null | wc -l | tr -d ' ')
+        COMMANDS_COUNT=$(cat "$PROFILE_DIR/comandos.txt" 2>/dev/null | wc -l | tr -d ' ')
+    else
+        PROFILE_NAME="Custom"
+        PROFILE_EMOJI="⚙️"
+        PROFILE_SKILLS=""
+        PROFILE_COMMANDS=""
+        SKILLS_COUNT="todas"
+        COMMANDS_COUNT="todos"
+    fi
+
+    # Override with explicit flags if provided
+    [ -n "$SKILLS_FLAG" ] && PROFILE_SKILLS="$SKILLS_FLAG"
+    [ -n "$COMMANDS_FLAG" ] && PROFILE_COMMANDS="$COMMANDS_FLAG"
+
+    # Step 5: Summary
+    echo ""
+    echo -e "  ${CYAN}${BOLD}┌──────────────────────────────────────┐${NC}"
+    echo -e "  ${CYAN}${BOLD}│  Resumen de instalación              │${NC}"
+    echo -e "  ${CYAN}${BOLD}├──────────────────────────────────────┤${NC}"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Herramientas   ${TOOLS_FLAG}"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Perfil         ${PROFILE_EMOJI} ${PROFILE_NAME}"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Skills         ${SKILLS_COUNT}"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Comandos       ${COMMANDS_COUNT}"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Idioma         ${LANG_NAME} (${LOCALE})"
+    echo -e "  ${CYAN}${BOLD}│${NC}  Destino        ${MODE:-local}"
+    echo -e "  ${CYAN}${BOLD}└──────────────────────────────────────┘${NC}"
+    echo ""
+
+    if [ "$DRY_RUN" = true ]; then
+        echo -e "  ${YELLOW}--dry-run: No se instalará nada.${NC}"
+        echo ""
+        echo -e "  Se generarían configs para: ${TOOLS_FLAG}"
+        echo -e "  Perfil: ${PROFILE_EMOJI} ${PROFILE_NAME}"
+        echo -e "  Skills: ${PROFILE_SKILLS}"
+        echo -e "  Comandos: ${PROFILE_COMMANDS}"
+        exit 0
+    fi
+
+    echo -ne "  ${BOLD}¿Confirmar instalación? [S/n] ${NC}"
+    if ! read -r CONFIRM < /dev/tty 2>/dev/null; then
+        CONFIRM="s"
+    fi
+    case "$CONFIRM" in
+        n|N|no|NO) echo -e "  ${RED}Instalación cancelada.${NC}"; exit 0 ;;
+    esac
+    echo ""
+
+    # Save profile selection for post-install config generation
+    SELECTED_TOOLS="$TOOLS_FLAG"
+    SELECTED_PROFILE="$PROFILE_FLAG"
+    SELECTED_SKILLS="$PROFILE_SKILLS"
+    SELECTED_COMMANDS="$PROFILE_COMMANDS"
+fi
 
 # ═══════════════════════════════════════════════════════════════
 # Detect installation mode
@@ -622,3 +789,26 @@ echo -e "    2. $(i18n installer.next_step_2)"
 echo ""
 echo -e "  ${GREEN}${BOLD}$(i18n installer.farewell)${NC}"
 echo ""
+
+# ═══════════════════════════════════════════════════════════════
+# Generate tool-specific configs (interactive mode only)
+# ═══════════════════════════════════════════════════════════════
+
+if [ "$INTERACTIVE_MODE" = true ] && [ -n "${SELECTED_TOOLS:-}" ]; then
+    echo ""
+    echo -e "  🔧 Generando configuraciones por herramienta..."
+
+    # Source the config generator
+    GENCONFIG="${SCRIPT_DIR}/scripts/generar-config.sh"
+    if [ -f "$GENCONFIG" ]; then
+        # shellcheck source=/dev/null
+        . "$GENCONFIG"
+        generar_configs "$SELECTED_TOOLS" "$SELECTED_PROFILE" "$SELECTED_SKILLS" "$SELECTED_COMMANDS" "$FRAMEWORK_HOME" "$FRAMEWORK_HOME" "$LOCALE"
+    else
+        echo -e "  ${YELLOW}⚠ generar-config.sh no encontrado, saltando generación de configs${NC}"
+    fi
+
+    # Save profile selection
+    echo "$SELECTED_PROFILE" > "${FRAMEWORK_HOME}/perfil"
+    echo -e "  ${GREEN}✓${NC} Perfil guardado: ${SELECTED_PROFILE}"
+fi

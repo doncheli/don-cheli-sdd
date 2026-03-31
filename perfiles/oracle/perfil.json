@@ -1,0 +1,23 @@
+{
+  "id": "oracle",
+  "nombre": "The Oracle",
+  "emoji": "🔮",
+  "tag": "Razonamiento",
+  "descripcion": "15 modelos mentales, análisis profundo, decisiones difíciles.",
+  "skills": [
+    "razonamiento", "estimacion", "reflexion", "ingenieria-contexto",
+    "brainstorming", "documentacion-viva", "trazabilidad"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "mesa-redonda", "mesa-tecnica", "debate",
+    "agente", "explorar", "especificar", "estimar", "reflexionar",
+    "spec-score", "tech-debt"
+  ],
+  "razonamiento": [
+    "primeros-principios", "pre-mortem", "5-porques", "pareto", "inversion",
+    "segundo-orden", "costo-oportunidad", "reversibilidad",
+    "minimizar-arrepentimiento", "circulo-competencia", "mapa-territorio",
+    "probabilistico", "rlm-cadena-pensamiento", "rlm-descomposicion",
+    "rlm-verificacion"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "speedrun",
+  "nombre": "Speedrunner",
+  "emoji": "⚡",
+  "tag": "MVP/Startup",
+  "descripcion": "PoC, estimados, validación veloz, lanzar primero.",
+  "skills": [
+    "optimizacion-tokens", "contabilidad-tokens", "rigor-progresivo",
+    "orquestacion-autonoma", "recuperacion-sesion", "brainstorming"
+  ],
+  "comandos": [
+    "iniciar", "comenzar", "poc", "estimar", "rapido", "estado",
+    "avance-rapido", "especificar", "implementar", "changelog-auto",
+    "context-health"
+  ],
+  "razonamiento": [
+    "pre-mortem", "pareto", "costo-oportunidad", "minimizar-arrepentimiento"
+  ]
+}

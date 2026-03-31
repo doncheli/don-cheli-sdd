@@ -1,0 +1,9 @@
+documentacion-viva
+devlog
+trazabilidad
+ingenieria-contexto
+memoria-persistente
+obsidian
+reflexion
+estimacion
+ui-ux-design

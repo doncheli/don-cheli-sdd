@@ -1,0 +1,16 @@
+especdev:iniciar
+especdev:comenzar
+especdev:auditar-seguridad
+especdev:contrato-api
+especdev:explorar
+especdev:reversa
+especdev:revisar
+especdev:especificar
+especdev:implementar
+especdev:data-policy
+especdev:pr-review
+especdev:drift
+razonar:pre-mortem
+razonar:inversion
+razonar:primeros-principios
+razonar:5-porques

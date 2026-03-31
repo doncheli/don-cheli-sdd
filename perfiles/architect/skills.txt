@@ -1,0 +1,8 @@
+mapa-arquitectonico
+refactorizacion-solid
+esquemas-dbml
+ingenieria-contexto
+documentacion-viva
+trazabilidad
+ui-ux-design
+code-rag
