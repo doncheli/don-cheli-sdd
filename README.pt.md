@@ -110,6 +110,54 @@ cd don-cheli-sdd && bash scripts/instalar.sh --global
 /dc:iniciar
 ```
 
+### Instalação interativa (NOVO)
+
+Execute sem flags para uma configuração guiada:
+
+```bash
+bash scripts/instalar.sh
+```
+
+Escolha suas ferramentas, perfil, skills e comandos passo a passo:
+
+```
+┌──────────────────────────────────────┐
+│  Don Cheli SDD — Configuração        │
+└──────────────────────────────────────┘
+
+Passo 1: Onde instalar? → Claude Code, Cursor, Antigravity, OpenCode...
+Passo 2: Perfil de desenvolvedor? → 6 arquétipos pré-configurados
+Passo 3: Confirmar → Resumo de tudo selecionado
+```
+
+<details>
+<summary><strong>6 perfis de desenvolvedor</strong></summary>
+
+| Perfil | Tag | Para quem |
+|--------|-----|-----------|
+| 👻 Phantom Coder | Full-stack | Projetos reais com TDD e quality gates |
+| 💀 Reaper Sec | Segurança | Hackers que também constroem |
+| 🏗 System Architect | Arquitetura | Quem projeta, não quem remendam |
+| ⚡ Speedrunner | MVP/Startup | Lançar primeiro, refinar depois |
+| 🔮 The Oracle | Raciocínio | Decisões difíceis com 15 modelos mentais |
+| 🥷 Dev Dojo | Aprendizagem | Crescer enquanto constrói |
+
+</details>
+
+<details>
+<summary><strong>Instalação silenciosa (CI/CD, scripts)</strong></summary>
+
+```bash
+bash scripts/instalar.sh \
+  --tools claude,cursor \
+  --profile phantom \
+  --global --lang pt
+```
+
+Flags: `--tools`, `--profile`, `--skills`, `--comandos`, `--dry-run`, `--global`, `--lang`
+
+</details>
+
 ### Seleção de Idioma
 
 A **primeira** coisa que você vê ao instalar é o seletor de idioma:
