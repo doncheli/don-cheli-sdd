@@ -77,16 +77,34 @@ Eso es **vibe coding**. Y es el enemigo del software de calidad.
 
 **3 pasos. 2 minutos. Gratis.**
 
-```bash
-# 1. Clonar
-git clone https://github.com/doncheli/don-cheli-sdd.git
+### Via npm (recomendado)
 
-# 2. Instalar (interactivo: elige idioma, herramienta y perfil)
-cd don-cheli-sdd && bash scripts/instalar.sh
+```bash
+# 1. Instalar globalmente
+npm install -g don-cheli-sdd
+
+# 2. Ejecutar el instalador interactivo
+don-cheli install --global
 
 # 3. En tu proyecto, abre tu agente IA y escribe:
 /dc:iniciar
 ```
+
+### Via git clone
+
+```bash
+git clone https://github.com/doncheli/don-cheli-sdd.git
+cd don-cheli-sdd && bash scripts/instalar.sh
+```
+
+<details>
+<summary><strong>Via npx (sin instalar)</strong></summary>
+
+```bash
+npx don-cheli-sdd install --global --lang es
+```
+
+</details>
 
 <details>
 <summary><strong>Instalación remota (una sola línea)</strong></summary>
@@ -343,6 +361,22 @@ Don Cheli no es un programa. Son archivos Markdown que cualquier agente de IA pu
 | **Amp** | Compatible | `prompt.md` |
 | **Continue.dev** | Compatible | `AGENTS.md` |
 | **OpenCode** | Compatible | `AGENTS.md` |
+
+---
+
+## Certificación SDD
+
+Demuestra que tu proyecto fue construido con disciplina de ingeniería. Agrega estos badges a tu README:
+
+```markdown
+[![SDD Certified](https://img.shields.io/badge/SDD_Certified-Don_Cheli-6c5ce7?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+[![TDD](https://img.shields.io/badge/TDD-Iron_Law_Enforced-00cec9?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+[![OWASP](https://img.shields.io/badge/OWASP-Audited_by_Don_Cheli-e17055?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+```
+
+[![SDD Certified](https://img.shields.io/badge/SDD_Certified-Don_Cheli-6c5ce7?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd) [![TDD](https://img.shields.io/badge/TDD-Iron_Law_Enforced-00cec9?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd) [![OWASP](https://img.shields.io/badge/OWASP-Audited_by_Don_Cheli-e17055?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+
+[Criterios completos de certificación →](docs/certification.md)
 
 ---
 

@@ -77,16 +77,34 @@ Isso é **vibe coding**. E é o inimigo do software de qualidade.
 
 **3 passos. 2 minutos. Grátis.**
 
-```bash
-# 1. Clonar
-git clone https://github.com/doncheli/don-cheli-sdd.git
+### Via npm (recomendado)
 
-# 2. Instalar (interativo: escolha idioma, ferramenta e perfil)
-cd don-cheli-sdd && bash scripts/instalar.sh
+```bash
+# 1. Instalar globalmente
+npm install -g don-cheli-sdd
+
+# 2. Executar o instalador interativo
+don-cheli install --global
 
 # 3. No seu projeto, abra seu agente IA e digite:
 /dc:iniciar
 ```
+
+### Via git clone
+
+```bash
+git clone https://github.com/doncheli/don-cheli-sdd.git
+cd don-cheli-sdd && bash scripts/instalar.sh
+```
+
+<details>
+<summary><strong>Via npx (sem instalar)</strong></summary>
+
+```bash
+npx don-cheli-sdd install --global --lang pt
+```
+
+</details>
 
 <details>
 <summary><strong>Instalação remota (uma linha)</strong></summary>
@@ -343,6 +361,22 @@ Don Cheli não é um programa. São arquivos Markdown que qualquer agente de IA 
 | **Amp** | Compatível | `prompt.md` |
 | **Continue.dev** | Compatível | `AGENTS.md` |
 | **OpenCode** | Compatível | `AGENTS.md` |
+
+---
+
+## Certificação SDD
+
+Demonstre que seu projeto foi construído com disciplina de engenharia. Adicione estes badges ao seu README:
+
+```markdown
+[![SDD Certified](https://img.shields.io/badge/SDD_Certified-Don_Cheli-6c5ce7?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+[![TDD](https://img.shields.io/badge/TDD-Iron_Law_Enforced-00cec9?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+[![OWASP](https://img.shields.io/badge/OWASP-Audited_by_Don_Cheli-e17055?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+```
+
+[![SDD Certified](https://img.shields.io/badge/SDD_Certified-Don_Cheli-6c5ce7?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd) [![TDD](https://img.shields.io/badge/TDD-Iron_Law_Enforced-00cec9?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd) [![OWASP](https://img.shields.io/badge/OWASP-Audited_by_Don_Cheli-e17055?style=for-the-badge)](https://github.com/doncheli/don-cheli-sdd)
+
+[Critérios completos de certificação →](docs/certification.md)
 
 ---
 

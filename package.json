@@ -2,11 +2,12 @@
   "name": "don-cheli-sdd",
   "version": "1.15.4",
   "description": "Framework SDD para Claude Code — 72+ comandos, 43 habilidades, 15 modelos de razonamiento. TDD como ley de hierro. EN/ES/PT.",
-  "main": "scripts/instalar.sh",
+  "main": "bin/don-cheli.js",
   "scripts": {
     "instalar": "bash scripts/instalar.sh",
     "bucle": "bash scripts/bucle.sh",
-    "validar": "bash scripts/validar.sh"
+    "validar": "bash scripts/validar.sh",
+    "postinstall": "echo '\\n  ✅ Don Cheli SDD instalado. Ejecuta: don-cheli install --global\\n'"
   },
   "keywords": [
     "claude-code", "sdd", "ai-framework", "prompt-engineering",
@@ -25,12 +26,14 @@
   "author": "Jose Luis Oronoz Troconis <@doncheli>",
   "license": "Apache-2.0",
   "bin": {
-    "don-cheli": "./scripts/instalar.sh"
+    "don-cheli": "./bin/don-cheli.js",
+    "don-cheli-sdd": "./bin/don-cheli.js"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "files": [
+    "bin/",
     ".agent/",
     ".claude-plugin/",
     "comandos/",
