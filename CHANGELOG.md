@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.16.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.4...v1.16.0) (2026-04-01)
+
+### Nuevas Funcionalidades
+
+* CLI npm global + Certificación SDD con badges ([9b2932a](https://github.com/doncheli/don-cheli-sdd/commit/9b2932aa27dde81418f5e510c11151e4ba8c722d))
+
 ## [1.15.4](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.3...v1.15.4) (2026-04-01)
 
 ### Refactorización
