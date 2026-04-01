@@ -323,6 +323,9 @@ Top 20 más usados. [Lista completa en la documentación web →](https://donche
 
 </details>
 
+> **📖 ¿Quieres ver todos los comandos en acción con ejemplos interactivos?**
+> Visita la guía completa: **[doncheli.tv/comousar.html](https://doncheli.tv/comousar.html)**
+
 ---
 
 ## Multi-plataforma
@@ -377,6 +380,9 @@ Ver [CONTRIBUIR.md](CONTRIBUIR.md) para la guía completa.
 ---
 
 <p align="center">
-  <strong>Deja de adivinar. Empieza a hacer ingeniería.</strong><br/>
+  <strong>Deja de adivinar. Empieza a hacer ingeniería.</strong><br/><br/>
+  <a href="https://doncheli.tv/comousar.html"><img src="https://img.shields.io/badge/📖_Guía_completa-doncheli.tv-6c5ce7?style=for-the-badge" alt="Guía"></a>
+  <a href="https://github.com/doncheli/don-cheli-sdd"><img src="https://img.shields.io/badge/⭐_Star_en-GitHub-181717?style=for-the-badge&logo=github" alt="GitHub"></a>
+  <br/><br/>
   <sub>Hecho con ❤️ en Latinoamérica — Don Cheli SDD Framework</sub>
 </p>
