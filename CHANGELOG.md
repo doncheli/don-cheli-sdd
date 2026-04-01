@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.15.4](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.3...v1.15.4) (2026-04-01)
+
+### Refactorización
+
+* renombrar .especdev/ a .dc/ con retrocompatibilidad completa ([03925a4](https://github.com/doncheli/don-cheli-sdd/commit/03925a46d9fb5987ec0fdb06c8c0abc2b4f87161))
+
 ## [1.15.3](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.2...v1.15.3) (2026-04-01)
 
 ### Correcciones
