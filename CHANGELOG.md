@@ -37,6 +37,18 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
 ## [Unreleased]
 
+## [1.15.0] - 2026-04-01
+### Añadido
+- **Ejemplos nuevos:** Python Task API (FastAPI + SQLAlchemy) y React Dashboard (React 19 + TypeScript + Recharts)
+- **Codecov:** Badge de cobertura y reporte en CI
+- **Semantic Release:** Automatización de changelog y versiones con `.releaserc.json`
+- **Documentación web:** Página de docs en `docs/index.html` para doncheli.tv
+- **READMEs reescritos:** Estructura orientada a venta, tabla "Antes vs Después", pipeline Mermaid, tabla de niveles N0-N4
+- **Banners prominentes** a doncheli.tv/comousar.html en los 3 READMEs
+
+### Corregido
+- Prefijo `especdev:` reemplazado por `dc:` en los scripts de instalación
+
 ## [1.14.0] - 2026-03-28
 ### Añadido
 - **13 nuevos comandos** basados en tendencias de la industria (marzo 2026):
