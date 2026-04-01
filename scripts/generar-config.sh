@@ -225,7 +225,7 @@ _gen_continue() {
         cat > "$dir/.continue/config/don-cheli.json" 2>/dev/null << 'CONTEOF' || true
 {
   "name": "don-cheli-sdd",
-  "version": "1.15.0",
+  "version": "1.15.3",
   "description": "Don Cheli SDD Framework",
   "rules": [
     "All production code requires tests (TDD: RED → GREEN → REFACTOR)",

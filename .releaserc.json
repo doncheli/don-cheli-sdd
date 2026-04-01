@@ -33,8 +33,23 @@
       "changelogFile": "CHANGELOG.md",
       "changelogTitle": "# Changelog\n\nTodos los cambios notables en Don Cheli SDD Framework.\n\nFormato basado en [Conventional Commits](https://www.conventionalcommits.org/)."
     }],
+    ["@semantic-release/exec", {
+      "prepareCmd": "echo -n ${nextRelease.version} > VERSION && echo -n ${nextRelease.version} > scripts/.claude/don-cheli/VERSION && sed -i 's/\"version\": \"[^\"]*\"/\"version\": \"${nextRelease.version}\"/' package.json scripts/generar-config.sh && sed -i 's/VERSION=\"[^\"]*\"/VERSION=\"${nextRelease.version}\"/' scripts/instalar.sh scripts/.claude/don-cheli/scripts/instalar.sh && sed -i 's/version-[0-9]*\\.[0-9]*\\.[0-9]*/version-${nextRelease.version}/g' README.md README.es.md README.pt.md && sed -i 's/versión-[0-9]*\\.[0-9]*\\.[0-9]*/versión-${nextRelease.version}/g' README.es.md && sed -i 's/versão-[0-9]*\\.[0-9]*\\.[0-9]*/versão-${nextRelease.version}/g' README.pt.md && sed -i 's/v[0-9]*\\.[0-9]*\\.[0-9]* — Open Source/v${nextRelease.version} — Open Source/g' docs/index.html"
+    }],
     ["@semantic-release/git", {
-      "assets": ["CHANGELOG.md", "VERSION", "package.json"],
+      "assets": [
+        "CHANGELOG.md",
+        "VERSION",
+        "package.json",
+        "scripts/instalar.sh",
+        "scripts/.claude/don-cheli/scripts/instalar.sh",
+        "scripts/.claude/don-cheli/VERSION",
+        "scripts/generar-config.sh",
+        "README.md",
+        "README.es.md",
+        "README.pt.md",
+        "docs/index.html"
+      ],
       "message": "chore(release): v${nextRelease.version}\n\n${nextRelease.notes}"
     }],
     ["@semantic-release/github"]
