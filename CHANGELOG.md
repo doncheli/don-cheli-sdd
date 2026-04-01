@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.16.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.0...v1.16.1) (2026-04-01)
+
+### Correcciones
+
+* normalizar package.json (npm pkg fix) ([ed92b25](https://github.com/doncheli/don-cheli-sdd/commit/ed92b2577a40ad703e43072c0d64b4499b55ed9f))
+
 ## [1.16.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.4...v1.16.0) (2026-04-01)
 
 ### Nuevas Funcionalidades
