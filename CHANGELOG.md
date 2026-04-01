@@ -1,5 +1,37 @@
 # Changelog
 
+Todos los cambios notables en Don Cheli SDD Framework.
+
+Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
+
+## [1.15.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.14.0...v1.15.0) (2026-04-01)
+
+### Nuevas Funcionalidades
+
+* agregar ejemplos Python/React, Codecov badge y Semantic Release ([157b78d](https://github.com/doncheli/don-cheli-sdd/commit/157b78d279736d5ef340c94f20407be6d995e3e9))
+* instalador interactivo con perfiles de desarrollador ([8fff295](https://github.com/doncheli/don-cheli-sdd/commit/8fff295ca4b1fcd064c1d214b0bd6ec783d01d36))
+* perfil Custom con selección interactiva via gum + auto-instalación de dependencias ([2f64adc](https://github.com/doncheli/don-cheli-sdd/commit/2f64adc772b7846406c8164d9c256390ac3f26be))
+* soporte completo para OpenCode (SST) — agente [@doncheli](https://github.com/doncheli) + config ([b1191f2](https://github.com/doncheli/don-cheli-sdd/commit/b1191f2bc42621e51a1ff2b6d14b649dbe5fc6c2))
+
+### Correcciones
+
+* actualizar tests bats para usar /dc: en vez de /especdev: en assertions ([5a0e8e9](https://github.com/doncheli/don-cheli-sdd/commit/5a0e8e9b47f6d3228eed3b7a77d85edfe5d61f0d))
+* auditoría i18n v1.14.0 — 12 correcciones de consistencia ([3b97438](https://github.com/doncheli/don-cheli-sdd/commit/3b97438cf3c7dab853a7be7824a07705db1cc996))
+* reemplazar prefijo especdev: por dc: en instaladores + agregar docs web ([2c9e0bc](https://github.com/doncheli/don-cheli-sdd/commit/2c9e0bcf4822128f08d9c2d093926af88bf07426))
+
+### Refactorización
+
+* reemplazar /especdev: por /dc: como prefijo único en todo el proyecto ([734edc5](https://github.com/doncheli/don-cheli-sdd/commit/734edc53b3935565283b86c9876f231a75d7a853))
+
+### Documentación
+
+* agregar banners prominentes a doncheli.tv/comousar.html en los 3 READMEs ([17d0284](https://github.com/doncheli/don-cheli-sdd/commit/17d0284f556a5d524160f3e9a9b45bf8aa2ffbe4))
+* agregar sección Instalación interactiva a READMEs ES y PT ([764d532](https://github.com/doncheli/don-cheli-sdd/commit/764d5326dc66f6ec9397b1e1428451723da31aa6))
+* agregar tabla detallada de skills y razonamiento por perfil en 3 READMEs ([004fee2](https://github.com/doncheli/don-cheli-sdd/commit/004fee28b0045b1791d08c9eeb1d439340093699))
+* reescribir READMEs (ES/EN/PT) con estructura orientada a venta y uso ([3eb5829](https://github.com/doncheli/don-cheli-sdd/commit/3eb58297bb1c44693e6802a4c6f37b1e4e144d1e))
+
+# Changelog
+
 Todos los cambios notables de Don Cheli SDD se documentan en este archivo.
 Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
 
