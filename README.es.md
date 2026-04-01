@@ -11,7 +11,8 @@
     Open source. Multilenguaje (ES/EN/PT). Para Claude Code y otros agentes IA.
   </p>
   <p align="center">
-    <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-1_minuto-brightgreen" alt="Install"></a>
+    <a href="#-instalación"><img src="https://img.shields.io/badge/instalación-2_minutos-brightgreen" alt="Install"></a>
+    <img src="https://img.shields.io/badge/versión-1.14.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
     <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
@@ -28,6 +29,24 @@
 
 ---
 
+## Demo
+
+```bash
+# Sin Don Cheli:
+"Claude, hazme una API de usuarios"
+# → Código sin tests → roto en producción → "¿qué era lo que habíamos decidido ayer?"
+
+# Con Don Cheli (un comando):
+/dc:comenzar "API de usuarios con autenticación JWT"
+# → Spec Gherkin → Tests primero → Código → Review → Listo con evidencia
+```
+
+> **¿Cómo se ve en acción?** Escribe `/dc:comenzar` y Don Cheli auto-detecta la complejidad,
+> genera la especificación Gherkin, propone el blueprint técnico,
+> desglosa en tareas TDD y ejecuta. Sin vibe coding. Con evidencia.
+
+---
+
 ## El problema
 
 Empiezas un proyecto con IA. Las primeras 2 horas todo va bien. Después:
@@ -38,114 +57,47 @@ Empiezas un proyecto con IA. Las primeras 2 horas todo va bien. Después:
 
 Eso es **vibe coding**. Y es el enemigo del software de calidad.
 
-## La solución
-
-**Don Cheli** transforma el caos en un proceso estructurado:
-
-```
-Especificar → Clarificar → Planificar → Desglosar → Implementar → Revisar
-```
-
-Cada paso tiene **puertas de calidad**. No avanzas sin cumplir. El código se genera con **TDD obligatorio**, **detección de stubs**, y **peer review de 7 dimensiones**.
-
 ---
 
-## Por qué Don Cheli
+## Antes vs Después
 
-<table>
-<tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
-<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>85+</strong></td></tr>
-<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42</strong></td></tr>
-<tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
-<tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
-<tr><td>Quality gates formales</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
-<tr><td>TDD obligatorio</td><td>—</td><td>—</td><td>—</td><td><strong>Ley de Hierro</strong></td></tr>
-<tr><td>Modo PoC</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Auditoría OWASP</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Migración de stacks</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Detección de stubs</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Contratos de UI</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Validación Nyquist</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Multilenguaje (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td><strong>✅ Compatible</strong></td></tr>
-<tr><td>Skill Creator (meta-skill)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
-</table>
-
-### 20 cosas que solo Don Cheli tiene
-
-1. **15 modelos de razonamiento** — Pre-mortem, 5 porqués, Pareto, RLM
-2. **4 modelos de estimación** — Puntos de Función, Planning Poker IA, COCOMO, Histórico
-3. **Modo PoC** — Validar ideas con timebox y criterios de éxito antes de comprometer
-4. **Blueprint Distillation** — Extraer specs desde código existente (ingeniería inversa de comportamiento)
-5. **CodeRAG** — Indexar repos de referencia y recuperar patrones relevantes
-6. **Auditoría OWASP** — Escaneo de seguridad estática integrado en el pipeline
-7. **Migración de stacks** — Vue→React, JS→TS con plan de waves y equivalencias
-8. **Contratos de API** — REST/GraphQL con reintentos, circuit breaker, idempotencia
-9. **Refactorización SOLID** — Checklist, métricas, patrones de diseño estructurados
-10. **Documentación viva** — ADRs, OpenAPI auto-generado, diagramas Mermaid
-11. **Captures & Triage** — Anotar ideas sin pausar el trabajo, clasificación automática en 5 categorías
-12. **UAT auto-generado** — Scripts de aceptación ejecutables por humano tras cada feature
-13. **Doctor** — Diagnóstico y auto-reparación de git, framework y entorno
-14. **Skill Creator** — Meta-skill iterativo: generar → probar → evaluar → mejorar skills automáticamente
-15. **Skills Marketplace** — Instalar skills desde Anthropic oficial, comunidad, o crear las tuyas
-16. **Constitución de proyecto** — Principios inmutables pre-spec que se validan en cada puerta de calidad
-17. **Pseudocódigo formal** — Fase de razonamiento lógico agnóstico de tecnología entre spec y plan (SPARC)
-18. **Validación multi-capa de spec** — 8 checks (implementation leakage, measurability, completeness, constitution adherence)
-19. **Debate adversarial multi-rol** — PM vs Arquitecto vs QA con tensiones explícitas y objeción obligatoria
-20. **Scale-adaptive planning** — El nivel de planificación se ajusta según complejidad (no mismo proceso para 1 archivo que para 100)
+| Aspecto | ❌ Sin Don Cheli | ✅ Con Don Cheli |
+|---------|-----------------|-----------------|
+| **Requerimientos** | "Hazme un login" | Spec Gherkin con 8 escenarios verificables |
+| **Arquitectura** | La IA inventa sobre la marcha | Blueprint técnico + DBML ratificado |
+| **Tests** | "Quizás... algún día..." | TDD obligatorio: RED → GREEN → REFACTOR |
+| **Calidad** | "Creo que funciona" | 6 Quality Gates + 85% cobertura |
+| **Contexto** | Se pierde cada sesión | Persistencia total en archivos `.especdev/` |
+| **Stubs** | Pasan a producción | Detección automática de stubs fantasma |
 
 ---
 
 ## Instalación
 
+**3 pasos. 2 minutos. Gratis.**
+
 ```bash
 # 1. Clonar
 git clone https://github.com/doncheli/don-cheli-sdd.git
 
-# 2. Instalar globalmente
-cd don-cheli-sdd && bash scripts/instalar.sh --global
+# 2. Instalar (interactivo: elige idioma, herramienta y perfil)
+cd don-cheli-sdd && bash scripts/instalar.sh
 
-# 3. En cualquier proyecto, inicializar
+# 3. En tu proyecto, abre tu agente IA y escribe:
 /dc:iniciar
 ```
 
-### Instalación interactiva (NUEVO)
-
-Ejecuta sin flags para una configuración guiada:
+<details>
+<summary><strong>Instalación remota (una sola línea)</strong></summary>
 
 ```bash
-bash scripts/instalar.sh
+curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global --lang es
 ```
-
-Elige tus herramientas, perfil, skills y comandos paso a paso:
-
-```
-┌──────────────────────────────────────┐
-│  Don Cheli SDD — Configuración       │
-└──────────────────────────────────────┘
-
-Paso 1: ¿Dónde instalar? → Claude Code, Cursor, Antigravity, OpenCode...
-Paso 2: ¿Perfil de desarrollador? → 6 arquetipos preconfigurados
-Paso 3: Confirmar → Resumen de todo lo seleccionado
-```
-
-<details>
-<summary><strong>6 perfiles de desarrollador — skills y razonamiento por perfil</strong></summary>
-
-| Perfil | Tag | Skills | Modelos de Razonamiento |
-|--------|-----|--------|------------------------|
-| 👻 **Phantom Coder** | Full-stack | Leyes de Hierro, Validación Nyquist, Detección de Stubs, Detección de Loops, Puertas de Calidad, Ingeniería de Contexto, Optimizador de Contexto, Mapa Arquitectónico, Orquestación Autónoma, Optimización de Tokens, Permisos de Seguridad, Auto-corrección, Recuperación de Sesión | Primeros Principios, Pre-mortem, 5 Porqués |
-| 💀 **Reaper Sec** | Seguridad | Permisos de Seguridad, Leyes de Hierro, Puertas de Calidad, Detección de Stubs, Ingeniería de Contexto, CodeRAG, Trazabilidad | Pre-mortem, Inversión, Primeros Principios, 5 Porqués |
-| 🏗 **System Architect** | Arquitectura | Mapa Arquitectónico, Refactorización SOLID, Esquemas DBML, Ingeniería de Contexto, Documentación Viva, Trazabilidad, Diseño UI/UX, CodeRAG | Primeros Principios, Segundo Orden, Mapa-Territorio, Reversibilidad |
-| ⚡ **Speedrunner** | MVP/Startup | Optimización de Tokens, Contabilidad de Tokens, Rigor Progresivo, Orquestación Autónoma, Recuperación de Sesión, Brainstorming | Pre-mortem, Pareto, Costo de Oportunidad, Minimizar Arrepentimiento |
-| 🔮 **The Oracle** | Razonamiento | Razonamiento, Estimación, Reflexión, Ingeniería de Contexto, Brainstorming, Documentación Viva, Trazabilidad | Los 15 modelos (Primeros Principios, Pre-mortem, 5 Porqués, Pareto, Inversión, Segundo Orden, Costo de Oportunidad, Reversibilidad, Minimizar Arrepentimiento, Círculo de Competencia, Mapa-Territorio, Probabilístico, RLM Cadena de Pensamiento, RLM Descomposición, RLM Verificación) |
-| 🥷 **Dev Dojo** | Aprendizaje | Documentación Viva, DevLog, Trazabilidad, Ingeniería de Contexto, Memoria Persistente, Obsidian, Reflexión, Estimación, Diseño UI/UX | Primeros Principios, 5 Porqués, Segundo Orden, Mapa-Territorio |
 
 </details>
 
 <details>
-<summary><strong>Instalación silenciosa (CI/CD, scripts)</strong></summary>
+<summary><strong>Instalación silenciosa (CI/CD)</strong></summary>
 
 ```bash
 bash scripts/instalar.sh \
@@ -158,473 +110,235 @@ Flags: `--tools`, `--profile`, `--skills`, `--comandos`, `--dry-run`, `--global`
 
 </details>
 
-### Selección de idioma
-
-Lo **primero** que ves al instalar es el selector de idioma:
+El instalador interactivo te guía paso a paso:
 
 ```
-  ╔═══════════════════════════════════════════════════════════╗
-  ║                                                           ║
-  ║           🏗️  Don Cheli — SDD Framework                   ║
-  ║                                                           ║
-  ╚═══════════════════════════════════════════════════════════╝
+┌──────────────────────────────────────┐
+│  Don Cheli SDD — Configuración       │
+└──────────────────────────────────────┘
 
-  🌍 Selecciona tu idioma / Select your language / Selecione seu idioma
-
-     1)  🇪🇸  Español
-     2)  🇬🇧  English
-     3)  🇧🇷  Português
-
-  ▸ _
+Paso 1: 🌍 Idioma      → Español, English, Português
+Paso 2: 🔧 Herramienta → Claude Code, Cursor, Antigravity, Codex, Warp, Amp...
+Paso 3: 👤 Perfil      → 6 arquetipos preconfigurados
+Paso 4: ✅ Confirmar   → Resumen de todo lo seleccionado
 ```
 
-Una vez seleccionado, **todo el framework se adapta al idioma elegido**: carpetas, archivos, plantillas, mensajes y la comunicación de Claude.
-
-### Estructura por idioma
-
-La instalación crea carpetas con nombres en el idioma seleccionado:
-
-<table>
-<tr><th>Contenido</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
-<tr><td>Habilidades</td><td><code>habilidades/</code></td><td><code>skills/</code></td><td><code>habilidades/</code></td></tr>
-<tr><td>Reglas</td><td><code>reglas/</code></td><td><code>rules/</code></td><td><code>regras/</code></td></tr>
-<tr><td>Plantillas</td><td><code>plantillas/</code></td><td><code>templates/</code></td><td><code>modelos/</code></td></tr>
-<tr><td>Ganchos</td><td><code>ganchos/</code></td><td><code>hooks/</code></td><td><code>ganchos/</code></td></tr>
-<tr><td>Agentes</td><td><code>agentes/</code></td><td><code>agents/</code></td><td><code>agentes/</code></td></tr>
-</table>
-
-Los archivos de proyecto (`.especdev/`) también se crean en el idioma configurado:
-
-<table>
-<tr><th>Archivo</th><th>🇪🇸 Español</th><th>🇬🇧 English</th><th>🇧🇷 Português</th></tr>
-<tr><td>Estado</td><td><code>estado.md</code></td><td><code>status.md</code></td><td><code>estado.md</code></td></tr>
-<tr><td>Hallazgos</td><td><code>hallazgos.md</code></td><td><code>findings.md</code></td><td><code>descobertas.md</code></td></tr>
-<tr><td>Plan</td><td><code>plan.md</code></td><td><code>plan.md</code></td><td><code>plano.md</code></td></tr>
-<tr><td>Progreso</td><td><code>progreso.md</code></td><td><code>progress.md</code></td><td><code>progresso.md</code></td></tr>
-<tr><td>Propuesta</td><td><code>propuesta.md</code></td><td><code>proposal.md</code></td><td><code>proposta.md</code></td></tr>
-</table>
-
-El idioma se persiste en `locale` y `folder-map.json` para que Claude sepa exactamente qué archivos buscar. Para cambiar de idioma, simplemente reinstala:
-
-```bash
-bash scripts/instalar.sh --global
-```
-
-<details>
-<summary>Instalación remota (sin clonar)</summary>
-
-El instalador descarga automáticamente el repositorio cuando se ejecuta via pipe:
-
-```bash
-# Interactivo (pregunta el idioma)
-curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global
-
-# No-interactivo (idioma directo)
-curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/instalar.sh | bash -s -- --global --lang es
-```
-
-Idiomas disponibles: `es` (Español), `en` (English), `pt` (Português)
-</details>
-
-**Requisitos:** Claude Code (o agente IA compatible) + Git
+**Requisitos:** Git + un agente IA (Claude Code, Cursor, etc.)
 
 ---
 
-## Inicio rápido
+## Cómo funciona
 
-### 1. Inicializar en tu proyecto
+**6 fases. De la idea al código verificado.**
 
-```bash
-/dc:iniciar --tipo servicio --nombre "mi-api"
+```mermaid
+flowchart LR
+    A["💡 Idea"] --> B["📄 Especificar"]
+    B --> C["🔍 Clarificar"]
+    C --> D["🏗 Planificar"]
+    D --> E["📋 Desglosar"]
+    E --> F["⚡ Implementar"]
+    F --> G["✅ Revisar"]
+
+    style B fill:#6c5ce7,color:#fff
+    style C fill:#0984e3,color:#fff
+    style D fill:#00b894,color:#fff
+    style E fill:#fdcb6e,color:#000
+    style F fill:#e17055,color:#fff
+    style G fill:#fd79a8,color:#fff
 ```
 
-### 2. Empezar una tarea
+| # | Fase | Comando | Qué hace |
+|---|------|---------|----------|
+| 1 | **Especificar** | `/dc:especificar` | Convierte tu idea en especificación Gherkin con escenarios de prueba, prioridades y schema DBML |
+| 2 | **Clarificar** | `/dc:clarificar` | Un QA virtual detecta ambigüedades y contradicciones antes de codear |
+| 3 | **Planificar** | `/dc:planificar-tecnico` | Blueprint técnico con arquitectura, contratos de API y schema final |
+| 4 | **Desglosar** | `/dc:desglosar` | Divide el plan en tareas concretas con orden de ejecución y paralelismo |
+| 5 | **Implementar** | `/dc:implementar` | Ejecuta con TDD estricto: primero el test, luego el código, luego mejora |
+| 6 | **Revisar** | `/dc:revisar` | Peer review automático en 7 dimensiones: funcionalidad, tests, rendimiento, arquitectura, seguridad, mantenibilidad, docs |
+
+Cada fase tiene **puertas de calidad**. No avanzas sin cumplir. **Sin atajos.**
+
+---
+
+## Se adapta a tu proyecto
+
+No todo necesita las 6 fases. Don Cheli auto-detecta la complejidad:
+
+| Nivel | Nombre | Cuándo | Fases |
+|-------|--------|--------|-------|
+| **0** | Atómico | 1 archivo, < 30 min | Implementar → Verificar |
+| **P** | PoC | Validar viabilidad (2-4h) | Hipótesis → Construir → Evaluar → Veredicto |
+| **1** | Micro | 1-3 archivos | Especificar (light) → Implementar → Revisar |
+| **2** | Estándar | Múltiples archivos, 1-3 días | 6 fases completas |
+| **3** | Complejo | Multi-módulo, 1-2 semanas | 6 fases + pseudocódigo |
+| **4** | Producto | Sistema nuevo, 2+ semanas | 6 fases + constitución + propuesta |
 
 ```bash
 /dc:comenzar Implementar autenticación JWT
-```
-
-Don Cheli auto-detecta la complejidad y elige el proceso adecuado:
-
-| Nivel | Nombre | Cuándo |
-|-------|--------|--------|
-| **0** | Atómico | 1 archivo, < 30 min |
-| **P** | PoC | Validar viabilidad (2-4h timebox) |
-| **1** | Micro | 1-3 archivos, solución conocida |
-| **2** | Estándar | Múltiples archivos, 1-3 días |
-| **3** | Complejo | Multi-módulo, 1-2 semanas |
-| **4** | Producto | Sistema nuevo, 2+ semanas |
-
-### 3. Seguir el pipeline
-
-```bash
-/dc:especificar    # Spec Gherkin + schema DBML
-/dc:clarificar     # Auto-QA + resolver ambigüedades
-/dc:planificar-tecnico  # Blueprint + chequeo de constitución
-/dc:desglosar      # Tareas TDD con paralelismo
-/dc:implementar    # RED → GREEN → REFACTOR en Docker
-/dc:revisar        # Peer review de 7 dimensiones
+# → ▶ Nivel detectado: 2 — Estándar
+# → ▶ Fases: Especificar → Clarificar → Planificar → Desglosar → Implementar → Revisar
 ```
 
 ---
 
-## Las 3 leyes de hierro
+## Las 3 Leyes de Hierro
 
-No negociables. Se aplican siempre.
+No negociables. Se aplican siempre. Sin excepciones.
 
 | Ley | Principio | En la práctica |
 |-----|-----------|----------------|
-| **TDD** | Todo código requiere tests | RED → GREEN → REFACTOR, sin excepciones |
-| **Debugging** | Causa raíz primero | Reproducir → Aislar → Entender → Corregir → Verificar |
-| **Verificación** | Evidencia antes de afirmaciones | "Los tests pasan" > "creo que funciona" |
+| **I. TDD** | Todo código requiere tests | `RED` → `GREEN` → `REFACTOR`, sin excepciones |
+| **II. Debugging** | Causa raíz primero | Reproducir → Aislar → Entender → Corregir → Verificar |
+| **III. Verificación** | Evidencia antes de afirmaciones | ✅ "Los tests pasan" > ❌ "Creo que funciona" |
 
 ---
 
-## Anthropic Skills 2.0
+## Por qué Don Cheli
 
-Don Cheli es **100% compatible** con el ecosistema de [Anthropic Skills](https://github.com/anthropics/skills). Soporta ambos formatos de skill:
+<table>
+<tr><th></th><th>BMAD<br/><sub>41K ⭐</sub></th><th>GSD<br/><sub>38K ⭐</sub></th><th>spec-kit<br/><sub>40K ⭐</sub></th><th><strong>Don Cheli</strong></th></tr>
+<tr><td>Comandos</td><td>~20</td><td>~80</td><td>~10</td><td><strong>85+</strong></td></tr>
+<tr><td>Habilidades (Skills)</td><td>~15</td><td>~15</td><td>~6</td><td><strong>42+</strong></td></tr>
+<tr><td>Modelos de razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>15</strong></td></tr>
+<tr><td>Estimados automáticos</td><td>—</td><td>—</td><td>—</td><td><strong>4 modelos</strong></td></tr>
+<tr><td>Quality gates formales</td><td>—</td><td>1</td><td>4</td><td><strong>6</strong></td></tr>
+<tr><td>TDD obligatorio</td><td>—</td><td>—</td><td>—</td><td><strong>Ley de Hierro</strong></td></tr>
+<tr><td>Modo PoC</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Auditoría OWASP</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Migración de stacks</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Detección de stubs</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Contratos UI/API</td><td>—</td><td>✅</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Multilenguaje (ES/EN/PT)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Anthropic Skills 2.0</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Aislamiento Worktree</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Recuperación de crash</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Tracking de costos</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Detección de loops</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Debate adversarial multi-rol</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+</table>
 
-| Formato | Archivo | Uso |
-|---------|---------|-----|
-| **Anthropic** | `SKILL.md` | Compatible con el marketplace oficial |
-| **Don Cheli** | `HABILIDAD.md` | Formato extendido con version, tags, grado de libertad |
+<details>
+<summary><strong>20 cosas que solo Don Cheli tiene</strong></summary>
 
-### Skill Creator
+1. **15 modelos de razonamiento** — Pre-mortem, 5 porqués, Pareto, RLM
+2. **4 modelos de estimación** — Puntos de Función, Planning Poker IA, COCOMO, Histórico
+3. **Modo PoC** — Validar ideas con timebox y criterios de éxito antes de comprometer
+4. **Blueprint Distillation** — Extraer specs desde código existente (ingeniería inversa)
+5. **CodeRAG** — Indexar repos de referencia y recuperar patrones relevantes
+6. **Auditoría OWASP** — Escaneo de seguridad estática integrado en el pipeline
+7. **Migración de stacks** — Vue→React, JS→TS con plan de waves y equivalencias
+8. **Contratos de API** — REST/GraphQL con reintentos, circuit breaker, idempotencia
+9. **Refactorización SOLID** — Checklist, métricas, patrones de diseño estructurados
+10. **Documentación viva** — ADRs, OpenAPI auto-generado, diagramas Mermaid
+11. **Captures & Triage** — Anotar ideas sin pausar el trabajo, clasificación en 5 categorías
+12. **UAT auto-generado** — Scripts de aceptación ejecutables por humano tras cada feature
+13. **Doctor** — Diagnóstico y auto-reparación de git, framework y entorno
+14. **Skill Creator** — Meta-skill iterativo para crear skills automáticamente
+15. **Skills Marketplace** — Instalar skills desde Anthropic, comunidad, o crear las tuyas
+16. **Constitución de proyecto** — 8 principios inmutables validados en cada puerta de calidad
+17. **Pseudocódigo formal (SPARC)** — Razonamiento lógico agnóstico de tecnología
+18. **Validación multi-capa** — 8 checks (leakage, medibilidad, completitud, constitución)
+19. **Debate adversarial** — PM vs Arquitecto vs QA con objeción obligatoria
+20. **Scale-adaptive planning** — Proceso se ajusta según complejidad (N0 a N4)
 
-Crear skills sin escribir una sola línea de YAML:
+</details>
 
-```bash
-/dc:crear-skill "Generador de reportes semanales del equipo"
-```
+---
 
-5 fases iterativas: **Descubrir** → **Generar** SKILL.md → **Testear** con prompt real → **Evaluar** calidad → **Iterar** hasta óptimo.
+## Perfiles
 
-### Skills Marketplace
+6 arquetipos preconfigurados. Cada uno con skills, comandos y modelos de razonamiento optimizados:
 
-Instalar skills del marketplace oficial de Anthropic o de la comunidad:
-
-```bash
-/dc:marketplace --instalar document-skills --fuente anthropic
-/dc:marketplace --buscar "weekly report"
-```
-
-Fuentes soportadas: [Anthropic Official](https://github.com/anthropics/skills) • [skillsmp.com](https://skillsmp.com/) • [aitmpl.com](https://www.aitmpl.com/skills) • Don Cheli built-in (42 skills)
-
-### Progressive Disclosure
-
-Las skills usan un diseño de 3 capas para máxima eficiencia de tokens:
-
-```
-Capa 1: Metadata (YAML)     → ~20 tokens por skill, siempre en contexto
-Capa 2: Body (Markdown)     → Cargado solo al activar la skill
-Capa 3: File References     → Cargados bajo demanda dentro del body
-```
-
-Esto permite tener decenas de skills sin impactar el context window.
+| Perfil | Rol | Para qué | Razonamiento |
+|--------|-----|----------|--------------|
+| 👻 **Phantom Coder** | Full-stack | Pipeline completo, TDD, quality gates, deploy | Primeros Principios, Pre-mortem, 5 Porqués |
+| 💀 **Reaper Sec** | Seguridad | OWASP, auditoría, pentest, seguridad ofensiva/defensiva | Pre-mortem, Inversión, Primeros Principios |
+| 🏗 **System Architect** | Arquitectura | Blueprints, SOLID, APIs, migraciones, diseño de sistemas | Primeros Principios, Segundo Orden, Mapa-Territorio |
+| ⚡ **Speedrunner** | MVP/Startup | PoC rápidas, estimados ágiles, lanzar primero | Pre-mortem, Pareto, Costo de Oportunidad |
+| 🔮 **The Oracle** | Razonamiento | 15 modelos mentales, análisis profundo, decisiones difíciles | Los 15 modelos completos |
+| 🥷 **Dev Dojo** | Aprendizaje | Documentación viva, ADRs, reflexiones, crecer mientras construyes | Primeros Principios, 5 Porqués, Segundo Orden |
 
 ---
 
 ## Comandos (85+)
 
-> **Retrocompatible:** Todos los comandos `/dc:*` también están disponibles como `/dc:*` por retrocompatibilidad.
+Top 20 más usados. [Lista completa en la documentación web →](https://doncheli.tv/comousar.html)
 
-<details>
-<summary><strong>Principales (32)</strong></summary>
-
-| Comando | Descripción |
-|---------|-------------|
-| `/dc:iniciar` | Inicializar en un proyecto |
-| `/dc:comenzar` | Iniciar tarea (auto-detecta nivel) |
-| `/dc:rapido` | Modo rápido (Nivel 1) |
-| `/dc:poc` | Prueba de Concepto con timebox |
-| `/dc:completo` | Modo completo (Nivel 3) |
-| `/dc:estado` | Estado actual |
-| `/dc:diagnostico` | Health check del setup |
-| `/dc:doctor` | Diagnóstico y auto-reparación de git, framework y entorno |
-| `/dc:continuar` | Recuperar sesión previa |
-| `/dc:reflexionar` | Auto-reflexión (+8-21% calidad) |
-| `/dc:capturar` | Fire-and-forget de ideas con triage automático |
-| `/dc:uat` | Scripts de aceptación auto-generados por feature |
-| `/dc:agente` | Cargar agente especializado |
-| `/dc:mesa-redonda` | Discusión multi-perspectiva (CPO, UX, Negocio) |
-| `/dc:mesa-tecnica` | Mesa de expertos senior de desarrollo (Tech Lead, Backend, Frontend, Arquitecto, DevOps) |
-| `/dc:planning` | Planning semanal de equipo: revisión de RFCs, priorización WSJF, asignación por pareja/squad |
-| `/dc:estimar` | Estimados de desarrollo |
-| `/dc:destilar` | Extraer specs desde código |
-| `/dc:minar-referencias` | Buscar repos de referencia |
-| `/dc:contrato-ui` | Contratos de diseño UI |
-| `/dc:contrato-api` | Contratos de API/webhooks |
-| `/dc:auditar-seguridad` | Auditoría OWASP Top 10 |
-| `/dc:migrar` | Migración de stacks |
-| `/dc:reversa` | Ingeniería inversa de arquitectura |
-| `/dc:explorar` | Explorar codebase (modo supuestos) |
-| `/dc:proponer` | Propuesta de cambio |
-| `/dc:analizar-sesiones` | Análisis de patrones de uso |
-| `/dc:presentar` | Generar presentación interactiva HTML |
-| `/dc:crear-skill` | Crear skills iterativamente (compatible Anthropic Skills 2.0) |
-| `/dc:marketplace` | Instalar skills desde Anthropic, comunidad, o built-in |
-| `/dc:pseudocodigo` | Lógica agnóstica de tecnología entre spec y plan (SPARC) |
-| `/dc:validar-spec` | Validación multi-capa de specs (8 checks, BMAD-inspired) |
-| `/dc:debate` | Deliberación adversarial multi-rol (PM vs Arquitecto vs QA) |
-| `/dc:actualizar` | Detectar y aplicar actualizaciones del framework |
-</details>
-
-<details>
-<summary><strong>Pipeline Gherkin (5)</strong></summary>
-
-| Comando | Descripción |
-|---------|-------------|
-| `/dc:especificar` | Spec Gherkin con prioridades P1/P2/P3+ |
-| `/dc:clarificar` | Auto-QA + verificación schema-spec |
-| `/dc:planificar-tecnico` | Blueprint + chequeo de constitución |
-| `/dc:desglosar` | Tareas TDD con marcadores `[P]` |
-| `/dc:revisar` | Peer review de 7 dimensiones |
-</details>
-
-<details>
-<summary><strong>Razonamiento (15)</strong></summary>
+### Pipeline principal
 
 | Comando | Qué hace |
 |---------|----------|
-| `/razonar:primeros-principios` | Descomponer a lo fundamental |
-| `/razonar:5-porques` | Análisis de causa raíz |
+| `/dc:comenzar` | Inicia tarea detectando complejidad (Nivel 0-4) |
+| `/dc:especificar` | Convierte tu idea en spec Gherkin con escenarios |
+| `/dc:clarificar` | Encuentra ambigüedades y las resuelve antes de codear |
+| `/dc:planificar-tecnico` | Genera blueprint técnico con arquitectura y contratos |
+| `/dc:desglosar` | Divide el plan en tareas concretas con orden de ejecución |
+| `/dc:implementar` | Ejecuta las tareas con TDD: RED → GREEN → REFACTOR |
+| `/dc:revisar` | Peer review automático en 7 dimensiones |
+
+### Análisis y decisiones
+
+| Comando | Qué hace |
+|---------|----------|
+| `/dc:explorar` | Explora el codebase antes de proponer cambios |
+| `/dc:estimar` | Estimados con 4 modelos (Function Points, COCOMO, Planning Poker, Histórico) |
+| `/dc:mesa-redonda` | Discusión multi-perspectiva: CPO, UX, Negocio |
+| `/dc:mesa-tecnica` | Panel de expertos: Tech Lead, Backend, Frontend, Arquitecto |
+| `/dc:auditar-seguridad` | Auditoría OWASP Top 10 estática |
+| `/dc:poc` | Prueba de Concepto con timebox y criterios claros |
+
+### Sesión y contexto
+
+| Comando | Qué hace |
+|---------|----------|
+| `/dc:continuar` | Recupera tu sesión previa sin perder contexto |
+| `/dc:estado` | Muestra el estado actual del proyecto |
+| `/dc:doctor` | Diagnostica y repara problemas del framework |
+| `/dc:capturar` | Captura ideas sin interrumpir tu flujo |
+| `/dc:migrar` | Planifica migración entre stacks (Vue→React, JS→TS...) |
+| `/dc:actualizar` | Actualiza Don Cheli a la última versión |
+
+<details>
+<summary><strong>Modelos de razonamiento (15)</strong></summary>
+
+| Comando | Qué hace |
+|---------|----------|
+| `/razonar:primeros-principios` | Descomponer a verdades fundamentales |
+| `/razonar:5-porques` | Causa raíz iterativa |
 | `/razonar:pareto` | Enfoque 80/20 |
-| `/razonar:inversion` | Resolver al revés |
-| `/razonar:segundo-orden` | Consecuencias de consecuencias |
-| `/razonar:pre-mortem` | Anticipar fracasos |
-| `/razonar:minimizar-arrepentimiento` | Decisiones a largo plazo |
-| `/razonar:costo-oportunidad` | Evaluar alternativas |
-| `/razonar:circulo-competencia` | Conocer tus límites |
+| `/razonar:inversion` | Resolver al revés: ¿cómo garantizo el fracaso? |
+| `/razonar:segundo-orden` | Consecuencias de las consecuencias |
+| `/razonar:pre-mortem` | Anticipar fracasos antes de que ocurran |
+| `/razonar:minimizar-arrepentimiento` | Framework de Jeff Bezos |
+| `/razonar:costo-oportunidad` | Evaluar alternativas sacrificadas |
+| `/razonar:circulo-competencia` | Conocer los límites del conocimiento |
 | `/razonar:mapa-territorio` | Modelo vs realidad |
-| `/razonar:probabilistico` | Razonar en probabilidades |
-| `/razonar:reversibilidad` | ¿Se puede deshacer? |
-| `/razonar:rlm-verificacion` | Verificación con sub-LLMs |
-| `/razonar:rlm-cadena-pensamiento` | Razonamiento multi-paso |
-| `/razonar:rlm-descomposicion` | Divide y conquista |
+| `/razonar:probabilistico` | Razonar en probabilidades, no certezas |
+| `/razonar:reversibilidad` | ¿Se puede deshacer esta decisión? |
+| `/razonar:rlm-verificacion` | Verificación con sub-LLMs frescos |
+| `/razonar:rlm-cadena-pensamiento` | Context Folding multi-paso |
+| `/razonar:rlm-descomposicion` | Divide y conquista con subagentes |
+
 </details>
 
 ---
 
-## Habilidades (42)
+## Multi-plataforma
 
-| Categoría | Habilidades |
-|-----------|------------|
-| **Calidad** | Leyes de hierro, Validación Nyquist, Detección de stubs, Detección de loops, Puertas de calidad, Prueba de trabajo, Rigor progresivo |
-| **Contexto** | Ingeniería de contexto, Optimizador de contexto, Memoria persistente (Engram), CodeRAG + LightRAG, Code reference mining |
-| **Razonamiento** | 12 modelos mentales, 3 modelos RLM (PrimeIntellect) |
-| **Arquitectura** | Mapa arquitectónico vivo, Refactorización SOLID, Schemas DBML |
-| **Diseño** | UI/UX Design System (67 estilos, 161 paletas), Contratos de UI, Presentaciones HTML |
-| **Documentación** | Documentación viva (ADRs, OpenAPI), DevLog, Trazabilidad, Delta specs, Obsidian |
-| **Autonomía** | Orquestación autónoma, Auto-corrección, Recuperación de sesión |
-| **Descubrimiento** | Brainstorming estructurado, Git Worktrees |
-| **Eficiencia** | Optimización de tokens, Contabilidad de tokens, Desarrollo con subagentes, **Routing dinámico de modelos**, **Proyecciones de costo** |
-| **Observabilidad** | **Salud de habilidades** (telemetría de success rate y consumo por skill) |
-| **Seguridad** | Permisos y seguridad, Auditoría OWASP |
-| **Integración** | MCP servers, Extensiones y presets |
+Don Cheli no es un programa. Son archivos Markdown que cualquier agente de IA puede interpretar.
 
----
-
-## Pipeline visual
-
-```
-  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
-  │ ESPECIFICAR │────▶│  CLARIFICAR  │────▶│PLANIFICAR TÉCNICO│
-  │             │     │              │     │                  │
-  │ Gherkin     │     │ Auto-QA      │     │ Chequeo de       │
-  │ P1/P2/P3+   │     │ Schema↔Spec  │     │ constitución     │
-  │ DBML auto   │     │ Ambigüedades │     │ Contexto técnico │
-  └─────────────┘     └─────────────┘     └──────────────────┘
-        │                   │                      │
-    [Puerta 1]          [Puerta 2+3]           [Puerta 4]
-                                                   │
-                                                   ▼
-  ┌─────────────┐     ┌─────────────┐     ┌──────────────────┐
-  │   REVISAR   │◀────│ IMPLEMENTAR │◀────│    DESGLOSAR     │
-  │             │     │             │     │                  │
-  │ 7 dimensiones│     │ TDD en Docker│     │ [T001] [P] [US1] │
-  │ N+1, SOLID  │     │ Checkpoints │     │ 5 fases          │
-  │ Seguridad   │     │ Anti-stubs  │     │ Nyquist          │
-  └─────────────┘     └─────────────┘     └──────────────────┘
-        │                   │                      │
-    [Puerta 6]          [Puerta 6]             [Puerta 5]
-    + Regresión
-```
-
-Cada puerta bloquea el avance si no se cumplen los criterios. **Sin atajos.**
-
----
-
-## 7 agentes especializados
-
-| Agente | Modelo | Rol |
-|--------|--------|-----|
-| `planificador` | opus | Descomposición y planificación |
-| `arquitecto` | opus | Diseño de sistemas |
-| `ejecutor` | sonnet | Implementación de código |
-| `revisor` | opus | Code review arquitectónico |
-| `tester` | sonnet | Testing y QA |
-| `documentador` | haiku | Documentación |
-| `estimador` | opus | Estimados de esfuerzo |
-
-```bash
-/dc:agente planificador
-/dc:mesa-redonda "¿Monolito o microservicios?"
-/dc:mesa-tecnica "¿Redis o Memcached para caching de sesiones?"
-/dc:planning --equipo "Ana,Carlos,Luis" --semana "2026-03-24"
-```
-
----
-
-## Modo PoC
-
-Validar ideas antes de comprometer implementación:
-
-```bash
-/dc:poc --hipotesis "SQLite es suficiente para el MVP"
-```
-
-| Fase | Qué |
-|------|-----|
-| **Hipótesis** | Definir qué validar y criterios de éxito/fracaso |
-| **Construir** | Código desechable, reglas relajadas, sin TDD |
-| **Evaluar** | Resultados vs criterios con evidencia |
-| **Veredicto** | VIABLE / CON RESERVAS / NO VIABLE / INCONCLUSO |
-
-Si es viable → `/dc:poc --graduar` → pipeline completo.
-
----
-
-## Estimados automáticos
-
-```bash
-/dc:estimar docs/prd.md
-```
-
-4 modelos que se complementan:
-
-| Modelo | Técnica |
-|--------|---------|
-| **Puntos de Función** | Complejidad funcional |
-| **Planning Poker IA** | 3 agentes estiman independientemente |
-| **COCOMO** | LOC estimadas → esfuerzo |
-| **Histórico** | Comparación con tareas similares |
-
-Output: estimado optimista, esperado y pesimista con desglose por feature.
-
----
-
-## Auditoría de seguridad
-
-```bash
-/dc:auditar-seguridad
-```
-
-Escanea las 10 categorías OWASP:
-
-- **A01** Broken Access Control — endpoints sin auth, IDOR, CORS
-- **A02** Cryptographic Failures — passwords en plaintext, JWT sin expiración
-- **A03** Injection — SQL, XSS, command injection
-- **A04-A10** — Configuración, componentes vulnerables, logging
-
-Cada hallazgo con severidad, archivo, línea y fix sugerido.
-
----
-
-## Migración de stacks
-
-```bash
-/dc:migrar --de "Vue 3" --a "React 19"
-```
-
-6 fases: Inventario → Equivalencias → Estrategia → Plan → Ejecución → Verificación
-
-Soporta: framework (Vue→React), versión (Next 14→15), lenguaje (JS→TS), paradigma (REST→GraphQL).
-
----
-
-## Multi-LLM / Multi-IDE
-
-Don Cheli funciona con **4 agentes IA** y **3 IDEs** nativamente:
-
-| Archivo | Agente / IDE | Estructura |
-|---------|-------------|------------|
-| `CLAUDE.md` | Claude Code | `.claude/skills/`, `.claude/commands/` |
-| `GEMINI.md` | Google Antigravity (Gemini 3.1) | `.agent/skills/`, `.agent/workflows/` |
-| `AGENTS.md` | Cross-tool (Cursor, Codex, etc.) | Compartido entre todos |
-| `prompt.md` | Amp / otros | Instrucciones genéricas |
-
-### Google Antigravity
-
-Don Cheli incluye soporte nativo para Antigravity con Gemini 3.1:
-
-- `GEMINI.md` — Instrucciones adaptadas con modelo routing (Flash/Pro)
-- 5 skills en `.agent/skills/` (spec, plan, implement, review, security)
-- 4 workflows en `.agent/workflows/` (start, pipeline, review, security)
-- Compatibles con la estructura `.agent/` de Antigravity
-
-```bash
-# En Antigravity, los workflows se invocan como slash commands:
-/doncheli-start
-/doncheli-pipeline
-/doncheli-review
-/doncheli-security
-```
-
----
-
-## Estructura del proyecto
-
-```
-don-cheli/
-├── comandos/
-│   ├── especdev/          # 56 comandos /dc:*
-│   └── razonar/           # 15 comandos /razonar:*
-├── habilidades/           # 42 habilidades modulares
-├── reglas/
-│   ├── constitucion.md    # 8 principios gobernantes
-│   ├── leyes-hierro.md    # 3 leyes no negociables
-│   ├── puertas-calidad.md # 6 quality gates
-│   ├── i18n.md            # Reglas de internacionalización
-│   ├── skills-best-practices.md  # Best practices Anthropic Skills 2.0
-│   └── reglas-trabajo-globales.md
-├── locales/               # 🌍 Strings i18n
-│   ├── es.json            # Español (158 strings)
-│   ├── en.json            # English (158 strings)
-│   └── pt.json            # Português (158 strings)
-├── plantillas/
-│   └── especdev/
-│       ├── es/            # Templates en español
-│       ├── en/            # Templates in English
-│       └── pt/            # Templates em português
-├── agentes/               # 7 agentes especializados
-├── ganchos/               # Pre/Post herramienta + Stop hooks
-├── scripts/               # instalar.sh, bucle.sh, validar.sh
-├── .agent/                # 🔮 Antigravity/Gemini compatibility
-│   ├── skills/            # 5 skills (spec, plan, implement, review, security)
-│   └── workflows/         # 4 workflows (/doncheli-start, pipeline, review, security)
-├── CLAUDE.md              # Instrucciones para Claude Code
-├── GEMINI.md              # Instrucciones para Google Antigravity
-├── AGENTS.md              # Instrucciones cross-tool (Cursor, Codex)
-├── prompt.md              # Instrucciones para Amp
-├── NOTICE                 # Atribuciones
-└── LICENCIA               # Apache 2.0
-```
-
-Después de instalar con un idioma, la estructura instalada usa los nombres localizados:
-
-```
-~/.claude/don-cheli/          # Instalación global
-├── skills/                   # (o habilidades/ en ES, habilidades/ en PT)
-├── rules/                    # (o reglas/ en ES, regras/ en PT)
-├── templates/                # (o plantillas/ en ES, modelos/ en PT)
-├── hooks/                    # (o ganchos/ en ES/PT)
-├── agents/                   # (o agentes/ en ES/PT)
-├── locales/                  # es.json, en.json, pt.json
-├── locale                    # Archivo de 2 letras: "es", "en" o "pt"
-├── folder-map.json           # Mapeo de nombres para Claude
-├── CLAUDE.md
-└── VERSION
-```
+| Plataforma | Soporte | Archivo de instrucciones |
+|-----------|---------|--------------------------|
+| **Claude Code** | Nativo completo | `CLAUDE.md` |
+| **Google Antigravity** | Nativo con 5 skills + 4 workflows | `GEMINI.md` |
+| **Cursor** | Via contrato universal | `AGENTS.md` |
+| **Codex** | Via contrato universal | `AGENTS.md` |
+| **Warp** | Compatible | `CLAUDE.md` |
+| **Amp** | Compatible | `prompt.md` |
+| **Continue.dev** | Compatible | `AGENTS.md` |
+| **OpenCode** | Compatible | `AGENTS.md` |
 
 ---
 
@@ -640,14 +354,19 @@ Después de instalar con un idioma, la estructura instalada usa los nombres loca
 
 ---
 
+## Comunidad y soporte
+
+- [GitHub Discussions](https://github.com/doncheli/don-cheli-sdd/discussions) — Preguntas y propuestas
+- [GitHub Issues](https://github.com/doncheli/don-cheli-sdd/issues) — Bugs y feature requests
+- [YouTube @doncheli](https://youtube.com/@doncheli) — Tutoriales y demos
+- [Instagram @doncheli.tv](https://instagram.com/doncheli.tv) — Novedades
+- [doncheli.tv](https://doncheli.tv) — Documentación web completa
+
+---
+
 ## Contribuir
 
 Ver [CONTRIBUIR.md](CONTRIBUIR.md) para la guía completa.
-
-```bash
-# Fork → Clone → Branch → Cambios → PR
-git checkout -b feature/mi-mejora
-```
 
 ---
 
@@ -655,12 +374,9 @@ git checkout -b feature/mi-mejora
 
 [Apache 2.0](LICENCIA) — Copyright 2026 Jose Luis Oronoz Troconis (@DonCheli)
 
-Puedes usar, modificar y distribuir Don Cheli libremente. Debes mantener la atribución al autor original e indicar los cambios realizados.
-
 ---
 
 <p align="center">
   <strong>Deja de adivinar. Empieza a hacer ingeniería.</strong><br/>
-    <sub>El vibe coding es la chispa; SDD es el motor. Transiciona del caos asistido por IA a la entrega profesional de software.</sub><br/>
-  <sub>Don Cheli — SDD Framework</sub>
+  <sub>Hecho con ❤️ en Latinoamérica — Don Cheli SDD Framework</sub>
 </p>
