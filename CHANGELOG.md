@@ -30,25 +30,6 @@ Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 * agregar tabla detallada de skills y razonamiento por perfil en 3 READMEs ([004fee2](https://github.com/doncheli/don-cheli-sdd/commit/004fee28b0045b1791d08c9eeb1d439340093699))
 * reescribir READMEs (ES/EN/PT) con estructura orientada a venta y uso ([3eb5829](https://github.com/doncheli/don-cheli-sdd/commit/3eb58297bb1c44693e6802a4c6f37b1e4e144d1e))
 
-# Changelog
-
-Todos los cambios notables de Don Cheli SDD se documentan en este archivo.
-Formato basado en [Keep a Changelog](https://keepachangelog.com/es/1.0.0/).
-
-## [Unreleased]
-
-## [1.15.0] - 2026-04-01
-### Añadido
-- **Ejemplos nuevos:** Python Task API (FastAPI + SQLAlchemy) y React Dashboard (React 19 + TypeScript + Recharts)
-- **Codecov:** Badge de cobertura y reporte en CI
-- **Semantic Release:** Automatización de changelog y versiones con `.releaserc.json`
-- **Documentación web:** Página de docs en `docs/index.html` para doncheli.tv
-- **READMEs reescritos:** Estructura orientada a venta, tabla "Antes vs Después", pipeline Mermaid, tabla de niveles N0-N4
-- **Banners prominentes** a doncheli.tv/comousar.html en los 3 READMEs
-
-### Corregido
-- Prefijo `especdev:` reemplazado por `dc:` en los scripts de instalación
-
 ## [1.14.0] - 2026-03-28
 ### Añadido
 - **13 nuevos comandos** basados en tendencias de la industria (marzo 2026):
