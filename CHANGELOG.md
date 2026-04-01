@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.15.3](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.2...v1.15.3) (2026-04-01)
+
+### Correcciones
+
+* generar cobertura real con bash xtrace en formato Cobertura XML ([4c013a2](https://github.com/doncheli/don-cheli-sdd/commit/4c013a28cb8b7b3fcd6e382486b0f7e80f5f4aa5))
+
 ## [1.15.2](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.1...v1.15.2) (2026-04-01)
 
 ### Correcciones
