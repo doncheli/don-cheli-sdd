@@ -52,6 +52,9 @@
       ],
       "message": "chore(release): v${nextRelease.version}\n\n${nextRelease.notes}"
     }],
+    ["@semantic-release/npm", {
+      "pkgRoot": "."
+    }],
     ["@semantic-release/github"]
   ]
 }
