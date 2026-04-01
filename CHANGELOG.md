@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.15.2](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.1...v1.15.2) (2026-04-01)
+
+### Correcciones
+
+* compilar kcov desde source para cobertura real en CI ([fdef203](https://github.com/doncheli/don-cheli-sdd/commit/fdef2039741417c4b668c2ad723561153307e097))
+
 ## [1.15.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.15.0...v1.15.1) (2026-04-01)
 
 ### Correcciones
