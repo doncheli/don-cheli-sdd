@@ -1,0 +1,42 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    ["@semantic-release/commit-analyzer", {
+      "preset": "conventionalcommits",
+      "releaseRules": [
+        {"type": "feat", "release": "minor"},
+        {"type": "fix", "release": "patch"},
+        {"type": "hotfix", "release": "patch"},
+        {"type": "refactor", "release": "patch"},
+        {"type": "perf", "release": "patch"},
+        {"type": "docs", "release": false},
+        {"type": "test", "release": false},
+        {"type": "chore", "release": false}
+      ]
+    }],
+    ["@semantic-release/release-notes-generator", {
+      "preset": "conventionalcommits",
+      "presetConfig": {
+        "types": [
+          {"type": "feat", "section": "Nuevas Funcionalidades"},
+          {"type": "fix", "section": "Correcciones"},
+          {"type": "hotfix", "section": "Correcciones Urgentes"},
+          {"type": "refactor", "section": "Refactorización"},
+          {"type": "perf", "section": "Rendimiento"},
+          {"type": "docs", "section": "Documentación", "hidden": false},
+          {"type": "test", "section": "Tests", "hidden": false},
+          {"type": "chore", "section": "Mantenimiento", "hidden": true}
+        ]
+      }
+    }],
+    ["@semantic-release/changelog", {
+      "changelogFile": "CHANGELOG.md",
+      "changelogTitle": "# Changelog\n\nTodos los cambios notables en Don Cheli SDD Framework.\n\nFormato basado en [Conventional Commits](https://www.conventionalcommits.org/)."
+    }],
+    ["@semantic-release/git", {
+      "assets": ["CHANGELOG.md", "VERSION", "package.json"],
+      "message": "chore(release): v${nextRelease.version}\n\n${nextRelease.notes}"
+    }],
+    ["@semantic-release/github"]
+  ]
+}

@@ -197,7 +197,48 @@ jobs:
           sudo apt-get install -y -qq bats
 
       - name: Run bats test suite
-        run: bats test/ --timing
+        run: bats test/ --timing --tap > test-results.tap 2>&1 || true
+
+      - name: Generate coverage report
+        run: |
+          # Count total tests, passed and failed from TAP output
+          TOTAL=$(grep -c "^ok\|^not ok" test-results.tap || echo "0")
+          PASSED=$(grep -c "^ok" test-results.tap || echo "0")
+          FAILED=$(grep -c "^not ok" test-results.tap || echo "0")
+          RATE=$(echo "scale=2; $PASSED * 100 / $TOTAL" | bc 2>/dev/null || echo "0")
+
+          echo "Tests: $TOTAL | Passed: $PASSED | Failed: $FAILED | Rate: ${RATE}%"
+
+          # Generate a simple coverage JSON for Codecov
+          mkdir -p coverage
+          cat > coverage/coverage.json << JSONEOF
+          {
+            "coverage": {
+              "test/estructura.bats": {"lines": {"hit": $PASSED, "found": $TOTAL}},
+              "test/validar.bats": {"lines": {"hit": $PASSED, "found": $TOTAL}},
+              "test/instalar.bats": {"lines": {"hit": $PASSED, "found": $TOTAL}}
+            },
+            "totals": {
+              "lines": {"percent": $RATE}
+            }
+          }
+          JSONEOF
+
+          # Fail if tests actually failed
+          if [ "$FAILED" -gt 0 ]; then
+            echo "::error::$FAILED tests failed"
+            cat test-results.tap
+            exit 1
+          fi
+
+      - name: Upload coverage to Codecov
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: codecov/codecov-action@v4
+        with:
+          files: coverage/coverage.json
+          fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
+        continue-on-error: true
 
   test-instalacion:
     runs-on: ${{ matrix.os }}

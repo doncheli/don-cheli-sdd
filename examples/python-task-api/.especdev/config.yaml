@@ -1,0 +1,26 @@
+framework:
+  version: "1.14.0"
+  idioma: es
+
+proyecto:
+  nombre: python-task-api
+  tipo: api
+  descripcion: "API REST de tareas con CRUD, filtros y autenticación API key"
+  version: "1.0.0"
+  stack: "Python 3.12, FastAPI, SQLAlchemy 2.0, SQLite, pytest"
+  nivel: 2
+
+modelos:
+  default: sonnet
+  agentes:
+    planificador: opus
+    arquitecto: opus
+    ejecutor: sonnet
+    revisor: opus
+    tester: sonnet
+    documentador: haiku
+
+historial:
+  habilitado: true
+  maxSesiones: 10
+  autoGuardar: true

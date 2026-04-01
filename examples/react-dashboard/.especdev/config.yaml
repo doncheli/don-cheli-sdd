@@ -1,0 +1,26 @@
+framework:
+  version: "1.14.0"
+  idioma: es
+
+proyecto:
+  nombre: react-dashboard
+  tipo: frontend
+  descripcion: "Dashboard de métricas con gráficos interactivos y KPI cards"
+  version: "1.0.0"
+  stack: "React 19, TypeScript 5.5, Tailwind CSS 4, Recharts 2, Zustand 5, Vite 6"
+  nivel: 2
+
+modelos:
+  default: sonnet
+  agentes:
+    planificador: opus
+    arquitecto: opus
+    ejecutor: sonnet
+    revisor: opus
+    tester: sonnet
+    documentador: haiku
+
+historial:
+  habilitado: true
+  maxSesiones: 10
+  autoGuardar: true
