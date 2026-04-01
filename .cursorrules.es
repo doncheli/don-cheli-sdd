@@ -103,7 +103,7 @@ Todos los comandos funcionan con el prefijo `/dc:`. Comandos clave:
 ## Idioma
 - Código (variables, funciones): siempre inglés
 - Comunicación: seguir el idioma configurado
-- Detección: leer archivo locale → .especdev/config.yaml → default: es
+- Detección: leer archivo locale → .dc/config.yaml → default: es
 - Soportados: es (Español), en (English), pt (Português)
 
 ## Reglas

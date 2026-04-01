@@ -183,13 +183,13 @@ Los patrones encontrados se pueden indexar automáticamente:
 ```
 ¿Indexar los patrones encontrados en CodeRAG? (s/n)
 > s
-Indexados 3 patrones en .especdev/code-rag/patterns.json
+Indexados 3 patrones en .dc/code-rag/patterns.json
 ```
 
 ## Almacenamiento
 
 ```
-.especdev/referencias/
+.dc/referencias/
 ├── webhook-handler-2026-03-21.md    # Resultado de esta búsqueda
 ├── rate-limiter-2026-03-15.md       # Búsqueda anterior
 └── _index.md                        # Índice de búsquedas

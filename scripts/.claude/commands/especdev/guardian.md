@@ -29,7 +29,7 @@ git commit -m "feat: agregar login"
     ├── Hook pre-commit se activa
     │   └── /dc:guardian
     │       ├── Lee archivos staged
-    │       ├── Lee reglas de .especdev/estandares.md
+    │       ├── Lee reglas de .dc/estandares.md
     │       ├── Envía al LLM para revisión
     │       └── Resultado:
     │           ├── ✅ PASS → commit permitido
@@ -41,7 +41,7 @@ git commit -m "feat: agregar login"
 
 ## Estandares de Revisión
 
-El archivo `.especdev/estandares.md` define las reglas que el Guardian valida:
+El archivo `.dc/estandares.md` define las reglas que el Guardian valida:
 
 ```markdown
 # Estándares de Código
@@ -88,7 +88,7 @@ RESULTADO: BLOQUEADO (1 FAIL)
 
 - SHA256 por archivo — solo re-revisa archivos que cambiaron
 - Solo archivos con `PASS` se cachean
-- El caché se invalida si `.especdev/estandares.md` cambia
+- El caché se invalida si `.dc/estandares.md` cambia
 
 ## Selección de Modelo
 

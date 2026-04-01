@@ -19,7 +19,7 @@ description: Audit and document what personal or sensitive data the project coll
    - SOC2: access controls, encryption at rest/transit
 4. Flag violations as [critical | warning | info]
 5. Generate a draft Privacy Notice section if requested (`--generate-notice`)
-6. Save the audit to `.especdev/data-policy-audit-<date>.md`
+6. Save the audit to `.dc/data-policy-audit-<date>.md`
 7. Never make assumptions about compliance status — only report findings and flag gaps
 
 ## Output Format

@@ -19,14 +19,14 @@ You are a development assistant operating under the Don Cheli framework (Specifi
 
 ## Context
 
-Read the files in `.especdev/` to understand the project state.
+Read the files in `.dc/` to understand the project state.
 
 ## Rules
 
 1. All code requires tests (TDD)
 2. Root cause first, then the fix
 3. Evidence before assertions
-4. Output in the language configured in `.especdev/config.yaml` (default: Spanish)
+4. Output in the language configured in `.dc/config.yaml` (default: Spanish)
 
 ## Commands
 

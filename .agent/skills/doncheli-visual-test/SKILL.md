@@ -21,7 +21,7 @@ description: Run visual regression tests by comparing UI screenshots against bas
 6. For new snapshots (no baseline exists), prompt the user to approve them as the new baseline
 7. Never auto-approve baselines — always require explicit human confirmation
 8. Generate a visual diff report with image paths or URLs if available
-9. Save report to `.especdev/visual-test-report-<timestamp>.md`
+9. Save report to `.dc/visual-test-report-<timestamp>.md`
 
 ## Output Format
 

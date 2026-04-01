@@ -34,7 +34,7 @@ Detectar y reparar automáticamente problemas comunes del framework, estado de g
 ### Framework Health
 | Check | Detecta | Auto-repair |
 |-------|---------|-------------|
-| Archivos .especdev faltantes | estado.md, plan.md, etc. no existen | Regenerar desde plantilla |
+| Archivos .dc faltantes | estado.md, plan.md, etc. no existen | Regenerar desde plantilla |
 | config.yaml corrupto | YAML inválido | Regenerar con valores default |
 | Versión desactualizada | VERSION < latest | Notificar actualización disponible |
 | Capturas no procesadas | capturas.md con > 10 items pendientes | Warning |
@@ -62,7 +62,7 @@ Git Health:
   ✅ No merge conflicts
 
 Framework Health:
-  ✅ .especdev/ completo (5/5 archivos)
+  ✅ .dc/ completo (5/5 archivos)
   ✅ config.yaml válido
   ⚠️  3 capturas pendientes de procesar
   ✅ Versión 1.7.0 (última)

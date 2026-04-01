@@ -46,7 +46,7 @@ concurrencia:
 
 # Workspace
 workspace:
-  raiz: ".especdev/workspaces"
+  raiz: ".dc/workspaces"
   hooks:
     despues_crear: "npm install"
     antes_ejecutar: "git pull origin main"
@@ -80,7 +80,7 @@ Eres un agente de desarrollo trabajando en el proyecto {{nombre}}.
 
 ## Tu Rol
 - Implementar las tareas asignadas siguiendo las specs en `specs/`
-- Seguir las convenciones del proyecto en `.especdev/reglas/`
+- Seguir las convenciones del proyecto en `.dc/reglas/`
 - Crear PRs con prueba de trabajo completa
 
 ## Proceso
@@ -113,6 +113,6 @@ Eres un agente de desarrollo trabajando en el proyecto {{nombre}}.
 ```
 1. Variables de entorno (más alta)
 2. WORKFLOW.md front matter
-3. .especdev/config.yaml
+3. .dc/config.yaml
 4. Defaults del framework (más baja)
 ```

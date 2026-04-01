@@ -9,7 +9,7 @@ Los Stop Hooks son verificaciones automáticas que DEBEN pasar antes de que el a
 ## Configuración
 
 ```yaml
-# .especdev/hooks/parar.yml
+# .dc/hooks/parar.yml
 version: 1
 
 hooks:

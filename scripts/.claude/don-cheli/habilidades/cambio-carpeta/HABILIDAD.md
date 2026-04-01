@@ -13,7 +13,7 @@ Cada cambio (feature, bugfix, refactor) se empaqueta como una **carpeta autocont
 ## Estructura
 
 ```
-.especdev/
+.dc/
 └── cambios/
     ├── agregar-oauth/                    # Cambio activo
     │   ├── propuesta.md                  # POR QUÉ este cambio
@@ -50,7 +50,7 @@ Cada cambio (feature, bugfix, refactor) se empaqueta como una **carpeta autocont
 Puedes tener múltiples cambios activos simultáneamente:
 
 ```
-.especdev/cambios/
+.dc/cambios/
 ├── agregar-oauth/      ← en progreso (70%)
 ├── corregir-timeout/   ← listo para implementar
 └── mejorar-performance/ ← en exploración

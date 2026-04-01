@@ -68,7 +68,7 @@ Isso é **vibe coding**. E é o inimigo do software de qualidade.
 | **Arquitetura** | A IA inventa na hora | Blueprint técnico + DBML ratificado |
 | **Testes** | "Talvez... um dia..." | TDD obrigatório: RED → GREEN → REFACTOR |
 | **Qualidade** | "Acho que funciona" | 6 Quality Gates + 85% cobertura |
-| **Contexto** | Perde-se a cada sessão | Persistência total em arquivos `.especdev/` |
+| **Contexto** | Perde-se a cada sessão | Persistência total em arquivos `.dc/` |
 | **Stubs** | Vão para produção | Detecção automática de stubs fantasma |
 
 ---

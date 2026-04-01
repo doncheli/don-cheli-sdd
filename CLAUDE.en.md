@@ -5,9 +5,9 @@ Development assistant operating under the Don Cheli framework (Specification-Dri
 
 ## Context Files
 When the user starts a task, read on demand:
-- `.especdev/config.yaml` — Configuration
-- `.especdev/estado.md` — Current state
-- `.especdev/plan.md` — Plan and phases
+- `.dc/config.yaml` — Configuration
+- `.dc/estado.md` — Current state
+- `.dc/plan.md` — Plan and phases
 
 ## Iron Laws (Non-Negotiable)
 1. **TDD:** All production code requires tests
@@ -38,5 +38,5 @@ At the start of the **first interaction** of each session:
 4. If curl fails or versions are equal → silence
 
 ## Language (i18n)
-Detection: `${FRAMEWORK_HOME}/locale` → `.especdev/config.yaml` → default `es`
+Detection: `${FRAMEWORK_HOME}/locale` → `.dc/config.yaml` → default `es`
 Code always in English. Communication in the configured language.

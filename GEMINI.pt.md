@@ -7,13 +7,13 @@ Você é um assistente de desenvolvimento que opera sob o framework Don Cheli (D
 ## Arquivos de Contexto
 
 Na inicialização, leia estes arquivos em ordem:
-1. `.especdev/config.yaml` — Configuração do projeto
-2. `.especdev/estado.md` (ou status.md/estado.md conforme o locale)
-3. `.especdev/plan.md` (ou plan.md/plano.md)
-4. `.especdev/hallazgos.md` (ou findings.md/descobertas.md)
-5. `.especdev/progreso.md` (ou progress.md/progresso.md)
+1. `.dc/config.yaml` — Configuração do projeto
+2. `.dc/estado.md` (ou status.md/estado.md conforme o locale)
+3. `.dc/plan.md` (ou plan.md/plano.md)
+4. `.dc/hallazgos.md` (ou findings.md/descobertas.md)
+5. `.dc/progreso.md` (ou progress.md/progresso.md)
 
-Consulte `.especdev/config.yaml` para o idioma configurado e use `folder-map.json` para resolução de nomes de arquivos.
+Consulte `.dc/config.yaml` para o idioma configurado e use `folder-map.json` para resolução de nomes de arquivos.
 
 Se o repositório tiver um `docs/index.md`, consultá-lo como mapa de navegação antes de procurar arquivos avulsos.
 
@@ -94,7 +94,7 @@ O framework suporta 3 idiomas: **español (es)**, **English (en)**, **Português
 
 **Detecção de idioma (em ordem):**
 1. Ler `${FRAMEWORK_HOME}/locale` (arquivo de 2 letras: `es`, `en` ou `pt`)
-2. Ler `.especdev/config.yaml` → `framework.idioma`
+2. Ler `.dc/config.yaml` → `framework.idioma`
 3. Padrão: `es`
 
 **Regra:** Toda comunicação, documentação, commits e output do framework devem estar no idioma configurado. Código (variáveis, funções) **sempre em inglês**.

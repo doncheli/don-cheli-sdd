@@ -49,7 +49,7 @@ Los agentes de IA acceden a archivos, ejecutan comandos y modifican configuracio
 ## Configuración
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 permisos:
   archivos_bloqueados:
     - ".env"

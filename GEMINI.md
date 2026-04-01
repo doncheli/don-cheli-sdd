@@ -7,13 +7,13 @@ You are a development assistant operating under the Don Cheli framework (Specifi
 ## Context Files
 
 On startup, read these files in order:
-1. `.especdev/config.yaml` — Project configuration
-2. `.especdev/estado.md` (or status.md/estado.md depending on locale)
-3. `.especdev/plan.md` (or plan.md/plano.md)
-4. `.especdev/hallazgos.md` (or findings.md/descobertas.md)
-5. `.especdev/progreso.md` (or progress.md/progresso.md)
+1. `.dc/config.yaml` — Project configuration
+2. `.dc/estado.md` (or status.md/estado.md depending on locale)
+3. `.dc/plan.md` (or plan.md/plano.md)
+4. `.dc/hallazgos.md` (or findings.md/descobertas.md)
+5. `.dc/progreso.md` (or progress.md/progresso.md)
 
-Check `.especdev/config.yaml` for the configured language and use `folder-map.json` for file name resolution.
+Check `.dc/config.yaml` for the configured language and use `folder-map.json` for file name resolution.
 
 If the repo has a `docs/index.md`, consult it as a navigation map before searching for loose files.
 
@@ -94,7 +94,7 @@ The framework supports 3 languages: **español (es)**, **English (en)**, **Portu
 
 **Language detection (in order):**
 1. Read `${FRAMEWORK_HOME}/locale` (2-letter file: `es`, `en` or `pt`)
-2. Read `.especdev/config.yaml` → `framework.idioma`
+2. Read `.dc/config.yaml` → `framework.idioma`
 3. Default: `es`
 
 **Rule:** All communication, documentation, commits and framework output must be in the configured language. Code (variables, functions) **always in English**.

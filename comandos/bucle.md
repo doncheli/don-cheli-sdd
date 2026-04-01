@@ -18,7 +18,7 @@ Lanzar el bucle autónomo que ejecuta las historias de usuario una por una hasta
 
 ## Prerrequisitos
 
-- Archivo `.especdev/sesion/prd.json` existente
+- Archivo `.dc/sesion/prd.json` existente
 - Al menos una historia con `pasa: false`
 
 ## Comportamiento
@@ -56,7 +56,7 @@ Estado: PASÓ ✅
 
 === COMPLETO ===
 Las 5 historias pasaron en 5 iteraciones.
-Ver progreso: .especdev/progreso.md
+Ver progreso: .dc/progreso.md
 ```
 
 ## Gestión de Errores

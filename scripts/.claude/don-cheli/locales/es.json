@@ -114,8 +114,8 @@
       "type": "Tipo",
       "directory": "Directorio",
       "files_created": "archivos creados",
-      "next_step": "Próximo paso: edita .especdev/plan.md para definir tus fases",
-      "already_exists": ".especdev/ ya existe. ¿Deseas sobrescribir o reparar?"
+      "next_step": "Próximo paso: edita .dc/plan.md para definir tus fases",
+      "already_exists": ".dc/ ya existe. ¿Deseas sobrescribir o reparar?"
     },
     "estado": {
       "current_phase": "Fase Actual",

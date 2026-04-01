@@ -29,7 +29,7 @@ Sin Engram, cada sesión de IA empieza de cero. El agente "olvida" decisiones, b
 ### Archivos de Memoria
 
 ```
-.especdev/
+.dc/
 ├── memoria/
 │   ├── decisiones.md        # Decisiones arquitectónicas registradas
 │   ├── convenciones.md      # Convenciones del proyecto
@@ -61,7 +61,7 @@ En cada sesión, Don Cheli automáticamente:
 ### Ejemplo de Uso
 
 ```markdown
-# .especdev/memoria/decisiones.md
+# .dc/memoria/decisiones.md
 
 ## Decisiones Arquitectónicas
 

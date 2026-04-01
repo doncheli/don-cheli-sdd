@@ -7,7 +7,7 @@ description: Run the full autonomous test suite end-to-end and report results. A
 
 ## Instructions
 
-1. Detect the test runner from `package.json`, `pyproject.toml`, `Makefile`, or `.especdev/config.yaml`
+1. Detect the test runner from `package.json`, `pyproject.toml`, `Makefile`, or `.dc/config.yaml`
 2. Run tests in this order: unit → integration → E2E (stop on catastrophic failure at each tier)
 3. Capture stdout/stderr; do not swallow errors silently
 4. Categorize results: passed, failed, skipped, flaky (failed then passed on retry)
@@ -18,7 +18,7 @@ description: Run the full autonomous test suite end-to-end and report results. A
    - Suggested fix (if deterministic)
 6. If the same test fails twice in a row with the same error, escalate to the user instead of retrying
 7. Report coverage if the runner supports it; flag if below the 85% threshold
-8. Save the full report to `.especdev/test-report-<timestamp>.md`
+8. Save the full report to `.dc/test-report-<timestamp>.md`
 9. Exit with a clear pass/fail summary — no ambiguous "some tests failed" messages
 
 ## Output Format

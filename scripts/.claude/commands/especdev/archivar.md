@@ -23,7 +23,7 @@ Sincronizar las specs delta (cambios incrementales) con las specs principales y 
 1. **Verificar** que la feature tiene tag `@implementada` (todos los tests pasan)
 2. **Mover** artefactos completados a `specs/archivo/`
 3. **Actualizar** la spec principal del dominio si existe
-4. **Registrar** en `.especdev/memoria/decisiones.md`
+4. **Registrar** en `.dc/memoria/decisiones.md`
 5. **Limpiar** archivos temporales de la feature
 
 ## Estructura de Archivo

@@ -25,7 +25,7 @@ Trackear qué habilidades se usan, su tasa de éxito, consumo de tokens, y detec
 
 ### Registro de telemetría
 
-Después de cada uso de habilidad, registrar en `.especdev/metricas.json`:
+Después de cada uso de habilidad, registrar en `.dc/metricas.json`:
 
 ```json
 {
@@ -58,6 +58,6 @@ Recomendaciones:
 ## Integración
 
 - Se activa automáticamente si `metricas.habilitado: true` en config.yaml
-- Los datos se guardan en `.especdev/metricas.json`
+- Los datos se guardan en `.dc/metricas.json`
 - Se reporta con `/dc:diagnostico --habilidades` o `/dc:doctor`
-- Las habilidades con < 70% success rate se agregan a `.especdev/skill-review-queue.md`
+- Las habilidades con < 70% success rate se agregan a `.dc/skill-review-queue.md`

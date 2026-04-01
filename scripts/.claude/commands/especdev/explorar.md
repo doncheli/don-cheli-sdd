@@ -50,7 +50,7 @@ El agente analiza el codebase, forma **supuestos con evidencia**, y el usuario s
 2. **Identificar** stack tecnológico (package.json, requirements.txt, etc.)
 3. **Mapear** patrones existentes (naming, estructura, imports)
 4. **Detectar** convenciones (estilo de código, formato de tests)
-5. **Documentar** hallazgos en `.especdev/hallazgos.md`
+5. **Documentar** hallazgos en `.dc/hallazgos.md`
 
 ## Comportamiento — Modo Supuestos
 
@@ -114,7 +114,7 @@ El usuario responde con:
 
 ### Paso 4: Generar Hallazgos
 
-Los supuestos confirmados se documentan en `.especdev/hallazgos.md` con la misma estructura que el modo interactivo, pero **más rápido**.
+Los supuestos confirmados se documentan en `.dc/hallazgos.md` con la misma estructura que el modo interactivo, pero **más rápido**.
 
 ## Niveles de Confianza
 

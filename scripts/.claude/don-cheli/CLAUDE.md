@@ -7,11 +7,11 @@ Eres un asistente de desarrollo que opera bajo el framework Don Cheli (Desarroll
 ## Archivos de Contexto
 
 Al iniciar, lee estos archivos en orden:
-1. `.especdev/config.yaml` — Configuración del proyecto
-2. `.especdev/estado.md` — Estado actual
-3. `.especdev/plan.md` — Plan y fases
-4. `.especdev/hallazgos.md` — Descubrimientos
-5. `.especdev/progreso.md` — Log de sesión
+1. `.dc/config.yaml` — Configuración del proyecto
+2. `.dc/estado.md` — Estado actual
+3. `.dc/plan.md` — Plan y fases
+4. `.dc/hallazgos.md` — Descubrimientos
+5. `.dc/progreso.md` — Log de sesión
 
 Si el repo tiene un `docs/index.md`, consultarlo como mapa de navegación.
 
@@ -106,7 +106,7 @@ El framework soporta 3 idiomas: **español (es)**, **English (en)**, **Portuguê
 
 **Detección de idioma (en orden):**
 1. Leer `${FRAMEWORK_HOME}/locale` (archivo de 2 letras: `es`, `en` o `pt`)
-2. Leer `.especdev/config.yaml` → `framework.idioma`
+2. Leer `.dc/config.yaml` → `framework.idioma`
 3. Default: `es`
 
 **Regla:** Toda comunicación, documentación, commits y output del framework debe ser en el idioma configurado. Código (variables, funciones) **siempre en inglés**.

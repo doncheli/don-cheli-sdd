@@ -11,4 +11,4 @@ i18n: true
 /dc:historial
 ```
 
-Lista las sesiones almacenadas en `.especdev/historial/`.
+Lista las sesiones almacenadas en `.dc/historial/`.

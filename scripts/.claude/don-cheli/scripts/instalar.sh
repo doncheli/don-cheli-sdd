@@ -155,7 +155,6 @@ set_folder_names() {
             DIR_HOOKS="hooks"
             DIR_AGENTS="agents"
             DIR_SCRIPTS="scripts"
-            DIR_ESPECDEV=".especdev"
             FILE_STATUS="status.md"
             FILE_FINDINGS="findings.md"
             FILE_PLAN="plan.md"
@@ -170,7 +169,6 @@ set_folder_names() {
             DIR_HOOKS="ganchos"
             DIR_AGENTS="agentes"
             DIR_SCRIPTS="scripts"
-            DIR_ESPECDEV=".especdev"
             FILE_STATUS="estado.md"
             FILE_FINDINGS="descobertas.md"
             FILE_PLAN="plano.md"
@@ -185,7 +183,6 @@ set_folder_names() {
             DIR_HOOKS="ganchos"
             DIR_AGENTS="agentes"
             DIR_SCRIPTS="scripts"
-            DIR_ESPECDEV=".especdev"
             FILE_STATUS="estado.md"
             FILE_FINDINGS="hallazgos.md"
             FILE_PLAN="plan.md"
@@ -194,6 +191,13 @@ set_folder_names() {
             FILE_CONFIG="config.yaml"
             ;;
     esac
+
+    # Retrocompatible: usar .especdev/ si ya existe, .dc/ si es nuevo
+    if [ -d ".especdev" ]; then
+        DIR_ESPECDEV=".especdev"
+    else
+        DIR_ESPECDEV=".dc"
+    fi
 }
 
 # ═══════════════════════════════════════════════════════════════

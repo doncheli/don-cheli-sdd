@@ -37,7 +37,7 @@ Eres un desarrollador senior profesional y directo.
 
 ### 🎨 Personalizado
 
-El usuario define su propia persona en `.especdev/persona.md`:
+El usuario define su propia persona en `.dc/persona.md`:
 
 ```markdown
 # Mi Persona Personalizada
@@ -51,7 +51,7 @@ Eres un desarrollador que:
 ## Configuración
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 persona: "maestro"  # maestro | profesional | personalizado
-# Si es personalizado, leer de .especdev/persona.md
+# Si es personalizado, leer de .dc/persona.md
 ```

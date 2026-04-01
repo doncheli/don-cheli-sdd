@@ -119,7 +119,7 @@ Construir la versión React en paralelo, switchear cuando esté lista.
 
 ### Fase 4: Plan de Migración
 
-Genera `.especdev/migracion/plan-migracion.md`:
+Genera `.dc/migracion/plan-migracion.md`:
 
 ```markdown
 ## Plan de Migración: Vue → React
@@ -208,7 +208,7 @@ migrate: /dashboard route vue-router→react-router
 ## Almacenamiento
 
 ```
-.especdev/migracion/
+.dc/migracion/
 ├── inventario.md          # Estado actual del proyecto
 ├── equivalencias.md       # Mapa de traducciones
 ├── plan-migracion.md      # Plan con waves y tareas

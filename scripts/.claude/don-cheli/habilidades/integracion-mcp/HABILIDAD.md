@@ -29,7 +29,7 @@ MCP (Model Context Protocol) permite a los agentes de IA conectarse a herramient
 ## Configuración
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 mcp:
   servidores:
     context7:

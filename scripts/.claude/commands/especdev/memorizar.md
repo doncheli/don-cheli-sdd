@@ -7,7 +7,7 @@ i18n: true
 
 ## Objetivo
 
-Guardar un insight o aprendizaje importante en `.especdev/hallazgos.md` para que persista entre sesiones.
+Guardar un insight o aprendizaje importante en `.dc/hallazgos.md` para que persista entre sesiones.
 
 ## Uso
 
@@ -21,7 +21,7 @@ Guardar un insight o aprendizaje importante en `.especdev/hallazgos.md` para que
 /dc:memorizar "Los índices compuestos en MongoDB mejoran 10x las consultas de búsqueda con filtros múltiples"
 ```
 
-Agrega al archivo `.especdev/hallazgos.md`:
+Agrega al archivo `.dc/hallazgos.md`:
 
 ```markdown
 ### 2026-03-21 15:30

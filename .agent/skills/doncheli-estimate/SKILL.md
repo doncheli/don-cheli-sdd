@@ -12,7 +12,7 @@ description: Estimate effort, duration and cost using 4 complementary models (Fu
    - **Function Points**: count inputs, outputs, queries, files, interfaces; apply complexity weights
    - **Planning Poker AI**: 3 independent agents guess simultaneously (pessimist, realist, optimist), then reconcile using Delphi method
    - **COCOMO II**: classify project size (Organic / Semi-detached / Embedded), apply effort equation
-   - **Historical**: look for comparable past tasks in `.especdev/hallazgos.md` and `docs/`; extrapolate velocity
+   - **Historical**: look for comparable past tasks in `.dc/hallazgos.md` and `docs/`; extrapolate velocity
 3. Compute the consolidated estimate with 90% confidence interval
 4. Flag hidden risks that inflate variance
 

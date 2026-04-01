@@ -56,7 +56,7 @@ Requerimiento → .feature (Gherkin) → .plan.md (Blueprint) → .tasks.md (Tar
 
 | El Framework Posee | Tú Posees |
 |---------------------|-----------|
-| `.especdev/` (config, templates) | `specs/features/*` (tus specs) |
+| `.dc/` (config, templates) | `specs/features/*` (tus specs) |
 | `comandos/` (slash commands) | `specs/db_schema/*` (tus schemas) |
 | `habilidades/` (skills) | `app/*` / `src/*` (tu código) |
 | `reglas/` (rules) | `tests/*` (tus tests) |

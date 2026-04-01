@@ -154,10 +154,10 @@ Después de 4 plannings acumulados, generar patrones:
 
 | Archivo | Contenido |
 |---------|-----------|
-| `.especdev/plannings/YYYY-WNN.md` | Planning semanal completo |
-| `.especdev/plannings/_retrospectiva.md` | Patrones entre plannings |
-| `.especdev/rfcs/RFC-XXX.md` | RFC individual |
-| `.especdev/rfcs/_indice.md` | Índice de RFCs con estado |
+| `.dc/plannings/YYYY-WNN.md` | Planning semanal completo |
+| `.dc/plannings/_retrospectiva.md` | Patrones entre plannings |
+| `.dc/rfcs/RFC-XXX.md` | RFC individual |
+| `.dc/rfcs/_indice.md` | Índice de RFCs con estado |
 
 ## Integración
 

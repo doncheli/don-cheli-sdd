@@ -23,7 +23,7 @@ Generar automáticamente un script de pruebas de aceptación (UAT) ejecutable po
 2. **Extraer** los escenarios P1 y P2
 3. **Generar** pasos de prueba ejecutables por un humano
 4. **Incluir** datos de prueba concretos (no genéricos)
-5. **Guardar** en `.especdev/uat/<feature>.uat.md`
+5. **Guardar** en `.dc/uat/<feature>.uat.md`
 
 ## Output
 

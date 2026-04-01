@@ -85,4 +85,4 @@ Presentar las top 3 ideas con:
 - Nunca evaluar durante divergencia
 - Mínimo 5 ideas antes de converger
 - Siempre cerrar con acción concreta
-- Registrar en `.especdev/hallazgos.md`
+- Registrar en `.dc/hallazgos.md`

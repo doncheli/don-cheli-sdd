@@ -26,7 +26,7 @@ Inspirado en el "Party Mode" del framework BMAD.
 3. **Cada rol critica** las posiciones de los demás (adversarial)
 4. **Se identifican** los puntos de tensión irresolubles
 5. **Se documenta** la decisión con trade-offs explícitos
-6. **Se guarda** en `.especdev/decisiones.md`
+6. **Se guarda** en `.dc/decisiones.md`
 
 ## Roles Disponibles
 

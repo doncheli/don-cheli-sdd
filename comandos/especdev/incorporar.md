@@ -58,7 +58,7 @@ app/
 
 ## Specs Activas
 Ver specs/ para documentación de comportamiento.
-Ver .especdev/cambios/ para cambios en progreso.
+Ver .dc/cambios/ para cambios en progreso.
 ```
 
 ## Output (modo completo)

@@ -184,13 +184,13 @@ v1.13: 38 ████░░░░░░  ← actual (+3 puntos, tendencia al al
 
 ### Backlog Generado
 
-Se generaron 55 ítems en `.especdev/tech-debt-backlog.md` listos para importar a Linear/Jira.
+Se generaron 55 ítems en `.dc/tech-debt-backlog.md` listos para importar a Linear/Jira.
 ```
 
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 ├── tech-debt-backlog.md        # Backlog completo de ítems (en git)
 └── tech-debt-history.jsonl     # Historial de scores (en git)
 ```

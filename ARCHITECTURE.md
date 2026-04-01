@@ -20,7 +20,7 @@ Don Cheli es un framework de Desarrollo Dirigido por Especificaciones (SDD) que 
               └──────────────┼──────────────┘
                              │
               ┌──────────────▼──────────────┐
-              │        .especdev/           │
+              │        .dc/           │
               │  (estado del proyecto)      │
               │  config.yaml, estado.md,    │
               │  plan.md, progreso.md       │
@@ -118,14 +118,14 @@ Don Cheli es un framework de Desarrollo Dirigido por Especificaciones (SDD) que 
 
 ---
 
-### ADR-004: Estado del proyecto en `.especdev/`
+### ADR-004: Estado del proyecto en `.dc/`
 
 **Contexto:** Cada proyecto que usa Don Cheli necesita persistir estado entre sesiones (specs, planes, progreso, decisiones).
 
-**Decisión:** Un directorio `.especdev/` en la raíz del proyecto con estructura fija:
+**Decisión:** Un directorio `.dc/` en la raíz del proyecto con estructura fija:
 
 ```
-.especdev/
+.dc/
 ├── config.yaml          # Configuración del proyecto
 ├── estado.md            # Estado actual (fase, tarea, bloqueadores)
 ├── plan.md              # Plan técnico activo
@@ -143,7 +143,7 @@ Don Cheli es un framework de Desarrollo Dirigido por Especificaciones (SDD) que 
 - (+) Cualquier agente puede leer/escribir el estado
 - (+) Transferencia de contexto entre sesiones sin pérdida
 - (+) Los nombres de archivos se localizan (es/en/pt) vía `folder-map.json`
-- (-) El usuario debe commitear `.especdev/` o excluirlo según su preferencia
+- (-) El usuario debe commitear `.dc/` o excluirlo según su preferencia
 
 ---
 

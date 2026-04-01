@@ -29,7 +29,7 @@ Inspirado en la fase "P" (Pseudocode) del framework SPARC.
    - Solo lógica: CUANDO/SI/SINO/PARA-CADA/RETORNAR
 4. **Identificar** invariantes (condiciones siempre verdaderas)
 5. **Listar** casos límite y dependencias de datos
-6. **Guardar** en `.especdev/pseudocodigo.md`
+6. **Guardar** en `.dc/pseudocodigo.md`
 
 ## Por qué existe
 

@@ -30,7 +30,7 @@ Implementar las tareas de un cambio específico, con soporte para cambios parale
 
 ## Comportamiento
 
-1. **Leer** `.especdev/cambios/<nombre>/tareas.md`
+1. **Leer** `.dc/cambios/<nombre>/tareas.md`
 2. **Detectar** progreso previo (si hay tareas ya completadas)
 3. **Ejecutar** tareas pendientes una por una
 4. **Ejecutar** stop hooks después de cada fase

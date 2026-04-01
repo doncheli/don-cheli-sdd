@@ -15,7 +15,7 @@ Convertir un PRD markdown en archivo `prd.json` estructurado para el bucle autó
 ```
 
 Si no se especifica archivo, busca en orden:
-1. `.especdev/prd.md`
+1. `.dc/prd.md`
 2. `docs/prd.md`
 3. `PRD.md`
 
@@ -64,7 +64,7 @@ Como [rol], quiero [acción], para [beneficio].
 
 ```
 Historias generadas: 5
-Archivo: .especdev/sesion/prd.json
+Archivo: .dc/sesion/prd.json
 
 HU-001 [P1] Título historia 1
 HU-002 [P2] Título historia 2

@@ -12,7 +12,7 @@ Don Cheli ya tiene specs, planes, y diseños técnicos. Pero le faltaba un **map
 
 ## Formato del Mapa
 
-El mapa vive en `.especdev/arquitectura.md` y se actualiza con cada cambio:
+El mapa vive en `.dc/arquitectura.md` y se actualiza con cada cambio:
 
 ```markdown
 # Mapa Arquitectónico: mi-proyecto

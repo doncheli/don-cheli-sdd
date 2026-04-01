@@ -203,8 +203,8 @@ Cuando un PoC es VIABLE, se puede graduar a una feature real:
 ```
 PoC VIABLE
   │
-  ├── 1. Extraer hallazgos → .especdev/hallazgos.md
-  ├── 2. Extraer decisiones técnicas → .especdev/memoria/decisiones.md
+  ├── 1. Extraer hallazgos → .dc/hallazgos.md
+  ├── 2. Extraer decisiones técnicas → .dc/memoria/decisiones.md
   ├── 3. Crear propuesta desde PoC → /dc:proponer (auto-generada)
   ├── 4. Iniciar pipeline completo → /dc:comenzar
   │      (con contexto del PoC como input)

@@ -65,7 +65,7 @@ Donde:
 Compara con tareas similares completadas previamente:
 
 ```
-1. Buscar en .especdev/historial/ tareas similares
+1. Buscar en .dc/historial/ tareas similares
 2. Comparar alcance, tecnología, complejidad
 3. Ajustar por diferencias
 4. Aplicar factor de confianza
@@ -136,6 +136,6 @@ Usar estimado **esperado** (18 días) con buffer de 20% para imprevistos
 ## Integración
 
 - Se puede ejecutar en cualquier fase del proyecto
-- Los estimados se guardan en `.especdev/estimados/`
+- Los estimados se guardan en `.dc/estimados/`
 - El modelo histórico aprende de estimaciones previas vs. tiempo real
 - Se puede re-estimar cuando cambia el alcance

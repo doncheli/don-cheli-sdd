@@ -96,7 +96,7 @@ El contexto principal se mantiene limpio.
 ## Integración con Don Cheli
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 contexto:
   umbral_compactar: 70       # % para auto-compactar
   umbral_zona_muda: 90       # % para forzar sesión nueva

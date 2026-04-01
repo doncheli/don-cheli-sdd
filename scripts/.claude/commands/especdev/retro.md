@@ -11,4 +11,4 @@ i18n: true
 /dc:retro <sesion>
 ```
 
-Muestra los detalles de una sesión pasada almacenada en `.especdev/historial/`.
+Muestra los detalles de una sesión pasada almacenada en `.dc/historial/`.

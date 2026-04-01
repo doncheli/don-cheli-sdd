@@ -181,7 +181,7 @@ Resumen: 98% conformidad | 2 campos opcionales pendientes
 
 ## Verificación Automática
 
-Si se configura en `.especdev/config.yaml`:
+Si se configura en `.dc/config.yaml`:
 
 ```yaml
 actualizaciones:

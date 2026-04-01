@@ -165,7 +165,7 @@ Console.log de debug olvidado: `print(f"DEBUG refund amount: {amount}")`. Elimin
 - [ ] Considerar índice en `refund.payment_id` (suggestion)
 ```
 
-## Configuración en `.especdev/config.yaml`
+## Configuración en `.dc/config.yaml`
 
 ```yaml
 pr_review:

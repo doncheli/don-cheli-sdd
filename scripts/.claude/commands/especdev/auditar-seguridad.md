@@ -197,7 +197,7 @@ cursor.execute(query, (f"%{search_term}%",))
 ## Almacenamiento
 
 ```
-.especdev/seguridad/
+.dc/seguridad/
 ├── auditoria-2026-03-21.md    # Reporte de auditoría
 └── _remediaciones.md           # Tracking de fixes
 ```

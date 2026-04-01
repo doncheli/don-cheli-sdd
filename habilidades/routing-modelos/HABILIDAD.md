@@ -45,7 +45,7 @@ Seleccionar automáticamente el modelo de IA más eficiente (haiku/sonnet/opus) 
 ## Escalation on Failure
 
 Si una tarea falla con el modelo seleccionado (e.g., haiku genera código incorrecto):
-1. Registrar fallo en `.especdev/routing-history.json`
+1. Registrar fallo en `.dc/routing-history.json`
 2. Reintentar con el siguiente modelo superior
 3. Actualizar heurística para esa categoría de tarea
 

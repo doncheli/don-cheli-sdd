@@ -7,7 +7,7 @@ description: Record and query the decision log for a project. Activate when user
 
 ## Instructions
 
-1. Maintain a structured decision log at `.especdev/decisiones.md`
+1. Maintain a structured decision log at `.dc/decisiones.md`
 2. When invoked to **record** a decision:
    - Extract: decision title, date, context, options considered, chosen option, rationale, consequences
    - Append as a new ADR-style entry (numbered, never edited after creation)

@@ -23,15 +23,15 @@ Ejecutar pruebas visuales de componentes UI y páginas completas, comparando cap
 
 ## Comportamiento
 
-1. **Cargar configuración** desde `.especdev/visual-test.yaml`
+1. **Cargar configuración** desde `.dc/visual-test.yaml`
    - Lista de páginas y componentes a testear
    - Breakpoints definidos (mobile, tablet, desktop)
    - Umbral de tolerancia de diferencia (default: 1%)
-   - Directorio de baseline: `.especdev/visual-baselines/`
+   - Directorio de baseline: `.dc/visual-baselines/`
 
 2. **Modo baseline** (`--baseline`)
    - Capturar screenshots actuales como referencia
-   - Almacenar en `.especdev/visual-baselines/<componente>/<breakpoint>.png`
+   - Almacenar en `.dc/visual-baselines/<componente>/<breakpoint>.png`
    - Registrar hash de versión y fecha
 
 3. **Modo comparación** (default)
@@ -55,7 +55,7 @@ Ejecutar pruebas visuales de componentes UI y páginas completas, comparando cap
 ## Configuración
 
 ```yaml
-# .especdev/visual-test.yaml
+# .dc/visual-test.yaml
 breakpoints:
   mobile: 375
   tablet: 768
@@ -116,7 +116,7 @@ interacciones:
 **Diferencia:** 8.7% (umbral: 1%)
 **Área afectada:** Sección de pago, botón CTA
 **Causa probable:** Cambio en padding de `.checkout__summary`
-**Diff:** .especdev/visual-diffs/checkout-mobile-diff.png
+**Diff:** .dc/visual-diffs/checkout-mobile-diff.png
 
 #### ⚠️ Header — desktop (1440px)
 **Diferencia:** 3.2%
@@ -142,7 +142,7 @@ interacciones:
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 ├── visual-test.yaml          # Configuración
 ├── visual-baselines/          # Screenshots de referencia
 │   ├── Button/

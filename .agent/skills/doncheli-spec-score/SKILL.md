@@ -7,7 +7,7 @@ description: Evaluate the quality of a spec and return a structured score with i
 
 ## Instructions
 
-1. Accept a spec file path or read the current spec from `.especdev/specs/`
+1. Accept a spec file path or read the current spec from `.dc/specs/`
 2. Evaluate the spec across 5 dimensions (0–10 each):
    - **Completeness**: all scenarios covered, no missing edge cases
    - **Clarity**: unambiguous language, no "should", "may", "probably"
@@ -18,7 +18,7 @@ description: Evaluate the quality of a spec and return a structured score with i
 4. Compute a weighted total score (Completeness 30%, Clarity 25%, Testability 25%, Consistency 10%, Scope 10%)
 5. Assign a grade: A (90-100), B (75-89), C (60-74), D (below 60)
 6. Grade D specs must be improved before implementation — flag as a hard blocker
-7. Optionally save the score card to `.especdev/spec-scores/<spec-name>-<date>.md`
+7. Optionally save the score card to `.dc/spec-scores/<spec-name>-<date>.md`
 
 ## Output Format
 

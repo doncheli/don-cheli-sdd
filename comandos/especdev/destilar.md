@@ -196,7 +196,7 @@ El blueprint alimenta el pipeline de specs, cerrando el ciclo:
 El blueprint se guarda en:
 
 ```
-.especdev/blueprints/
+.dc/blueprints/
 ├── payment.blueprint.md      # Blueprint del módulo de pagos
 ├── auth.blueprint.md         # Blueprint del módulo de auth
 └── _index.md                 # Índice de blueprints

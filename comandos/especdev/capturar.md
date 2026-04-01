@@ -32,7 +32,7 @@ Cada captura se clasifica en una de 5 categorías:
 
 ## Comportamiento
 
-1. **Capturar** — Agregar entrada a `.especdev/capturas.md` con timestamp y clasificación
+1. **Capturar** — Agregar entrada a `.dc/capturas.md` con timestamp y clasificación
 2. **No interrumpir** — La tarea actual continúa sin pausa
 3. **Procesar** — Al completar la tarea actual (o con `--procesar`), revisar capturas pendientes
 4. **Clasificar** — El LLM clasifica automáticamente basándose en el contexto actual

@@ -4,7 +4,7 @@
 
 Estas regras estabelecem um **padrão profissional de desenvolvimento** aplicável a todos os projetos que usam o Don Cheli. Enquanto a constituição define os *princípios*, estas regras definem as *práticas* concretas. O framework as carrega automaticamente e as aplica em cada sessão, eliminando a necessidade de repetir instruções manualmente.
 
-> **Uso:** Estas regras são carregadas automaticamente ao executar `/dc:iniciar`. Podem ser personalizadas por projeto em `.especdev/config.yaml`.
+> **Uso:** Estas regras são carregadas automaticamente ao executar `/dc:iniciar`. Podem ser personalizadas por projeto em `.dc/config.yaml`.
 
 ---
 
@@ -29,10 +29,10 @@ Estas regras estabelecem um **padrão profissional de desenvolvimento** aplicáv
 ## Precedência de Configuração
 
 ```
-.especdev/config.yaml (projeto) > reglas-trabajo-globales.md (framework)
+.dc/config.yaml (projeto) > reglas-trabajo-globales.md (framework)
 ```
 
-Se o projeto tiver seu próprio `.especdev/config.yaml` ou `CLAUDE.md`, suas regras **prevalecem** sobre este arquivo em caso de conflito.
+Se o projeto tiver seu próprio `.dc/config.yaml` ou `CLAUDE.md`, suas regras **prevalecem** sobre este arquivo em caso de conflito.
 
 ---
 
@@ -88,7 +88,7 @@ Exemplo: `feat: adicionar componente carrossel de produtos`
 ## Cobertura de Código
 
 - Mínimo **85% de coverage** sobre o código introduzido no PR (unit tests).
-- O `.especdev/config.yaml` do projeto pode definir outro limiar ou isentá-lo.
+- O `.dc/config.yaml` do projeto pode definir outro limiar ou isentá-lo.
 
 ---
 

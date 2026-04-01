@@ -61,7 +61,7 @@ El DevLog se actualiza automáticamente cuando:
 ## Ubicación
 
 ```
-.especdev/devlog/
+.dc/devlog/
 ├── 2026-03.md    # Log del mes
 ├── 2026-02.md    # Mes anterior
 └── indice.md     # Índice con conteos por mes

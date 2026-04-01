@@ -33,7 +33,7 @@ Un CLAUDE.md monolítico de 2,000 líneas **contamina** el contexto. La solució
 En vez de un archivo gigante, divide las reglas por concern:
 
 ```
-.especdev/
+.dc/
 ├── reglas/
 │   ├── arquitectura.md     # Patrones, capas, inyección de deps
 │   ├── testing.md          # Cobertura, mocking, fixtures
@@ -69,7 +69,7 @@ Habilidades que se cargan SOLO cuando son relevantes:
 Puertas de validación automáticas que DEBEN pasar antes de que el agente pueda marcar una tarea como "completa":
 
 ```yaml
-# .especdev/hooks/parar.yml
+# .dc/hooks/parar.yml
 hooks_parar:
   - nombre: "Lint"
     comando: "npm run lint"
@@ -147,7 +147,7 @@ MELI define 3 niveles de madurez en el uso de specs:
 ## Integración con Don Cheli
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 arnes:
   reglas_modulares: true
   max_lineas_por_regla: 500

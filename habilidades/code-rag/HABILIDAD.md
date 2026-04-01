@@ -47,7 +47,7 @@ Repositorio(s) de Referencia
          │
          ▼
 ┌─────────────────────┐
-│  2. Índice Local     │  .especdev/code-rag/
+│  2. Índice Local     │  .dc/code-rag/
 │     - patterns.json  │  Patrones indexados
 │     - deps.json      │  Grafo de dependencias
 │     - apis.json      │  APIs y contratos
@@ -67,7 +67,7 @@ Repositorio(s) de Referencia
 ### Paso 1: Seleccionar Fuentes
 
 ```yaml
-# .especdev/code-rag/fuentes.yaml
+# .dc/code-rag/fuentes.yaml
 fuentes:
   - tipo: local
     ruta: "../proyecto-hermano"
@@ -82,7 +82,7 @@ fuentes:
     descripcion: "Microservicio de referencia del equipo"
 
   - tipo: snapshot
-    ruta: ".especdev/code-rag/snapshots/auth-pattern.ts"
+    ruta: ".dc/code-rag/snapshots/auth-pattern.ts"
     descripcion: "Patrón de auth aprobado por el equipo"
 ```
 
@@ -101,7 +101,7 @@ Para cada fuente, se extraen:
 ### Paso 3: Clasificar y Almacenar
 
 ```json
-// .especdev/code-rag/patterns.json
+// .dc/code-rag/patterns.json
 {
   "patterns": [
     {
@@ -218,7 +218,7 @@ El grafo extrae automáticamente:
 ### Almacenamiento
 
 ```
-.especdev/code-rag/
+.dc/code-rag/
 ├── patterns.json     # Patrones indexados
 ├── entities.json     # Entidades extraídas (funciones, clases, módulos)
 ├── relations.json    # Relaciones entre entidades (grafo)
@@ -228,7 +228,7 @@ El grafo extrae automáticamente:
 ```
 
 ```json
-// .especdev/code-rag/entities.json
+// .dc/code-rag/entities.json
 {
   "entities": [
     {"id": "auth-service", "tipo": "service", "archivo": "src/services/auth.ts",
@@ -238,7 +238,7 @@ El grafo extrae automáticamente:
   ]
 }
 
-// .especdev/code-rag/relations.json
+// .dc/code-rag/relations.json
 {
   "relations": [
     {"from": "auth-service", "to": "jwt-util", "tipo": "imports"},

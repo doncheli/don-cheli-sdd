@@ -4,7 +4,7 @@
 
 These rules establish a **professional development standard** that applies to all projects using Don Cheli. While the constitution defines the *principles*, these rules define the concrete *practices*. The framework loads them automatically and applies them in every session, eliminating the need to repeat instructions manually.
 
-> **Usage:** These rules are loaded automatically when running `/dc:start`. They can be customized per project in `.especdev/config.yaml`.
+> **Usage:** These rules are loaded automatically when running `/dc:start`. They can be customized per project in `.dc/config.yaml`.
 
 ---
 
@@ -29,10 +29,10 @@ These rules establish a **professional development standard** that applies to al
 ## Configuration Precedence
 
 ```
-.especdev/config.yaml (project) > reglas-trabajo-globales.md (framework)
+.dc/config.yaml (project) > reglas-trabajo-globales.md (framework)
 ```
 
-If the project has its own `.especdev/config.yaml` or `CLAUDE.md`, its rules **take precedence** over this file in case of conflict.
+If the project has its own `.dc/config.yaml` or `CLAUDE.md`, its rules **take precedence** over this file in case of conflict.
 
 ---
 
@@ -88,7 +88,7 @@ Example: `feat: add product carousel component`
 ## Code Coverage
 
 - Minimum **85% coverage** on code introduced in the PR (unit tests).
-- The project's `.especdev/config.yaml` can define a different threshold or exempt it.
+- The project's `.dc/config.yaml` can define a different threshold or exempt it.
 
 ---
 

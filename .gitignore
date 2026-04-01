@@ -18,7 +18,9 @@ Thumbs.db
 *.log
 npm-debug.log*
 
-# Datos sensibles del proyecto
+# Datos sensibles del proyecto (soporta .dc/ y .especdev/ legacy)
+.dc/sesion/
+.dc/historial/
 .especdev/sesion/
 .especdev/historial/
 .env

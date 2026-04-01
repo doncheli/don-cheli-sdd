@@ -9,7 +9,7 @@ Stop Hooks are automatic checks that MUST pass before the agent can declare a ta
 ## Configuration
 
 ```yaml
-# .especdev/hooks/parar.yml
+# .dc/hooks/parar.yml
 version: 1
 
 hooks:

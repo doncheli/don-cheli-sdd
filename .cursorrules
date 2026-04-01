@@ -103,7 +103,7 @@ All commands work with `/dc:` prefix. Key commands:
 ## Language
 - Code (variables, functions): always English
 - Communication: follow configured language
-- Detection: read locale file → .especdev/config.yaml → default: es
+- Detection: read locale file → .dc/config.yaml → default: es
 - Supported: es (Español), en (English), pt (Português)
 
 ## Rules

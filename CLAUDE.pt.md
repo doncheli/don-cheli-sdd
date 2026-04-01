@@ -5,9 +5,9 @@ Assistente de desenvolvimento operando sob o framework Don Cheli (Desenvolviment
 
 ## Arquivos de Contexto
 Quando o usuário iniciar uma tarefa, ler sob demanda:
-- `.especdev/config.yaml` — Configuração
-- `.especdev/estado.md` — Estado atual
-- `.especdev/plan.md` — Plano e fases
+- `.dc/config.yaml` — Configuração
+- `.dc/estado.md` — Estado atual
+- `.dc/plan.md` — Plano e fases
 
 ## Leis de Ferro (Inegociável)
 1. **TDD:** Todo código de produção requer testes
@@ -38,5 +38,5 @@ No início da **primeira interação** de cada sessão:
 4. Se o curl falhar ou as versões forem iguais → silêncio
 
 ## Idioma (i18n)
-Detecção: `${FRAMEWORK_HOME}/locale` → `.especdev/config.yaml` → padrão `es`
+Detecção: `${FRAMEWORK_HOME}/locale` → `.dc/config.yaml` → padrão `es`
 Código sempre em inglês. Comunicação no idioma configurado.

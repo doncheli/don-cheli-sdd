@@ -199,7 +199,7 @@ Usuario → mi-proyecto → [LOCAL] PostgreSQL (usuarios, pedidos, pagos)
 proyecto/
 ├── DATA-POLICY.md           # Política técnica (generada por este comando)
 ├── PRIVACY.md               # Política orientada a usuarios (con --formato privacy)
-└── .especdev/
+└── .dc/
     └── data-policy-scan.json  # Resultados del escaneo en crudo (para diffs)
 ```
 

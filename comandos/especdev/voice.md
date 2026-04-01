@@ -28,7 +28,7 @@ Capturar input de voz del usuario y convertirlo en specs estructuradas en format
    - `spec` → Gherkin (Feature / Scenario / Given-When-Then)
    - `review` → lista de comentarios numerados con severidad [blocker|suggestion|nitpick]
    - `brainstorm` → ideas en bullets organizados por tema
-6. **Confirmar** con el usuario antes de guardar en `.especdev/`
+6. **Confirmar** con el usuario antes de guardar en `.dc/`
 
 ### Modos
 
@@ -41,7 +41,7 @@ Capturar input de voz del usuario y convertirlo en specs estructuradas en format
 ### Reglas de Transcripción
 
 - Preservar la intención, no las palabras exactas
-- Inferir el idioma configurado en `.especdev/config.yaml`
+- Inferir el idioma configurado en `.dc/config.yaml`
 - Marcar con `[inaudible]` segmentos no interpretables
 - No inventar detalles que no se dictaron — preguntar si hay ambigüedad
 
@@ -59,4 +59,4 @@ Feature: <nombre inferido del dictado>
   # [inaudible en 0:42 — revisar]
 ```
 
-> Para brainstorm y review, el output es Markdown en `/tmp/voice-capture-<timestamp>.md` con opción de mover a `.especdev/`.
+> Para brainstorm y review, el output es Markdown en `/tmp/voice-capture-<timestamp>.md` con opción de mover a `.dc/`.

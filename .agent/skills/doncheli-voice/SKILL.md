@@ -18,9 +18,9 @@ description: Convert voice dictation into structured specs, review comments, or 
 6. Mark genuinely ambiguous segments with `[unclear: original text]` — do not invent content
 7. Present the structured output and ask for confirmation before saving
 8. On confirmation, save to the appropriate location:
-   - spec → `.especdev/specs/<feature>.feature`
-   - review → `.especdev/reviews/<date>-review.md`
-   - brainstorm → `.especdev/notas/<date>-brainstorm.md`
+   - spec → `.dc/specs/<feature>.feature`
+   - review → `.dc/reviews/<date>-review.md`
+   - brainstorm → `.dc/notas/<date>-brainstorm.md`
 9. Suggest relevant follow-up commands: `/dc:validar-spec`, `/dc:debate`, `/dc:clarificar`
 
 ## Quality Gate

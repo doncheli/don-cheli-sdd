@@ -5,7 +5,7 @@ description: Initialize Don Cheli in a project or start a new task with auto-det
 # /doncheli-start
 
 ## Process
-1. Check if `.especdev/` exists
+1. Check if `.dc/` exists
    - If not: ask for project name, type, and language → create structure from templates
    - If yes: read current state
 2. Ask what task the user wants to work on

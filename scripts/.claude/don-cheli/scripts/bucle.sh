@@ -14,8 +14,15 @@ NC='\033[0m'
 # Configuración
 HERRAMIENTA="${1:-claude}"
 MAX_ITERACIONES="${2:-10}"
-PRD_FILE=".especdev/sesion/prd.json"
-PROGRESO_FILE=".especdev/progreso.md"
+
+# Retrocompatible: usar .especdev/ si ya existe, .dc/ si es nuevo
+if [ -d ".especdev" ]; then
+    DC_DIR=".especdev"
+else
+    DC_DIR=".dc"
+fi
+PRD_FILE="${DC_DIR}/sesion/prd.json"
+PROGRESO_FILE="${DC_DIR}/progreso.md"
 
 # Validate MAX_ITERACIONES is a positive integer
 if ! [[ "$MAX_ITERACIONES" =~ ^[0-9]+$ ]]; then
@@ -81,7 +88,7 @@ for s in sorted(stories, key=lambda x: x.get('prioridad', x.get('priority', 99))
     case "$HERRAMIENTA" in
         claude)
             echo "Ejecutando con Claude (contexto fresco)..."
-            # claude --print "Implementa la siguiente historia de usuario: $HISTORIA. Lee .especdev/sesion/prd.json para los criterios de aceptación." 2>/dev/null || true
+            # claude --print "Implementa la siguiente historia de usuario: $HISTORIA. Lee .dc/sesion/prd.json (o .especdev/ si existe) para los criterios de aceptación." 2>/dev/null || true
             ;;
         codex)
             echo "Ejecutando con Codex (contexto fresco)..."

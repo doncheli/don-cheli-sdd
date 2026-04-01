@@ -7,7 +7,7 @@ i18n: true
 
 ## Objetivo
 
-Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Configurar reacciones automáticas: al abrir un PR en GitHub ejecutar `/dc:revisar`, al crear un issue en Linear ejecutar `/dc:comenzar`, al recibir alerta en PagerDuty ejecutar diagnóstico. La configuración se almacena en `.especdev/webhooks.yaml`.
+Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Configurar reacciones automáticas: al abrir un PR en GitHub ejecutar `/dc:revisar`, al crear un issue en Linear ejecutar `/dc:comenzar`, al recibir alerta en PagerDuty ejecutar diagnóstico. La configuración se almacena en `.dc/webhooks.yaml`.
 
 ## Uso
 
@@ -33,14 +33,14 @@ Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Config
 
 ## Comportamiento
 
-1. **Cargar configuración** desde `.especdev/webhooks.yaml`
+1. **Cargar configuración** desde `.dc/webhooks.yaml`
 
 2. **Para `--agregar`**:
    - Solicitar fuente, evento, filtros opcionales y comando a ejecutar
    - Generar ID único (`wh-XXX`)
    - Generar URL del endpoint si aplica
    - Mostrar instrucciones de configuración en la fuente externa
-   - Guardar en `.especdev/webhooks.yaml`
+   - Guardar en `.dc/webhooks.yaml`
 
 3. **Para `--probar`**:
    - Enviar payload de prueba al handler del webhook
@@ -48,7 +48,7 @@ Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Config
    - Reportar resultado y tiempo de ejecución
 
 4. **Para `--log`**:
-   - Leer `.especdev/webhook-log.jsonl`
+   - Leer `.dc/webhook-log.jsonl`
    - Mostrar últimos 50 eventos con estado (procesado/fallido/ignorado)
 
 5. **Para `--estado`**:
@@ -58,7 +58,7 @@ Integrar Don Cheli con sistemas externos a través de webhooks y eventos. Config
 ## Configuración
 
 ```yaml
-# .especdev/webhooks.yaml
+# .dc/webhooks.yaml
 version: "1.0"
 servidor:
   puerto: 9876
@@ -163,15 +163,15 @@ URL generada: https://mi-proyecto.ngrok.io/webhook/wh-005
 2. Payload URL: https://mi-proyecto.ngrok.io/webhook/wh-005
 3. Content type: application/json
 4. Events: Workflow runs (ci_failed)
-5. Clave secreta: ••••••••  (guardada en .especdev/secrets)
+5. Clave secreta: ••••••••  (guardada en .dc/secrets)
 
-✅ Webhook wh-005 guardado en .especdev/webhooks.yaml
+✅ Webhook wh-005 guardado en .dc/webhooks.yaml
 ```
 
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 ├── webhooks.yaml              # Configuración (en git)
 ├── webhook-log.jsonl          # Log de eventos (en .gitignore)
 └── secrets/
@@ -180,7 +180,7 @@ URL generada: https://mi-proyecto.ngrok.io/webhook/wh-005
 
 ## Seguridad
 
-- Las claves de validación (HMAC secrets) se almacenan en `.especdev/secrets/` — nunca en `webhooks.yaml`
+- Las claves de validación (HMAC secrets) se almacenan en `.dc/secrets/` — nunca en `webhooks.yaml`
 - Cada evento entrante se valida con HMAC-SHA256 antes de procesarse
 - Los payloads se sanitizan antes de interpolarse en argumentos de comandos
 

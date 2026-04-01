@@ -17,7 +17,7 @@ description: Configure and test webhooks and automation triggers for the project
    - HTTPS endpoint required (flag plain HTTP as a blocker)
    - Webhook secret / HMAC signature validation
    - Idempotency key handling for retries
-8. Document the webhook in `.especdev/webhooks.md` with: event, URL, owner, secret env var name
+8. Document the webhook in `.dc/webhooks.md` with: event, URL, owner, secret env var name
 9. Never log or print the actual secret value — always reference the env var name
 
 ## Output Format
@@ -41,7 +41,7 @@ curl -X POST https://your-app.com/hooks/deploy \
 ✅ HMAC signature validation required
 ⚠️  Add idempotency key handling to prevent duplicate deploys on retry
 
-### Registered in .especdev/webhooks.md
+### Registered in .dc/webhooks.md
 Event: pull_request.closed + merged
 Target: https://your-app.com/hooks/deploy
 Secret: $WEBHOOK_SECRET_DEPLOY

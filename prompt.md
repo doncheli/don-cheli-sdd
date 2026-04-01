@@ -6,7 +6,7 @@ Asistente de desarrollo bajo el framework Don Cheli.
 
 ## Contexto
 
-Lee `.especdev/` para entender el estado del proyecto.
+Lee `.dc/` para entender el estado del proyecto.
 
 ## Reglas
 

@@ -68,7 +68,7 @@ That is **vibe coding**. And it is the enemy of quality software.
 | **Architecture** | AI invents on the fly | Technical blueprint + ratified DBML |
 | **Tests** | "Maybe... someday..." | Mandatory TDD: RED → GREEN → REFACTOR |
 | **Quality** | "I think it works" | 6 Quality Gates + 85% coverage |
-| **Context** | Lost every session | Full persistence in `.especdev/` files |
+| **Context** | Lost every session | Full persistence in `.dc/` files |
 | **Stubs** | Ship to production | Automatic ghost stub detection |
 
 ---

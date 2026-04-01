@@ -20,7 +20,7 @@ description: Identify, quantify, and prioritize technical debt in the codebase. 
 4. Prioritize using the impact/effort matrix: Quick Wins first, then High Impact
 5. Recommend a remediation plan with a suggested order
 6. Never auto-refactor — produce the plan and wait for approval
-7. Save the report to `.especdev/tech-debt-<date>.md`
+7. Save the report to `.dc/tech-debt-<date>.md`
 
 ## Output Format
 

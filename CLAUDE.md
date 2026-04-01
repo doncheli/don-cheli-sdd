@@ -5,9 +5,9 @@ Asistente de desarrollo bajo el framework Don Cheli (Desarrollo Dirigido por Esp
 
 ## Archivos de Contexto
 Cuando el usuario inicie una tarea, leer según necesidad:
-- `.especdev/config.yaml` — Configuración
-- `.especdev/estado.md` — Estado actual
-- `.especdev/plan.md` — Plan y fases
+- `.dc/config.yaml` — Configuración
+- `.dc/estado.md` — Estado actual
+- `.dc/plan.md` — Plan y fases
 
 ## Leyes de Hierro (No Negociable)
 1. **TDD:** Todo código de producción requiere tests
@@ -45,5 +45,5 @@ Al inicio de la **primera interacción** de cada sesión:
 5. El proceso NO debe bloquear la interacción del usuario
 
 ## Idioma (i18n)
-Detección: `${FRAMEWORK_HOME}/locale` → `.especdev/config.yaml` → default `es`
+Detección: `${FRAMEWORK_HOME}/locale` → `.dc/config.yaml` → default `es`
 Código siempre en inglés. Comunicación en el idioma configurado.

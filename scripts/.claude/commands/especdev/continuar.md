@@ -17,7 +17,7 @@ Recuperar el contexto de una sesión previa y generar un reporte de puesta al d�
 
 ## Comportamiento
 
-1. **Detectar** directorio `.especdev/` existente
+1. **Detectar** directorio `.dc/` existente
 2. **Leer** archivos de contexto
 3. **Generar** Reporte de Puesta al Día:
 

@@ -128,7 +128,7 @@ Auto-Corrección (aprendizajes)     Detección de Loops (guard)
 
 ## Registro en Memoria
 
-Cuando un loop se resuelve, se registra en `.especdev/memoria/loops-resueltos.md`:
+Cuando un loop se resuelve, se registra en `.dc/memoria/loops-resueltos.md`:
 
 ```markdown
 ## Loop Resuelto: 2026-03-21

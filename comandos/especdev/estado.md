@@ -7,7 +7,7 @@ i18n: true
 
 ## Objetivo
 
-Mostrar un resumen del estado actual del proyecto según los archivos de `.especdev/`.
+Mostrar un resumen del estado actual del proyecto según los archivos de `.dc/`.
 
 ## Uso
 
@@ -17,9 +17,9 @@ Mostrar un resumen del estado actual del proyecto según los archivos de `.espec
 
 ## Comportamiento
 
-1. **Leer** `.especdev/config.yaml` — nombre y tipo de proyecto
-2. **Leer** `.especdev/estado.md` — fase actual y progreso
-3. **Leer** `.especdev/plan.md` — fases restantes
+1. **Leer** `.dc/config.yaml` — nombre y tipo de proyecto
+2. **Leer** `.dc/estado.md` — fase actual y progreso
+3. **Leer** `.dc/plan.md` — fases restantes
 4. **Generar** resumen visual
 
 ## Output

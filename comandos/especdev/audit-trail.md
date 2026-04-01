@@ -32,7 +32,7 @@ Registrar, almacenar y consultar todas las decisiones asistidas por IA durante e
    ├── Actor: ia | human | ci
    └── Referencia a archivo o PR si aplica
 
-2. ALMACENAR — Persistir en .especdev/audit-trail.md
+2. ALMACENAR — Persistir en .dc/audit-trail.md
    ├── Formato Markdown + YAML front-matter por entrada
    ├── Append-only (nunca modificar entradas existentes)
    └── Rotar archivo cuando supere 5,000 líneas → audit-trail-archive/
@@ -111,7 +111,7 @@ Code: 21% modificado  → Normal para código de negocio complejo
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 ├── audit-trail.md              # Log activo (append-only)
 └── audit-trail-archive/
     ├── audit-trail-2026-01.md  # Archivos por mes al rotar

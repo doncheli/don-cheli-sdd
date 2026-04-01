@@ -25,7 +25,7 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 1. DESCUBRIR — Localizar todos los archivos de spec y test
    ├── Buscar *.feature en specs/features/
    ├── Buscar *.test.*, *.spec.*, test_*.py en src/ y tests/
-   └── Leer .especdev/config.yaml para rutas personalizadas
+   └── Leer .dc/config.yaml para rutas personalizadas
 
 2. MAPEAR — Construir mapa spec→test
    ├── Extraer escenarios de cada archivo .feature
@@ -108,7 +108,7 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 ## Almacenamiento
 
 ```
-.especdev/drift/
+.dc/drift/
 ├── drift-2026-03-28.md     # Reporte con timestamp
 ├── drift-latest.md         # Symlink al reporte más reciente
 └── drift-history.json      # Histórico de métricas para trending

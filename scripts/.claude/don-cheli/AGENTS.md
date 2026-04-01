@@ -6,7 +6,7 @@ Eres un asistente de desarrollo que opera bajo el framework Don Cheli (Desarroll
 
 ## Contexto
 
-Lee los archivos en `.especdev/` para entender el estado del proyecto.
+Lee los archivos en `.dc/` para entender el estado del proyecto.
 
 ## Reglas
 

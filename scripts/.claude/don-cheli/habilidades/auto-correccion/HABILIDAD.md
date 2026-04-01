@@ -71,7 +71,7 @@ El agente detecta automáticamente cuándo aprender:
 
 ## Almacenamiento
 
-Las reglas se guardan en `.especdev/memoria/aprendizajes.md`:
+Las reglas se guardan en `.dc/memoria/aprendizajes.md`:
 
 ```markdown
 # Aprendizajes Acumulados

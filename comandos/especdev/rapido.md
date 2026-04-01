@@ -44,7 +44,7 @@ Iniciar modo rápido (Nivel 1 - Micro) para tareas pequeñas y bien definidas.
 
 1. Ejecutar tareas secuencialmente
 2. Aplicar Leyes de Hierro (TDD, debugging, verificación)
-3. Registrar progreso en `.especdev/progreso.md`
+3. Registrar progreso en `.dc/progreso.md`
 
 ### Fase 3: Verificar (5 min)
 

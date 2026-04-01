@@ -79,7 +79,7 @@ Cuando una tarea termina normalmente pero el issue sigue activo:
 ## Workspace Aislado por Tarea
 
 ```
-.especdev/workspaces/
+.dc/workspaces/
 ├── PROJ-42/              # Workspace para issue PROJ-42
 │   ├── repo/             # Copia/clone del código
 │   ├── logs/             # Logs de la sesión

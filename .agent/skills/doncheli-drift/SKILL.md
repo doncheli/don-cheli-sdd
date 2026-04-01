@@ -7,7 +7,7 @@ description: Detect and reconcile divergence between specs and implementation. A
 
 ## Instructions
 
-1. Read the current spec files in `.especdev/specs/` and the relevant source code
+1. Read the current spec files in `.dc/specs/` and the relevant source code
 2. Compare spec scenarios (Gherkin / acceptance criteria) against the actual implementation
 3. Identify three categories of drift:
    - **Ghost**: code exists but no spec covers it
@@ -16,7 +16,7 @@ description: Detect and reconcile divergence between specs and implementation. A
 4. For each drift finding, report: file path, spec reference, severity (critical / warning / info)
 5. Propose a reconciliation: either update the spec or flag the code for correction
 6. Never auto-modify code — output a reconciliation plan for human approval
-7. Save a drift report to `.especdev/drift-report-<date>.md` if findings exceed 3 items
+7. Save a drift report to `.dc/drift-report-<date>.md` if findings exceed 3 items
 8. If zero drift is found, confirm with a brief "No drift detected — spec and code are aligned"
 
 ## Output Format
@@ -34,7 +34,7 @@ description: Detect and reconcile divergence between specs and implementation. A
 - specs/auth.feature:Scenario 1 expects 401 on expired token; code returns 403
 
 ### Reconciliation Plan
-1. [Phantom] Implement "Apply coupon on mobile" or mark as backlog in .especdev/backlog.md
+1. [Phantom] Implement "Apply coupon on mobile" or mark as backlog in .dc/backlog.md
 2. [Mutant] Fix auth.ts to return 401 — spec is correct per RFC 7235
 3. [Ghost] Add spec for refund edge case before next release
 ```

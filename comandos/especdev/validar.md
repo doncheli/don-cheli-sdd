@@ -1,5 +1,5 @@
 ---
-description: Validar la conformidad de archivos .especdev/
+description: Validar la conformidad de archivos .dc/
 i18n: true
 ---
 
@@ -7,7 +7,7 @@ i18n: true
 
 ## Objetivo
 
-Verificar que los archivos de `.especdev/` están completos y conformes.
+Verificar que los archivos de `.dc/` están completos y conformes.
 
 ## Uso
 

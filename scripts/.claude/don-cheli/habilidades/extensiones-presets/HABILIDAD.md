@@ -12,9 +12,9 @@ Permite personalizar Don Cheli sin tocar el core. Tres niveles de personalizaci�
 
 ```
 ⬆ Más alta prioridad
-█ Overrides del proyecto (.especdev/overrides/)
-█ Presets (.especdev/presets/<preset-id>/)  
-█ Extensiones (.especdev/extensiones/<ext-id>/)
+█ Overrides del proyecto (.dc/overrides/)
+█ Presets (.dc/presets/<preset-id>/)  
+█ Extensiones (.dc/extensiones/<ext-id>/)
 █ Core de Don Cheli (plantillas/ y comandos/)
 ⬇ Más baja prioridad
 ```
@@ -24,7 +24,7 @@ Permite personalizar Don Cheli sin tocar el core. Tres niveles de personalizaci�
 Las extensiones agregan nuevos comandos, plantillas, o habilidades:
 
 ```
-.especdev/
+.dc/
 └── extensiones/
     └── django/
         ├── extension.yml        # Metadata
@@ -70,7 +70,7 @@ dependencias:
 Los presets modifican templates y configuraciones del core sin reemplazarlo:
 
 ```
-.especdev/
+.dc/
 └── presets/
     └── empresa-xyz/
         ├── preset.yml
@@ -110,7 +110,7 @@ overrides:
 Para ajustes de un solo proyecto sin crear un preset:
 
 ```
-.especdev/
+.dc/
 └── overrides/
     └── plantillas/
         └── tasks.md.template  # Override solo para este proyecto

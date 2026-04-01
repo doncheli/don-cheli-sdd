@@ -45,7 +45,7 @@ Mostrar el estado de salud de la ventana de contexto en la sesión actual: porce
    - Qué información preservar en memoria persistente antes de compactar
 
 5. **Para `--historial`**:
-   - Leer `.especdev/context-sessions.jsonl`
+   - Leer `.dc/context-sessions.jsonl`
    - Identificar patrones: ¿en qué tipo de tareas se llena más rápido?
    - ¿Cuál es el volumen promedio de tokens por tipo de sesión?
 
@@ -187,7 +187,7 @@ Eficiencia: ⚠️ Regular — 38% de tokens son innecesarios
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 └── context-sessions.jsonl     # Historial de sesiones (en .gitignore)
 ```
 
@@ -207,7 +207,7 @@ Eficiencia: ⚠️ Regular — 38% de tokens son innecesarios
 Don Cheli ejecuta `context-health --rapido` automáticamente:
 - Al inicio de cada sesión (`/dc:comenzar`)
 - Antes de ejecutar comandos complejos (`/dc:implementar`, `/dc:auditar`)
-- Si el usuario activa `auto_context_check: true` en `.especdev/config.yaml`
+- Si el usuario activa `auto_context_check: true` en `.dc/config.yaml`
 
 ## Modelo Recomendado
 

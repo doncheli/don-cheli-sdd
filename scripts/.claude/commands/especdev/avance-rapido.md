@@ -28,7 +28,7 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 
 ## Comportamiento
 
-1. **Crear** carpeta de cambio en `.especdev/cambios/<nombre>/`
+1. **Crear** carpeta de cambio en `.dc/cambios/<nombre>/`
 2. **Generar** propuesta.md (intención, alcance, enfoque)
 3. **Generar** specs/ (delta specs con requisitos y escenarios)
 4. **Generar** diseño.md (decisiones de arquitectura)
@@ -40,7 +40,7 @@ Crear TODOS los artefactos de planificación de una vez cuando el alcance es cla
 ```
 === Avance Rápido: agregar-dark-mode ===
 
-📁 Carpeta: .especdev/cambios/agregar-dark-mode/
+📁 Carpeta: .dc/cambios/agregar-dark-mode/
 
 ✅ propuesta.md — Intención y alcance definidos
 ✅ specs/ui-tema.delta.md — 3 requisitos, 7 escenarios

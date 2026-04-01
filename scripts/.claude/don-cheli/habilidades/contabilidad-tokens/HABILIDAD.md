@@ -75,7 +75,7 @@ Sin contabilidad de tokens, se pierde visibilidad sobre:
 ## Alertas de Presupuesto
 
 ```yaml
-# .especdev/config.yaml
+# .dc/config.yaml
 tokens:
   presupuesto_diario: 500000
   presupuesto_mensual: 5000000
@@ -92,7 +92,7 @@ vinculando costo con resultado para análisis ROI.
 ## Archivo de Métricas
 
 ```
-.especdev/metricas/
+.dc/metricas/
 ├── 2026-03/
 │   ├── sesiones.jsonl      # Una línea JSON por sesión
 │   ├── resumen-diario.md   # Generado automáticamente

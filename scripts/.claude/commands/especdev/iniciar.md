@@ -7,7 +7,7 @@ i18n: true
 
 ## Objetivo
 
-Crear el directorio `.especdev/` con todos los archivos de contexto necesarios para comenzar a trabajar con el framework.
+Crear el directorio `.dc/` con todos los archivos de contexto necesarios para comenzar a trabajar con el framework.
 
 ## Uso
 
@@ -28,10 +28,10 @@ Crear el directorio `.especdev/` con todos los archivos de contexto necesarios p
 ## Comportamiento
 
 1. **Detectar idioma** — Leer `${FRAMEWORK_HOME}/locale` (set durante instalación). Si no existe, preguntar al usuario.
-2. **Verificar** si `.especdev/` ya existe
+2. **Verificar** si `.dc/` ya existe
    - Si existe: preguntar si desea sobrescribir o reparar
    - Si no existe: continuar
-3. **Crear** directorio `.especdev/`
+3. **Crear** directorio `.dc/`
 4. **Copiar** plantillas desde `plantillas/especdev/`
 5. **Configurar** `config.yaml` con nombre, tipo de proyecto y `framework.idioma` (del locale detectado)
 6. **Inicializar** `estado.md`, `plan.md`, `hallazgos.md`, `progreso.md` — todos en el idioma configurado
@@ -42,7 +42,7 @@ Crear el directorio `.especdev/` con todos los archivos de contexto necesarios p
 ## Archivos Creados
 
 ```
-.especdev/
+.dc/
 ├── config.yaml      # Configuración del proyecto
 ├── estado.md        # Estado actual → Fase 1
 ├── plan.md          # Plan vacío listo para definir
@@ -75,8 +75,8 @@ Output:
 
 Proyecto: api-pagos
 Tipo: servicio
-Directorio: .especdev/
+Directorio: .dc/
 Archivos: 5 creados
 
-Próximo paso: edita .especdev/plan.md para definir tus fases
+Próximo paso: edita .dc/plan.md para definir tus fases
 ```

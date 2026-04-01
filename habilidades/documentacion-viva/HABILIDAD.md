@@ -41,7 +41,7 @@ Documentan el **por qué** detrás de decisiones técnicas.
   - SQLite: descartada por límites de concurrencia (ver PoC poc/sqlite-mvp/)
 ```
 
-**Ubicación:** `.especdev/memoria/decisiones/ADR-###.md`
+**Ubicación:** `.dc/memoria/decisiones/ADR-###.md`
 
 **Cuándo crear:**
 - Elección de tecnología/librería

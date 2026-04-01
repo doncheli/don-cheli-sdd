@@ -224,7 +224,7 @@ Resumen: 98% conformidad | 2 campos opcionales pendientes
 
 ## Configuración de Auto-Actualización
 
-En `.especdev/config.yaml`:
+En `.dc/config.yaml`:
 
 ```yaml
 actualizaciones:

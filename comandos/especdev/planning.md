@@ -206,7 +206,7 @@ Todo junior DEBE estar asignado en pareja con un senior. Nunca asignar tareas cr
 ## Almacenamiento
 
 ```
-.especdev/
+.dc/
 ├── plannings/
 │   ├── 2026-W13.md        # Planning semana 13
 │   ├── 2026-W14.md        # Planning semana 14
@@ -226,7 +226,7 @@ Solo ejecuta Fases 1 y 2 (contexto + revisión de RFCs). Útil para sesiones de 
 Solo ejecuta Fases 3 y 4 (priorización + plan). Asume que los RFCs ya fueron revisados.
 
 ### `--modo seguimiento`
-Lee el planning de la semana actual (`.especdev/plannings/`) y genera reporte de avance:
+Lee el planning de la semana actual (`.dc/plannings/`) y genera reporte de avance:
 ```markdown
 ## Seguimiento: Semana 2026-W13 (Jueves)
 

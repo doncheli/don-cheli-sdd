@@ -73,13 +73,13 @@ CAPTURAR:
   ├── Tiempo de ejecución por test y total
   └── Stack traces de fallos
 REINTENTAR test flaky hasta 2 veces antes de marcarlo como fallo
-DETENER si cobertura < umbral configurado en .especdev/config.yaml (default 85%)
+DETENER si cobertura < umbral configurado en .dc/config.yaml (default 85%)
 ```
 
 ### Fase 4: Reportar
 
 ```
-GENERAR reporte en .especdev/tea/
+GENERAR reporte en .dc/tea/
 MOSTRAR tabla de resultados al usuario
 RECOMENDAR acciones si hay fallos o cobertura insuficiente
 ```
@@ -164,7 +164,7 @@ para montos negativos. Revisar validación en `src/services/payment_service.py:4
 ## Almacenamiento
 
 ```
-.especdev/tea/
+.dc/tea/
 ├── tea-2026-03-28-pagos.md      # Reporte por dominio y fecha
 ├── tea-latest.md                # Último reporte global
 └── coverage/

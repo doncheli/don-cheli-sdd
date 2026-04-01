@@ -19,10 +19,10 @@ Verificar que el setup de Don Cheli en el proyecto está completo y funcional. D
 
 Ejecutar verificaciones en 4 categorías:
 
-### 1. Estructura .especdev/
+### 1. Estructura .dc/
 
 ```
-Verificando .especdev/...
+Verificando .dc/...
   ✅ config.yaml existe y es válido
   ✅ estado.md existe
   ✅ plan.md existe
