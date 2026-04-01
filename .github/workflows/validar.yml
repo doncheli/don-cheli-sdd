@@ -194,44 +194,49 @@ jobs:
       - name: Install bats and kcov
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq bats kcov
+          sudo apt-get install -y -qq bats cmake g++ pkg-config \
+            libdw-dev libcurl4-openssl-dev zlib1g-dev
+          # Build kcov from source (not in apt)
+          git clone --depth 1 https://github.com/SimonKagworturtzstrom/kcov.git /tmp/kcov-src
+          mkdir /tmp/kcov-src/build && cd /tmp/kcov-src/build
+          cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local
+          make -j$(nproc)
+          sudo make install
 
-      - name: Run bats tests (quick validation)
+      - name: Run bats tests
         run: bats test/ --timing
 
-      - name: Generate coverage with kcov on validar.sh
+      - name: Generate coverage — validar.sh
         run: |
-          kcov --include-path=scripts/validar.sh \
+          kcov --include-path=$(pwd)/scripts/validar.sh \
             coverage/validar \
             bash scripts/validar.sh
 
-      - name: Generate coverage with kcov on instalar.sh (es)
+      - name: Generate coverage — instalar.sh (es)
         run: |
-          FAKE_HOME="$(mktemp -d)"
-          kcov --include-path=scripts/instalar.sh \
+          kcov --include-path=$(pwd)/scripts/instalar.sh \
             coverage/instalar-es \
             bash scripts/instalar.sh --global --lang es
-          rm -rf "$FAKE_HOME"
         env:
           HOME: /tmp/kcov-home-es
 
-      - name: Generate coverage with kcov on instalar.sh (en)
+      - name: Generate coverage — instalar.sh (en)
         run: |
-          kcov --include-path=scripts/instalar.sh \
+          kcov --include-path=$(pwd)/scripts/instalar.sh \
             coverage/instalar-en \
             bash scripts/instalar.sh --global --lang en
         env:
           HOME: /tmp/kcov-home-en
 
-      - name: Generate coverage with kcov on instalar.sh (pt)
+      - name: Generate coverage — instalar.sh (pt)
         run: |
-          kcov --include-path=scripts/instalar.sh \
+          kcov --include-path=$(pwd)/scripts/instalar.sh \
             coverage/instalar-pt \
             bash scripts/instalar.sh --global --lang pt
         env:
           HOME: /tmp/kcov-home-pt
 
-      - name: Merge kcov reports
+      - name: Merge coverage reports
         run: |
           kcov --merge coverage/merged \
             coverage/validar \
