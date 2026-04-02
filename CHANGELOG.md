@@ -4,6 +4,16 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.16.2](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.1...v1.16.2) (2026-04-02)
+
+### Correcciones
+
+* corregir instalador interactivo y Antigravity ([3b0031c](https://github.com/doncheli/don-cheli-sdd/commit/3b0031c1f795bcc6b6b8103b40b17e7bfe13a25e))
+
+### Documentación
+
+* agregar Social Media Kit completo (LinkedIn, Instagram, X, TikTok, YouTube) ([599027f](https://github.com/doncheli/don-cheli-sdd/commit/599027f567bb87116b9292ecbcdbb98bba4b1651))
+
 ## [1.16.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.0...v1.16.1) (2026-04-01)
 
 ### Correcciones
