@@ -152,24 +152,37 @@ _gen_cursor() {
 }
 
 # ─────────────────────────────────────────────
-# Antigravity → GEMINI.md + .agent/
+# Antigravity → GEMINI.md + .agent/ (at PROJECT ROOT, not inside .claude/)
 # ─────────────────────────────────────────────
 _gen_antigravity() {
     local dir="$1" home="$2" locale="$3"
 
-    echo -e "     ${GREEN:-}✓${NC:-} Antigravity → GEMINI.md + .agent/"
+    # Antigravity needs files at project root, not inside .claude/don-cheli/
+    # Detect project root: go up from .claude/don-cheli/ or use current dir
+    local project_root
+    if [[ "$dir" == *".claude/don-cheli"* ]]; then
+        project_root="${dir%/.claude/don-cheli*}"
+        [ -z "$project_root" ] && project_root="."
+    elif [[ "$dir" == *".claude"* ]]; then
+        project_root="${dir%/.claude*}"
+        [ -z "$project_root" ] && project_root="."
+    else
+        project_root="$dir"
+    fi
+
+    echo -e "     ${GREEN:-}✓${NC:-} Antigravity → GEMINI.md + .agent/ (en $project_root/)"
 
     if [ "$locale" != "en" ] && [ -f "$home/GEMINI.${locale}.md" ]; then
-        cp "$home/GEMINI.${locale}.md" "$dir/GEMINI.md" 2>/dev/null || true
+        cp "$home/GEMINI.${locale}.md" "$project_root/GEMINI.md" 2>/dev/null || true
     elif [ -f "$home/GEMINI.md" ]; then
-        cp "$home/GEMINI.md" "$dir/" 2>/dev/null || true
+        cp "$home/GEMINI.md" "$project_root/" 2>/dev/null || true
     else
         echo -e "     ${YELLOW:-}⚠${NC:-} GEMINI.md not found in $home — skipping" >&2
     fi
 
     if [ -d "$home/.agent" ]; then
-        mkdir -p "$dir/.agent" 2>/dev/null || true
-        cp -r "$home/.agent/"* "$dir/.agent/" 2>/dev/null || true
+        mkdir -p "$project_root/.agent" 2>/dev/null || true
+        cp -r "$home/.agent/"* "$project_root/.agent/" 2>/dev/null || true
     fi
 }
 

@@ -336,6 +336,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
 
     # Step 1: Tool Selection (if not provided via flag)
     if [ -z "$TOOLS_FLAG" ]; then
+        GUM_TOOLS_OK=false
         if [ "$HAS_GUM" = true ]; then
             TOOLS_RAW=$(printf "Claude Code\nCodex\nCursor\nAntigravity\nWindsurf\nAmp\nContinue.dev\nOpenCode\nTodos" | \
                 gum choose --no-limit \
@@ -345,21 +346,25 @@ if [ "$INTERACTIVE_MODE" = true ]; then
                 --selected.foreground="120" \
                 < /dev/tty 2>/dev/null) || true
 
-            TOOLS_FLAG=""
-            while IFS= read -r tool; do
-                case "$tool" in
-                    "Claude Code") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
-                    "Codex") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
-                    "Cursor") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
-                    "Antigravity") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
-                    "Windsurf") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
-                    "Amp") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
-                    "Continue.dev") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
-                    "OpenCode") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
-                    "Todos") TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
-                esac
-            done <<< "$TOOLS_RAW"
-        else
+            if [ -n "$TOOLS_RAW" ]; then
+                TOOLS_FLAG=""
+                while IFS= read -r tool; do
+                    case "$tool" in
+                        "Claude Code") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}claude" ;;
+                        "Codex") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}codex" ;;
+                        "Cursor") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}cursor" ;;
+                        "Antigravity") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}antigravity" ;;
+                        "Windsurf") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}windsurf" ;;
+                        "Amp") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
+                        "Continue.dev") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
+                        "OpenCode") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
+                        "Todos") TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+                    esac
+                done <<< "$TOOLS_RAW"
+                GUM_TOOLS_OK=true
+            fi
+        fi
+        if [ "$GUM_TOOLS_OK" = false ]; then
             echo -e "  ${BOLD}¿Dónde quieres instalar Don Cheli SDD?${NC}"
             echo ""
             echo -e "     ${CYAN}1)${NC}  Claude Code     (CLAUDE.md + comandos)"
@@ -373,7 +378,10 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             echo -e "     ${CYAN}9)${NC}  Todos"
             echo ""
             echo -ne "  ${BOLD}▸ Elige (números separados por coma): ${NC}"
-            if ! read -r TOOLS_CHOICE < /dev/tty 2>/dev/null; then
+            TOOLS_CHOICE=""
+            read -r TOOLS_CHOICE < /dev/tty 2>/dev/null || read -r TOOLS_CHOICE 2>/dev/null || TOOLS_CHOICE=""
+            if [ -z "$TOOLS_CHOICE" ]; then
+                echo -e "  ${YELLOW}⚠ No se pudo leer input. Usando: Todos${NC}"
                 TOOLS_CHOICE="9"
             fi
 
@@ -398,6 +406,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
 
     # Step 2: Profile Selection (if not provided via flag)
     if [ -z "$PROFILE_FLAG" ]; then
+        GUM_PROFILE_OK=false
         if [ "$HAS_GUM" = true ]; then
             PROFILE_CHOICE=$(printf "👻 Phantom Coder  [Full-stack]    — Pipeline completo, TDD, quality gates\n💀 Reaper Sec     [Seguridad]     — OWASP, auditoría, pentest workflow\n🏗  System Architect [Arquitectura] — Blueprints, SOLID, APIs, migraciones\n⚡ Speedrunner     [MVP/Startup]   — PoC, estimados, validación veloz\n🔮 The Oracle      [Razonamiento]  — 15 modelos mentales, análisis profundo\n🥷 Dev Dojo        [Aprendizaje]   — Documentación viva, ADRs, Obsidian\n⚙️  Custom          [Manual]        — Seleccionar skills y comandos manualmente" | \
                 gum choose \
@@ -406,17 +415,21 @@ if [ "$INTERACTIVE_MODE" = true ]; then
                 --cursor.foreground="212" \
                 < /dev/tty 2>/dev/null) || true
 
-            case "$PROFILE_CHOICE" in
-                *Phantom*)   PROFILE_FLAG="phantom" ;;
-                *Reaper*)    PROFILE_FLAG="reaper" ;;
-                *Architect*) PROFILE_FLAG="architect" ;;
-                *Speedrun*)  PROFILE_FLAG="speedrun" ;;
-                *Oracle*)    PROFILE_FLAG="oracle" ;;
-                *Dojo*)      PROFILE_FLAG="dojo" ;;
-                *Custom*)    PROFILE_FLAG="custom" ;;
-                *)           PROFILE_FLAG="phantom" ;;
-            esac
-        else
+            if [ -n "$PROFILE_CHOICE" ]; then
+                case "$PROFILE_CHOICE" in
+                    *Phantom*)   PROFILE_FLAG="phantom" ;;
+                    *Reaper*)    PROFILE_FLAG="reaper" ;;
+                    *Architect*) PROFILE_FLAG="architect" ;;
+                    *Speedrun*)  PROFILE_FLAG="speedrun" ;;
+                    *Oracle*)    PROFILE_FLAG="oracle" ;;
+                    *Dojo*)      PROFILE_FLAG="dojo" ;;
+                    *Custom*)    PROFILE_FLAG="custom" ;;
+                    *)           PROFILE_FLAG="phantom" ;;
+                esac
+                GUM_PROFILE_OK=true
+            fi
+        fi
+        if [ "$GUM_PROFILE_OK" = false ]; then
             echo ""
             echo -e "  ${BOLD}Elige tu perfil de desarrollador:${NC}"
             echo ""
@@ -429,7 +442,10 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             echo -e "     ${CYAN}7)${NC}  ⚙️  Custom           ${DIM}[Manual]${NC}        Seleccionar todo manualmente"
             echo ""
             echo -ne "  ${BOLD}▸ ${NC}"
-            if ! read -r PROFILE_CHOICE < /dev/tty 2>/dev/null; then
+            PROFILE_CHOICE=""
+            read -r PROFILE_CHOICE < /dev/tty 2>/dev/null || read -r PROFILE_CHOICE 2>/dev/null || PROFILE_CHOICE=""
+            if [ -z "$PROFILE_CHOICE" ]; then
+                echo -e "  ${YELLOW}⚠ No se pudo leer input. Usando: Phantom Coder${NC}"
                 PROFILE_CHOICE="1"
             fi
 
