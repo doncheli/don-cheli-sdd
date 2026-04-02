@@ -481,18 +481,37 @@ if [ "$INTERACTIVE_MODE" = true ]; then
         # Try to install gum for interactive selection
         install_gum
 
+        # Build skills list
+        ALL_SKILLS=""
+        ALL_SKILLS_ARRAY=()
+        for skill_dir in "${SCRIPT_DIR}/habilidades/"*/; do
+            [ -d "$skill_dir" ] || continue
+            skill_name=$(basename "$skill_dir")
+            ALL_SKILLS="${ALL_SKILLS}${skill_name}\n"
+            ALL_SKILLS_ARRAY+=("$skill_name")
+        done
+
+        # Build commands list
+        ALL_CMDS=""
+        ALL_CMDS_ARRAY=()
+        for cmd_file in "${SCRIPT_DIR}/comandos/especdev/"*.md; do
+            [ -f "$cmd_file" ] || continue
+            cmd_name="dc:$(basename "$cmd_file" .md)"
+            ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
+            ALL_CMDS_ARRAY+=("$cmd_name")
+        done
+        for cmd_file in "${SCRIPT_DIR}/comandos/razonar/"*.md; do
+            [ -f "$cmd_file" ] || continue
+            cmd_name="razonar:$(basename "$cmd_file" .md)"
+            ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
+            ALL_CMDS_ARRAY+=("$cmd_name")
+        done
+
+        CUSTOM_GUM_OK=false
         if [ "$HAS_GUM" = true ]; then
             echo ""
             echo -e "  ${BOLD}Selecciona las skills que necesitas:${NC}"
             echo ""
-
-            # Build skills list from habilidades/ directory
-            ALL_SKILLS=""
-            for skill_dir in "${SCRIPT_DIR}/habilidades/"*/; do
-                [ -d "$skill_dir" ] || continue
-                skill_name=$(basename "$skill_dir")
-                ALL_SKILLS="${ALL_SKILLS}${skill_name}\n"
-            done
 
             SELECTED_SKILLS_RAW=$(printf "%b" "$ALL_SKILLS" | sort | gum choose --no-limit \
                 --header "Skills — espacio para toggle, enter para confirmar" \
@@ -501,46 +520,100 @@ if [ "$INTERACTIVE_MODE" = true ]; then
                 --selected.foreground="120" \
                 < /dev/tty 2>/dev/null) || true
 
-            PROFILE_SKILLS=$(echo "$SELECTED_SKILLS_RAW" | tr '\n' ',' | sed 's/,$//')
-            SKILLS_COUNT=$(echo "$SELECTED_SKILLS_RAW" | grep -c . || echo "0")
+            if [ -n "$SELECTED_SKILLS_RAW" ]; then
+                PROFILE_SKILLS=$(echo "$SELECTED_SKILLS_RAW" | tr '\n' ',' | sed 's/,$//')
+                SKILLS_COUNT=$(echo "$SELECTED_SKILLS_RAW" | grep -c . || echo "0")
+                echo -e "  ${GREEN}✓${NC} ${SKILLS_COUNT} skills seleccionadas"
+                echo ""
 
+                echo -e "  ${BOLD}Selecciona los comandos que necesitas:${NC}"
+                echo ""
+
+                SELECTED_CMDS_RAW=$(printf "%b" "$ALL_CMDS" | sort | gum choose --no-limit \
+                    --header "Comandos — espacio para toggle, enter para confirmar" \
+                    --header.foreground="99" \
+                    --cursor.foreground="212" \
+                    --selected.foreground="120" \
+                    < /dev/tty 2>/dev/null) || true
+
+                if [ -n "$SELECTED_CMDS_RAW" ]; then
+                    PROFILE_COMMANDS=$(echo "$SELECTED_CMDS_RAW" | tr '\n' ',' | sed 's/,$//')
+                    COMMANDS_COUNT=$(echo "$SELECTED_CMDS_RAW" | grep -c . || echo "0")
+                    echo -e "  ${GREEN}✓${NC} ${COMMANDS_COUNT} comandos seleccionados"
+                    CUSTOM_GUM_OK=true
+                fi
+            fi
+        fi
+
+        if [ "$CUSTOM_GUM_OK" = false ]; then
+            # Fallback: interactive numbered list
+            echo ""
+            echo -e "  ${BOLD}Selecciona las skills que necesitas:${NC}"
+            echo -e "  ${DIM}(números separados por coma, 'a' para todas, enter para ninguna)${NC}"
+            echo ""
+            local i=1
+            for s in "${ALL_SKILLS_ARRAY[@]}"; do
+                echo -e "     ${CYAN}${i})${NC}  ${s}"
+                i=$((i + 1))
+            done
+            echo ""
+            echo -ne "  ${BOLD}▸ ${NC}"
+            SKILLS_CHOICE=""
+            read -r SKILLS_CHOICE < /dev/tty 2>/dev/null || read -r SKILLS_CHOICE 2>/dev/null || SKILLS_CHOICE=""
+
+            if [ "$SKILLS_CHOICE" = "a" ] || [ "$SKILLS_CHOICE" = "all" ]; then
+                PROFILE_SKILLS=$(printf "%s," "${ALL_SKILLS_ARRAY[@]}" | sed 's/,$//')
+                SKILLS_COUNT="${#ALL_SKILLS_ARRAY[@]}"
+            elif [ -n "$SKILLS_CHOICE" ]; then
+                PROFILE_SKILLS=""
+                SKILLS_COUNT=0
+                for num in $(echo "$SKILLS_CHOICE" | tr ',' ' '); do
+                    idx=$((num - 1))
+                    if [ "$idx" -ge 0 ] 2>/dev/null && [ "$idx" -lt "${#ALL_SKILLS_ARRAY[@]}" ]; then
+                        PROFILE_SKILLS="${PROFILE_SKILLS:+$PROFILE_SKILLS,}${ALL_SKILLS_ARRAY[$idx]}"
+                        SKILLS_COUNT=$((SKILLS_COUNT + 1))
+                    fi
+                done
+            else
+                # Empty = install all
+                PROFILE_SKILLS=""
+                SKILLS_COUNT="todas"
+            fi
             echo -e "  ${GREEN}✓${NC} ${SKILLS_COUNT} skills seleccionadas"
-            echo ""
 
+            echo ""
             echo -e "  ${BOLD}Selecciona los comandos que necesitas:${NC}"
+            echo -e "  ${DIM}(números separados por coma, 'a' para todos, enter para ninguno)${NC}"
             echo ""
-
-            # Build commands list
-            ALL_CMDS=""
-            for cmd_file in "${SCRIPT_DIR}/comandos/especdev/"*.md; do
-                [ -f "$cmd_file" ] || continue
-                cmd_name="dc:$(basename "$cmd_file" .md)"
-                ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
+            i=1
+            for c in "${ALL_CMDS_ARRAY[@]}"; do
+                echo -e "     ${CYAN}${i})${NC}  ${c}"
+                i=$((i + 1))
             done
-            for cmd_file in "${SCRIPT_DIR}/comandos/razonar/"*.md; do
-                [ -f "$cmd_file" ] || continue
-                cmd_name="razonar:$(basename "$cmd_file" .md)"
-                ALL_CMDS="${ALL_CMDS}${cmd_name}\n"
-            done
+            echo ""
+            echo -ne "  ${BOLD}▸ ${NC}"
+            CMDS_CHOICE=""
+            read -r CMDS_CHOICE < /dev/tty 2>/dev/null || read -r CMDS_CHOICE 2>/dev/null || CMDS_CHOICE=""
 
-            SELECTED_CMDS_RAW=$(printf "%b" "$ALL_CMDS" | sort | gum choose --no-limit \
-                --header "Comandos — espacio para toggle, enter para confirmar" \
-                --header.foreground="99" \
-                --cursor.foreground="212" \
-                --selected.foreground="120" \
-                < /dev/tty 2>/dev/null) || true
-
-            PROFILE_COMMANDS=$(echo "$SELECTED_CMDS_RAW" | tr '\n' ',' | sed 's/,$//')
-            COMMANDS_COUNT=$(echo "$SELECTED_CMDS_RAW" | grep -c . || echo "0")
-
+            if [ "$CMDS_CHOICE" = "a" ] || [ "$CMDS_CHOICE" = "all" ]; then
+                PROFILE_COMMANDS=$(printf "%s," "${ALL_CMDS_ARRAY[@]}" | sed 's/,$//')
+                COMMANDS_COUNT="${#ALL_CMDS_ARRAY[@]}"
+            elif [ -n "$CMDS_CHOICE" ]; then
+                PROFILE_COMMANDS=""
+                COMMANDS_COUNT=0
+                for num in $(echo "$CMDS_CHOICE" | tr ',' ' '); do
+                    idx=$((num - 1))
+                    if [ "$idx" -ge 0 ] 2>/dev/null && [ "$idx" -lt "${#ALL_CMDS_ARRAY[@]}" ]; then
+                        PROFILE_COMMANDS="${PROFILE_COMMANDS:+$PROFILE_COMMANDS,}${ALL_CMDS_ARRAY[$idx]}"
+                        COMMANDS_COUNT=$((COMMANDS_COUNT + 1))
+                    fi
+                done
+            else
+                # Empty = install all
+                PROFILE_COMMANDS=""
+                COMMANDS_COUNT="todos"
+            fi
             echo -e "  ${GREEN}✓${NC} ${COMMANDS_COUNT} comandos seleccionados"
-        else
-            # Fallback without gum — install everything
-            echo -e "  ${YELLOW}⚠ gum no disponible. Instalando todas las skills y comandos.${NC}"
-            PROFILE_SKILLS=""
-            PROFILE_COMMANDS=""
-            SKILLS_COUNT="todas"
-            COMMANDS_COUNT="todos"
         fi
     fi
 
