@@ -4,6 +4,16 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.19.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.18.0...v1.19.0) (2026-04-02)
+
+### Nuevas Funcionalidades
+
+* script actualizar.sh con barra de progreso y comparación de mejoras ([77b21b1](https://github.com/doncheli/don-cheli-sdd/commit/77b21b1b9e5a2fd43d9076652a1a2c4ba6bba63c))
+
+### Documentación
+
+* actualizar READMEs (ES/EN/PT) con CI/CD, Custom Gates, Telemetría y VS Code Extension ([1c8b203](https://github.com/doncheli/don-cheli-sdd/commit/1c8b20384f9fdd9eb3d08e73d68efd36596c3d82))
+
 ## [1.18.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.17.0...v1.18.0) (2026-04-02)
 
 ### Nuevas Funcionalidades
