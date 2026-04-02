@@ -18,6 +18,7 @@
     <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
+    <a href="https://marketplace.visualstudio.com/items?itemName=doncheli.don-cheli-sdd"><img src="https://img.shields.io/visual-studio-marketplace/v/doncheli.don-cheli-sdd?label=VS%20Code&color=007ACC" alt="VS Code"></a>
     <br/>
     <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
     <a href="https://codecov.io/gh/doncheli/don-cheli-sdd"><img src="https://codecov.io/gh/doncheli/don-cheli-sdd/branch/main/graph/badge.svg" alt="Codecov"></a>
@@ -89,6 +90,16 @@ don-cheli install --global
 # 3. En tu proyecto, abre tu agente IA y escribe:
 /dc:iniciar
 ```
+
+### Extension VS Code
+
+Busca **"Don Cheli SDD"** en VS Code Extensions, o:
+
+```bash
+code --install-extension doncheli.don-cheli-sdd
+```
+
+Te da: sidebar con estado del proyecto, quality gates, explorador de comandos y dashboard de metricas.
 
 ### Via git clone
 
@@ -236,6 +247,10 @@ No negociables. Se aplican siempre. Sin excepciones.
 <tr><td>Detección de loops</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Debate adversarial multi-rol</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>CI/CD GitHub Action</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Custom Quality Gates (plugins)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Dashboard de telemetría</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Extensión VS Code</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -361,6 +376,54 @@ Don Cheli no es un programa. Son archivos Markdown que cualquier agente de IA pu
 | **Amp** | Compatible | `prompt.md` |
 | **Continue.dev** | Compatible | `AGENTS.md` |
 | **OpenCode** | Compatible | `AGENTS.md` |
+
+---
+
+## Integración CI/CD
+
+Aplica quality gates en cada Pull Request con una linea:
+
+```yaml
+# .github/workflows/sdd-check.yml
+- uses: doncheli/don-cheli-sdd@main
+  with:
+    gates: all          # spec, tdd, coverage, owasp, custom
+    min-coverage: 85
+    comment-pr: true    # publica resultado como comentario en el PR
+```
+
+Verifica artefactos `.dc/`, TDD, cobertura, OWASP y gates custom. [Docs CI/CD →](docs/ci-cd.md) | [Template GitLab CI →](examples/ci/gitlab-ci.yml)
+
+---
+
+## Custom Quality Gates
+
+Define tus propias reglas en `.dc/gates/` como archivos YAML simples:
+
+```yaml
+# .dc/gates/no-console-log.yml
+name: No console.log en produccion
+type: grep
+pattern: "console\\.log"
+files: "src/**/*.ts"
+severity: block
+```
+
+5 gates incluidos de fabrica. Crea los tuyos con `/dc:gate crear`. [Docs Custom Gates →](docs/custom-gates.md)
+
+---
+
+## Telemetría y Dashboard
+
+Metricas 100% locales. Ningun dato sale de tu maquina.
+
+```bash
+/dc:metricas            # Resumen en terminal
+/dc:dashboard           # Dashboard HTML interactivo
+/dc:dashboard --csv     # Export para reporting corporativo
+```
+
+Trackea: tasa TDD, tendencia de cobertura, quality gates, precision de estimados, stubs detectados, OWASP. [Docs Telemetría →](docs/telemetry.md)
 
 ---
 

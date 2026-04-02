@@ -90,6 +90,16 @@ don-cheli install --global
 /dc:iniciar
 ```
 
+### Extensao VS Code
+
+Busque **"Don Cheli SDD"** no VS Code Extensions, ou:
+
+```bash
+code --install-extension doncheli.don-cheli-sdd
+```
+
+Inclui: sidebar com status do projeto, quality gates, explorador de comandos e dashboard de metricas.
+
 ### Via git clone
 
 ```bash
@@ -236,6 +246,10 @@ Não negociáveis. Sempre aplicadas. Sem exceções.
 <tr><td>Detecção de loops</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Skills Marketplace</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Debate adversarial multi-papel</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>CI/CD GitHub Action</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Custom Quality Gates (plugins)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Dashboard de telemetria</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Extensao VS Code</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -361,6 +375,54 @@ Don Cheli não é um programa. São arquivos Markdown que qualquer agente de IA 
 | **Amp** | Compatível | `prompt.md` |
 | **Continue.dev** | Compatível | `AGENTS.md` |
 | **OpenCode** | Compatível | `AGENTS.md` |
+
+---
+
+## Integração CI/CD
+
+Aplique quality gates em cada Pull Request com uma linha:
+
+```yaml
+# .github/workflows/sdd-check.yml
+- uses: doncheli/don-cheli-sdd@main
+  with:
+    gates: all          # spec, tdd, coverage, owasp, custom
+    min-coverage: 85
+    comment-pr: true    # publica resultado como comentário no PR
+```
+
+Verifica artefatos `.dc/`, TDD, cobertura, OWASP e gates custom. [Docs CI/CD →](docs/ci-cd.md) | [Template GitLab CI →](examples/ci/gitlab-ci.yml)
+
+---
+
+## Custom Quality Gates
+
+Defina suas próprias regras em `.dc/gates/` como arquivos YAML simples:
+
+```yaml
+# .dc/gates/no-console-log.yml
+name: No console.log em produção
+type: grep
+pattern: "console\\.log"
+files: "src/**/*.ts"
+severity: block
+```
+
+5 gates incluídos de fábrica. Crie os seus com `/dc:gate criar`. [Docs Custom Gates →](docs/custom-gates.md)
+
+---
+
+## Telemetria e Dashboard
+
+Métricas 100% locais. Nenhum dado sai da sua máquina.
+
+```bash
+/dc:metricas            # Resumo no terminal
+/dc:dashboard           # Dashboard HTML interativo
+/dc:dashboard --csv     # Export para reporting corporativo
+```
+
+Rastreia: taxa TDD, tendência de cobertura, quality gates, precisão de estimativas, stubs detectados, OWASP. [Docs Telemetria →](docs/telemetry.md)
 
 ---
 
