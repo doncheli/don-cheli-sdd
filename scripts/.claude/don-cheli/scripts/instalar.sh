@@ -551,7 +551,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             echo -e "  ${BOLD}Selecciona las skills que necesitas:${NC}"
             echo -e "  ${DIM}(números separados por coma, 'a' para todas, enter para ninguna)${NC}"
             echo ""
-            local i=1
+            i=1
             for s in "${ALL_SKILLS_ARRAY[@]}"; do
                 echo -e "     ${CYAN}${i})${NC}  ${s}"
                 i=$((i + 1))
