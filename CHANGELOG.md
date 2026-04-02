@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.16.4](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.3...v1.16.4) (2026-04-02)
+
+### Correcciones
+
+* quitar 'local' fuera de función en instalador Custom ([3f0eae3](https://github.com/doncheli/don-cheli-sdd/commit/3f0eae30efe513a19abd6e94b6171ec9e860a9d9))
+
 ## [1.16.3](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.2...v1.16.3) (2026-04-02)
 
 ### Correcciones
