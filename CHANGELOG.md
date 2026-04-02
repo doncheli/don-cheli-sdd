@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.18.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.17.0...v1.18.0) (2026-04-02)
+
+### Nuevas Funcionalidades
+
+* extensión VS Code para Don Cheli SDD (Fase 4) ([e4da25f](https://github.com/doncheli/don-cheli-sdd/commit/e4da25fd3789e428ef3f2803522ca4aa2df9fabb))
+
 ## [1.17.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.5...v1.17.0) (2026-04-02)
 
 ### Nuevas Funcionalidades
