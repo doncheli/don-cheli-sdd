@@ -1,0 +1,6 @@
+name: No console.log en produccion
+type: grep
+pattern: "console\\.log"
+files: "src/**/*.ts"
+severity: block
+message: "console.log detectado. Usa el logger del proyecto."

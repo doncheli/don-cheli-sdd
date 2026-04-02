@@ -1,0 +1,40 @@
+# Don Cheli SDD — GitHub Actions Quality Gates
+# Copy this file to .github/workflows/sdd-check.yml in your project
+#
+# Prerequisite: Your project must have a .dc/ directory with SDD artifacts.
+# Run /dc:iniciar and complete at least the Specify phase first.
+
+name: SDD Quality Gates
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  sdd-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests with coverage
+        run: |
+          # Adjust to your stack:
+          # npm test -- --coverage          # Node.js
+          # pytest --cov=src --cov-report=xml  # Python
+          # go test -coverprofile=coverage.out ./...  # Go
+          echo "Replace this with your test command"
+
+      - name: Don Cheli SDD Check
+        uses: doncheli/don-cheli-sdd@main
+        with:
+          gates: all
+          min-coverage: 85
+          comment-pr: true
+
+      # Optional: Upload SDD badge artifact
+      - name: Generate SDD badge
+        if: always()
+        run: |
+          if [ "${{ steps.sdd-check.outputs.passed }}" = "true" ]; then
+            echo "[![SDD Certified](https://img.shields.io/badge/SDD_Certified-Don_Cheli-6c5ce7)](https://github.com/doncheli/don-cheli-sdd)" > sdd-badge.md
+          fi

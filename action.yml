@@ -1,0 +1,89 @@
+name: 'Don Cheli SDD Check'
+description: 'Verify SDD quality gates, TDD compliance, coverage and OWASP audit on Pull Requests'
+author: 'Jose Luis Oronoz Troconis (@DonCheli)'
+
+branding:
+  icon: 'shield'
+  color: 'purple'
+
+inputs:
+  gates:
+    description: 'Quality gates to run: all, spec, tdd, coverage, owasp, custom (comma-separated)'
+    required: false
+    default: 'all'
+  min-coverage:
+    description: 'Minimum test coverage percentage (0-100)'
+    required: false
+    default: '85'
+  comment-pr:
+    description: 'Post results as PR comment (true/false)'
+    required: false
+    default: 'true'
+  fail-on-warn:
+    description: 'Treat warnings as failures (true/false)'
+    required: false
+    default: 'false'
+  dc-dir:
+    description: 'Path to .dc/ directory (auto-detects .dc/ or .especdev/)'
+    required: false
+    default: ''
+  custom-gates-dir:
+    description: 'Path to custom gates directory'
+    required: false
+    default: '.dc/gates'
+
+outputs:
+  passed:
+    description: 'Whether all gates passed (true/false)'
+    value: ${{ steps.check.outputs.passed }}
+  report:
+    description: 'Full report in markdown format'
+    value: ${{ steps.check.outputs.report }}
+  coverage:
+    description: 'Test coverage percentage'
+    value: ${{ steps.check.outputs.coverage }}
+  gates-passed:
+    description: 'Number of gates passed'
+    value: ${{ steps.check.outputs.gates_passed }}
+  gates-total:
+    description: 'Total number of gates'
+    value: ${{ steps.check.outputs.gates_total }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Setup Don Cheli SDD Check
+      shell: bash
+      run: |
+        # Download sdd-check.sh from the action's directory
+        if [ -f "${{ github.action_path }}/scripts/sdd-check.sh" ]; then
+          SDD_CHECK="${{ github.action_path }}/scripts/sdd-check.sh"
+        else
+          echo "Downloading sdd-check.sh..."
+          curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/sdd-check.sh -o /tmp/sdd-check.sh
+          SDD_CHECK="/tmp/sdd-check.sh"
+        fi
+        chmod +x "$SDD_CHECK"
+        echo "SDD_CHECK=$SDD_CHECK" >> $GITHUB_ENV
+
+    - name: Run SDD Quality Gates
+      id: check
+      shell: bash
+      env:
+        INPUT_GATES: ${{ inputs.gates }}
+        INPUT_MIN_COVERAGE: ${{ inputs.min-coverage }}
+        INPUT_FAIL_ON_WARN: ${{ inputs.fail-on-warn }}
+        INPUT_DC_DIR: ${{ inputs.dc-dir }}
+        INPUT_CUSTOM_GATES_DIR: ${{ inputs.custom-gates-dir }}
+      run: bash "$SDD_CHECK"
+
+    - name: Comment on PR
+      if: inputs.comment-pr == 'true' && github.event_name == 'pull_request'
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        REPORT: ${{ steps.check.outputs.report }}
+      run: |
+        if [ -n "$REPORT" ]; then
+          gh pr comment "${{ github.event.pull_request.number }}" --body "$REPORT" || true
+        fi

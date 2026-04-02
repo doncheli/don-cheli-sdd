@@ -1,0 +1,21 @@
+# Don Cheli SDD — GitLab CI Quality Gates
+# Copy this to your .gitlab-ci.yml or include it as a template
+#
+# Prerequisite: Your project must have a .dc/ directory with SDD artifacts.
+
+sdd-check:
+  stage: test
+  image: ubuntu:latest
+  variables:
+    INPUT_GATES: "all"
+    INPUT_MIN_COVERAGE: "85"
+    INPUT_FAIL_ON_WARN: "false"
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq curl git bc
+    - curl -fsSL https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/scripts/sdd-check.sh -o /tmp/sdd-check.sh
+    - chmod +x /tmp/sdd-check.sh
+  script:
+    - bash /tmp/sdd-check.sh
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  allow_failure: false

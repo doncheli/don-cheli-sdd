@@ -1,0 +1,6 @@
+name: Require error handling en async
+type: grep
+pattern: "async.*\\{[^}]*await[^}]*\\}"
+files: "src/**/*.ts"
+severity: warn
+message: "Función async sin try/catch detectada. Agrega manejo de errores."

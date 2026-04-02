@@ -1,0 +1,12 @@
+name: Archivos no mayores a 300 lineas
+type: script
+severity: warn
+message: "Archivo excede 300 líneas. Considera dividirlo."
+run: |
+  find src/ -name "*.ts" -o -name "*.js" -o -name "*.py" | while read f; do
+    lines=$(wc -l < "$f" | tr -d ' ')
+    if [ "$lines" -gt 300 ]; then
+      echo "$f: $lines lines"
+      exit 1
+    fi
+  done

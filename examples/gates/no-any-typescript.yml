@@ -1,0 +1,6 @@
+name: No any en TypeScript
+type: grep
+pattern: ": any"
+files: "src/**/*.ts"
+severity: warn
+message: "Tipo 'any' detectado. Usa tipos explícitos."
