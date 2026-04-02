@@ -1,0 +1,151 @@
+{
+  "name": "don-cheli-sdd",
+  "displayName": "Don Cheli SDD",
+  "description": "Specification-Driven Development framework for AI agents. Stop guessing, start engineering.",
+  "version": "1.0.0",
+  "publisher": "doncheli",
+  "icon": "assets/icon.png",
+  "galleryBanner": {
+    "color": "#0a0a0f",
+    "theme": "dark"
+  },
+  "categories": [
+    "Other",
+    "Testing",
+    "Linters"
+  ],
+  "keywords": [
+    "sdd",
+    "tdd",
+    "claude-code",
+    "ai-framework",
+    "quality-gates",
+    "gherkin",
+    "owasp",
+    "specification-driven"
+  ],
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "workspaceContains:.dc",
+    "workspaceContains:.especdev"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "don-cheli",
+          "title": "Don Cheli SDD",
+          "icon": "assets/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "don-cheli": [
+        {
+          "id": "doncheli.status",
+          "name": "Project Status"
+        },
+        {
+          "id": "doncheli.gates",
+          "name": "Quality Gates"
+        },
+        {
+          "id": "doncheli.commands",
+          "name": "Commands"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "doncheli.init",
+        "title": "Don Cheli: Initialize Project",
+        "icon": "$(rocket)"
+      },
+      {
+        "command": "doncheli.start",
+        "title": "Don Cheli: Start Task",
+        "icon": "$(play)"
+      },
+      {
+        "command": "doncheli.status",
+        "title": "Don Cheli: Show Status",
+        "icon": "$(info)"
+      },
+      {
+        "command": "doncheli.runGates",
+        "title": "Don Cheli: Run Quality Gates",
+        "icon": "$(shield)"
+      },
+      {
+        "command": "doncheli.dashboard",
+        "title": "Don Cheli: Open Dashboard",
+        "icon": "$(graph)"
+      },
+      {
+        "command": "doncheli.runCommand",
+        "title": "Don Cheli: Run Command...",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "doncheli.refresh",
+        "title": "Don Cheli: Refresh",
+        "icon": "$(refresh)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "doncheli.refresh",
+          "when": "view =~ /doncheli/",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Don Cheli SDD",
+      "properties": {
+        "doncheli.terminal": {
+          "type": "string",
+          "default": "claude",
+          "enum": ["claude", "cursor", "terminal"],
+          "description": "AI agent to use for executing commands"
+        },
+        "doncheli.language": {
+          "type": "string",
+          "default": "es",
+          "enum": ["es", "en", "pt"],
+          "description": "Language for Don Cheli output"
+        },
+        "doncheli.minCoverage": {
+          "type": "number",
+          "default": 85,
+          "description": "Minimum test coverage percentage"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0",
+    "@vscode/vsce": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/doncheli/don-cheli-sdd"
+  },
+  "homepage": "https://doncheli.tv",
+  "bugs": {
+    "url": "https://github.com/doncheli/don-cheli-sdd/issues"
+  },
+  "license": "Apache-2.0"
+}
