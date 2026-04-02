@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.17.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.5...v1.17.0) (2026-04-02)
+
+### Nuevas Funcionalidades
+
+* CI/CD integration, Custom Quality Gates y Telemetría (Fases 1-3) ([ac8facb](https://github.com/doncheli/don-cheli-sdd/commit/ac8facbef51543f6c136e614abf07c9f287eafee))
+
 ## [1.16.5](https://github.com/doncheli/don-cheli-sdd/compare/v1.16.4...v1.16.5) (2026-04-02)
 
 ### Correcciones
