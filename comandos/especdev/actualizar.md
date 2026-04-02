@@ -18,6 +18,26 @@ Verificar si hay actualizaciones disponibles en el repositorio de Don Cheli y of
 /dc:actualizar --auto         # Auto-actualizar con auditoría de seguridad (usado por auto-check de sesión)
 ```
 
+## Script ejecutable
+
+Para ejecutar directamente desde terminal (sin agente IA):
+
+```bash
+bash scripts/actualizar.sh              # Interactivo con barra de progreso
+bash scripts/actualizar.sh --verificar  # Solo verificar
+don-cheli update                        # Via CLI npm
+don-cheli update --check                # Solo verificar via npm
+```
+
+El script incluye:
+- Barra de progreso visual con porcentaje
+- Comparación de versiones (local vs remota)
+- Reporte de commits por tipo (feat/fix/refactor/docs)
+- Tabla de componentes (comandos, habilidades) con delta
+- Lista de nuevas funcionalidades y correcciones
+- Auditoría de seguridad pre-actualización
+- Preservación de perfil e idioma al actualizar
+
 ## Proceso
 
 ### 1. Detectar instalación

@@ -8,6 +8,7 @@ const FRAMEWORK_ROOT = path.resolve(__dirname, '..');
 const VERSION = fs.readFileSync(path.join(FRAMEWORK_ROOT, 'VERSION'), 'utf8').trim();
 const INSTALLER = path.join(FRAMEWORK_ROOT, 'scripts', 'instalar.sh');
 const VALIDATOR = path.join(FRAMEWORK_ROOT, 'scripts', 'validar.sh');
+const UPDATER = path.join(FRAMEWORK_ROOT, 'scripts', 'actualizar.sh');
 
 const args = process.argv.slice(2);
 const command = args[0] || 'help';
@@ -23,6 +24,8 @@ const HELP = `
     install, instalar     Instalar el framework (interactivo)
     install --global      Instalar globalmente
     install --lang <es|en|pt>  Instalar con idioma específico
+    update, actualizar    Actualizar a la última versión
+    update --check        Solo verificar, no aplicar
     validate, validar     Validar estructura del framework
     version               Mostrar versión
     help                  Mostrar esta ayuda
@@ -30,6 +33,7 @@ const HELP = `
   Ejemplos:
     don-cheli install
     don-cheli install --global --lang es
+    don-cheli update
     don-cheli install --global --lang en --profile phantom
     don-cheli validate
     npx don-cheli-sdd install --global
@@ -59,6 +63,12 @@ switch (command) {
   case 'validate':
   case 'validar':
     run(VALIDATOR, args.slice(1));
+    break;
+
+  case 'update':
+  case 'actualizar':
+  case 'upgrade':
+    run(UPDATER, args.slice(1));
     break;
 
   case 'version':
