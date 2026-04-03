@@ -1,5 +1,5 @@
 ---
-description: Detectar y cuantificar deuda técnica, con clasificación especial para código generado por IA
+description: Detectar y cuantificar deuda técnica con clasificación. Usa cuando el usuario dice "deuda técnica", "technical debt", "code smells", "refactorizar", "tech debt", "code rot", "spaghetti code", "duplicación", "complejidad ciclomática", "mantenibilidad". Incluye clasificación especial para AI slop. Genera reporte con severidad y costo estimado.
 i18n: true
 ---
 

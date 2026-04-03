@@ -1,5 +1,5 @@
 ---
-description: Generar presentación interactiva HTML desde contenido del proyecto
+description: Generar presentación interactiva HTML desde contenido del proyecto. Usa cuando el usuario dice "presentar", "presentación", "slides", "presentation", "generar slides", "HTML presentation", "demo", "present project", "showcase", "pitch". Genera presentación HTML interactiva desde specs, docs o código del proyecto.
 i18n: true
 ---
 

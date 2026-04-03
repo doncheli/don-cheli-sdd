@@ -1,5 +1,5 @@
 ---
-description: Inicializar Don Cheli en un proyecto nuevo o existente
+description: Inicializar Don Cheli SDD en un proyecto nuevo o existente. Usa cuando el usuario dice "inicializar Don Cheli", "setup Don Cheli", "install framework", "configurar SDD", "initialize project", "setup SDD", "empezar con Don Cheli", "bootstrap", "activar framework". Crea estructura .dc/, instala hooks, configura skills y valida setup.
 i18n: true
 ---
 

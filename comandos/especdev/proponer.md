@@ -1,5 +1,5 @@
 ---
-description: Crear propuesta de cambio con intención, alcance y enfoque antes de especificar
+description: Crear propuesta de cambio (RFC/propuesta) antes de especificar. Usa cuando el usuario dice "RFC", "propuesta", "crear propuesta", "proponer cambio", "request for comments", "proposal", "nueva iniciativa", "change proposal", "avant projet". Documenta intención, alcance, alternativas y enfoque recomendado.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Extraer especificaciones compactas desde código existente (Blueprint Distillation)
+description: Extraer especificaciones compactas desde código existente (Blueprint Distillation). Usa cuando el usuario dice "destilar", "extraer specs", "reverse specs", "code to specs", "distill", "existing code to Gherkin", "specification from code", "document existing code". Convierte código legacy en specs Gherkin compactas para enabling TDD en código existente.
 i18n: true
 ---
 

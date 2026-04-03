@@ -1,5 +1,5 @@
 ---
-description: Configurar triggers externos (GitHub, Slack, Linear, PagerDuty) para automatizar comandos Don Cheli
+description: Configurar triggers externos (GitHub, Slack, Linear, PagerDuty) para automatizar comandos Don Cheli. Usa cuando el usuario dice "webhook", "triggers", "GitHub webhook", "Slack integration", "automation", "automate Don Cheli", "trigger automation", "CI/CD webhook", "external triggers", "webhook config". Configura webhooks para que eventos externos invoquen comandos Don Cheli automáticamente.
 i18n: true
 ---
 

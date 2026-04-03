@@ -1,5 +1,5 @@
 ---
-description: Auto-generar entradas de CHANGELOG.md desde commits convencionales
+description: Auto-generar entradas de CHANGELOG.md desde commits convencionales. Usa cuando el usuario dice "generar changelog", "update changelog", "changelog", "conventional commits", "auto changelog", "release notes", "generar release notes", "伽 changelog". Genera entradas desde conventional commits (feat, fix, docs, etc.) con agrupamiento por categoría.
 i18n: true
 ---
 

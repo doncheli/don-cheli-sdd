@@ -1,5 +1,5 @@
 ---
-description: Revisión automatizada de Pull Requests con análisis de cobertura, seguridad y conformidad con specs
+description: Revisión automatizada de Pull Requests con análisis de coverage, seguridad y conformidad con specs. Usa cuando el usuario dice "revisar PR", "PR review", "pull request review", "review this PR", "analizar PR", "GitHub PR", "merge request", "code review PR", "checar PR antes de merge". Analiza coverage diff, security hotspots y drift contra specs Gherkin.
 i18n: true
 ---
 

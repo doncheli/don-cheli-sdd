@@ -1,5 +1,5 @@
 ---
-description: Modo completo para proyectos grandes y complejos (Nivel 3)
+description: Modo completo para proyectos grandes y complejos (Nivel 3). Usa cuando el usuario dice "modo completo", "proyecto grande", "complejo", "full mode", "large project", "complex feature", "level 3", "gran proyecto". Activa el workflow SDD completo con todas las fases: especificar → planificar → estimar → implementar → testear → revisar.
 i18n: true
 ---
 

@@ -1,0 +1,27 @@
+# Configuración del Proyecto Don Cheli
+proyecto:
+  nombre: "don-cheli-sdd"
+  tipo: "libreria"  # producto|cli|app|libreria|servicio|refactor|correccion|poc
+  descripcion: "Framework SDD para Claude Code — 72+ comandos, 43 habilidades, 15 modelos de razonamiento"
+  version: "1.19.0"
+
+# Modelos de IA
+modelos:
+  default: sonnet
+  agentes:
+    planificador: opus
+    arquitecto: opus
+    ejecutor: sonnet
+    revisor: opus
+    tester: sonnet
+    documentador: haiku
+    estimador: opus
+
+# Historial de sesiones
+historial:
+  habilitado: true
+  maxSesiones: 10
+  autoGuardar: true
+
+# Idioma
+idioma: "es"

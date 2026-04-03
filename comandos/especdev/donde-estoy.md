@@ -1,5 +1,5 @@
 ---
-description: Test rápido de 5 preguntas para verificar contexto
+description: Test rápido de 5 preguntas para verificar contexto antes de continuar. Usa cuando el usuario dice "donde estoy", "verify context", "context check", "check my context", "Dónde estamos", "am I in the right context", "context verification", "5 preguntas", "verificar contexto". Test de 5 preguntas que verifica si el modelo tiene el contexto correcto antes de proceder.
 i18n: true
 ---
 

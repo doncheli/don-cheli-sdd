@@ -1,5 +1,5 @@
 ---
-description: Guardar insights importantes para referencia futura
+description: Guardar insights importantes para referencia futura en memoria persistente. Usa cuando el usuario dice "memorizar", "remember this", "guardar insight", "save for later", "memorize", "remember", "keep track", "guardar aprendizaje", "store insight". Guarda en memoria persistente del workspace para recall en sesiones futuras.
 i18n: true
 ---
 

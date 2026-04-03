@@ -1,5 +1,5 @@
 ---
-description: Validar la conformidad de archivos .dc/
+description: Validar la conformidad de archivos .dc/ y setup del framework. Usa cuando el usuario dice "validar", "validate setup", "validar archivos", "check conformity", "validate Don Cheli", "framework validation", ".dc files", "validación". Verifica que todos los archivos .dc/ cumplan con el schema y las convenciones del framework.
 i18n: true
 ---
 

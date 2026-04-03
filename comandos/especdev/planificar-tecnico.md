@@ -1,5 +1,5 @@
 ---
-description: Generar blueprint técnico desde una especificación Gherkin
+description: Generar blueprint/diseño técnico desde especificación Gherkin. Usa cuando el usuario dice "blueprint técnico", "technical design", "diseño técnico", "technical planning", "diseñar sistema", "architecture design", "technical blueprint", "plan técnico", "API design", "database schema". Convierte specs Gherkin en blueprint ejecutable con decisiones de arquitectura documentadas.
 i18n: true
 ---
 

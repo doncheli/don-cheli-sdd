@@ -1,5 +1,5 @@
 ---
-description: Diagnosticar y reparar problemas del framework, git y entorno
+description: Diagnosticar y reparar problemas del framework Don Cheli, git y entorno. Usa cuando el usuario dice "doctor", "problemas del framework", "don cheli no funciona", "repair Don Cheli", "debug setup", "setup broken", "framework broken", "reparar entorno". Detecta y repara issues de configuración, git y dependencias automáticamente.
 i18n: true
 ---
 
