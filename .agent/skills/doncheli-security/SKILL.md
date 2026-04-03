@@ -1,6 +1,6 @@
 ---
 name: doncheli-security
-description: Perform OWASP Top 10 static security audit identifying vulnerabilities in access control, cryptography, injection, configuration, and logging. Activate when user mentions "security audit", "OWASP", "security scan", "vulnerabilities", "auditar seguridad".
+description: Perform OWASP Top 10 static security audit detecting injection, XSS, CSRF, CVEs and misconfigurations. Activate when user mentions "security audit", "OWASP", "security scan", "vulnerabilities", "pentest", "XSS", "CSRF", "CVEs", "SQL injection", "security before deploy".
 ---
 
 # Don Cheli: OWASP Security Audit
