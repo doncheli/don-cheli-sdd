@@ -56,6 +56,9 @@ generar_configs() {
             continue)
                 _gen_continue "$install_dir" "$framework_home" "$locale"
                 ;;
+            opencode)
+                _gen_opencode "$install_dir" "$framework_home" "$locale"
+                ;;
             *)
                 echo -e "  ${YELLOW}⚠${NC} Unknown tool: '$tool' — skipping" >&2
                 ;;
@@ -249,5 +252,70 @@ _gen_continue() {
   ]
 }
 CONTEOF
+    fi
+}
+
+# ─────────────────────────────────────────────
+# OpenCode → ~/.config/opencode/config.json
+# ─────────────────────────────────────────────
+_gen_opencode() {
+    local dir="$1" home="$2" locale="$3"
+
+    echo -e "     ${GREEN:-}✓${NC:-} OpenCode → ~/.config/opencode/config.json"
+
+    local opencode_config="$HOME/.config/opencode/config.json"
+    local skills_path="${home}/.agent/skills"
+    local tmp_config
+
+    # Ensure opencode config directory exists
+    mkdir -p "$(dirname "$opencode_config")" 2>/dev/null || true
+
+    # If config doesn't exist, create it
+    if [ ! -f "$opencode_config" ]; then
+        cat > "$opencode_config" << 'OPENCODECONFIG'
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": true,
+  "permission": {
+    "external_directory": {}
+  },
+  "skills": {
+    "paths": []
+  }
+}
+OPENCODECONFIG
+        echo -e "     ${GREEN:-}✓${NC:-} Created new opencode config"
+    fi
+
+    # Use jq if available for robust JSON editing
+    if command -v jq &>/dev/null; then
+        # Add external_directory permission
+        jq '(.permission.external_directory // {}) |= if has("/root/.claude/**") then . else . + {"/root/.claude/**": "allow"} end' "$opencode_config" > "${opencode_config}.tmp" && mv "${opencode_config}.tmp" "$opencode_config"
+
+        # Add skills path
+        jq ".skills.paths += [\"${skills_path}\"] | .skills.paths = (.skills.paths | unique)" "$opencode_config" > "${opencode_config}.tmp" && mv "${opencode_config}.tmp" "$opencode_config"
+
+        echo -e "     ${GREEN:-}✓${NC:-} Config updated with jq"
+    else
+        # Fallback: append to paths array manually (less robust)
+        if ! grep -q "${skills_path}" "$opencode_config" 2>/dev/null; then
+            # Simple append to paths array (last element stays as empty array)
+            sed -i "s/\"paths\": \[\]/\"paths\": [\"${skills_path}\"]/" "$opencode_config" 2>/dev/null || true
+        fi
+
+        if ! grep -q '"/root/.claude' "$opencode_config" 2>/dev/null; then
+            # Simple append to external_directory (might create invalid JSON)
+            sed -i 's/"external_directory": {}/"external_directory": { "\/root\/.claude\/**": "allow" }/' "$opencode_config" 2>/dev/null || true
+        fi
+
+        echo -e "     ${YELLOW:-}⚠${NC:-} jq not found, used fallback sed (less reliable)"
+    fi
+
+    # Verify final config
+    if [ -f "$opencode_config" ]; then
+        echo -e "     ${GREEN:-}✓${NC:-} Config saved to ${opencode_config}"
+        echo -e "     ${GREEN:-}✓${NC:-} Skills path: ${skills_path}"
+    else
+        echo -e "     ${YELLOW:-}⚠${NC:-} Failed to write config"
     fi
 }
