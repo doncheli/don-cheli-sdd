@@ -1,5 +1,5 @@
 ---
-description: Capturar ideas y notas sin interrumpir el flujo de trabajo
+description: Capturar ideas y notas sin interrumpir el flujo de trabajo. Usa cuando el usuario dice "capturar idea", "quick note", "nota rápida", "grab this", "take a note", "guardar idea", "note to self", "capture thought", "I should remember", "guardar esto". Guarda en memoria persistente sin romper el contexto actual.
 i18n: true
 ---
 

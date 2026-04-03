@@ -1,5 +1,5 @@
 ---
-description: Diseño técnico con decisiones de arquitectura documentadas
+description: Diseño técnico con decisiones de arquitectura documentadas (ADR). Usa cuando el usuario dice "diseño técnico", "technical design", "architecture decision", "ADR", "Architecture Decision Record", "diseñar sistema", "system design", "trade-offs", "decisiones de arquitectura", "design doc". Captura el why junto con el what, evaluando alternatives y consequences.
 i18n: true
 ---
 

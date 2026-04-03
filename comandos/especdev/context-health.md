@@ -1,5 +1,5 @@
 ---
-description: Dashboard de salud del contexto activo con predicción de degradación y recomendaciones de compactación
+description: Dashboard de salud del contexto activo con predicción de degradación y recomendaciones de compactación. Usa cuando el usuario dice "context health", "salud del contexto", "degradation", "compactar contexto", "context overflow", "tokens", "session health", "compact", "contexto lleno". Monitorea degrdación del contexto y recomienda compactación antes de overflow.
 i18n: true
 ---
 

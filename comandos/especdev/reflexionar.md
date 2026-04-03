@@ -1,5 +1,5 @@
 ---
-description: Reflexionar sobre una tarea para mejorar calidad (+8-21%)
+description: Reflexionar sobre una tarea para mejorar calidad (+8-21%). Usa cuando el usuario dice "reflexionar", "reflect", "reflexión", "quality improvement", "improve", "think about this", "meditate", "analyze approach", "retro on this". Aplica reflexión estructurada sobre la tarea para mejorar calidad y detectar issues antes de implementar.
 i18n: true
 ---
 

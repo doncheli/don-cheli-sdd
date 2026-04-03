@@ -1,5 +1,5 @@
 ---
-description: Crear especificación Gherkin desde un requerimiento con schema DBML auto-generado
+description: Crear especificaciones Gherkin desde un requerimiento/requisito. Usa cuando el usuario dice "escribir specs", "especificar feature", "crear Gherkin", "escribir requerimientos", "write specs", "requirements to Gherkin", "escribir scenarios", "documentar feature en Gherkin". Genera DBML schema auto-máticamente para persistence. Incluye validación contra el schema IEEE 29148.
 i18n: true
 ---
 

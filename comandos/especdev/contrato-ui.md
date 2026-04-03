@@ -1,5 +1,5 @@
 ---
-description: Bloquear estándares visuales antes de codear frontend (UI Design Contract)
+description: Bloquear estándares visuales antes de codear frontend (UI Design Contract). Usa cuando el usuario dice "UI contract", "diseño UI", "frontend standards", "visual contract", "CSS standards", "UI design", "design system", "componentes UI", "mockups", "wireframes", "bloquear UI antes de codear". Define spacing, colors, typography y component specs antes del desarrollo.
 i18n: true
 ---
 

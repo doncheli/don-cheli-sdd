@@ -1,5 +1,5 @@
 ---
-description: Cargar un agente especializado para una tarea específica
+description: Cargar un agente especializado para una tarea específica. Usa cuando el usuario dice "cargar agente", "usar agente", "specialist agent", "spawn agent", "subagent", "agente especializado", "run agent", "delegar a agente". Detecta el tipo de agente necesario (Explore, Plan, general-purpose) y spawnea el subagent apropiado.
 i18n: true
 ---
 

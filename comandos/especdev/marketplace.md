@@ -1,5 +1,5 @@
 ---
-description: Instalar y gestionar skills desde el marketplace de Anthropic y la comunidad
+description: Instalar y gestionar skills desde el marketplace de Anthropic y la comunidad. Usa cuando el usuario dice "marketplace", "install skill", "skills marketplace", "anthropic marketplace", "community skills", "instalar habilidad", "download skill", "skill registry". Busca, instala y gestiona skills desde el marketplace.
 i18n: true
 ---
 

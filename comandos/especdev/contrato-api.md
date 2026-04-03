@@ -1,5 +1,5 @@
 ---
-description: Diseñar contratos de API, webhooks e integraciones con manejo de errores y reintentos
+description: Diseñar contratos de API, webhooks e integraciones con manejo de errores y reintentos. Usa cuando el usuario dice "contrato API", "API contract", "diseñar API", "webhook", "API design", "contrato de integración", "OpenAPI", "REST contract", "request/response spec". Define request/response schemas, error handling y retry policies.
 i18n: true
 ---
 

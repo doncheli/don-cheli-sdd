@@ -1,5 +1,5 @@
 ---
-description: Crear todos los artefactos de planificación de un golpe (fast-forward)
+description: Crear todos los artefactos de planificación de un golpe (fast-forward). Usa cuando el usuario dice "fast-forward", "avance rápido", "generar todo", "boilerplate", "generate all artifacts", "fast setup", "scaffold", "generar planning artifacts", "一次性", "generate everything". Genera specs, stories, tasks, estimates y docs desde un requerimiento en una sola pasada.
 i18n: true
 ---
 

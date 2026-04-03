@@ -1,5 +1,5 @@
 ---
-description: Generar estimados de desarrollo usando múltiples modelos de estimación
+description: Generar estimados de desarrollo con múltiples modelos (Planning Poker IA, Puntos de Función, COCOMO, Histórico). Usa cuando el usuario dice "estimar", "planning poker", "story points", "esfuerzo", "cuánto tiempo", "estimate effort", "t-shirt sizes", "velocity". 3 agentes independientes estiman en paralelo con fórmula PERT.
 i18n: true
 ---
 

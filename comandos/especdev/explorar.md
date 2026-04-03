@@ -1,5 +1,5 @@
 ---
-description: Explorar e investigar el codebase antes de proponer cambios
+description: Explorar e investigar el codebase antes de proponer cambios. Usa cuando el usuario dice "explorar codebase", "investigar código", "understand codebase", "research code", "explorar proyecto", "code investigation", "entender código", "dependency analysis". Investigación profunda leyendo archivos, trazando dependencies y resumiendo con file references.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Testing visual de componentes UI y páginas con detección de regresiones visuales
+description: Testing visual de componentes UI y páginas con detección de regresiones visuales. Usa cuando el usuario dice "visual test", "snapshot test", "regression test UI", "visual regression", "UI test", "component test", "screenshot test", "Chromatic", "percy", "regred visual". Detecta cambios visuales en componentes y páginas comparando snapshots automatizadamente.
 i18n: true
 ---
 

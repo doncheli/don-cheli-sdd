@@ -1,5 +1,5 @@
 ---
-description: Planificar y ejecutar migración entre stacks tecnológicos o versiones mayores
+description: Planificar y ejecutar migración entre stacks tecnológicos o versiones mayores. Usa cuando el usuario dice "migrar", "migration", "migrate", "actualizar stack", "upgrade stack", "technology migration", "version upgrade", "migración". Planifica y ejecuta migración completa con rollback plan, tests de regression y validación.
 i18n: true
 ---
 

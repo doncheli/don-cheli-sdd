@@ -1,5 +1,5 @@
 ---
-description: Analizar sesiones de Claude en el equipo para extraer patrones de uso y generar recomendaciones de habilidades, plugins, agentes y reglas
+description: Analizar sesiones de Claude en el equipo para extraer patrones de uso y generar recomendaciones. Usa cuando el usuario dice "analizar sesiones", "session analysis", "patrones de uso", "usage patterns", "recommendations", "analizar cómo uso Claude". Extrae patterns y genera recomendaciones de skills, plugins, agentes y rules.
 i18n: true
 ---
 

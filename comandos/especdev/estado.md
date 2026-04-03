@@ -1,5 +1,5 @@
 ---
-description: Mostrar el estado actual del proyecto Don Cheli
+description: Mostrar estado actual del proyecto Don Cheli. Usa cuando el usuario dice "estado", "status", "cómo va el proyecto", "project status", "avance", "dashboard", ".dc status", "progreso", "donde estamos", "health check". Muestra specs activas, tareas en curso, debt y métricas del proyecto.
 i18n: true
 ---
 

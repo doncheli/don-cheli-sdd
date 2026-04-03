@@ -1,5 +1,5 @@
 ---
-description: Incorporar nuevo desarrollador al proyecto con contexto completo
+description: Incorporar nuevo desarrollador al proyecto con contexto completo. Usa cuando el usuario dice "incorporar", "onboarding", "nuevo dev", "nuevo desarrollador", "new developer", "incorporate", "team onboarding", "developer onboarding", "nueva persona". Genera contexto completo del proyecto para que el nuevo dev pueda empezar a trabajar.
 i18n: true
 ---
 

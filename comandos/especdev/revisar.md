@@ -1,5 +1,5 @@
 ---
-description: Peer review estricto con análisis de rendimiento, arquitectura, seguridad y cumplimiento
+description: Peer review estricto de código con análisis de rendimiento, arquitectura, seguridad y cumplimiento. Usa cuando el usuario dice "revisar código", "code review", "peer review", "revisame este archivo", "review my code", "analizar código", "revisar PR", "revisar feature". Incluye análisis de performance, security OWASP, architecture smells y compliance con specs.
 i18n: true
 ---
 

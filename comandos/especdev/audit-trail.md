@@ -1,5 +1,5 @@
 ---
-description: Generar y consultar el log de auditoría de decisiones asistidas por IA
+description: Generar y consultar el log de auditoría de decisiones asistidas por IA. Usa cuando el usuario dice "audit trail", "decision log", "log de decisiones", "AI decisions", "audit log", "追溯", "track decisions", "quien decidió qué", "decision history". Registra y consulta el log de decisiones tomadas durante la sesión.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Archivar specs completadas y sincronizar delta specs con specs principales
+description: Archivar specs completadas y sincronizar delta specs con specs principales. Usa cuando el usuario dice "archivar specs", "archivar", "close completed specs", "spec archiving", "archive specs", "especificaciones completadas". Limpia specs cerradas y sincroniza delta specs con el main branch.
 i18n: true
 ---
 

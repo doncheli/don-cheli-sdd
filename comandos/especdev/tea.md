@@ -1,5 +1,5 @@
 ---
-description: Testing Autónomo End-to-End — genera, ejecuta y reporta tests automáticamente
+description: Testing Autónomo End-to-End (TEA): genera, ejecuta y reporta tests automáticamente. Usa cuando el usuario dice "E2E test", "test end-to-end", "correr tests", "generar tests", "testing suite", "run tests", "automated testing", "pruebas E2E", "test coverage", "regression testing". Detecta el framework de testing del proyecto automáticamente. phases: analyze → generate → execute → report.
 i18n: true
 ---
 

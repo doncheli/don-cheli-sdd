@@ -1,5 +1,5 @@
 ---
-description: Ejecutar tareas TDD fase por fase dentro de Docker hasta que todos los tests pasen
+description: Ejecutar desarrollo TDD fase por fase (RED→GREEN→REFACTOR) hasta que todos los tests pasen. Usa cuando el usuario dice "implementar", "codificar feature", "TDD", "desarrollar", "hacer que pase el test", "implement this", "write the code", "build feature", "hacer TDD", "ciclo TDD". Detecta el framework de testing del proyecto y ejecuta dentro de Docker si aplica. Sigue el ciclo: write failing test → write minimal code → refactor.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Validar la calidad y completitud de una especificación antes de planificar
+description: Validar la calidad y completitud de una especificación antes de planificar. Usa cuando el usuario dice "validar spec", "validate spec", "spec quality", "validar specs", "spec completeness", "checar specs", "check spec quality", "IEEE 29148", "spec verification". Valida que la spec esté completa y lista para planificación antes de proceder.
 i18n: true
 ---
 

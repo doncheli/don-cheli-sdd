@@ -1,5 +1,5 @@
 ---
-description: Recuperar sesión previa y generar reporte de puesta al día
+description: Recuperar sesión previa y generar reporte de puesta al día. Usa cuando el usuario dice "continuar", "resume session", "recuperar sesión", "continue working", "reanudar", "pick up where we left", "recuperar contexto", "resume". Lee el estado guardado, genera reporte de lo hecho y propone next steps.
 i18n: true
 ---
 

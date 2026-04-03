@@ -1,5 +1,5 @@
 ---
-description: Generar scripts de User Acceptance Testing para validación humana
+description: Generar scripts de User Acceptance Testing (UAT) para validación humana. Usa cuando el usuario dice "UAT", "user acceptance testing", "pruebas de aceptación", "acceptance tests", "UAT scripts", "validación usuario", "QA testing", "sprint review", "acceptance criteria", "validar con usuario". Genera scripts ejecutables con steps, datos de prueba y expected results.
 i18n: true
 ---
 

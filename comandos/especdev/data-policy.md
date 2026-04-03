@@ -1,5 +1,5 @@
 ---
-description: Documentar qué datos toca el framework, qué sale a APIs externas y generar política de privacidad del proyecto
+description: Documentar qué datos toca el framework, qué sale a APIs externas y generar política de privacidad. Usa cuando el usuario dice "data policy", "política de datos", "privacy policy", "datos sensibles", "GDPR", "data handling", "APIs externas", "external APIs", "qué datos se comparten". Mapea data flows y genera política de privacidad del proyecto.
 i18n: true
 ---
 
