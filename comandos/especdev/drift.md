@@ -1,5 +1,5 @@
 ---
-description: Detectar divergencias entre specs Gherkin e implementación real
+description: Detectar divergencias entre specs Gherkin e implementación (spec drift). Usa cuando el usuario dice "spec drift", "drift detection", "spec vs código", "conformance check", "spec deviation", "código no matchea specs", "implementation diverged", "spec vs implementation", "verificar specs". Compara features implementadas contra specs y reporta gaps con severity.
 i18n: true
 ---
 

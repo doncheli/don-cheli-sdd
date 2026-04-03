@@ -1,5 +1,5 @@
 ---
-description: Generar handoff de contexto para transferencia de sesión
+description: Generar handoff de contexto para transferencia de sesión entre equipos. Usa cuando el usuario dice "traspaso", "handoff", "context transfer", "session handoff", "context switch", "team transfer", "context handover". Genera handoff completo con estado, decisiones, pendientes y contexto para recibir el equipo.
 i18n: true
 ---
 

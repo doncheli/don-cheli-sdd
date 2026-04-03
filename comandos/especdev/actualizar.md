@@ -1,5 +1,5 @@
 ---
-description: Detectar actualizaciones del framework Don Cheli y aplicarlas
+description: Detectar y aplicar actualizaciones del framework Don Cheli. Usa cuando el usuario dice "actualizar Don Cheli", "update framework", "nueva versión", "upgrade". Aplica updates con auditoría de seguridad sobre archivos cambiados. POST-INVOCATION: solo se invoca manualmente.
 i18n: true
 ---
 
@@ -17,26 +17,6 @@ Verificar si hay actualizaciones disponibles en el repositorio de Don Cheli y of
 /dc:actualizar --forzar       # Aplicar sin confirmar
 /dc:actualizar --auto         # Auto-actualizar con auditoría de seguridad (usado por auto-check de sesión)
 ```
-
-## Script ejecutable
-
-Para ejecutar directamente desde terminal (sin agente IA):
-
-```bash
-bash scripts/actualizar.sh              # Interactivo con barra de progreso
-bash scripts/actualizar.sh --verificar  # Solo verificar
-don-cheli update                        # Via CLI npm
-don-cheli update --check                # Solo verificar via npm
-```
-
-El script incluye:
-- Barra de progreso visual con porcentaje
-- Comparación de versiones (local vs remota)
-- Reporte de commits por tipo (feat/fix/refactor/docs)
-- Tabla de componentes (comandos, habilidades) con delta
-- Lista de nuevas funcionalidades y correcciones
-- Auditoría de seguridad pre-actualización
-- Preservación de perfil e idioma al actualizar
 
 ## Proceso
 

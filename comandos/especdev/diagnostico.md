@@ -1,5 +1,5 @@
 ---
-description: Verificar la salud del setup de Don Cheli en el proyecto actual
+description: Verificar la salud del setup de Don Cheli en el proyecto actual. Usa cuando el usuario dice "diagnóstico", "health check", "verificar setup", "don cheli health", "framework status", "setup issues", "validar configuración", "check Don Cheli". Detecta problemas de configuración, missing files, y propone repairs automáticos.
 i18n: true
 ---
 

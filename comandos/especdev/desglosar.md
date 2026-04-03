@@ -1,5 +1,5 @@
 ---
-description: Dividir un blueprint técnico en tareas con TDD (RED→GREEN) y marcadores de paralelismo
+description: Dividir blueprint técnico en tareas ejecutables con marcadores de paralelismo. Usa cuando el usuario dice "desglosar", "dividir en tareas", "breakdown", "task breakdown", "WBS", "dividir feature", "plan de tareas", "decompose", "story to tasks", "task planning", "subtareas". Aplica TDD markers (RED→GREEN) e indica tareas paralelizables.
 i18n: true
 ---
 

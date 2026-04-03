@@ -1,5 +1,5 @@
 ---
-description: Puntuación cuantitativa de calidad de especificaciones (0-100) con 8 métricas basadas en IEEE 830 / ISO 29148
+description: Puntuación cuantitativa de calidad de especificaciones (0-100) con 8 métricas. Usa cuando el usuario dice "spec score", "quality score", "spec quality", "completitud de specs", "IEEE 830", "ISO 29148", "spec assessment", "medir calidad specs". Score de 0-100 con 8 métricas: completitud, consistencia, verificabilidad, traceability, editabilidad, atomicidad, cobertura y standard compliance.
 i18n: true
 ---
 

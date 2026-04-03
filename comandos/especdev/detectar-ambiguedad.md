@@ -1,5 +1,5 @@
 ---
-description: Detectar ambigüedades y contradicciones en specs de forma exhaustiva
+description: Detectar ambigüedades y contradicciones en specs de forma exhaustiva. Usa cuando el usuario dice "detectar ambigüedad", "spec contradictions", "vague requirements", "spec gaps", "ambigüedad", "contradiction in specs", "inconsistency", "fuzzy spec", "req ambiguity". Análisis exhaustivo línea por línea buscando gaps, contradictions y vagueness.
 i18n: true
 ---
 

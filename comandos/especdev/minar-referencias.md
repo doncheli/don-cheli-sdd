@@ -1,5 +1,5 @@
 ---
-description: Buscar repos open-source relevantes como referencia antes de implementar
+description: Buscar repos open-source relevantes como referencia antes de implementar. Usa cuando el usuario dice "minar referencias", "buscar refs", "open source reference", "research repos", "find similar code", "reference implementation", "github research", "buscar ejemplos", "code research", "reference mining". Busca repos open-source similares para usar como referencia antes de implementar.
 i18n: true
 ---
 

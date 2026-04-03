@@ -1,5 +1,5 @@
 ---
-description: Extraer arquitectura de un codebase existente (ingeniería inversa)
+description: Extraer arquitectura de codebase existente mediante ingeniería inversa. Usa cuando el usuario dice "ingeniería inversa", "reverse engineer", "extraer arquitectura", "qué arquitectura tiene", "architecture extraction", "codebase analysis", "system architecture", "documentar lo que existe", "reverse engineering", "entender legacy code". Genera diagramas C4/Mermaid y docs arquitectónicas.
 i18n: true
 ---
 

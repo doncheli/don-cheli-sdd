@@ -1,5 +1,5 @@
 ---
-description: Auto-generar diagramas Mermaid/C4 desde análisis de código
+description: Auto-generar diagramas Mermaid/C4 desde análisis de código. Usa cuando el usuario dice "diagrama", "generar diagrama", "mermaid", "C4 model", "architecture diagram", "flowchart", "sequence diagram", "class diagram", "visualizar", "generate diagram", "diagram from code". Genera diagrams automáticamente desde análisis del codebase.
 i18n: true
 ---
 

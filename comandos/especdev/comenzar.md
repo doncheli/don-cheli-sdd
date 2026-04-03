@@ -1,5 +1,5 @@
 ---
-description: Iniciar tarea con nivel de complejidad auto-detectado (0-4)
+description: Iniciar tarea nueva SDD con complejidad auto-detectada (0-4). Usa cuando el usuario dice "quiero iniciar tarea", "empezar feature", "nueva historia", "comenzar desarrollo", "start a new task/feature/story", "iniciar un feature". Detecta si es tarea rápida (nivel 1), normal (nivel 2) o compleja (nivel 3-4) y adapta el flujo TDD. No usar para código existente.
 i18n: true
 ---
 

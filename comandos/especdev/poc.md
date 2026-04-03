@@ -1,5 +1,5 @@
 ---
-description: Modo Prueba de Concepto para validar viabilidad técnica antes de comprometer implementación completa
+description: Modo Prueba de Concepto (PoC/POC) para validar viabilidad técnica antes de implementación completa. Usa cuando el usuario dice "POC", "proof of concept", "prueba de concepto", "validar viabilidad", "will this work", "tech spike", "investigación técnica", "spike", "explorar tecnología", "validate approach", "prototipo técnico". Demuestra que el approach funciona antes de comprometer desarrollo completo.
 i18n: true
 ---
 

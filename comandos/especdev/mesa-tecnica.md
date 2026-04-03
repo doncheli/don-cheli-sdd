@@ -1,5 +1,5 @@
 ---
-description: Mesa técnica de expertos senior de desarrollo para decisiones de implementación, stack y código
+description: Mesa técnica de expertos senior de desarrollo para decisiones de implementación, stack y código. Usa cuando el usuario dice "mesa técnica", "technical meeting", "senior review", "technical decision", "decisión de implementación", "stack decision", "implementation decision", "senior review". Reúne experts para decisions técnicas específicas de implementación o stack.
 i18n: true
 ---
 

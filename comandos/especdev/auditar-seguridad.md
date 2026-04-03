@@ -1,5 +1,5 @@
 ---
-description: Auditoría de seguridad estática del código (OWASP Top 10, SecDevOps)
+description: Auditoría de seguridad estática OWASP Top 10 y SecDevOps. Usa cuando el usuario dice "security audit", "OWASP", "auditar seguridad", "vulnerability scan", "pentest", "seguridad del código", "security review", "CVEs", "inyección SQL", "XSS", "CSRF", "auditoría de seguridad", "seguridad antes de deploy". Detecta las 10 vulnerabilidades OWASP más críticas.
 i18n: true
 ---
 

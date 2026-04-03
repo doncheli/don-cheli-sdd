@@ -1,5 +1,5 @@
 ---
-description: Modo rápido para tareas pequeñas y bien definidas (Nivel 1)
+description: Modo rápido para tareas pequeñas y bien definidas (Nivel 1). Usa cuando el usuario dice "modo rápido", "quick task", "tarea pequeña", "simple task", "easy fix", "small feature", "level 1", "fast mode", "quick", "tarea simple". Activa workflow mínimo: specs → implement → test sin overhead para tareas bien definidas.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Discusión multi-perspectiva exploratoria con roles senior sobre un tema
+description: Discusión multi-perspectiva exploratoria con roles senior sobre un tema. Usa cuando el usuario dice "mesa redonda", "roundtable", "multi-perspective", "senior discussion", "discussion panel", "debate abierto", "brainstorming group". Explora un tema desde múltiples perspectives senior (dev, arch, ops, security) sin tensión específica.
 i18n: true
 ---
 

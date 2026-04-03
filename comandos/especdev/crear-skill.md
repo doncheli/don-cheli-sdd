@@ -1,5 +1,5 @@
 ---
-description: Crear, probar y mejorar habilidades (skills) de forma iterativa
+description: Crear, probar y mejorar skills de forma iterativa. Usa cuando el usuario dice "crear skill", "crear habilidad", "build skill", "create a skill", "skill development", "desarrollar skill", "nueva habilidad". Usa el workflow: draft → test → review → improve → repeat con evaluación cuantitativa y qualitative review.
 i18n: true
 ---
 

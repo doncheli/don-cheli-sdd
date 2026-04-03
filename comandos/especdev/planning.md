@@ -1,5 +1,5 @@
 ---
-description: Planning semanal de equipo con revisión de RFCs, priorización, asignación por responsable/pareja/squad y seguimiento
+description: Planning semanal de equipo con revisión de RFCs, priorización y asignación. Usa cuando el usuario dice "planning semanal", "sprint planning", "weekly planning", "planning de sprint", "planificación semanal", "team planning", "asignar tareas", "priorizar historias", "Sprint planning", "velocity planning". Incluye RFCs, asignación por responsable/pareja/squad y tracking.
 i18n: true
 ---
 

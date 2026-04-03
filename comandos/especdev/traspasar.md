@@ -1,5 +1,5 @@
 ---
-description: Generar documento de traspaso estructurado para retomar en la próxima sesión
+description: Generar documento de traspaso estructurado para retomar en la próxima sesión. Usa cuando el usuario dice "traspasar", "handoff", "transfer", "documento traspaso", "session transfer", "handoff doc", "transfer context", "contexto para otra sesión". Genera documento estructurado con estado, pendientes y contexto para que otra persona pueda retomar.
 i18n: true
 ---
 

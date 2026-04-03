@@ -1,5 +1,5 @@
 ---
-description: Detectar ambigüedades en una especificación, ejecutar Auto-QA y registrar respuestas
+description: Detectar ambigüedades en una especificación, ejecutar Auto-QA y registrar respuestas. Usa cuando el usuario dice "clarificar", "detectar ambigüedad", "ambigüedad en specs", "vague spec", "spec ambiguity", "aclarar requerimiento", "QA specs", "Auto-QA". Detecta gaps, contradictions y vagueness en specs y las registra para resolution.
 i18n: true
 ---
 

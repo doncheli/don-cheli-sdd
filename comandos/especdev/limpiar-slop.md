@@ -1,5 +1,5 @@
 ---
-description: Eliminar slop de código generado por IA antes de commits
+description: Eliminar slop de código generado por IA antes de commits. Usa cuando el usuario dice "limpiar slop", "clean AI slop", "remove boilerplate", "clean generated code", "AI slop", "código basura IA", "clean up code", "strip boilerplate", "refinar código IA". Detecta y elimina código innecesario, comments excesivos y boilerplate de código generado por LLM.
 i18n: true
 ---
 

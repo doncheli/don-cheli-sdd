@@ -1,5 +1,5 @@
 ---
-description: Aplicar (implementar) tareas de un cambio específico
+description: Aplicar (implementar) tareas de un cambio o feature específica. Usa cuando el usuario dice "aplicar cambio", "implement this change", "aplicar feature", "apply feature", "ejecutar cambio", "apply diff". Toma un cambio ya planificado y lo implementa siguiendo el workflow TDD.
 i18n: true
 ---
 

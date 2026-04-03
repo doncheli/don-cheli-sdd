@@ -1,5 +1,5 @@
 ---
-description: Ritual de cierre de sesión con auditoría, calidad, aprendizajes y contexto para la próxima sesión
+description: Ritual de cierre de sesión con auditoría, calidad, aprendizajes y contexto para la próxima sesión. Usa cuando el usuario dice "cerrar sesión", "end session", "cierre", "session close", "ritual cierre", "wrap up", "end of day", "fin de sesión". Ejecuta auditoría, registra quality metrics, aprendizajes y guarda contexto para la próxima sesión.
 i18n: true
 ---
 

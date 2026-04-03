@@ -1,5 +1,5 @@
 ---
-description: Integrar con Claude Code Voice Mode para dictar specs y requirements por voz
+description: Integrar con Claude Code Voice Mode para dictar specs y requirements por voz. Usa cuando el usuario dice "voice", "dictar", "dictate specs", "voice mode", "dictar requerimientos", "speech to text", "voice input", "hablar specs", "dictate", "voice integration". Configura Voice Mode para dictar specs y requirements sin typing.
 i18n: true
 ---
 

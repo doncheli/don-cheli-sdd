@@ -1,5 +1,5 @@
 ---
-description: Deliberación multi-rol con tensiones explícitas para decisiones de arquitectura y trade-offs
+description: Deliberación multi-rol con tensiones explícitas para decisiones de arquitectura y trade-offs. Usa cuando el usuario dice "debatir", "debate", "discuss trade-offs", "arquitectura debate", "multi-role", "tensiones", "decision debate", "pros cons", "权衡". Simula múltiples perspectives (dev, security, ops, business) con tensiones explícitas para decisions complejas.
 i18n: true
 ---
 

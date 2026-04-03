@@ -1,5 +1,5 @@
 ---
-description: Revisión de código IA como pre-commit hook — Guardian Angel
+description: Revisión de código IA como pre-commit hook — Guardian Angel. Usa cuando el usuario dice "guardian", "pre-commit hook", "pre-commit review", "hook", "guard", "code guardian", "pre-commit AI", "automated code review", "CI pre-commit", "linter AI". Activa revisión automática de código en pre-commit hooks.
 i18n: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: Generar pseudocódigo agnóstico de tecnología desde las specs antes de planificar
+description: Generar pseudocódigo agnóstico de tecnología desde las specs antes de planificar. Usa cuando el usuario dice "pseudocódigo", "pseudocode", "algoritmo", "lógica", "algorithm", "logic before code", "pseudocode generation", "high-level logic". Convierte specs en pseudocódigo technology-agnostic antes de pasar a diseño técnico.
 i18n: true
 ---
 
