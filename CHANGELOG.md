@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.19.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.19.0...v1.19.1) (2026-04-03)
+
+### Correcciones
+
+* **opencode:** agregar generación de config para skills.paths ([8583f98](https://github.com/doncheli/don-cheli-sdd/commit/8583f983904ebe19cc4348ef7b8a364d4507ea7e))
+
 ## [1.19.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.18.0...v1.19.0) (2026-04-02)
 
 ### Nuevas Funcionalidades
