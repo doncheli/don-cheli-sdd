@@ -251,6 +251,9 @@ Non-negotiable. Always enforced. No exceptions.
 <tr><td>Custom Quality Gates (plugins)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Telemetry Dashboard</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>VS Code Extension</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Drift Detection (async watcher)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Reasoning Time Travel</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Pre-Flight Cost Simulation</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -359,6 +362,69 @@ Top 20 most used. [Full list in the web docs →](https://doncheli.tv/comousar.h
 
 > **📖 Want to see all commands in action with interactive examples?**
 > Visit the full guide: **[doncheli.tv/comousar.html](https://doncheli.tv/comousar.html)**
+
+---
+
+## Killer Features
+
+### Drift Detection — Architecture Watchdog
+
+Detects when code diverges from specifications. If code changes but specs don't, you get an immediate alert:
+
+```
+⚠️ DRIFT ALERT: Architecture Compromised
+  File changed:   src/services/auth.ts (line 45-67)
+  Spec affected:  specs/auth/login.feature:23
+  Scenario:       "Login with MFA via TOTP"
+  Drift:          MFA logic removed, spec still requires it
+  Severity:       🔴 CRITICAL
+```
+
+```bash
+/dc:drift                    # Full project scan
+/dc:drift --watch            # Activate async watcher
+```
+
+### Time Travel — Reasoning Debugger
+
+See **why** the framework chose each model, skill and decision. Navigate the reasoning history like a timeline:
+
+```
+10:15 ─── /dc:start ──────────────────
+│  D001: Level detected → 2 (Standard)
+│  Model: sonnet (confidence: 85%)
+│  Discarded: N1 (>3 files), N3 (1 module)
+│
+10:22 ─── /dc:specify ────────────────
+│  D003: Reasoning → /razonar:pre-mortem
+│  Reason: Payment feature (high risk)
+│  Model: sonnet → opus (escalated by complexity)
+```
+
+```bash
+/dc:time-travel              # Full session timeline
+/dc:time-travel --adjust     # Tune model thresholds dynamically
+```
+
+### Pre-Flight — Cost Simulator
+
+Know **exactly** how much a phase will cost BEFORE executing:
+
+```
+┌──────────────────────────────────────────────────┐
+│  Fase            │ Tokens   │ Model   │ Cost     │
+├──────────────────┼──────────┼─────────┼──────────┤
+│  Implement       │ ~45,000  │ sonnet  │ $0.27    │
+│  Review          │ ~18,000  │ opus    │ $0.54    │
+│  TOTAL           │ ~63,000  │ mixed   │ $0.81    │
+└──────────────────┴──────────┴─────────┴──────────┘
+✅ Within budget ($0.81 < $5.00)
+```
+
+```bash
+/dc:preflight                # Estimate pending phases
+/dc:preflight --budget 5.00  # Alert if exceeds $5
+```
 
 ---
 

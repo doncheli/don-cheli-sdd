@@ -251,6 +251,9 @@ No negociables. Se aplican siempre. Sin excepciones.
 <tr><td>Custom Quality Gates (plugins)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Dashboard de telemetría</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Extensión VS Code</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Drift Detection (vigilante async)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Time Travel del Razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Simulación Pre-Flight de Costos</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -359,6 +362,69 @@ Top 20 más usados. [Lista completa en la documentación web →](https://donche
 
 > **📖 ¿Quieres ver todos los comandos en acción con ejemplos interactivos?**
 > Visita la guía completa: **[doncheli.tv/comousar.html](https://doncheli.tv/comousar.html)**
+
+---
+
+## Killer Features
+
+### Drift Detection — Vigilante de Arquitectura
+
+Detecta cuando el codigo diverge de las especificaciones. Si el codigo cambia pero las specs no, recibes una alerta inmediata:
+
+```
+⚠️ DRIFT ALERT: Arquitectura Comprometida
+  Archivo modificado:  src/services/auth.ts (línea 45-67)
+  Spec afectada:       specs/auth/login.feature:23
+  Escenario:           "Login con MFA por TOTP"
+  Drift:               Lógica de MFA eliminada, spec sigue requiriéndola
+  Severidad:           🔴 CRÍTICO
+```
+
+```bash
+/dc:drift                    # Escaneo completo del proyecto
+/dc:drift --vigilante        # Activar vigilante asíncrono
+```
+
+### Time Travel — Debugger de Razonamiento
+
+Ve **por que** el framework eligio cada modelo, skill y decision. Navega el historial de razonamiento como una linea de tiempo:
+
+```
+10:15 ─── /dc:comenzar ──────────────────
+│  D001: Nivel detectado → 2 (Estándar)
+│  Modelo: sonnet (confianza: 85%)
+│  Descartados: N1 (>3 archivos), N3 (1 módulo)
+│
+10:22 ─── /dc:especificar ────────────────
+│  D003: Razonamiento → /razonar:pre-mortem
+│  Razón: Feature de pagos (alto riesgo)
+│  Modelo: sonnet → opus (escalado por complejidad)
+```
+
+```bash
+/dc:time-travel              # Línea de tiempo completa
+/dc:time-travel --ajustar    # Ajustar thresholds de modelos dinámicamente
+```
+
+### Pre-Flight — Simulador de Costos
+
+Sabe **exactamente** cuanto costara una fase ANTES de ejecutarla:
+
+```
+┌──────────────────────────────────────────────────┐
+│  Fase            │ Tokens   │ Modelo  │ Costo    │
+├──────────────────┼──────────┼─────────┼──────────┤
+│  Implementar     │ ~45,000  │ sonnet  │ $0.27    │
+│  Revisar         │ ~18,000  │ opus    │ $0.54    │
+│  TOTAL           │ ~63,000  │ mixed   │ $0.81    │
+└──────────────────┴──────────┴─────────┴──────────┘
+✅ Dentro del presupuesto ($0.81 < $5.00)
+```
+
+```bash
+/dc:preflight                    # Estimar fases pendientes
+/dc:preflight --presupuesto 5.00 # Alertar si excede $5
+```
 
 ---
 

@@ -125,6 +125,34 @@ Detectar y reportar divergencias entre las especificaciones Gherkin (`.feature`)
 
 Ejecutar automáticamente antes de `/dc:implementar` y después de cada merge.
 
+## Modo Vigilante (Async Watcher)
+
+```
+/dc:drift --vigilante          # Activar vigilante continuo
+/dc:drift --vigilante --off    # Desactivar
+```
+
+Cuando está activo, el vigilante:
+
+1. **Detecta cambios en código** — Monitorea archivos fuente modificados desde el último commit
+2. **Compara contra specs** — Verifica que los cambios no violen escenarios Gherkin existentes
+3. **Alerta inmediata** — Si el código cambia pero la spec no se actualiza:
+
+```
+⚠️ DRIFT ALERT: Arquitectura Comprometida
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Archivo modificado:  src/services/auth.ts (línea 45-67)
+Spec afectada:       specs/auth/login.feature:23
+Escenario:           "Login con MFA por TOTP"
+Drift:               Lógica de MFA eliminada, spec sigue requiriéndola
+Severidad:           🔴 CRÍTICO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Acción: Actualiza la spec o revierte el cambio.
+```
+
+4. **Registro en `.dc/drift/alerts.json`** — Historial de alertas para trending
+5. **Integración CI** — Se ejecuta automáticamente en el GitHub Action con `gates: drift`
+
 ## Guardrails
 
 - **Nunca** marcar como cubierto un escenario si el test solo coincide por nombre pero no por comportamiento
