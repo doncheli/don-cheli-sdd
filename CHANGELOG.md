@@ -4,6 +4,18 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.20.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.19.1...v1.20.0) (2026-04-06)
+
+### Nuevas Funcionalidades
+
+* Killer Features — Drift Detection, Time Travel y Pre-Flight ([0450130](https://github.com/doncheli/don-cheli-sdd/commit/0450130830dc7c9307e8539f2e2fab373e61b6cb))
+
+### Documentación
+
+* agregar regla protocolo-debugging ([dfe3d24](https://github.com/doncheli/don-cheli-sdd/commit/dfe3d243718258308235b45ac67c808cf3498845))
+* documentar convención de idioma por capa de definición de skills ([5bba3e5](https://github.com/doncheli/don-cheli-sdd/commit/5bba3e5b867a65c90f380d47c78c032ec5287d9c))
+* optimizar descripciones de comandos /dc:* para mejorar triggering ([7912187](https://github.com/doncheli/don-cheli-sdd/commit/7912187edb9994a42aaa5d2d974f23c9d4d418fc))
+
 ## [1.19.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.19.0...v1.19.1) (2026-04-03)
 
 ### Correcciones
