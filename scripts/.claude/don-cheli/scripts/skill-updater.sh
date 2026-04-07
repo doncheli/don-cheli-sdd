@@ -92,14 +92,14 @@ check_anthropic() {
   local api_url="https://api.github.com/repos/anthropics/skills/commits?per_page=1"
   local remote_sha
 
-  remote_sha=$(curl -fsSL "$api_url" 2>/dev/null | grep -o '"sha":"[^"]*"' | head -1 | cut -d'"' -f4) || return 0
+  remote_sha=$(curl -fsSL "$api_url" 2>/dev/null | grep -o '"sha": "[^"]*"' | head -1 | sed 's/"sha": "//;s/"//') || return 0
 
   if [ -z "$remote_sha" ]; then return 0; fi
 
   # Get stored SHA
   local stored_sha=""
-  if [ -f "$REGISTRY_FILE" ]; then
-    stored_sha=$(grep -o '"last_sha":"[^"]*"' "$REGISTRY_FILE" | head -1 | cut -d'"' -f4 2>/dev/null) || stored_sha=""
+  if [ -f "$REGISTRY_FILE" ] && command -v python3 &>/dev/null; then
+    stored_sha=$(python3 -c "import json; print(json.load(open('$REGISTRY_FILE'))['sources']['anthropic']['last_sha'])" 2>/dev/null) || stored_sha=""
   fi
 
   if [ "$remote_sha" != "$stored_sha" ] && [ -n "$stored_sha" ]; then
@@ -114,13 +114,17 @@ check_anthropic() {
   # Update SHA in registry
   if [ -f "$REGISTRY_FILE" ]; then
     if command -v python3 &>/dev/null; then
-      python3 -c "
-import json
-with open('$REGISTRY_FILE', 'r') as f: d = json.load(f)
-d['sources']['anthropic']['last_sha'] = '$remote_sha'
-d['last_check'] = '$(date -u +%Y-%m-%dT%H:%M:%SZ)'
-with open('$REGISTRY_FILE', 'w') as f: json.dump(d, f, indent=2)
-" 2>/dev/null || true
+      python3 << PYEOF
+import json, os
+reg = '$REGISTRY_FILE'
+if os.path.exists(reg) and os.path.getsize(reg) > 0:
+    with open(reg, 'r') as fh:
+        d = json.load(fh)
+    d['sources']['anthropic']['last_sha'] = '$remote_sha'
+    d['last_check'] = '$(date -u +%Y-%m-%dT%H:%M:%SZ)'
+    with open(reg, 'w') as fh:
+        json.dump(d, fh, indent=2)
+PYEOF
     fi
   fi
 }
