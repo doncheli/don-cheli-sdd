@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-VERSION="1.20.0"
+VERSION="1.21.0"
 REPO_URL="https://github.com/doncheli/don-cheli-sdd"
 CLEANUP_TMPDIR=""
 

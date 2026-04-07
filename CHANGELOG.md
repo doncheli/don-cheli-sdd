@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.21.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.20.0...v1.21.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* skill PRD Generator — Generador experto de Product Requirement Documents ([1a1df1c](https://github.com/doncheli/don-cheli-sdd/commit/1a1df1c6469e1e6ac626567fffd687030d70aebb))
+
 ## [1.20.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.19.1...v1.20.0) (2026-04-06)
 
 ### Nuevas Funcionalidades
