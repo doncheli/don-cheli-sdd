@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.24.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.23.1...v1.24.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* auto-update de skills de terceros + skill-updater.sh ([777dcad](https://github.com/doncheli/don-cheli-sdd/commit/777dcad0aa2d912c88e21c2319d44d6b73da7b01))
+
 ## [1.23.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.23.0...v1.23.1) (2026-04-07)
 
 ### Correcciones
