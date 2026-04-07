@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.27.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.27.0...v1.27.1) (2026-04-07)
+
+### Correcciones
+
+* OpenAPI/JSON Schema como complemento OPCIONAL — Gherkin es Rey ([5a011f2](https://github.com/doncheli/don-cheli-sdd/commit/5a011f2fd1aa70aee6a1fc52d2ac7676870d0d95))
+
 ## [1.27.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.26.0...v1.27.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
