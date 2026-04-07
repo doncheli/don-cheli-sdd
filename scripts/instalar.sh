@@ -721,13 +721,21 @@ mkdir -p "${COMMANDS_DIR}/razonar"
 # ═══════════════════════════════════════════════════════════════
 
 echo -e "  📋 $(i18n installer.step_commands)"
-if [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
+if [ -d "${SCRIPT_DIR}/comandos/dc" ]; then
+    # /dc:* is the PRIMARY prefix
+    cp -r "${SCRIPT_DIR}/comandos/dc/"*.md "${COMMANDS_DIR}/dc/" 2>/dev/null || true
+    # /especdev:* is the LEGACY retrocompatible alias
+    cp -r "${SCRIPT_DIR}/comandos/dc/"*.md "${COMMANDS_DIR}/especdev/" 2>/dev/null || true
+    CMDS_DC=$(ls "${COMMANDS_DIR}/dc/"*.md 2>/dev/null | wc -l | tr -d ' ')
+    echo -e "     ${GREEN}✓${NC} ${CMDS_DC} comandos /dc:*"
+    echo -e "     ${GREEN}✓${NC} /especdev:* retrocompatible (${CMDS_DC} commands)"
+elif [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
+    # Fallback: old structure without comandos/dc/
     cp -r "${SCRIPT_DIR}/comandos/especdev/"*.md "${COMMANDS_DIR}/especdev/" 2>/dev/null || true
-    # Create /dc: alias (same commands, shorter prefix)
     cp -r "${SCRIPT_DIR}/comandos/especdev/"*.md "${COMMANDS_DIR}/dc/" 2>/dev/null || true
-    CMDS_ESPECDEV=$(ls "${COMMANDS_DIR}/especdev/"*.md 2>/dev/null | wc -l | tr -d ' ')
-    echo -e "     ${GREEN}✓${NC} $(tpl "$(i18n installer.step_commands_done)" count "$CMDS_ESPECDEV")"
-    echo -e "     ${GREEN}✓${NC} /dc:* alias created (${CMDS_ESPECDEV} commands)"
+    CMDS_DC=$(ls "${COMMANDS_DIR}/dc/"*.md 2>/dev/null | wc -l | tr -d ' ')
+    echo -e "     ${GREEN}✓${NC} ${CMDS_DC} comandos /dc:*"
+    echo -e "     ${GREEN}✓${NC} /especdev:* retrocompatible (${CMDS_DC} commands)"
     # Rename dc/ commands to match locale
     if [ "$LOCALE" = "en" ]; then
         cd "${COMMANDS_DIR}/dc/" 2>/dev/null && {
@@ -1014,8 +1022,8 @@ echo -e "       ├── locales/          (es, en, pt)"
 echo -e "       └── CLAUDE.md"
 echo ""
 echo -e "    📂 ${COMMANDS_DIR}/"
-echo -e "       ├── dc/               (${CMDS_ESPECDEV} — short alias)"
-echo -e "       ├── especdev/         (${CMDS_ESPECDEV} $(i18n installer.structure_commands))"
+echo -e "       ├── dc/               (${CMDS_DC:-0} comandos — principal)"
+echo -e "       ├── especdev/         (${CMDS_DC:-0} — retrocompatible)"
 echo -e "       └── razonar/          (${CMDS_RAZONAR} $(i18n installer.structure_commands))"
 echo ""
 echo -e "    🌍 Locale: ${BOLD}${LANG_NAME}${NC} (${LOCALE})"
