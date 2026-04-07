@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.27.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.26.0...v1.27.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* mejoras al framework — modo autónomo, triple source, crash recovery ([e5fbe15](https://github.com/doncheli/don-cheli-sdd/commit/e5fbe154be88a37ec40efb8d80f74f7b5f1841a3))
+
 ## [1.26.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.25.1...v1.26.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
