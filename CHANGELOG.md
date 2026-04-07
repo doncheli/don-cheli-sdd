@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.28.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.27.1...v1.28.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* mejoras al framework — badges actualizados a 93+ comandos, 51+ skills ([00fdb08](https://github.com/doncheli/don-cheli-sdd/commit/00fdb084b899d4c076785cb8562f9db58665bc12))
+
 ## [1.27.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.27.0...v1.27.1) (2026-04-07)
 
 ### Correcciones

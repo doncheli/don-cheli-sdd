@@ -1,6 +1,6 @@
 {
   "name": "don-cheli-sdd",
-  "version": "1.27.1",
+  "version": "1.28.0",
   "description": "Framework SDD para Claude Code — 72+ comandos, 43 habilidades, 15 modelos de razonamiento. TDD como ley de hierro. EN/ES/PT.",
   "main": "bin/don-cheli.js",
   "scripts": {
