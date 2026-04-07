@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.25.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.24.1...v1.25.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* throttle semanal en skill-updater — check cada 7 días máximo ([90483ca](https://github.com/doncheli/don-cheli-sdd/commit/90483ca549276bfc86c81d1bc2d2ea0ccd30e96b))
+
 ## [1.24.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.24.0...v1.24.1) (2026-04-07)
 
 ### Correcciones
