@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/badge/versión-1.27.1-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-88+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-93+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-51+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <a href="https://marketplace.visualstudio.com/items?itemName=doncheli.don-cheli-sdd"><img src="https://img.shields.io/visual-studio-marketplace/v/doncheli.don-cheli-sdd?label=VS%20Code&color=007ACC" alt="VS Code"></a>

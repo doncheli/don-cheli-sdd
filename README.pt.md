@@ -15,7 +15,7 @@
     <img src="https://img.shields.io/badge/versão-1.27.1-blue" alt="Version">
     <img src="https://img.shields.io/badge/licença-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-88+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/comandos-93+-purple" alt="Commands">
     <img src="https://img.shields.io/badge/habilidades-51+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatível-blueviolet" alt="Skills 2.0">
     <br/>
