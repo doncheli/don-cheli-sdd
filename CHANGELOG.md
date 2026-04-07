@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.23.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.23.0...v1.23.1) (2026-04-07)
+
+### Correcciones
+
+* auditoría completa del instalador — 11 bugs corregidos en 6 archivos ([80af310](https://github.com/doncheli/don-cheli-sdd/commit/80af310d21c5f01a2f7a9e9ac6d7500d7a1aa410))
+
 ## [1.23.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.22.0...v1.23.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
