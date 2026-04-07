@@ -163,6 +163,7 @@ Step 4: ✅ Confirm  → Summary of everything selected
 
 ```mermaid
 flowchart LR
+    P["📋 PRD"] -.->|optional| B
     A["💡 Idea"] --> B["📄 Specify"]
     B --> C["🔍 Clarify"]
     C --> D["🏗 Plan"]
@@ -170,6 +171,7 @@ flowchart LR
     E --> F["⚡ Implement"]
     F --> G["✅ Review"]
 
+    style P fill:#2d3436,color:#dfe6e9,stroke:#6c5ce7,stroke-dasharray: 5 5
     style B fill:#6c5ce7,color:#fff
     style C fill:#0984e3,color:#fff
     style D fill:#00b894,color:#fff
@@ -177,6 +179,8 @@ flowchart LR
     style F fill:#e17055,color:#fff
     style G fill:#fd79a8,color:#fff
 ```
+
+> **PRD (optional):** If you have a Figma design, product brief or user research, run `/dc:prd` first. The PRD auto-feeds into Specify with user stories, priorities and risks.
 
 | # | Phase | Command | What it does |
 |---|-------|---------|-------------|

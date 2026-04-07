@@ -43,12 +43,35 @@ Nivel = max(puntuaciones)  // Conservador: gana la dimensión más alta
 
 ## Comportamiento
 
-1. **Analizar** la descripción de la tarea
-2. **Evaluar** las 4 dimensiones (alcance, incógnitas, riesgo, duración)
-3. **Determinar** nivel de complejidad
-4. **Mostrar** evaluación al usuario
-5. **Preguntar** si está de acuerdo o desea ajustar
-6. **Iniciar** flujo del nivel correspondiente
+1. **Detectar PRD** — ¿Existe `.dc/prd/prd-*.md`? ¿El usuario proporcionó brief, Figma o docs?
+   - Si hay PRD existente → usarlo como input para las fases siguientes
+   - Si hay brief/Figma/docs pero no PRD → preguntar: "¿Quieres generar un PRD primero? (/dc:prd)"
+   - Si no hay nada → continuar sin PRD (flujo normal)
+2. **Analizar** la descripción de la tarea (o el PRD si existe)
+3. **Evaluar** las 4 dimensiones (alcance, incógnitas, riesgo, duración)
+4. **Determinar** nivel de complejidad
+5. **Mostrar** evaluación al usuario
+6. **Preguntar** si está de acuerdo o desea ajustar
+7. **Iniciar** flujo del nivel correspondiente
+
+### Flujo con PRD (niveles 2-4)
+
+```
+¿Se detectó PRD o fuentes de producto?
+  │
+  ├─ SÍ, PRD existe (.dc/prd/prd-*.md)
+  │   → Leer PRD
+  │   → Extraer user stories, prioridades, riesgos
+  │   → Alimentar /dc:especificar automáticamente
+  │
+  ├─ SÍ, hay brief/Figma pero no PRD
+  │   → "Se detectaron fuentes de producto. ¿Generar PRD? (s/n)"
+  │   → Si sí: /dc:prd → luego continúa el pipeline
+  │   → Si no: continuar sin PRD
+  │
+  └─ NO hay fuentes de producto
+      → Flujo normal (el usuario describe la tarea)
+```
 
 ## Ejemplo
 
@@ -85,9 +108,11 @@ Inspirada en el framework BMAD: el nivel de planificación se ajusta automática
 | **0 — Atómico** | implementar → verificar | spec, clarificar, planificar, desglosar |
 | **1 — Micro** | especificar (light) → implementar → revisar | clarificar, planificar, desglosar, pseudocódigo |
 | **P — PoC** | hipótesis → construir → evaluar → veredicto | todo el pipeline formal |
-| **2 — Estándar** | especificar → clarificar → planificar → desglosar → implementar → revisar | pseudocódigo (opcional) |
-| **3 — Complejo** | especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
-| **4 — Producto** | constitución → proponer → especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
+| **2 — Estándar** | [PRD →] especificar → clarificar → planificar → desglosar → implementar → revisar | pseudocódigo (opcional) |
+| **3 — Complejo** | [PRD →] especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
+| **4 — Producto** | [PRD →] constitución → proponer → especificar → clarificar → pseudocódigo → planificar → diseñar → desglosar → implementar → revisar | nada se salta |
+
+> **[PRD]** = Fase 0 opcional. Si existe `.dc/prd/prd-*.md` o el usuario proporciona un brief/Figma, se ejecuta `/dc:prd` primero. El PRD alimenta automáticamente a `/dc:especificar` con user stories, prioridades y riesgos.
 
 **Principio:** No aplicar el mismo proceso a un micro-fix que a una migración de plataforma. La fricción innecesaria es tan dañina como la falta de estructura.
 

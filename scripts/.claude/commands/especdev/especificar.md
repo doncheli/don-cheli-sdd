@@ -1,5 +1,5 @@
 ---
-description: Crear especificación Gherkin desde un requerimiento con schema DBML auto-generado
+description: Crear especificaciones Gherkin desde un requerimiento/requisito. Usa cuando el usuario dice "escribir specs", "especificar feature", "crear Gherkin", "escribir requerimientos", "write specs", "requirements to Gherkin", "escribir scenarios", "documentar feature en Gherkin". Genera DBML schema auto-máticamente para persistence. Incluye validación contra el schema IEEE 29148.
 i18n: true
 ---
 
@@ -19,6 +19,16 @@ Convertir un requerimiento en lenguaje natural a una especificación Gherkin est
 ```
 
 ## Comportamiento
+
+0. **Detectar PRD** — Si existe `.dc/prd/prd-*.md`:
+   - Leer el PRD y extraer automáticamente:
+     - User stories (sección 6.1) → base para escenarios Gherkin
+     - Prioridades MoSCoW → mapear a P1 (Must), P2 (Should), P3+ (Could/Won't)
+     - Riesgos (sección 8) → agregar escenarios de error/edge case por riesgo
+     - Requirements no funcionales (sección 6.2) → anotar como constraints
+     - Data model DBML (sección 6.4) → usar como schema base si existe
+   - Informar al usuario: "PRD detectado — extrayendo X user stories, Y riesgos"
+   - Si no hay PRD → continuar con el flujo normal (input del usuario)
 
 1. **Verificar** si existe `specs/db_schema/<dominio>.dbml`
    - Si **NO existe** → Auto-generar DBML `@provisional` con campos inferidos del requerimiento

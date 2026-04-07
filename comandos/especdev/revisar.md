@@ -31,6 +31,10 @@ Verificar:
   - [ ] Edge cases cubiertos con tests
   - [ ] Sin stubs detectados (habilidad detección-stubs)
   - [ ] Criterios de éxito de la spec cumplidos
+  - [ ] Conformidad con PRD (si existe .dc/prd/):
+        - Features Must Have implementadas
+        - Riesgos del PRD mitigados
+        - KPIs del PRD son medibles en el código
 ```
 
 ### 2. Tests y Cobertura
