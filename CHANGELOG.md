@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.22.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.21.1...v1.22.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* dc/ como prefijo principal, especdev/ como retrocompatible ([521a93c](https://github.com/doncheli/don-cheli-sdd/commit/521a93cc87c40d8a74e81bbe29ff2c4996ed4eab))
+
 ## [1.21.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.21.0...v1.21.1) (2026-04-07)
 
 ### Correcciones
