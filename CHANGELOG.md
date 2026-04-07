@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.23.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.22.0...v1.23.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* integrar PRD como fase 0 opcional en el pipeline SDD ([6e6fdd2](https://github.com/doncheli/don-cheli-sdd/commit/6e6fdd2e9e595994f343a7943bbd6f753ca061d8))
+
 ## [1.22.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.21.1...v1.22.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
