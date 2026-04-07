@@ -736,7 +736,9 @@ elif [ -d "${SCRIPT_DIR}/comandos/especdev" ]; then
     CMDS_DC=$(ls "${COMMANDS_DIR}/dc/"*.md 2>/dev/null | wc -l | tr -d ' ')
     echo -e "     ${GREEN}✓${NC} ${CMDS_DC} comandos /dc:*"
     echo -e "     ${GREEN}✓${NC} /especdev:* retrocompatible (${CMDS_DC} commands)"
-    # Rename dc/ commands to match locale
+fi
+# Rename dc/ commands to match locale (runs for BOTH paths above)
+if [ -d "${COMMANDS_DIR}/dc" ]; then
     if [ "$LOCALE" = "en" ]; then
         cd "${COMMANDS_DIR}/dc/" 2>/dev/null && {
             # Rename Spanish → English (longest names first to avoid conflicts)
