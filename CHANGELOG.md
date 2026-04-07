@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.25.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.25.0...v1.25.1) (2026-04-07)
+
+### Correcciones
+
+* rename de comandos dc/ por idioma no se ejecutaba (EN/PT) ([5eb6f5e](https://github.com/doncheli/don-cheli-sdd/commit/5eb6f5e09b70b5e6a002a5b1142a4f7918790548))
+
 ## [1.25.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.24.1...v1.25.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
