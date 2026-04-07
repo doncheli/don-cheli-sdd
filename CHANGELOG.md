@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.29.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.28.0...v1.29.0) (2026-04-07)
+
+### Nuevas Funcionalidades
+
+* mejoras al framework — actualizar npm description con números reales ([7b59acf](https://github.com/doncheli/don-cheli-sdd/commit/7b59acf01436523a9d3b6e1848f176db1ddc3f6e))
+
 ## [1.28.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.27.1...v1.28.0) (2026-04-07)
 
 ### Nuevas Funcionalidades

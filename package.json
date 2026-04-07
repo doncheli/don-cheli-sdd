@@ -1,6 +1,6 @@
 {
   "name": "don-cheli-sdd",
-  "version": "1.28.0",
+  "version": "1.29.0",
   "description": "Don Cheli SDD Framework — 93+ commands, 51 skills, 15 reasoning models, Autonomous Mode, TDD Iron Law, OWASP audit, PRD Generator, Crash Recovery. Works with Claude Code, Gemini, Cursor, Codex, Warp, Amp, OpenCode. ES/EN/PT.",
   "main": "bin/don-cheli.js",
   "scripts": {
