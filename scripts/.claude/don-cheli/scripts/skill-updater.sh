@@ -201,6 +201,36 @@ apply_anthropic() {
 
 init_registry
 
+# Weekly throttle: skip if last check was less than 7 days ago (unless --apply or --force)
+if [ "$MODE" != "apply" ]; then
+  if [ -f "$REGISTRY_FILE" ] && command -v python3 &>/dev/null; then
+    SHOULD_SKIP=$(REG="$REGISTRY_FILE" python3 << 'PYCHECK'
+import json, os
+from datetime import datetime, timedelta, timezone
+try:
+    with open(os.environ.get("REG", ""), "r") as f:
+        d = json.load(f)
+    last = d.get("last_check", "")
+    if last:
+        last_dt = datetime.fromisoformat(last.replace("Z", "+00:00"))
+        if datetime.now(timezone.utc) - last_dt < timedelta(days=7):
+            print("skip")
+        else:
+            print("run")
+    else:
+        print("run")
+except:
+    print("run")
+PYCHECK
+    ) || SHOULD_SKIP="run"
+
+    if [ "$SHOULD_SKIP" = "skip" ]; then
+      [ "$QUIET" = false ] && echo -e "  ${DIM}Último check hace menos de 7 días. Usa --apply para forzar.${NC}"
+      exit 0
+    fi
+  fi
+fi
+
 if [ "$QUIET" = false ] && [ "$MODE" != "check" ]; then
   echo ""
   echo -e "${BOLD}  Don Cheli — Skill Updater${NC}"
