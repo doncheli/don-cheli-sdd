@@ -15,8 +15,8 @@
     <img src="https://img.shields.io/badge/version-1.26.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/license-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/languages-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/commands-85+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/skills-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/commands-88+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/skills-51+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <a href="https://marketplace.visualstudio.com/items?itemName=doncheli.don-cheli-sdd"><img src="https://img.shields.io/visual-studio-marketplace/v/doncheli.don-cheli-sdd?label=VS%20Code&color=007ACC" alt="VS Code"></a>
     <br/>
@@ -258,6 +258,10 @@ Non-negotiable. Always enforced. No exceptions.
 <tr><td>Drift Detection (async watcher)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Reasoning Time Travel</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Pre-Flight Cost Simulation</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Autonomous Mode (anti-context-rot)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Crash Recovery (lock + PID + state)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Triple Source of Truth (Gherkin+OpenAPI+JSON Schema)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>PRD Generator (Figma + briefs)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -431,6 +435,35 @@ Know **exactly** how much a phase will cost BEFORE executing:
 ```
 
 ---
+
+
+---
+
+## Autonomous Mode
+
+Execute the full SDD pipeline hands-off. Fresh agents per phase prevent context rot.
+
+```bash
+/dc:auto "Implement JWT authentication with refresh tokens"
+# → Research → Specify → Plan → Breakdown → Implement → Review → Done
+```
+
+- **Fresh agents per phase** — Each phase spawns a clean 200K context (no degradation)
+- **Crash recovery** — Lock files + PID detection resume from last checkpoint
+- **Pre-flight budget** — Estimates tokens/cost before executing
+- **Quality gates** — Each phase passes its gate before advancing
+- **Max retries** — 3 attempts per phase, then asks for human help
+
+```
+Orchestrator (30-40% context — optimal zone)
+  ├── Agent 1: RESEARCH  (fresh 200K) → .dc/auto/research.md
+  ├── Agent 2: SPECIFY   (fresh 200K) → .dc/specs/*.feature
+  ├── Agent 3: PLAN      (fresh 200K) → .dc/blueprints/*.md
+  ├── Agent 4: BREAKDOWN (fresh 200K) → .dc/tareas/*.md
+  ├── Agents 5-N: IMPLEMENT (fresh per task) → code + tests
+  └── Agent Final: REVIEW (fresh 200K) → .dc/reviews/*.md
+```
+
 
 ## Multi-platform
 

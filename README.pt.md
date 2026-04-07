@@ -15,8 +15,8 @@
     <img src="https://img.shields.io/badge/versão-1.26.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licença-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/comandos-88+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/habilidades-51+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatível-blueviolet" alt="Skills 2.0">
     <br/>
     <a href="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml"><img src="https://github.com/doncheli/don-cheli-sdd/actions/workflows/validar.yml/badge.svg" alt="CI"></a>
@@ -257,6 +257,10 @@ Não negociáveis. Sempre aplicadas. Sem exceções.
 <tr><td>Drift Detection (vigilante async)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Time Travel do Raciocinio</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Simulacao Pre-Flight de Custos</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Modo Autônomo (anti-context-rot)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Crash Recovery (lock + PID + estado)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Tripla Fonte de Verdade (Gherkin+OpenAPI+JSON Schema)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>PRD Generator (Figma + briefs)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -430,6 +434,25 @@ Saiba **exatamente** quanto custara uma fase ANTES de executar:
 ```
 
 ---
+
+
+---
+
+## Modo Autônomo
+
+Execute o pipeline SDD completo sem intervenção. Agentes frescos por fase previnem context rot.
+
+```bash
+/dc:auto "Implementar autenticação JWT com refresh tokens"
+# → Research → Especificar → Planejar → Desdobrar → Implementar → Revisar → Pronto
+```
+
+- **Agentes frescos por fase** — Cada fase inicia com contexto limpo de 200K
+- **Crash recovery** — Lock files + detecção de PID, resume do último checkpoint
+- **Pre-flight** — Estima tokens/custo antes de executar
+- **Quality gates** — Cada fase passa sua porta antes de avançar
+- **Tripla fonte de verdade** — Gherkin + OpenAPI 3.1 + JSON Schema
+
 
 ## Multi-plataforma
 

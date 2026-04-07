@@ -15,8 +15,8 @@
     <img src="https://img.shields.io/badge/versión-1.26.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licencia-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
-    <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
-    <img src="https://img.shields.io/badge/habilidades-42+-orange" alt="Skills">
+    <img src="https://img.shields.io/badge/comandos-88+-purple" alt="Commands">
+    <img src="https://img.shields.io/badge/habilidades-51+-orange" alt="Skills">
     <img src="https://img.shields.io/badge/Anthropic%20Skills%202.0-compatible-blueviolet" alt="Skills 2.0">
     <a href="https://marketplace.visualstudio.com/items?itemName=doncheli.don-cheli-sdd"><img src="https://img.shields.io/visual-studio-marketplace/v/doncheli.don-cheli-sdd?label=VS%20Code&color=007ACC" alt="VS Code"></a>
     <br/>
@@ -258,6 +258,10 @@ No negociables. Se aplican siempre. Sin excepciones.
 <tr><td>Drift Detection (vigilante async)</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Time Travel del Razonamiento</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 <tr><td>Simulación Pre-Flight de Costos</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Modo Autónomo (anti-context-rot)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Crash Recovery (lock + PID + estado)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>Triple Fuente de Verdad (Gherkin+OpenAPI+JSON Schema)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
+<tr><td>PRD Generator (Figma + briefs)</td><td>—</td><td>—</td><td>—</td><td>—</td><td><strong>✅</strong></td></tr>
 </table>
 
 <details>
@@ -431,6 +435,25 @@ Sabe **exactamente** cuanto costara una fase ANTES de ejecutarla:
 ```
 
 ---
+
+
+---
+
+## Modo Autónomo
+
+Ejecuta el pipeline SDD completo sin intervención. Agentes frescos por fase previenen context rot.
+
+```bash
+/dc:auto "Implementar autenticación JWT con refresh tokens"
+# → Research → Especificar → Planificar → Desglosar → Implementar → Revisar → Listo
+```
+
+- **Agentes frescos por fase** — Cada fase inicia con contexto limpio de 200K
+- **Crash recovery** — Lock files + detección de PID, resume desde último checkpoint
+- **Pre-flight** — Estima tokens/costo antes de ejecutar
+- **Quality gates** — Cada fase pasa su puerta antes de avanzar
+- **Triple fuente de verdad** — Gherkin + OpenAPI 3.1 + JSON Schema
+
 
 ## Multi-plataforma
 

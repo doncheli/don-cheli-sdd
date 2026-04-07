@@ -7,10 +7,16 @@ i18n: true
 
 ## Objetivo
 
-Convertir un requerimiento en lenguaje natural a una especificación Gherkin estructurada (`.feature`), incluyendo auto-generación de schema DBML provisional si no existe.
+Convertir un requerimiento en **triple fuente de verdad**:
+
+1. **Gherkin** (.feature) — Comportamiento verificable con escenarios P1/P2/P3+
+2. **OpenAPI 3.1** (openapi.yaml) — Contratos de API auto-generados desde los endpoints detectados en Gherkin
+3. **JSON Schema** (schemas/*.json) — Estructura de datos generada desde DBML
+4. **DBML** — Schema de base de datos provisional o ratificado
 
 > Mejorado con el ciclo de vida DBML de Specular (constitution.md §I-B)
-> Alineado con spec-kit (github/spec-kit) — prioridades P1/P2/P3+, criterios de éxito y marcadores de clarificación
+> Alineado con spec-kit — prioridades P1/P2/P3+, criterios de éxito y marcadores de clarificación
+> Triple source of truth inspirado en BMAD — Gherkin + OpenAPI + JSON Schema
 
 ## Uso
 
