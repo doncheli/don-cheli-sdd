@@ -4,6 +4,16 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.21.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.21.0...v1.21.1) (2026-04-07)
+
+### Correcciones
+
+* sincronizar 27 comandos y 8 habilidades faltantes al mirror de instalación ([ac27440](https://github.com/doncheli/don-cheli-sdd/commit/ac274400362172d960f1da8c1698d1e1090afd62))
+
+### Documentación
+
+* completar documentación PRD skill en 3 idiomas + mirrors ([59beb53](https://github.com/doncheli/don-cheli-sdd/commit/59beb53853811564b9360e1b56357732d1036f89))
+
 ## [1.21.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.20.0...v1.21.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
