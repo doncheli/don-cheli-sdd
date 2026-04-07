@@ -12,7 +12,7 @@
   </p>
   <p align="center">
     <a href="#-instalação"><img src="https://img.shields.io/badge/instalação-2_minutos-brightgreen" alt="Install"></a>
-    <img src="https://img.shields.io/badge/versão-1.25.1-blue" alt="Version">
+    <img src="https://img.shields.io/badge/versão-1.26.0-blue" alt="Version">
     <img src="https://img.shields.io/badge/licença-Apache%202.0-green" alt="License">
     <img src="https://img.shields.io/badge/idiomas-ES%20|%20EN%20|%20PT-red" alt="Languages">
     <img src="https://img.shields.io/badge/comandos-85+-purple" alt="Commands">
