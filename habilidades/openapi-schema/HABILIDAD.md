@@ -1,20 +1,22 @@
 ---
 name: openapi-schema
-description: Triple fuente de verdad para specs — Gherkin + OpenAPI + JSON Schema. Auto-genera contratos OpenAPI desde specs y schemas JSON desde DBML para validación end-to-end.
+description: Complemento OPCIONAL — Auto-genera contratos OpenAPI y JSON Schema desde Gherkin y DBML. Gherkin sigue siendo la fuente de verdad principal. Solo se activa cuando se detectan endpoints HTTP en los escenarios.
 version: 1.0.0
 tags: [openapi, json-schema, spec, contract, api, validation]
 grado_libertad: medio
 ---
 
-# OpenAPI + JSON Schema — Triple Fuente de Verdad
+# OpenAPI + JSON Schema — Complemento Opcional
 
 ## Qué hace
 
-Extiende el formato de specs de Don Cheli para soportar **triple source of truth**:
+Complementa la fuente de verdad principal (**Gherkin**) con contratos derivados automáticamente:
 
-1. **Gherkin** (.feature) — Comportamiento del sistema (qué hace)
-2. **OpenAPI** (openapi.yaml) — Contratos de API (cómo se comunica)
-3. **JSON Schema** (schemas/*.json) — Estructura de datos (qué forma tienen)
+1. **Gherkin** (.feature) — **FUENTE DE VERDAD PRINCIPAL** (siempre)
+2. **OpenAPI** (openapi.yaml) — Contratos de API derivados del Gherkin (opcional, solo si hay endpoints HTTP)
+3. **JSON Schema** (schemas/*.json) — Estructura de datos derivada del DBML (opcional)
+
+> **Regla:** Gherkin es Rey. OpenAPI y JSON Schema se generan DESDE el Gherkin, nunca al revés. Si hay conflicto entre las fuentes, Gherkin siempre gana.
 
 ## Cómo funciona
 
