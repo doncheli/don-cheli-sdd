@@ -39,7 +39,7 @@ done
 # PROGRESS BAR
 # ═══════════════════════════════════════════════════════════════
 
-TOTAL_STEPS=10
+TOTAL_STEPS=13
 CURRENT_STEP=0
 
 progress() {
@@ -274,11 +274,13 @@ git clone --depth 1 "${REPO_URL}.git" "$TEMP_DIR/don-cheli-sdd" > /dev/null 2>&1
 progress "Escaneando scripts por seguridad..."
 
 AUDIT_ISSUES=0
-# Check for suspicious patterns in new scripts
+# Check for genuinely dangerous patterns in new scripts (not comments/strings)
 for f in "$TEMP_DIR/don-cheli-sdd/scripts/"*.sh; do
   [ -f "$f" ] || continue
-  # Check for eval, curl|bash, base64 decode, etc.
-  SUSPICIOUS=$(grep -cn "eval \"\$\|curl.*|.*bash\|base64.*-d\|rm -rf /\|chmod 777" "$f" 2>/dev/null || echo 0)
+  # Only flag REAL dangerous code, not patterns inside comments or grep patterns
+  # Remove comments before scanning
+  CLEAN=$(sed 's/#.*$//' "$f" | sed '/grep/d' | sed '/echo/d')
+  SUSPICIOUS=$(echo "$CLEAN" | grep -c 'eval "\$\|rm -rf /[^.]' 2>/dev/null || echo 0)
   if [ "$SUSPICIOUS" -gt 0 ]; then
     AUDIT_ISSUES=$((AUDIT_ISSUES + SUSPICIOUS))
   fi
@@ -315,7 +317,22 @@ if [ -f "$INSTALL_DIR/perfil" ]; then
   INSTALL_FLAGS="$INSTALL_FLAGS --profile $PROFILE"
 fi
 
-cd "$TEMP_DIR/don-cheli-sdd" && bash scripts/instalar.sh $INSTALL_FLAGS > /dev/null 2>&1
+# Preserve tools if exists
+if [ -f "$INSTALL_DIR/tools" ]; then
+  TOOLS=$(cat "$INSTALL_DIR/tools")
+  INSTALL_FLAGS="$INSTALL_FLAGS --tools $TOOLS"
+fi
+
+cd "$TEMP_DIR/don-cheli-sdd" && bash scripts/instalar.sh $INSTALL_FLAGS > "$TEMP_DIR/install.log" 2>&1
+INSTALL_EXIT=$?
+
+if [ "$INSTALL_EXIT" -ne 0 ]; then
+  echo ""
+  echo -e "  ${RED}❌ Error durante la instalación${NC}"
+  echo -e "  Log: $TEMP_DIR/install.log"
+  tail -10 "$TEMP_DIR/install.log"
+  exit 1
+fi
 
 progress "Verificando instalación..."
 

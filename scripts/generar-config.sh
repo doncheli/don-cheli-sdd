@@ -5,6 +5,23 @@
 # Intended to be sourced from instalar.sh, not run standalone.
 # Main entry point: generar_configs()
 
+# Helper: detect project root from FRAMEWORK_HOME path
+# .claude/don-cheli → project root is the parent
+_get_project_root() {
+    local dir="$1"
+    local root
+    if [[ "$dir" == *".claude/don-cheli"* ]]; then
+        root="${dir%/.claude/don-cheli*}"
+        [ -z "$root" ] && root="."
+    elif [[ "$dir" == *".claude"* ]]; then
+        root="${dir%/.claude*}"
+        [ -z "$root" ] && root="."
+    else
+        root="$dir"
+    fi
+    echo "$root"
+}
+
 generar_configs() {
     local tools="$1"
     local profile="$2"
@@ -114,11 +131,13 @@ _gen_claude() {
 # ─────────────────────────────────────────────
 _gen_codex() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} Codex → AGENTS.md"
+    echo -e "     ${GREEN:-}✓${NC:-} Codex → AGENTS.md (en $project_root/)"
 
     if [ -f "$home/AGENTS.md" ]; then
-        cp "$home/AGENTS.md" "$dir/" 2>/dev/null || true
+        cp "$home/AGENTS.md" "$project_root/" 2>/dev/null || true
     else
         # Generate a minimal AGENTS.md if template is missing
         cat > "$dir/AGENTS.md" 2>/dev/null << 'AGENTSEOF' || true
@@ -142,13 +161,15 @@ AGENTSEOF
 # ─────────────────────────────────────────────
 _gen_cursor() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} Cursor → .cursorrules"
+    echo -e "     ${GREEN:-}✓${NC:-} Cursor → .cursorrules (en $project_root/)"
 
     if [ "$locale" != "en" ] && [ -f "$home/.cursorrules.${locale}" ]; then
-        cp "$home/.cursorrules.${locale}" "$dir/.cursorrules" 2>/dev/null || true
+        cp "$home/.cursorrules.${locale}" "$project_root/.cursorrules" 2>/dev/null || true
     elif [ -f "$home/.cursorrules" ]; then
-        cp "$home/.cursorrules" "$dir/" 2>/dev/null || true
+        cp "$home/.cursorrules" "$project_root/" 2>/dev/null || true
     else
         echo -e "     ${YELLOW:-}⚠${NC:-} .cursorrules not found in $home — skipping" >&2
     fi
@@ -159,19 +180,8 @@ _gen_cursor() {
 # ─────────────────────────────────────────────
 _gen_antigravity() {
     local dir="$1" home="$2" locale="$3"
-
-    # Antigravity needs files at project root, not inside .claude/don-cheli/
-    # Detect project root: go up from .claude/don-cheli/ or use current dir
     local project_root
-    if [[ "$dir" == *".claude/don-cheli"* ]]; then
-        project_root="${dir%/.claude/don-cheli*}"
-        [ -z "$project_root" ] && project_root="."
-    elif [[ "$dir" == *".claude"* ]]; then
-        project_root="${dir%/.claude*}"
-        [ -z "$project_root" ] && project_root="."
-    else
-        project_root="$dir"
-    fi
+    project_root=$(_get_project_root "$dir")
 
     echo -e "     ${GREEN:-}✓${NC:-} Antigravity → GEMINI.md + .agent/ (en $project_root/)"
 
@@ -194,16 +204,17 @@ _gen_antigravity() {
 # ─────────────────────────────────────────────
 _gen_windsurf() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} Windsurf → .windsurf/rules/don-cheli.md"
+    echo -e "     ${GREEN:-}✓${NC:-} Windsurf → .windsurf/rules/don-cheli.md (en $project_root/)"
 
-    mkdir -p "$dir/.windsurf/rules" 2>/dev/null || true
+    mkdir -p "$project_root/.windsurf/rules" 2>/dev/null || true
 
-    # Prefer a dedicated windsurf template; fall back to .cursorrules
     if [ -f "$home/.windsurf/rules/don-cheli.md" ]; then
-        cp "$home/.windsurf/rules/don-cheli.md" "$dir/.windsurf/rules/don-cheli.md" 2>/dev/null || true
+        cp "$home/.windsurf/rules/don-cheli.md" "$project_root/.windsurf/rules/don-cheli.md" 2>/dev/null || true
     elif [ -f "$home/.cursorrules" ]; then
-        cp "$home/.cursorrules" "$dir/.windsurf/rules/don-cheli.md" 2>/dev/null || true
+        cp "$home/.cursorrules" "$project_root/.windsurf/rules/don-cheli.md" 2>/dev/null || true
     else
         echo -e "     ${YELLOW:-}⚠${NC:-} No Windsurf template found in $home — skipping" >&2
     fi
@@ -214,11 +225,13 @@ _gen_windsurf() {
 # ─────────────────────────────────────────────
 _gen_amp() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} Amp → prompt.md"
+    echo -e "     ${GREEN:-}✓${NC:-} Amp → prompt.md (en $project_root/)"
 
     if [ -f "$home/prompt.md" ]; then
-        cp "$home/prompt.md" "$dir/" 2>/dev/null || true
+        cp "$home/prompt.md" "$project_root/" 2>/dev/null || true
     else
         echo -e "     ${YELLOW:-}⚠${NC:-} prompt.md not found in $home — skipping" >&2
     fi
@@ -229,16 +242,17 @@ _gen_amp() {
 # ─────────────────────────────────────────────
 _gen_continue() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} Continue.dev → .continue/config/don-cheli.json"
+    echo -e "     ${GREEN:-}✓${NC:-} Continue.dev → .continue/config/don-cheli.json (en $project_root/)"
 
-    mkdir -p "$dir/.continue/config" 2>/dev/null || true
+    mkdir -p "$project_root/.continue/config" 2>/dev/null || true
 
-    # Use existing template if available; otherwise generate inline
     if [ -f "$home/.continue/config/don-cheli.json" ]; then
-        cp "$home/.continue/config/don-cheli.json" "$dir/.continue/config/don-cheli.json" 2>/dev/null || true
+        cp "$home/.continue/config/don-cheli.json" "$project_root/.continue/config/don-cheli.json" 2>/dev/null || true
     else
-        cat > "$dir/.continue/config/don-cheli.json" 2>/dev/null << 'CONTEOF' || true
+        cat > "$project_root/.continue/config/don-cheli.json" 2>/dev/null << 'CONTEOF' || true
 {
   "name": "don-cheli-sdd",
   "version": "1.23.0",
@@ -260,8 +274,19 @@ CONTEOF
 # ─────────────────────────────────────────────
 _gen_opencode() {
     local dir="$1" home="$2" locale="$3"
+    local project_root
+    project_root=$(_get_project_root "$dir")
 
-    echo -e "     ${GREEN:-}✓${NC:-} OpenCode → ~/.config/opencode/config.json"
+    echo -e "     ${GREEN:-}✓${NC:-} OpenCode → config + .opencode/ (en $project_root/)"
+
+    # Copy opencode.json and .opencode/ to project root
+    if [ -f "$home/opencode.json" ]; then
+        cp "$home/opencode.json" "$project_root/" 2>/dev/null || true
+    fi
+    if [ -d "$home/.opencode" ]; then
+        mkdir -p "$project_root/.opencode/agents" 2>/dev/null || true
+        cp -r "$home/.opencode/"* "$project_root/.opencode/" 2>/dev/null || true
+    fi
 
     local opencode_config="$HOME/.config/opencode/config.json"
     local skills_path="${home}/.agent/skills"

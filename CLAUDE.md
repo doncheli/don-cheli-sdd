@@ -32,16 +32,24 @@ Lee bajo demanda:
 
 ## Auto-actualización al inicio de sesión
 Al inicio de la **primera interacción** de cada sesión:
-1. Leer `${FRAMEWORK_HOME}/VERSION`
-2. `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
-3. Si versiones iguales o falla el curl → silencio
-4. Si hay versión mayor → **auto-actualizar** en background:
-   a. Clonar versión nueva en temporal
-   b. Ejecutar auditoría de seguridad rápida (`--severidad critica`) sobre los archivos cambiados
-   c. Si hay hallazgos 🔴 Críticos → **DETENER**, notificar: `🛑 Actualización v{remota} bloqueada por hallazgos de seguridad críticos. Revisar con /dc:auditar-seguridad`
-   d. Si pasa la auditoría → aplicar actualización con `bash scripts/instalar.sh --global`
-   e. Notificar: `✅ Don Cheli auto-actualizado: v{local} → v{remota} (auditoría de seguridad: limpia)`
-   f. Verificar conformidad Anthropic Skills 2.0 si `verificar_skills_spec: true`
+1. Leer `${FRAMEWORK_HOME}/VERSION` para obtener la versión local
+2. Ejecutar `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION` para obtener la versión remota
+3. Si versiones iguales o falla el curl → silencio, no mostrar nada
+4. Si hay versión mayor → **notificar** al usuario (NO auto-aplicar):
+
+**Formato de notificación (según idioma configurado):**
+- **es:** `⬆️ Don Cheli v{remota} disponible (instalada: v{local}). Ejecuta /dc:actualizar para actualizar.`
+- **en:** `⬆️ Don Cheli v{remote} available (installed: v{local}). Run /dc:update to upgrade.`
+- **pt:** `⬆️ Don Cheli v{remota} disponível (instalada: v{local}). Execute /dc:atualizar para atualizar.`
+
+**Alternativa rápida vía terminal:**
+- `don-cheli update` (si instaló via npm)
+- `bash scripts/actualizar.sh` (si instaló via git clone)
+
+**Reglas:**
+- Solo notificar **una vez por sesión** (no repetir en cada mensaje)
+- Si no hay conexión o falla el curl → continuar sin notificar (no bloquear)
+- **Nunca** auto-aplicar actualizaciones sin confirmación del usuario
 5. El proceso NO debe bloquear la interacción del usuario
 
 ## Idioma (i18n)

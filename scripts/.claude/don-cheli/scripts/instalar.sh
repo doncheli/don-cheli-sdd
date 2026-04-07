@@ -1053,7 +1053,8 @@ if [ "$INTERACTIVE_MODE" = true ] && [ -n "${SELECTED_TOOLS:-}" ]; then
         echo -e "  ${YELLOW}⚠ generar-config.sh no encontrado, saltando generación de configs${NC}"
     fi
 
-    # Save profile selection
+    # Save profile and tools selection (for updates)
     echo "$SELECTED_PROFILE" > "${FRAMEWORK_HOME}/perfil"
+    echo "$SELECTED_TOOLS" > "${FRAMEWORK_HOME}/tools"
     echo -e "  ${GREEN}✓${NC} Perfil guardado: ${SELECTED_PROFILE}"
 fi
