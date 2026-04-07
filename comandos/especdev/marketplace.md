@@ -15,6 +15,8 @@ Conectar Don Cheli con el ecosystem de Skills de Anthropic y la comunidad. Permi
 /dc:marketplace                              # Listar skills disponibles
 /dc:marketplace --instalar <nombre>          # Instalar skill específica
 /dc:marketplace --buscar "weekly report"     # Buscar skills
+/dc:marketplace --actualizar                 # Buscar y aplicar updates de skills de terceros
+/dc:marketplace --actualizar --verificar     # Solo verificar, no aplicar
 /dc:marketplace --fuente anthropic            # Solo skills oficiales
 /dc:marketplace --fuente comunidad            # Solo skills de la comunidad
 /dc:marketplace --exportar <skill>           # Exportar skill para compartir
@@ -99,11 +101,68 @@ Comunidad:
 Total: 46 skills activas
 ```
 
+## Auto-Update de Skills de Terceros
+
+### Cómo funciona
+
+Don Cheli mantiene un registro de skills instaladas en `skill-registry.json` dentro del FRAMEWORK_HOME. El registro trackea:
+
+- **SHA del último commit** de cada repo fuente (Anthropic, comunidad)
+- **Fecha del último check**
+- **Skills instaladas** con fuente y versión
+
+### Verificación automática
+
+Al inicio de cada sesión, Don Cheli:
+1. Lee `skill-registry.json`
+2. Consulta los repos de origen para detectar cambios
+3. Si hay updates → notifica al usuario (NO auto-aplica)
+4. El usuario decide si actualizar con `/dc:marketplace --actualizar`
+
+### Actualizar skills
+
+```bash
+/dc:marketplace --actualizar
+```
+
+Comportamiento:
+1. **Anthropic Official** — Compara SHA del repo. Si hay commits nuevos:
+   - Descarga la versión nueva
+   - Compara los SKILL.md locales vs remotos
+   - Actualiza solo los que cambiaron
+   - Registra el nuevo SHA
+
+2. **Don Cheli Built-in** — Se actualiza con `/dc:actualizar` (framework completo)
+
+3. **Comunidad** — NO se auto-actualiza (seguridad). El usuario debe reinstalar manualmente.
+
+### Script ejecutable
+
+```bash
+bash scripts/skill-updater.sh                   # Check all sources
+bash scripts/skill-updater.sh --apply            # Apply updates
+bash scripts/skill-updater.sh --quiet            # Silent (for session start)
+bash scripts/skill-updater.sh --source anthropic # Check specific source
+```
+
+### Output
+
+```
+  Don Cheli — Skill Updater
+
+  Actualizaciones disponibles:
+
+    Anthropic Skills: nuevos commits disponibles
+    Don Cheli: v1.22.0 → v1.23.0
+
+  Ejecuta /dc:marketplace --actualizar para aplicar.
+```
+
 ## Seguridad
 
-- Skills oficiales de Anthropic: **confianza total**
-- Skills de Don Cheli: **confianza total**
-- Skills de comunidad: **requieren revisión manual**
+- Skills oficiales de Anthropic: **confianza total** (auto-update habilitado)
+- Skills de Don Cheli: **confianza total** (auto-update via /dc:actualizar)
+- Skills de comunidad: **requieren revisión manual** (NO auto-update)
   - No ejecutar scripts sin inspección
   - Verificar que no acceda a archivos fuera del proyecto
   - Verificar que no envíe datos a servicios externos

@@ -9,6 +9,7 @@ const VERSION = fs.readFileSync(path.join(FRAMEWORK_ROOT, 'VERSION'), 'utf8').tr
 const INSTALLER = path.join(FRAMEWORK_ROOT, 'scripts', 'instalar.sh');
 const VALIDATOR = path.join(FRAMEWORK_ROOT, 'scripts', 'validar.sh');
 const UPDATER = path.join(FRAMEWORK_ROOT, 'scripts', 'actualizar.sh');
+const SKILL_UPDATER = path.join(FRAMEWORK_ROOT, 'scripts', 'skill-updater.sh');
 
 const args = process.argv.slice(2);
 const command = args[0] || 'help';
@@ -26,6 +27,8 @@ const HELP = `
     install --lang <es|en|pt>  Instalar con idioma específico
     update, actualizar    Actualizar a la última versión
     update --check        Solo verificar, no aplicar
+    skills-update         Actualizar skills de terceros
+    skills-update --check Solo verificar skills
     validate, validar     Validar estructura del framework
     version               Mostrar versión
     help                  Mostrar esta ayuda
@@ -34,6 +37,7 @@ const HELP = `
     don-cheli install
     don-cheli install --global --lang es
     don-cheli update
+    don-cheli skills-update
     don-cheli install --global --lang en --profile phantom
     don-cheli validate
     npx don-cheli-sdd install --global
@@ -69,6 +73,11 @@ switch (command) {
   case 'actualizar':
   case 'upgrade':
     run(UPDATER, args.slice(1));
+    break;
+
+  case 'skills-update':
+  case 'skills-actualizar':
+    run(SKILL_UPDATER, args.slice(1));
     break;
 
   case 'version':

@@ -86,11 +86,26 @@ Al inicio de la **primera interacción** de cada sesión, verificar silenciosame
 - **en:** `⬆️ Don Cheli v{remote} available (installed: v{local}). Run /dc:update to upgrade.`
 - **pt:** `⬆️ Don Cheli v{remota} disponível (instalada: v{local}). Execute /dc:atualizar para atualizar.`
 
+**Alternativa rápida vía terminal:**
+- `don-cheli update` (si instaló via npm)
+- `bash scripts/actualizar.sh` (si instaló via git clone)
+
 **Reglas:**
 - Solo notificar **una vez por sesión** (no repetir en cada mensaje)
 - Si no hay conexión o falla el curl, continuar sin notificar (no bloquear)
 - Si las versiones son iguales, no mostrar nada
-- Usar el nombre del comando en el idioma configurado (`/dc:actualizar`, `/dc:update`, `/dc:atualizar`)
+- **Nunca** auto-aplicar actualizaciones sin confirmación del usuario
+
+### Verificación de skills de terceros
+
+Además del framework, verificar si hay actualizaciones de skills:
+
+1. Ejecutar `bash scripts/skill-updater.sh --quiet` (silencioso, no bloqueante)
+2. Si hay updates → mostrar al usuario:
+   - **es:** `⬆️ {N} actualización(es) de skills disponible(s). Ejecuta /dc:marketplace --actualizar.`
+   - **en:** `⬆️ {N} skill update(s) available. Run /dc:marketplace --update.`
+   - **pt:** `⬆️ {N} atualização(ões) de skills disponível(is). Execute /dc:marketplace --atualizar.`
+3. Si no hay updates o falla → silencio
 
 ## Gestión de Contexto
 

@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "last_check": "",
+  "sources": {
+    "anthropic": {
+      "repo": "https://github.com/anthropics/skills",
+      "branch": "main",
+      "last_sha": "",
+      "skills": []
+    },
+    "doncheli": {
+      "repo": "https://github.com/doncheli/don-cheli-sdd",
+      "branch": "main",
+      "last_sha": "",
+      "type": "builtin"
+    }
+  },
+  "installed": []
+}
