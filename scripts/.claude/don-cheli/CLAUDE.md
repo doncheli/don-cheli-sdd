@@ -72,40 +72,42 @@ Lee `habilidades/optimizacion-tokens/HABILIDAD.md` para la guía completa.
 - `/bucle` — Bucle autónomo
 - `/historias-generar` — Generar prd.json
 
-## Verificación de Actualizaciones (Auto-check)
+## Auto-actualización al inicio de sesión
 
-Al inicio de la **primera interacción** de cada sesión, verificar silenciosamente si hay actualizaciones disponibles:
+Al inicio de la **primera interacción** de cada sesión, ejecutar automáticamente:
 
-1. Leer `${FRAMEWORK_HOME}/VERSION` para obtener la versión instalada
-2. Obtener la versión remota: `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
-3. Si la versión remota es mayor, notificar al usuario con un mensaje breve:
+### Paso 1: Actualizar framework
 
-**Formato de notificación (según idioma configurado):**
+1. Leer `${FRAMEWORK_HOME}/VERSION` para obtener la versión local
+2. Ejecutar `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
+3. Si versiones iguales o falla el curl → silencio
+4. Si hay versión mayor → **auto-actualizar en background**:
+   a. Clonar versión nueva en directorio temporal
+   b. **Auditoría de seguridad** sobre scripts cambiados:
+      - Buscar secretos hardcoded, inyección de comandos, URLs sospechosas
+      - Verificar que scripts no ejecuten código arbitrario
+   c. **Validación de estructura**: `bash scripts/validar.sh`
+   d. Si auditoría 🔴 Críticos → **DETENER**:
+      `🛑 Actualización v{remota} bloqueada por hallazgos de seguridad. Revisar con /dc:auditar-seguridad`
+   e. Si pasa → aplicar: `bash scripts/actualizar.sh --forzar`
+   f. Notificar: `✅ Don Cheli auto-actualizado: v{local} → v{remota} (seguridad: ✅ | estructura: ✅)`
 
-- **es:** `⬆️ Don Cheli v{remota} disponible (instalada: v{local}). Ejecuta /dc:actualizar para actualizar.`
-- **en:** `⬆️ Don Cheli v{remote} available (installed: v{local}). Run /dc:update to upgrade.`
-- **pt:** `⬆️ Don Cheli v{remota} disponível (instalada: v{local}). Execute /dc:atualizar para atualizar.`
+### Paso 2: Actualizar skills de terceros (semanal)
 
-**Alternativa rápida vía terminal:**
-- `don-cheli update` (si instaló via npm)
-- `bash scripts/actualizar.sh` (si instaló via git clone)
+1. Ejecutar `bash scripts/skill-updater.sh --quiet`
+2. El script tiene throttle de 7 días — solo verifica una vez por semana
+3. Si hay updates de **Anthropic Skills** → aplicar automáticamente (fuente confiable)
+4. Si hay updates de **comunidad** → solo notificar (no auto-aplicar, requiere revisión)
+5. Si hubo cambios: `✅ Skills actualizadas: {N} de Anthropic`
 
-**Reglas:**
-- Solo notificar **una vez por sesión** (no repetir en cada mensaje)
-- Si no hay conexión o falla el curl, continuar sin notificar (no bloquear)
-- Si las versiones son iguales, no mostrar nada
-- **Nunca** auto-aplicar actualizaciones sin confirmación del usuario
+### Reglas
 
-### Verificación de skills de terceros
-
-Además del framework, verificar si hay actualizaciones de skills:
-
-1. Ejecutar `bash scripts/skill-updater.sh --quiet` (silencioso, no bloqueante)
-2. Si hay updates → mostrar al usuario:
-   - **es:** `⬆️ {N} actualización(es) de skills disponible(s). Ejecuta /dc:marketplace --actualizar.`
-   - **en:** `⬆️ {N} skill update(s) available. Run /dc:marketplace --update.`
-   - **pt:** `⬆️ {N} atualização(ões) de skills disponível(is). Execute /dc:marketplace --atualizar.`
-3. Si no hay updates o falla → silencio
+- **Una vez por sesión** — no repetir en cada mensaje
+- Si no hay conexión → silencio, no bloquear
+- El proceso **NO debe bloquear** la interacción del usuario
+- **Siempre** ejecutar checks de seguridad y estructura antes de aplicar
+- Si la auditoría falla → **DETENER**, nunca aplicar cambios inseguros
+- Skills de comunidad → **nunca** auto-aplicar (solo notificar)
 
 ## Gestión de Contexto
 

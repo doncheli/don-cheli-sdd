@@ -30,12 +30,31 @@ Ler sob demanda:
 - `/dc:*` — Alias retrocompatível
 - `/razonar:*` — 15 modelos de raciocínio
 
-## Auto-check de Atualizações
-No início da **primeira interação** de cada sessão:
+## Auto-atualização no início da sessão
+No início da **primeira interação** de cada sessão, executar automaticamente:
+
+### Passo 1: Atualizar framework
 1. Ler `${FRAMEWORK_HOME}/VERSION`
 2. `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
-3. Se houver versão mais recente → notificar uma vez: `⬆️ Don Cheli v{remota} disponível. Execute /dc:atualizar`
-4. Se o curl falhar ou as versões forem iguais → silêncio
+3. Se versões iguais ou curl falhar → silêncio
+4. Se versão mais recente → **auto-atualizar em background**:
+   a. Clonar nova versão em diretório temporário
+   b. **Auditoria de segurança** nos scripts alterados
+   c. **Validação de estrutura**: `bash scripts/validar.sh`
+   d. Se 🔴 Crítico → **PARAR**: `🛑 Atualização v{remota} bloqueada por segurança`
+   e. Se passar → aplicar: `bash scripts/actualizar.sh --forzar`
+   f. Notificar: `✅ Don Cheli atualizado: v{local} → v{remota} (segurança: ✅ | estrutura: ✅)`
+
+### Passo 2: Atualizar skills de terceiros (semanal)
+1. Executar `bash scripts/skill-updater.sh --quiet` (throttle de 7 dias)
+2. Anthropic Skills → aplicar automaticamente (fonte confiável)
+3. Skills da comunidade → apenas notificar (revisão manual)
+
+### Regras
+- **Uma vez por sessão** — não repetir
+- Sem conexão → silêncio, não bloquear
+- **Sempre** executar checks de segurança e estrutura antes de aplicar
+- Se auditoria falhar → **PARAR**, nunca aplicar mudanças inseguras
 
 ## Idioma (i18n)
 Detecção: `${FRAMEWORK_HOME}/locale` → `.dc/config.yaml` → padrão `es`

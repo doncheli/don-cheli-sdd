@@ -30,12 +30,31 @@ Read on demand:
 - `/dc:*` — Backward-compatible alias
 - `/razonar:*` — 15 reasoning models
 
-## Auto-check for Updates
-At the start of the **first interaction** of each session:
+## Auto-update at Session Start
+At the start of the **first interaction** of each session, automatically:
+
+### Step 1: Update framework
 1. Read `${FRAMEWORK_HOME}/VERSION`
 2. `curl -s https://raw.githubusercontent.com/doncheli/don-cheli-sdd/main/VERSION`
-3. If a newer version exists → notify once: `⬆️ Don Cheli v{remote} available. Run /dc:update`
-4. If curl fails or versions are equal → silence
+3. If versions equal or curl fails → silence
+4. If newer version → **auto-update in background**:
+   a. Clone new version to temp directory
+   b. **Security audit** on changed scripts (secrets, command injection, suspicious URLs)
+   c. **Structure validation**: `bash scripts/validar.sh`
+   d. If 🔴 Critical findings → **STOP**: `🛑 Update v{remote} blocked by security findings`
+   e. If passes → apply: `bash scripts/actualizar.sh --forzar`
+   f. Notify: `✅ Don Cheli auto-updated: v{local} → v{remote} (security: ✅ | structure: ✅)`
+
+### Step 2: Update third-party skills (weekly)
+1. Run `bash scripts/skill-updater.sh --quiet` (7-day throttle)
+2. Anthropic Skills → auto-apply (trusted source)
+3. Community skills → notify only (manual review required)
+
+### Rules
+- **Once per session** — don't repeat
+- No connection → silence, don't block
+- **Always** run security + structure checks before applying
+- If audit fails → **STOP**, never apply unsafe changes
 
 ## Language (i18n)
 Detection: `${FRAMEWORK_HOME}/locale` → `.dc/config.yaml` → default `es`
