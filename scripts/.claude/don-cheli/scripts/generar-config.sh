@@ -287,8 +287,13 @@ _gen_opencode() {
         cp "$home/opencode.json" "$project_root/" 2>/dev/null || true
     fi
     if [ -d "$home/.opencode" ]; then
-        mkdir -p "$project_root/.opencode/agents" 2>/dev/null || true
-        cp -r "$home/.opencode/"* "$project_root/.opencode/" 2>/dev/null || true
+        # Copy agents, commands and skills to project root
+        for subdir in agents commands skills; do
+            if [ -d "$home/.opencode/$subdir" ]; then
+                mkdir -p "$project_root/.opencode/$subdir" 2>/dev/null || true
+                cp -r "$home/.opencode/$subdir/"* "$project_root/.opencode/$subdir/" 2>/dev/null || true
+            fi
+        done
     fi
 
     local opencode_config="$HOME/.config/opencode/config.json"
@@ -318,7 +323,7 @@ OPENCODECONFIG
     # Use jq if available for robust JSON editing
     if command -v jq &>/dev/null; then
         # Add external_directory permission
-        jq '(.permission.external_directory // {}) |= if has("/root/.claude/**") then . else . + {"/root/.claude/**": "allow"} end' "$opencode_config" > "${opencode_config}.tmp" && mv "${opencode_config}.tmp" "$opencode_config"
+        jq '(.permission.external_directory // {}) |= if has("${HOME}/.claude/**") then . else . + {"${HOME}/.claude/**": "allow"} end' "$opencode_config" > "${opencode_config}.tmp" && mv "${opencode_config}.tmp" "$opencode_config"
 
         # Add skills path
         jq ".skills.paths += [\"${skills_path}\"] | .skills.paths = (.skills.paths | unique)" "$opencode_config" > "${opencode_config}.tmp" && mv "${opencode_config}.tmp" "$opencode_config"
@@ -331,7 +336,7 @@ OPENCODECONFIG
             sed -i "s/\"paths\": \[\]/\"paths\": [\"${skills_path}\"]/" "$opencode_config" 2>/dev/null || true
         fi
 
-        if ! grep -q '"/root/.claude' "$opencode_config" 2>/dev/null; then
+        if ! grep -q '"${HOME}/.claude' "$opencode_config" 2>/dev/null; then
             # Simple append to external_directory (might create invalid JSON)
             sed -i 's/"external_directory": {}/"external_directory": { "\/root\/.claude\/**": "allow" }/' "$opencode_config" 2>/dev/null || true
         fi
@@ -363,10 +368,14 @@ _gen_qwen() {
         cp "$home/AGENTS.md" "$project_root/" 2>/dev/null || true
     fi
 
-    # Also copy OpenCode agent (Qwen can use opencode format)
+    # Also copy OpenCode agent, commands and skills (Qwen can use opencode format)
     if [ -d "$home/.opencode" ]; then
-        mkdir -p "$project_root/.opencode/agents" 2>/dev/null || true
-        cp -r "$home/.opencode/"* "$project_root/.opencode/" 2>/dev/null || true
+        for subdir in agents commands skills; do
+            if [ -d "$home/.opencode/$subdir" ]; then
+                mkdir -p "$project_root/.opencode/$subdir" 2>/dev/null || true
+                cp -r "$home/.opencode/$subdir/"* "$project_root/.opencode/$subdir/" 2>/dev/null || true
+            fi
+        done
     fi
     if [ -f "$home/opencode.json" ]; then
         cp "$home/opencode.json" "$project_root/" 2>/dev/null || true
