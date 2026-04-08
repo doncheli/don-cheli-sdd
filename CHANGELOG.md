@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.31.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.30.1...v1.31.0) (2026-04-08)
+
+### Nuevas Funcionalidades
+
+* 28 slash commands para OpenCode — paridad con /dc:* de Claude Code ([dd85490](https://github.com/doncheli/don-cheli-sdd/commit/dd8549010fcde5748fe7e538471355f32ee51469))
+
 ## [1.30.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.30.0...v1.30.1) (2026-04-08)
 
 ### Correcciones
