@@ -1,0 +1,25 @@
+{
+  "name": "don-cheli-runtime",
+  "version": "1.0.0",
+  "description": "Don Cheli SDD Runtime — Sandcastle orchestrator for isolated TDD execution",
+  "type": "module",
+  "main": "src/dc-runner.ts",
+  "scripts": {
+    "start": "tsx src/dc-runner.ts",
+    "build": "tsc",
+    "dc:auto": "tsx src/dc-runner.ts",
+    "dc:specify": "tsx src/dc-runner.ts --phase specify",
+    "dc:implement": "tsx src/dc-runner.ts --phase implement",
+    "dc:review": "tsx src/dc-runner.ts --phase review"
+  },
+  "keywords": ["don-cheli", "sdd", "sandcastle", "tdd", "docker"],
+  "author": "Jose Luis Oronoz Troconis (@DonCheli)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@ai-hero/sandcastle": "^0.2.3",
+    "@anthropic-ai/sdk": "^0.86.1",
+    "@types/node": "^25.5.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
