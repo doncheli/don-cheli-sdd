@@ -5,12 +5,16 @@
   "type": "module",
   "main": "src/dc-runner.ts",
   "scripts": {
-    "start": "tsx src/dc-runner.ts",
+    "start": "tsx src/dc-local.ts",
     "build": "tsc",
-    "dc:auto": "tsx src/dc-runner.ts",
-    "dc:specify": "tsx src/dc-runner.ts --phase specify",
-    "dc:implement": "tsx src/dc-runner.ts --phase implement",
-    "dc:review": "tsx src/dc-runner.ts --phase review"
+    "local": "tsx src/dc-local.ts",
+    "local:specify": "tsx src/dc-local.ts --phase specify",
+    "local:implement": "tsx src/dc-local.ts --phase implement",
+    "local:review": "tsx src/dc-local.ts --phase review",
+    "docker": "tsx src/dc-runner.ts",
+    "docker:specify": "tsx src/dc-runner.ts --phase specify",
+    "docker:implement": "tsx src/dc-runner.ts --phase implement",
+    "docker:review": "tsx src/dc-runner.ts --phase review"
   },
   "keywords": ["don-cheli", "sdd", "sandcastle", "tdd", "docker"],
   "author": "Jose Luis Oronoz Troconis (@DonCheli)",
