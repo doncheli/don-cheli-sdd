@@ -1,6 +1,6 @@
 ---
 name: doncheli-plan
-description: Generate technical blueprint from Gherkin specs including API contracts, service design, database schema, and WebSocket events. Activate when user mentions "plan", "blueprint", "technical design", "architecture", "planificar".
+description: Generate a technical blueprint from Gherkin specs: API contracts, database schema, service design. Activate when user mentions "technical blueprint", "technical design", "technical planning", "database schema", "architecture design", "blueprint", "API design from spec".
 ---
 
 # Don Cheli: Technical Planner

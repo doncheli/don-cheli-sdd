@@ -1,6 +1,6 @@
 ---
 name: doncheli-drift
-description: Detect and reconcile divergence between specs and implementation. Activate when user mentions "drift", "sync", "spec divergence", "out of sync", "spec doesn't match", "implementation differs".
+description: Detect and reconcile divergence between specs and implementation (spec drift). Activate when user mentions "spec drift", "drift detection", "drift", "conformance check", "spec vs implementation", "spec deviation", "spec divergence", "out of sync", "implementation diverged".
 ---
 
 # Don Cheli: Spec Drift Detector

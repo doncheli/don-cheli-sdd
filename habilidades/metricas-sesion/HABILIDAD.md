@@ -1,6 +1,6 @@
 ---
-name: metricas-sesion
-description: Telemetría local de eficiencia SDD con tracking de TDD, estimaciones y quality gates
+nombre: Métricas de Sesión
+descripcion: "Telemetría local de eficiencia SDD con tracking de TDD, estimaciones y quality gates"
 version: 1.0.0
 tags: [telemetry, metrics, dashboard, reporting]
 grado_libertad: bajo

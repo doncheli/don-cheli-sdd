@@ -1,6 +1,6 @@
 ---
 name: doncheli-implement
-description: Execute TDD implementation from task list following RED-GREEN-REFACTOR cycle with mandatory tests, stub detection, and quality gates. Activate when user mentions "implement", "build", "code", "develop", "implementar".
+description: Execute TDD development (RED→GREEN→REFACTOR) from a task list with mandatory tests, stub detection, and quality gates. Activate when user mentions "implement", "TDD", "build feature", "write the code", "develop", "make the test pass", "TDD cycle", "code this", "RED GREEN REFACTOR".
 ---
 
 # Don Cheli: TDD Implementer

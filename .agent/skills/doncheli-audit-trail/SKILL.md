@@ -1,6 +1,6 @@
 ---
 name: doncheli-audit-trail
-description: Record and query the decision log for a project. Activate when user mentions "audit", "trail", "log decisions", "decision history", "why was this decided", "ADR", "architecture decision".
+description: Record and query the AI decision log for a project. Activate when user mentions "audit trail", "audit log", "decision log", "track decisions", "AI decisions", "log decisions", "decision history", "who decided what", "decision traceability".
 ---
 
 # Don Cheli: Audit Trail

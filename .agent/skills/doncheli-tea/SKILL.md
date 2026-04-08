@@ -1,6 +1,6 @@
 ---
 name: doncheli-tea
-description: Run the full autonomous test suite end-to-end and report results. Activate when user mentions "test end to end", "autonomous testing", "run all tests", "full test run", "E2E tests", "test suite".
+description: Autonomous end-to-end testing: generate tests, run them and report coverage and results. Activate when user mentions "E2E test", "test end-to-end", "run tests", "generate tests", "automated testing", "test coverage", "regression testing", "test suite", "TEA".
 ---
 
 # Don Cheli: Test End-to-End Autonomous (TEA)

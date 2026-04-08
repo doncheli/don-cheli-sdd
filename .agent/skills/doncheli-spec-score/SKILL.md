@@ -1,6 +1,6 @@
 ---
 name: doncheli-spec-score
-description: Evaluate the quality of a spec and return a structured score with improvement recommendations. Activate when user mentions "spec quality", "score spec", "how good is my spec", "spec review", "validate spec quality".
+description: Evaluate spec quality with a quantitative 0-100 score across 8 metrics against IEEE 830 / ISO 29148 standards. Activate when user mentions "spec score", "spec quality", "quality score", "spec assessment", "IEEE 830", "ISO 29148", "score spec", "measure spec quality".
 ---
 
 # Don Cheli: Spec Score
