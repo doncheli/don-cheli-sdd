@@ -119,121 +119,55 @@ Open source. Free forever. Made in Latin America 🌎
 
 ---
 
-## LINKEDIN — Post profesional con datos
+## LINKEDIN — Post (optimizado para limite de caracteres)
 
 ### Post
 
-**I ran an independent benchmark of every SDD framework. Here's what the data says.**
+**I benchmarked every SDD framework for AI coding. The results broke my assumptions.**
 
-No marketing. No opinions. Just GitHub API data and feature-by-feature comparison.
+GitHub API. Real data. Zero marketing.
 
-**The SDD landscape — April 2026 (verified stars):**
+**Stars (April 2026):**
+Spec Kit (GitHub): 86K ⭐ | BMAD: 44K ⭐ | GSD v1: 49K ⭐ | Don Cheli: 37 ⭐
 
-📊 Anthropic Skills: 112,318 ⭐
-📊 GitHub Spec Kit: 85,995 ⭐
-📊 GSD v1: 48,922 ⭐
-📊 BMAD Method: 43,894 ⭐
-📊 OpenSpec (YC): 38,008 ⭐
-📊 GSD v2: 4,800 ⭐
-📊 Don Cheli SDD: 37 ⭐
+More stars = better framework? The data says otherwise.
 
-**The assumption:** more stars = better framework.
+**The framework with 37 stars has:**
+→ 93 commands (Spec Kit has 8)
+→ 51 skills (BMAD has 6)
+→ 15 reasoning models (nobody else has this)
+→ TDD as Iron Law (nobody enforces this)
+→ OWASP audit integrated (nobody has this)
+→ PRD Generator that reads Figma
+→ Autonomous Mode with crash recovery
+→ 3 languages (ES/EN/PT)
 
-**The data says otherwise.**
+**What each competitor DOESN'T have:**
 
-I compared 6 SDD frameworks across 20 dimensions. Here's what I found:
+Spec Kit (86K ⭐): No TDD enforcement. No Gherkin. No OWASP. No reasoning models.
 
-**Commands:**
-→ Spec Kit: 8 commands
-→ BMAD: 12 slash commands
-→ GSD v1: 40+ commands
-→ OpenSpec: 9 commands
-→ Don Cheli: **93 commands**
+BMAD (44K ⭐): TDD optional. No autonomous mode. No crash recovery.
 
-**TDD enforcement:**
-→ Spec Kit: Generates test tasks, not mandatory ❌
-→ BMAD: Optional (Quinn QA agent) ❌
-→ GSD v1: Verification post-execution, not TDD ❌
-→ GSD v2: Quality gates, not TDD mandatory ❌
-→ Don Cheli: **Iron Law — no code without tests** ✅
+GSD v2 (4.8K ⭐): No TDD enforcement. No OWASP. English only.
 
-**Security (OWASP):**
-→ Spec Kit: No ❌
-→ BMAD: No ❌
-→ GSD v1: Prompt injection defense only ❌
-→ GSD v2: Prompt injection defense only ❌
-→ OpenSpec: No ❌
-→ Don Cheli: **Full OWASP Top 10 audit** ✅
+**Weighted scoring:**
+GSD v2: 8.30 (S) | Don Cheli: 8.20 (S) | Spec Kit: 7.55 (A) | BMAD: 6.75 (B+)
 
-**Reasoning models:**
-→ Spec Kit: Delegated to LLM ❌
-→ BMAD: ~6 elicitation prompts
-→ GSD: Chain-of-thought
-→ Don Cheli: **15 models** (Pre-mortem, 5 Whys, Pareto, Inversion, Second Order, RLM verification, RLM decomposition...)
+**Honest weaknesses:**
+❌ 37 stars vs 86K — community is the #1 gap
+❌ Individual creator vs GitHub/YC backing
+❌ 8 IDEs vs 22+ (Spec Kit)
 
-**Quality Gates:**
-→ Spec Kit: 2 extensions (Verify + Cleanup)
-→ BMAD: 1 gate + TEA module
-→ GSD v1: 4 canonical types
-→ GSD v2: 8-question gates
-→ Don Cheli: **6 formal gates + custom YAML plugins**
-
-**Features that ONLY Don Cheli has** (verified in repo, not marketing):
-
-1. TDD as an unbreakable Iron Law
-2. 15 integrated reasoning models
-3. OWASP security audit in the pipeline
-4. PRD Generator (reads Figma + briefs)
-5. Pre-Flight cost simulation before execution
-6. Custom Quality Gates (YAML plugin system)
-7. Drift Detection with async watcher
-8. Time Travel reasoning debugger
-9. Telemetry Dashboard (100% local)
-10. SDD Certification badges
-11. Skill auto-updater (weekly)
-12. 3 native languages (ES/EN/PT)
-
-**Where Don Cheli loses — honestly:**
-
-❌ Community: 37 stars vs 86K (Spec Kit). This is the #1 gap.
-❌ Backing: Individual creator vs GitHub (enterprise) or YC (startup).
-❌ Multi-agent: 8 IDEs vs 22+ (Spec Kit).
-❌ Architecture: Markdown-based vs TypeScript orchestrator (GSD v2).
-
-**The scoring (weighted):**
-
-| Framework | Score | Tier |
-|-----------|-------|------|
-| GSD v2 | 8.30 | S |
-| Don Cheli | 8.20 | S |
-| Spec Kit | 7.55 | A |
-| GSD v1 | 7.25 | A- |
-| BMAD | 6.75 | B+ |
-| OpenSpec | 5.70 | B |
-
-**Don Cheli and GSD v2 tie at Tier S** — for different reasons:
-
-GSD v2 wins with: TypeScript orchestrator, 20+ providers, state machine.
-Don Cheli wins with: 93 commands, TDD as law, OWASP, 15 reasoning models, 3 languages.
-
-**My conclusion:**
-
-Stars measure popularity. Features measure capability.
-
-The framework with 37 stars has the most complete feature set in the entire SDD ecosystem. Every feature is a file in the repo you can verify.
-
-The only thing missing is adoption. And that starts with one star.
+Stars measure popularity. Features measure capability. I built for capability.
 
 ⭐ github.com/doncheli/don-cheli-sdd
 📖 doncheli.tv/comousar.html
 
-Install: `npm install -g don-cheli-sdd`
+Install: npm install -g don-cheli-sdd
 
----
+*Data: GitHub API, April 7, 2026*
 
-*All data verified via GitHub API on April 7, 2026. Stars, forks, and feature claims cross-referenced against actual repo contents. Full methodology available on request.*
-
-#SDD #SpecificationDrivenDevelopment #ClaudeCode #AI #OpenSource #TDD #OWASP #DevTools #SoftwareEngineering #DonCheli #Benchmark #AIFramework #VibeCoding #QualityGates #Gherkin #LatAm
+#SDD #ClaudeCode #AI #OpenSource #TDD #OWASP #DonCheli #AIFramework #DevTools #LatAm
 
 ---
 
