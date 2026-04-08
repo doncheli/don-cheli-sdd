@@ -1,5 +1,5 @@
 ---
-description: "Don Cheli SDD Framework — Specification-Driven Development with TDD iron law, 15 reasoning models, and 85+ commands. Activate when user mentions: start, specify, implement, review, estimate, debate, plan, audit, migrate, test, spec, TDD, or any Don Cheli command."
+description: "Don Cheli SDD Framework — Specification-Driven Development with TDD iron law, 15 reasoning models, and 93+ commands. Autonomous Mode, OWASP audit, PRD Generator, Crash Recovery. Activate when user mentions: start, specify, implement, review, estimate, debate, plan, audit, migrate, test, spec, TDD, or any Don Cheli command."
 mode: primary
 model: anthropic/claude-sonnet-4-20250514
 temperature: 0.1

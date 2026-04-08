@@ -338,7 +338,7 @@ if [ "$INTERACTIVE_MODE" = true ]; then
     if [ -z "$TOOLS_FLAG" ]; then
         GUM_TOOLS_OK=false
         if [ "$HAS_GUM" = true ]; then
-            TOOLS_RAW=$(printf "Claude Code\nCodex\nCursor\nAntigravity\nWindsurf\nAmp\nContinue.dev\nOpenCode\nTodos" | \
+            TOOLS_RAW=$(printf "Claude Code\nCodex\nCursor\nAntigravity\nWindsurf\nAmp\nContinue.dev\nOpenCode\nQwen\nTodos" | \
                 gum choose --no-limit \
                 --header "¿Dónde quieres instalar Don Cheli SDD?" \
                 --header.foreground="99" \
@@ -358,7 +358,8 @@ if [ "$INTERACTIVE_MODE" = true ]; then
                         "Amp") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
                         "Continue.dev") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
                         "OpenCode") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
-                        "Todos") TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+                        "Qwen") TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}qwen" ;;
+                        "Todos") TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode,qwen" ;;
                     esac
                 done <<< "$TOOLS_RAW"
                 GUM_TOOLS_OK=true
@@ -375,7 +376,8 @@ if [ "$INTERACTIVE_MODE" = true ]; then
             echo -e "     ${CYAN}6)${NC}  Amp             (prompt.md)"
             echo -e "     ${CYAN}7)${NC}  Continue.dev    (.continue/config/)"
             echo -e "     ${CYAN}8)${NC}  OpenCode        (.opencode/ + @doncheli)"
-            echo -e "     ${CYAN}9)${NC}  Todos"
+            echo -e "     ${CYAN}9)${NC}  Qwen            (AGENTS.md + .opencode/)"
+            echo -e "     ${CYAN}10)${NC} Todos"
             echo ""
             echo -ne "  ${BOLD}▸ Elige (números separados por coma): ${NC}"
             TOOLS_CHOICE=""
@@ -396,7 +398,8 @@ if [ "$INTERACTIVE_MODE" = true ]; then
                     6) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}amp" ;;
                     7) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}continue" ;;
                     8) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}opencode" ;;
-                    9|all) TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode" ;;
+                    9) TOOLS_FLAG="${TOOLS_FLAG:+$TOOLS_FLAG,}qwen" ;;
+                    10|all) TOOLS_FLAG="claude,codex,cursor,antigravity,windsurf,amp,continue,opencode,qwen" ;;
                 esac
             done
         fi
