@@ -4,6 +4,12 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.30.1](https://github.com/doncheli/don-cheli-sdd/compare/v1.30.0...v1.30.1) (2026-04-08)
+
+### Correcciones
+
+* integración completa OpenCode — 13 problemas corregidos ([060cc01](https://github.com/doncheli/don-cheli-sdd/commit/060cc0140680bf7487675a117d216b57bbc41cd5))
+
 ## [1.30.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.29.0...v1.30.0) (2026-04-08)
 
 ### Nuevas Funcionalidades
