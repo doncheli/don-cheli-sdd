@@ -467,7 +467,54 @@ Don Cheli não é um programa. São arquivos Markdown que qualquer agente de IA 
 | **Warp** | Compatível | `CLAUDE.md` |
 | **Amp** | Compatível | `prompt.md` |
 | **Continue.dev** | Compatível | `AGENTS.md` |
-| **OpenCode** | Compatível | `AGENTS.md` |
+| **OpenCode** | Nativo com 28 comandos + 28 skills | `.opencode/` |
+| **Qwen** | Via AGENTS.md + formato OpenCode | `AGENTS.md` |
+
+<details>
+<summary><strong>OpenCode — 28 slash commands + 28 skills</strong></summary>
+
+**Instalar:**
+```bash
+bash scripts/instalar.sh --tools opencode --profile phantom
+```
+
+**Comandos:** `/doncheli-start`, `/doncheli-spec`, `/doncheli-clarify`, `/doncheli-plan`, `/doncheli-breakdown`, `/doncheli-implement`, `/doncheli-review`, `/doncheli-auto`, `/doncheli-estimate`, `/doncheli-audit`, `/doncheli-prd`, `/doncheli-drift`, `/doncheli-premortem`, `/doncheli-5whys`, `/doncheli-roundtable`, `/doncheli-tech-panel`, `/doncheli-debate`, `/doncheli-poc`, `/doncheli-migrate`, `/doncheli-explore`, `/doncheli-gate`, `/doncheli-metrics`, `/doncheli-preflight`, `/doncheli-init`, `/doncheli-status`, `/doncheli-continue`, `/doncheli-close`, `/doncheli-doctor`
+
+**Linguagem natural:** `@doncheli descreva o que voce precisa`
+
+**28 skills** auto-detectadas em `.opencode/skills/doncheli-*/SKILL.md`
+
+</details>
+
+<details>
+<summary><strong>Claude Code — 93 comandos (nativo completo)</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools claude --profile phantom
+```
+
+Comandos com prefixo `/dc:*`. 93 comandos + 15 modelos de raciocinio. [Lista completa →](https://doncheli.tv/comousar.html)
+
+</details>
+
+<details>
+<summary><strong>Google Antigravity (Gemini) — 5 skills + 9 workflows</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools antigravity --profile phantom
+```
+
+</details>
+
+<details>
+<summary><strong>Cursor / Codex / Qwen — AGENTS.md + .cursorrules</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools cursor --profile phantom
+# ou: --tools codex / --tools qwen
+```
+
+</details>
 
 ---
 

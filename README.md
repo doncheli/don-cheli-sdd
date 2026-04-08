@@ -478,7 +478,104 @@ Don Cheli is not a program. It's Markdown files that any AI agent can interpret.
 | **Warp** | Compatible | `CLAUDE.md` |
 | **Amp** | Compatible | `prompt.md` |
 | **Continue.dev** | Compatible | `AGENTS.md` |
-| **OpenCode** | Compatible | `AGENTS.md` |
+| **OpenCode** | Native with 28 commands + 28 skills | `.opencode/` |
+| **Qwen** | Via AGENTS.md + OpenCode format | `AGENTS.md` |
+
+<details>
+<summary><strong>OpenCode — 28 slash commands + 28 skills</strong></summary>
+
+**Install:**
+```bash
+bash scripts/instalar.sh --tools opencode --profile phantom
+```
+
+**Slash commands:**
+
+| Command | What it does |
+|---------|-------------|
+| `/doncheli-start` | Start task (auto-detect level) |
+| `/doncheli-spec` | Gherkin specification |
+| `/doncheli-clarify` | Auto-QA + resolve ambiguities |
+| `/doncheli-plan` | Technical blueprint |
+| `/doncheli-breakdown` | TDD task breakdown |
+| `/doncheli-implement` | RED → GREEN → REFACTOR |
+| `/doncheli-review` | 7-dimension peer review |
+| `/doncheli-auto` | Autonomous mode (full pipeline) |
+| `/doncheli-estimate` | 4 estimation models |
+| `/doncheli-audit` | OWASP Top 10 audit |
+| `/doncheli-prd` | PRD from Figma + briefs |
+| `/doncheli-drift` | Spec vs code divergence |
+| `/doncheli-premortem` | Pre-mortem analysis |
+| `/doncheli-5whys` | Root cause analysis |
+| `/doncheli-roundtable` | Multi-perspective discussion |
+| `/doncheli-tech-panel` | Expert panel |
+| `/doncheli-debate` | Adversarial multi-role |
+| `/doncheli-poc` | Proof of Concept |
+| `/doncheli-migrate` | Stack migration |
+| `/doncheli-explore` | Codebase exploration |
+| `/doncheli-gate` | Custom quality gates |
+| `/doncheli-metrics` | Efficiency metrics |
+| `/doncheli-preflight` | Cost simulation |
+| `/doncheli-init` | Initialize project |
+| `/doncheli-status` | Project status |
+| `/doncheli-continue` | Resume session |
+| `/doncheli-close` | Close session |
+| `/doncheli-doctor` | Diagnose issues |
+
+**Natural language:** `@doncheli describe what you need`
+
+**28 skills auto-detected** in `.opencode/skills/doncheli-*/SKILL.md`
+
+</details>
+
+<details>
+<summary><strong>Claude Code — 93 commands (full native)</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools claude --profile phantom
+```
+
+Commands use `/dc:*` prefix: `/dc:start`, `/dc:specify`, `/dc:implement`, etc.
+
+93 commands + 15 reasoning models (`/razonar:*`). [Full list →](https://doncheli.tv/comousar.html)
+
+</details>
+
+<details>
+<summary><strong>Google Antigravity (Gemini) — 5 skills + 9 workflows</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools antigravity --profile phantom
+```
+
+Workflows: `/doncheli-start`, `/doncheli-pipeline`, `/doncheli-review`, `/doncheli-security`
+
+Skills in `.agent/skills/doncheli-*/SKILL.md`. `GEMINI.md` installed at project root.
+
+</details>
+
+<details>
+<summary><strong>Cursor — .cursorrules</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools cursor --profile phantom
+```
+
+Installs `.cursorrules` at project root with full SDD rules, iron laws, and coding standards.
+
+</details>
+
+<details>
+<summary><strong>Codex / Qwen / Other agents — AGENTS.md</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools codex --profile phantom
+# or: --tools qwen
+```
+
+Installs `AGENTS.md` at project root — universal contract compatible with any agent that reads markdown instructions.
+
+</details>
 
 ---
 

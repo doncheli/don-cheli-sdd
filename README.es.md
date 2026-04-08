@@ -468,7 +468,71 @@ Don Cheli no es un programa. Son archivos Markdown que cualquier agente de IA pu
 | **Warp** | Compatible | `CLAUDE.md` |
 | **Amp** | Compatible | `prompt.md` |
 | **Continue.dev** | Compatible | `AGENTS.md` |
-| **OpenCode** | Compatible | `AGENTS.md` |
+| **OpenCode** | Nativo con 28 comandos + 28 skills | `.opencode/` |
+| **Qwen** | Via AGENTS.md + formato OpenCode | `AGENTS.md` |
+
+<details>
+<summary><strong>OpenCode — 28 slash commands + 28 skills</strong></summary>
+
+**Instalar:**
+```bash
+bash scripts/instalar.sh --tools opencode --profile phantom
+```
+
+**Comandos disponibles:** `/doncheli-start`, `/doncheli-spec`, `/doncheli-clarify`, `/doncheli-plan`, `/doncheli-breakdown`, `/doncheli-implement`, `/doncheli-review`, `/doncheli-auto`, `/doncheli-estimate`, `/doncheli-audit`, `/doncheli-prd`, `/doncheli-drift`, `/doncheli-premortem`, `/doncheli-5whys`, `/doncheli-roundtable`, `/doncheli-tech-panel`, `/doncheli-debate`, `/doncheli-poc`, `/doncheli-migrate`, `/doncheli-explore`, `/doncheli-gate`, `/doncheli-metrics`, `/doncheli-preflight`, `/doncheli-init`, `/doncheli-status`, `/doncheli-continue`, `/doncheli-close`, `/doncheli-doctor`
+
+**Lenguaje natural:** `@doncheli describe lo que necesitas`
+
+**28 skills** auto-detectadas en `.opencode/skills/doncheli-*/SKILL.md`
+
+</details>
+
+<details>
+<summary><strong>Claude Code — 93 comandos (nativo completo)</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools claude --profile phantom
+```
+
+Comandos con prefijo `/dc:*`: `/dc:comenzar`, `/dc:especificar`, `/dc:implementar`, etc.
+
+93 comandos + 15 modelos de razonamiento (`/razonar:*`). [Lista completa →](https://doncheli.tv/comousar.html)
+
+</details>
+
+<details>
+<summary><strong>Google Antigravity (Gemini) — 5 skills + 9 workflows</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools antigravity --profile phantom
+```
+
+Workflows: `/doncheli-start`, `/doncheli-pipeline`, `/doncheli-review`, `/doncheli-security`
+
+</details>
+
+<details>
+<summary><strong>Cursor — .cursorrules</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools cursor --profile phantom
+```
+
+Instala `.cursorrules` en la raiz del proyecto con reglas SDD completas.
+
+</details>
+
+<details>
+<summary><strong>Codex / Qwen / Otros agentes — AGENTS.md</strong></summary>
+
+```bash
+bash scripts/instalar.sh --tools codex --profile phantom
+# o: --tools qwen
+```
+
+Instala `AGENTS.md` — contrato universal compatible con cualquier agente.
+
+</details>
 
 ---
 
