@@ -4,6 +4,18 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.30.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.29.0...v1.30.0) (2026-04-08)
+
+### Nuevas Funcionalidades
+
+* agregar soporte para Qwen + fix mirrors generar-config ([099a03f](https://github.com/doncheli/don-cheli-sdd/commit/099a03f3ddbafc7d7e3197d60304b0a1e946c87e))
+
+### Documentación
+
+* agregar benchmark posts para X y LinkedIn con datos verificados ([40cc480](https://github.com/doncheli/don-cheli-sdd/commit/40cc480eb2391b502513f16762683a664ed3c957))
+* agregar benchmark posts para X y LinkedIn con datos verificados ([7f3c570](https://github.com/doncheli/don-cheli-sdd/commit/7f3c570d48e51ae0867f2c42823b2e2cd2ebca60))
+* optimizar post LinkedIn a <3000 caracteres ([a2a8b31](https://github.com/doncheli/don-cheli-sdd/commit/a2a8b319d3a400005ca88abcde602a4aa040a475))
+
 ## [1.29.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.28.0...v1.29.0) (2026-04-07)
 
 ### Nuevas Funcionalidades
