@@ -42,26 +42,6 @@ Don Cheli takes your idea and delivers **tested, reviewed, verified code** — a
 
 Your project is **untouched** until everything passes. If anything fails, nothing changes.
 
-### Powered by a real TypeScript orchestrator
-
-Not just prompts — a **real runtime** that enforces every rule:
-
-```
-Orchestrator (TypeScript)
-  ├── Creates git worktree (your project stays safe)
-  ├── Spins up Docker container (isolated execution)
-  ├── Runs /dc:specify → /dc:review (real commands)
-  ├── Quality gates verify AFTER each phase:
-  │   ├── Spec gate: .feature files exist?
-  │   ├── TDD gate: tests exist? pass? no stubs?
-  │   ├── Coverage gate: >= 85%?
-  │   └── Custom gates: .dc/gates/*.yml
-  ├── ALL PASS → merge to project ✅
-  └── ANY FAIL → discard worktree, project UNTOUCHED ❌
-```
-
-**3 providers:** Claude Code (subscription) · OpenAI Codex · Ollama (free, local models)
-
 ---
 
 ## Install
@@ -87,6 +67,28 @@ code --install-extension doncheli.don-cheli-sdd
 ```
 
 </details>
+
+---
+
+## The Runtime — Your code never breaks
+
+Other frameworks give you prompts and hope the AI follows them. **Don Cheli has a real TypeScript orchestrator** that makes it impossible to skip rules.
+
+### How it works in 4 steps:
+
+**Step 1:** The runtime creates a **copy** of your project (git worktree). Your real project is never touched.
+
+**Step 2:** It spins up a **Docker container** and runs each `/dc:*` command inside — completely isolated.
+
+**Step 3:** After each phase, **real quality gates** verify the output:
+- Does the Gherkin spec exist? Does it have P1 scenarios?
+- Do tests exist? Do they pass? Are there zero `// TODO` stubs?
+- Is coverage >= 85%?
+- Do your custom rules in `.dc/gates/*.yml` pass?
+
+**Step 4:** Only when **ALL 6 phases pass ALL gates** does the code merge into your project. If anything fails → your project stays exactly as it was.
+
+> **3 providers:** Use your Claude Code subscription (free), OpenAI Codex, or Ollama for 100% free local execution.
 
 ---
 

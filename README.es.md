@@ -42,26 +42,6 @@ Don Cheli toma tu idea y entrega **código testeado, revisado y verificado** —
 
 Tu proyecto queda **intacto** hasta que todo pase. Si algo falla, no cambia nada.
 
-### Impulsado por un orquestador TypeScript real
-
-No son solo prompts — es un **runtime real** que fuerza cada regla:
-
-```
-Orquestador (TypeScript)
-  ├── Crea git worktree (tu proyecto queda seguro)
-  ├── Levanta container Docker (ejecución aislada)
-  ├── Ejecuta /dc:especificar → /dc:revisar (comandos reales)
-  ├── Quality gates verifican DESPUÉS de cada fase:
-  │   ├── Spec gate: ¿existen archivos .feature?
-  │   ├── TDD gate: ¿tests existen? ¿pasan? ¿sin stubs?
-  │   ├── Coverage gate: ¿>= 85%?
-  │   └── Custom gates: .dc/gates/*.yml
-  ├── TODO PASA → merge al proyecto ✅
-  └── ALGO FALLA → descarta worktree, proyecto INTACTO ❌
-```
-
-**3 providers:** Claude Code (suscripción) · OpenAI Codex · Ollama (gratis, modelos locales)
-
 ---
 
 ## Instalación
@@ -87,6 +67,28 @@ code --install-extension doncheli.don-cheli-sdd
 ```
 
 </details>
+
+---
+
+## El Runtime — Tu código nunca se rompe
+
+Otros frameworks te dan prompts y esperan que la IA los siga. **Don Cheli tiene un orquestador TypeScript real** que hace imposible saltarse las reglas.
+
+### Cómo funciona en 4 pasos:
+
+**Paso 1:** El runtime crea una **copia** de tu proyecto (git worktree). Tu proyecto real nunca se toca.
+
+**Paso 2:** Levanta un **container Docker** y ejecuta cada comando `/dc:*` adentro — completamente aislado.
+
+**Paso 3:** Después de cada fase, **quality gates reales** verifican el output:
+- ¿Existe la spec Gherkin? ¿Tiene escenarios P1?
+- ¿Existen tests? ¿Pasan? ¿Hay cero stubs `// TODO`?
+- ¿La cobertura es >= 85%?
+- ¿Pasan tus reglas custom en `.dc/gates/*.yml`?
+
+**Paso 4:** Solo cuando **las 6 fases pasan TODAS las puertas** se mergea el código a tu proyecto. Si algo falla → tu proyecto queda exactamente como estaba.
+
+> **3 providers:** Usa tu suscripción de Claude Code (gratis), OpenAI Codex, o Ollama para ejecución 100% local y gratuita.
 
 ---
 
