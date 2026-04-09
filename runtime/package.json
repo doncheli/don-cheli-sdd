@@ -1,27 +1,24 @@
 {
   "name": "don-cheli-runtime",
   "version": "1.0.0",
-  "description": "Don Cheli SDD Runtime — Sandcastle orchestrator for isolated TDD execution",
+  "description": "Don Cheli SDD Runtime — Orchestrator with TDD enforcement, quality gates, and multi-provider support",
   "type": "module",
-  "main": "src/dc-runner.ts",
-  "scripts": {
-    "start": "tsx src/dc-local.ts",
-    "build": "tsc",
-    "local": "tsx src/dc-local.ts",
-    "local:specify": "tsx src/dc-local.ts --phase specify",
-    "local:implement": "tsx src/dc-local.ts --phase implement",
-    "local:review": "tsx src/dc-local.ts --phase review",
-    "docker": "tsx src/dc-runner.ts",
-    "docker:specify": "tsx src/dc-runner.ts --phase specify",
-    "docker:implement": "tsx src/dc-runner.ts --phase implement",
-    "docker:review": "tsx src/dc-runner.ts --phase review"
+  "main": "src/index.ts",
+  "bin": {
+    "dc-run": "./src/index.ts"
   },
-  "keywords": ["don-cheli", "sdd", "sandcastle", "tdd", "docker"],
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "dc:auto": "tsx src/index.ts",
+    "dc:specify": "tsx src/index.ts --phase specify",
+    "dc:implement": "tsx src/index.ts --phase implement",
+    "dc:review": "tsx src/index.ts --phase review"
+  },
+  "keywords": ["don-cheli", "sdd", "tdd", "orchestrator", "docker", "gherkin"],
   "author": "Jose Luis Oronoz Troconis (@DonCheli)",
   "license": "Apache-2.0",
   "dependencies": {
-    "@ai-hero/sandcastle": "^0.2.3",
-    "@anthropic-ai/sdk": "^0.86.1",
     "@types/node": "^25.5.2",
     "tsx": "^4.21.0",
     "typescript": "^6.0.2"
