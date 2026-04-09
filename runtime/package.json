@@ -1,0 +1,26 @@
+{
+  "name": "don-cheli-runtime",
+  "version": "1.0.0",
+  "description": "Don Cheli SDD Runtime — Orchestrator with TDD enforcement, quality gates, and multi-provider support",
+  "type": "module",
+  "main": "src/index.ts",
+  "bin": {
+    "dc-run": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "dc:auto": "tsx src/index.ts",
+    "dc:specify": "tsx src/index.ts --phase specify",
+    "dc:implement": "tsx src/index.ts --phase implement",
+    "dc:review": "tsx src/index.ts --phase review"
+  },
+  "keywords": ["don-cheli", "sdd", "tdd", "orchestrator", "docker", "gherkin"],
+  "author": "Jose Luis Oronoz Troconis (@DonCheli)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@types/node": "^25.5.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
+  }
+}
