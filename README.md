@@ -42,6 +42,26 @@ Don Cheli takes your idea and delivers **tested, reviewed, verified code** — a
 
 Your project is **untouched** until everything passes. If anything fails, nothing changes.
 
+### Powered by a real TypeScript orchestrator
+
+Not just prompts — a **real runtime** that enforces every rule:
+
+```
+Orchestrator (TypeScript)
+  ├── Creates git worktree (your project stays safe)
+  ├── Spins up Docker container (isolated execution)
+  ├── Runs /dc:specify → /dc:review (real commands)
+  ├── Quality gates verify AFTER each phase:
+  │   ├── Spec gate: .feature files exist?
+  │   ├── TDD gate: tests exist? pass? no stubs?
+  │   ├── Coverage gate: >= 85%?
+  │   └── Custom gates: .dc/gates/*.yml
+  ├── ALL PASS → merge to project ✅
+  └── ANY FAIL → discard worktree, project UNTOUCHED ❌
+```
+
+**3 providers:** Claude Code (subscription) · OpenAI Codex · Ollama (free, local models)
+
 ---
 
 ## Install

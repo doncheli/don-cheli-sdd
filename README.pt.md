@@ -42,6 +42,26 @@ Don Cheli pega sua ideia e entrega **código testado, revisado e verificado** �
 
 Seu projeto fica **intacto** até que tudo passe. Se algo falhar, nada muda.
 
+### Impulsionado por um orquestrador TypeScript real
+
+Não são apenas prompts — é um **runtime real** que força cada regra:
+
+```
+Orquestrador (TypeScript)
+  ├── Cria git worktree (seu projeto fica seguro)
+  ├── Levanta container Docker (execução isolada)
+  ├── Executa /dc:especificar → /dc:revisar (comandos reais)
+  ├── Quality gates verificam DEPOIS de cada fase:
+  │   ├── Spec gate: existem arquivos .feature?
+  │   ├── TDD gate: testes existem? passam? sem stubs?
+  │   ├── Coverage gate: >= 85%?
+  │   └── Custom gates: .dc/gates/*.yml
+  ├── TUDO PASSA → merge no projeto ✅
+  └── ALGO FALHA → descarta worktree, projeto INTACTO ❌
+```
+
+**3 providers:** Claude Code (assinatura) · OpenAI Codex · Ollama (grátis, modelos locais)
+
 ---
 
 ## Instalação
