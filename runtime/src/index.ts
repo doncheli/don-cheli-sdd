@@ -69,6 +69,9 @@ for (let i = 0; i < args.length; i++) {
     case "--worktree":
       config.useWorktree = true;
       break;
+    case "--no-docker":
+      config.noDocker = true;
+      break;
     case "--dry-run":
       config.dryRun = true;
       break;
