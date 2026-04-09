@@ -4,6 +4,21 @@ Todos los cambios notables en Don Cheli SDD Framework.
 
 Formato basado en [Conventional Commits](https://www.conventionalcommits.org/).
 
+## [1.32.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.31.0...v1.32.0) (2026-04-09)
+
+### Nuevas Funcionalidades
+
+* Don Cheli Runtime con Sandcastle — ejecución aislada en Docker ([815ddcc](https://github.com/doncheli/don-cheli-sdd/commit/815ddcc43a0adb3f1d53350a7f27fed463932f58))
+* merge runtime TypeScript a main + destacar orquestador en READMEs ([435ad2c](https://github.com/doncheli/don-cheli-sdd/commit/435ad2c631dcadd9318e9064523b096a546ef73b))
+* runtime ejecuta comandos /dc:* reales + auto-install Docker ([b160cd1](https://github.com/doncheli/don-cheli-sdd/commit/b160cd1b5bbd61fa04cba592d2a39cf6a0a31ef4))
+* runtime local mode — Claude Code CLI sin Docker ni API key ([aeac610](https://github.com/doncheli/don-cheli-sdd/commit/aeac6107373541b37f2539db191b798fa860d936))
+* runtime local mode — Claude Code CLI sin Docker ni API key ([63e421e](https://github.com/doncheli/don-cheli-sdd/commit/63e421ee2abe15f98bf953ea0cdd8ef4c101094e))
+
+### Documentación
+
+* agregar drawers por IDE en READMEs (OpenCode, Claude, Antigravity, Cursor, Codex/Qwen) ([7de8edf](https://github.com/doncheli/don-cheli-sdd/commit/7de8edf384cb1d52921508feba114dfaf320ebc7))
+* simplificar READMEs — de ~500 a 186 líneas, enfocado en /dc:auto ([f0d134f](https://github.com/doncheli/don-cheli-sdd/commit/f0d134fd89cfeb133725604341b3c6e4152df782))
+
 ## [1.31.0](https://github.com/doncheli/don-cheli-sdd/compare/v1.30.1...v1.31.0) (2026-04-08)
 
 ### Nuevas Funcionalidades
