@@ -3,7 +3,7 @@
  * Uses Claude Code CLI (subscription-based, no API key needed)
  */
 
-import type { AgentProvider, AgentResult } from "./base.js";
+import type { AgentProvider } from "./base.js";
 
 const COST_PER_1M_INPUT: Record<string, number> = {
   "claude-opus-4-6": 15.0,
@@ -28,12 +28,24 @@ export class ClaudeProvider implements AgentProvider {
   buildCommand(prompt: string): { command: string; args: string[] } {
     return {
       command: "claude",
-      args: ["--print", "--model", this.model, prompt],
+      args: [
+        "-p",                              // Print mode (non-interactive)
+        "--model", this.model,
+        "--dangerously-skip-permissions",   // Allow file creation without prompts
+        "--output-format", "text",          // Plain text output for streaming
+        prompt,
+      ],
     };
   }
 
   buildDockerCommand(prompt: string): string[] {
-    return ["claude", "--print", "--model", this.model, prompt];
+    return [
+      "claude", "-p",
+      "--model", this.model,
+      "--dangerously-skip-permissions",
+      "--output-format", "text",
+      prompt,
+    ];
   }
 
   isComplete(output: string, signal: string): boolean {

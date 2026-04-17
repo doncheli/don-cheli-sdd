@@ -6,7 +6,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync, unlinkSync } from "fs";
 import { join } from "path";
 
-export type PhaseName = "specify" | "clarify" | "plan" | "breakdown" | "implement" | "review";
+export type PhaseName = "specify" | "clarify" | "plan" | "design" | "breakdown" | "implement" | "review";
 export type PhaseStatus = "pending" | "running" | "passed" | "failed" | "skipped";
 
 export interface TaskState {

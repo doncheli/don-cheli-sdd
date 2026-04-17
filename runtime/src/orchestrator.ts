@@ -25,6 +25,7 @@ import { estimatePipelineCost, formatCostTable } from "./utils/cost.js";
 import { specGate } from "./gates/spec-gate.js";
 import { tddGate } from "./gates/tdd-gate.js";
 import { customGates } from "./gates/custom-gate.js";
+import { designGate } from "./gates/design-gate.js";
 import {
   createWorktree, commitWorktree, mergeWorktree,
   cleanupWorktree, isGitRepo
@@ -69,6 +70,10 @@ const PHASE_COMMANDS: Record<PhaseName, { dcCommand: string; description: string
     dcCommand: "/dc:planificar-tecnico",
     description: "Technical blueprint with architecture, API contracts and final schema",
   },
+  design: {
+    dcCommand: "/dc:diseñar-ui",
+    description: "Generates UI/UX designs with Figma link or HTML preview and approval flow",
+  },
   breakdown: {
     dcCommand: "/dc:desglosar",
     description: "Splits plan into concrete tasks with execution order and parallelism",
@@ -83,7 +88,7 @@ const PHASE_COMMANDS: Record<PhaseName, { dcCommand: string; description: string
   },
 };
 
-const DEFAULT_PHASES: PhaseName[] = ["specify", "clarify", "plan", "breakdown", "implement", "review"];
+const DEFAULT_PHASES: PhaseName[] = ["specify", "clarify", "plan", "design", "breakdown", "implement", "review"];
 const MAX_RETRIES = 3;
 const DOCKER_IMAGE = "doncheli-runtime";
 const COMPLETION_SIGNAL = "DC_PHASE_COMPLETE";
@@ -93,17 +98,19 @@ const COMPLETION_SIGNAL = "DC_PHASE_COMPLETE";
 // ═══════════════════════════════════════════════════════════════
 
 function runGatesForPhase(phase: PhaseName, projectDir: string): boolean {
-  const gates: Record<PhaseName, (() => { passed: boolean; message: string })[]> = {
+  const gates: Record<PhaseName, (() => { passed: boolean; message: string; details?: string[] })[]> = {
     specify: [() => specGate(projectDir)],
     clarify: [() => specGate(projectDir)],
     plan: [],
-    breakdown: [],
+    design: [],
+    breakdown: [
+      () => designGate(projectDir),
+    ],
     implement: [
       () => tddGate(projectDir),
       () => customGates(projectDir),
     ],
     review: [
-      () => tddGate(projectDir),
       () => customGates(projectDir),
     ],
   };
@@ -111,12 +118,21 @@ function runGatesForPhase(phase: PhaseName, projectDir: string): boolean {
   const phaseGates = gates[phase] || [];
   if (phaseGates.length === 0) return true;
 
+  log.info(`\n  Quality Gates for ${PHASE_COMMANDS[phase].dcCommand}:`);
+
   let allPassed = true;
   for (const gate of phaseGates) {
     const result = gate();
     log.gateResult(phase, result.passed, result.message);
+    // Print details for visibility
+    if (result.details) {
+      for (const d of result.details) {
+        console.log(`    ${d}`);
+      }
+    }
     if (!result.passed) allPassed = false;
   }
+  console.log("");
   return allPassed;
 }
 
@@ -126,18 +142,125 @@ function runGatesForPhase(phase: PhaseName, projectDir: string): boolean {
 
 function buildPhasePrompt(phase: PhaseName, task: string): string {
   const { dcCommand, description } = PHASE_COMMANDS[phase];
-  return `Execute the Don Cheli command: ${dcCommand}
 
-Task: ${task}
+  const phaseInstructions: Record<PhaseName, string> = {
+    specify: `Create a Gherkin specification file at .dc/specs/spec.feature with:
+- Feature name and description
+- At least 3 Scenario blocks with Given/When/Then steps
+- Mark priority scenarios with @P1 tag
+- Include edge cases and error scenarios`,
 
-This command ${description}.
+    clarify: `Review the spec at .dc/specs/spec.feature and:
+- Identify ambiguities or contradictions
+- Add clarification notes in .dc/specs/clarifications.md
+- Update the spec if needed to resolve ambiguities`,
 
-Follow all Iron Laws:
-1. TDD: All production code requires tests
-2. Debugging: Root cause first
-3. Verification: Evidence before assertions
+    plan: `Create a technical blueprint at .dc/blueprints/blueprint.md with:
+- Architecture overview (components, layers)
+- API contracts (endpoints, request/response schemas)
+- Data model / database schema
+- Technology choices and justification
+- File structure plan`,
 
-When the phase is complete, output exactly: ${COMPLETION_SIGNAL}`;
+    design: `Generate UI/UX designs using ATOMIC DESIGN methodology (Brad Frost).
+Build components bottom-up: Atoms → Molecules → Organisms → Templates → Pages.
+
+Read .dc/specs/spec.feature and .dc/blueprints/blueprint.md to extract all screens needed.
+
+CREATE THE FOLLOWING STRUCTURE:
+
+1. .dc/design/tokens/colors.json — Color palette with primary (50-900), neutral (0-1000), semantic (success/warning/error/info)
+2. .dc/design/tokens/typography.json — Font families, sizes (xs to 5xl), weights, line heights
+3. .dc/design/tokens/spacing.json — Spacing scale (0 to 24), border radius, shadows
+
+4. .dc/design/atoms/ — Individual HTML files for each atom component:
+   - button.html (primary, secondary, ghost, danger, disabled, loading variants)
+   - input.html (text, email, password, error, disabled variants)
+   - badge.html, avatar.html, spinner.html, tag.html
+   Each atom file shows ALL variants side by side.
+
+5. .dc/design/molecules/ — Combinations of atoms:
+   - search-bar.html, form-field.html, card-header.html, stat.html
+   Each molecule shows how atoms combine.
+
+6. .dc/design/organisms/ — Complete sections:
+   - header.html (navbar with logo, nav, search, avatar)
+   - sidebar.html (menu items, user section, collapse)
+   - form.html (complete form with validation)
+   - data-table.html (sortable, paginated)
+
+7. .dc/design/pages/ — Complete screens with REALISTIC domain data (NEVER "Lorem ipsum"):
+   - One HTML file per screen identified in the spec
+   - Use Tailwind CSS via CDN: <script src="https://cdn.tailwindcss.com"></script>
+   - Responsive: mobile-first (375px), tablet (768px), desktop (1440px)
+   - Include states: normal, empty, loading (skeleton), error
+   - Accessible: semantic HTML, ARIA labels, focus visible, contrast 4.5:1, touch targets 44px
+
+8. .dc/design/index.html — Component catalog + page navigation hub
+
+9. .dc/design/design-system.md — Documentation of all design decisions
+
+10. .dc/design/approval.json:
+    { "version": 1, "status": "approved", "provider": "html", "link": ".dc/design/index.html",
+      "screens_count": [N], "design_system": { "style": "[NAME]", "primary": "[HEX]",
+      "font_heading": "[FONT]", "font_body": "[FONT]" },
+      "approver": null, "approved_at": null, "history": [{ "action": "created", "at": "[NOW]" }] }
+
+RULES:
+- Set approval.json status to "approved" so pipeline continues automatically
+- Every HTML file must be COMPLETE and functional, not a placeholder
+- Use consistent design tokens across ALL components
+- Mobile-first: design for 375px first, then scale up
+- WCAG AA: contrast 4.5:1, semantic HTML, focus indicators`,
+
+    breakdown: `Create task files in .dc/tareas/ with:
+- One markdown file per task (task-01.md, task-02.md, etc.)
+- Each task has: description, acceptance criteria, test cases
+- Mark dependencies between tasks
+- Mark which tasks can run in parallel`,
+
+    implement: `Implement the code following strict TDD.
+
+STEP 1 — Setup (if no package.json exists):
+- Create package.json with: { "scripts": { "test": "vitest run" }, "devDependencies": { "vitest": "latest" } }
+- Run: npm install
+
+STEP 2 — Write tests FIRST:
+- Create test files with names like *.test.ts or *.test.js
+- Each test must use describe/it/expect blocks
+- Cover at least the main functionality and one edge case
+
+STEP 3 — Write code to pass the tests:
+- Implement the minimum code that makes ALL tests pass
+- Run the tests to verify: npm test
+
+STEP 4 — Verify:
+- Run tests one final time to confirm they pass
+- Ensure NO // TODO or // FIXME comments exist in source code
+- Aim for >= 85% test coverage
+
+CRITICAL: Tests MUST actually exist as files and contain real assertions (expect/assert). Empty or placeholder test files will be rejected.`,
+
+    review: `Review all code and create .dc/reviews/review.md with:
+- Score each dimension (1-5): correctness, security, performance, maintainability, testing, documentation, architecture
+- List specific issues found
+- Confirm all tests pass
+- Confirm no // TODO stubs remain`,
+  };
+
+  return `You are executing phase "${dcCommand}" of the Don Cheli SDD pipeline.
+
+TASK: ${task}
+
+PHASE: ${dcCommand} — ${description}
+
+INSTRUCTIONS:
+${phaseInstructions[phase]}
+
+IMPORTANT:
+- Create real files with real content (not placeholders)
+- Work in the current directory
+- When done, output exactly: ${COMPLETION_SIGNAL}`;
 }
 
 async function executeInDocker(
@@ -148,7 +271,7 @@ async function executeInDocker(
     containerName,
     provider.buildDockerCommand(prompt),
     (data) => process.stdout.write(data),
-    { timeout: 10 * 60 * 1000 },
+    { timeout: 15 * 60 * 1000 },
   );
   return {
     passed: result.output.includes(COMPLETION_SIGNAL) || result.exitCode === 0,

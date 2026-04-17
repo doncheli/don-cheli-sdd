@@ -1,0 +1,40 @@
+[package]
+name = "don-cheli-studio"
+version = "0.1.0"
+edition = "2021"
+description = "Don Cheli Studio — Real-time SDD pipeline dashboard"
+license = "Apache-2.0"
+
+[dependencies]
+# Web framework
+axum = { version = "0.8", features = ["ws"] }
+axum-extra = { version = "0.10", features = ["typed-header"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["cors", "fs", "trace"] }
+
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# File watching
+notify = "8"
+
+# Database
+rusqlite = { version = "0.34", features = ["bundled"] }
+
+# Utilities
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow = "1"
+futures = "0.3"
+open = "5"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true

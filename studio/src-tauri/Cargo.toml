@@ -1,0 +1,36 @@
+[package]
+name = "don-cheli-studio"
+version = "0.1.0"
+edition = "2021"
+description = "Don Cheli Studio — Desktop app for SDD pipeline"
+license = "Apache-2.0"
+
+[lib]
+name = "don_cheli_studio_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+
+# Async
+tokio = { version = "1", features = ["full"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Database
+rusqlite = { version = "0.34", features = ["bundled"] }
+
+# File watching
+notify = "8"
+
+# Utilities
+uuid = { version = "1", features = ["v4"] }
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1"

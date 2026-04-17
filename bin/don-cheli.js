@@ -14,6 +14,9 @@ const SKILL_UPDATER = path.join(FRAMEWORK_ROOT, 'scripts', 'skill-updater.sh');
 const args = process.argv.slice(2);
 const command = args[0] || 'help';
 
+const STUDIO_BACKEND = path.join(FRAMEWORK_ROOT, 'studio', 'backend');
+const STUDIO_FRONTEND = path.join(FRAMEWORK_ROOT, 'studio', 'frontend');
+
 const HELP = `
   Don Cheli SDD Framework v${VERSION}
   Deja de adivinar. Empieza a hacer ingeniería.
@@ -30,6 +33,9 @@ const HELP = `
     skills-update         Actualizar skills de terceros
     skills-update --check Solo verificar skills
     validate, validar     Validar estructura del framework
+    studio                Abrir Don Cheli Studio (dashboard visual)
+    studio --port <num>   Abrir Studio en un puerto específico
+    auto "<tarea>"        Ejecutar pipeline completo autónomo
     version               Mostrar versión
     help                  Mostrar esta ayuda
 
@@ -37,9 +43,8 @@ const HELP = `
     don-cheli install
     don-cheli install --global --lang es
     don-cheli update
-    don-cheli skills-update
-    don-cheli install --global --lang en --profile phantom
-    don-cheli validate
+    don-cheli studio
+    don-cheli auto "Implement JWT authentication"
     npx don-cheli-sdd install --global
 
   Más info: https://doncheli.tv/comousar.html
@@ -85,6 +90,60 @@ switch (command) {
   case '-v':
     console.log(`don-cheli-sdd v${VERSION}`);
     break;
+
+  case 'studio':
+  case 'dashboard': {
+    // Check if Rust binary exists
+    const binaryPath = path.join(STUDIO_BACKEND, 'target', 'release', 'don-cheli-studio');
+    const binaryDebug = path.join(STUDIO_BACKEND, 'target', 'debug', 'don-cheli-studio');
+    const binary = fs.existsSync(binaryPath) ? binaryPath : fs.existsSync(binaryDebug) ? binaryDebug : null;
+
+    if (!binary) {
+      console.log('  Building Don Cheli Studio (first time only)...\n');
+      try {
+        execSync('cargo build --release', { cwd: STUDIO_BACKEND, stdio: 'inherit' });
+      } catch (e) {
+        console.error('  Error: Failed to build Studio. Is Rust installed?');
+        console.error('  Install Rust: curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh');
+        process.exit(1);
+      }
+    }
+
+    const finalBinary = fs.existsSync(binaryPath) ? binaryPath : binaryDebug;
+    const portIdx = args.indexOf('--port');
+    const env = { ...process.env };
+    if (portIdx !== -1 && args[portIdx + 1]) {
+      env.DC_STUDIO_PORT = args[portIdx + 1];
+    }
+
+    console.log(`\n  🎨 Don Cheli Studio v0.1.0`);
+    console.log(`  Opening http://localhost:${env.DC_STUDIO_PORT || '3847'}\n`);
+
+    const studio = spawn(finalBinary, [], {
+      stdio: 'inherit',
+      env,
+      cwd: STUDIO_BACKEND,
+    });
+
+    studio.on('close', (code) => process.exit(code || 0));
+    break;
+  }
+
+  case 'auto': {
+    const task = args.slice(1).join(' ').replace(/^["']|["']$/g, '');
+    if (!task) {
+      console.error('  Error: debes especificar una tarea');
+      console.error('  Uso: don-cheli auto "Implement JWT authentication"');
+      process.exit(1);
+    }
+    const runtimeIndex = path.join(FRAMEWORK_ROOT, 'runtime', 'src', 'index.ts');
+    const autoChild = spawn('npx', ['tsx', runtimeIndex, task, ...args.slice(1).filter(a => a !== task)], {
+      stdio: 'inherit',
+      cwd: process.cwd(),
+    });
+    autoChild.on('close', (code) => process.exit(code || 0));
+    break;
+  }
 
   case 'help':
   case '--help':

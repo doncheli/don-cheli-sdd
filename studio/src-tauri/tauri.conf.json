@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/nicholasbalasus/tauri/HEAD/crates/tauri-cli/schema.json",
+  "productName": "Don Cheli Studio",
+  "version": "0.1.0",
+  "identifier": "tv.doncheli.studio",
+  "build": {
+    "frontendDist": "../frontend/dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "Don Cheli Studio",
+        "width": 1280,
+        "height": 800,
+        "minWidth": 900,
+        "minHeight": 600,
+        "center": true,
+        "resizable": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png"
+    ]
+  }
+}
