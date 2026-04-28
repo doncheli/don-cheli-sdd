@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Don Cheli Studio — Cómo estará organizado</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #111111;
+    --ink-2: #555555;
+    --ink-3: #888888;
+    --line: #cfcfcf;
+    --fill: #ededed;
+    --fill-2: #f6f6f6;
+    --accent-mute: #bdbdbd;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--fill-2);
+    color: var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", system-ui, sans-serif;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  header.doc {
+    padding: 32px 48px 20px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  header.doc h1 { margin: 0 0 8px; font-size: 22px; font-weight: 600; }
+  header.doc p { margin: 0 0 6px; color: var(--ink-2); max-width: 760px; }
+  header.doc p.lead { color: var(--ink); }
+  nav.toc {
+    padding: 12px 48px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; z-index: 10;
+    font-size: 12px;
+  }
+  nav.toc a { color: var(--ink-2); margin-right: 16px; text-decoration: none; }
+  nav.toc a:hover { color: var(--ink); }
+  main { padding: 32px 48px 64px; display: grid; gap: 48px; max-width: 1280px; margin: 0 auto; }
+  section.frame {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  section.frame > h2 {
+    font-size: 15px; font-weight: 600; margin: 0 0 4px;
+  }
+  section.frame > p.desc {
+    margin: 0 0 20px; color: var(--ink-2); font-size: 13px;
+  }
+  .layer-tag {
+    display: inline-block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 6px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    color: var(--ink-2);
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  .wf {
+    background: var(--fill-2);
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 520px;
+  }
+  .wf-sidebar {
+    background: var(--fill);
+    border-right: 1px solid var(--line);
+    padding: 12px;
+    display: flex; flex-direction: column; gap: 4px;
+    font-size: 11px;
+    color: var(--ink-2);
+  }
+  .wf-sidebar .brand {
+    padding: 6px 8px;
+    border: 1px dashed var(--accent-mute);
+    border-radius: 3px;
+    margin-bottom: 12px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .wf-sidebar .nav-item {
+    padding: 6px 8px;
+    border-radius: 3px;
+  }
+  .wf-sidebar .nav-item.active {
+    background: #e2e2e2;
+    color: var(--ink);
+  }
+  .wf-sidebar .section-label {
+    text-transform: uppercase;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin: 12px 8px 4px;
+  }
+  .wf-main {
+    display: flex; flex-direction: column;
+  }
+  .wf-topbar {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--fill);
+    display: flex; align-items: center; gap: 12px;
+    font-size: 11px;
+    color: var(--ink-2);
+    flex-wrap: wrap;
+  }
+  .wf-topbar .chip {
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg);
+    font-size: 10px;
+  }
+  .wf-topbar .chip.strong { border-color: #444; color: var(--ink); font-weight: 600; }
+  .wf-topbar .chip.warn { border-color: #a0a0a0; color: var(--ink); }
+  .wf-topbar .spacer { flex: 1; }
+  .wf-content { padding: 16px; display: grid; gap: 12px; }
+  .block {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 11px;
+    color: var(--ink-2);
+    min-height: 42px;
+  }
+  .block.empty { background: var(--fill); }
+  .block.strong { border-color: #777; }
+  .block .label {
+    font-weight: 600; color: var(--ink); font-size: 11px;
+  }
+  .block .hint { color: var(--ink-3); font-size: 10px; margin-top: 2px; }
+  .row { display: grid; gap: 12px; }
+  .row.cols-2 { grid-template-columns: 1fr 1fr; }
+  .row.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .row.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .row.split { grid-template-columns: 2fr 1fr; }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat .value { font-size: 18px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+  .stat .label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); }
+  .phase-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 6px 8px;
+    font-size: 10px;
+    color: var(--ink-2);
+    background: var(--bg);
+  }
+  .phase-pill.done { background: var(--fill); color: var(--ink); }
+  .phase-pill.active { border-color: #444; color: var(--ink); font-weight: 600; }
+  .phase-row { display: flex; gap: 4px; flex-wrap: wrap; }
+  .legend { display: flex; gap: 20px; margin-top: 8px; font-size: 10px; color: var(--ink-3); }
+  .legend span::before {
+    content: ""; display: inline-block; width: 10px; height: 10px;
+    border: 1px solid var(--line); vertical-align: middle; margin-right: 4px; border-radius: 2px;
+  }
+  .legend .ag::before { background: var(--fill); }
+  .legend .ac::before { border-color: #444; }
+  .legend .ne::before { background: var(--bg); }
+
+  .ia-diagram {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 12px;
+  }
+  .ia-layer {
+    border: 1px dashed var(--line);
+    border-radius: 4px;
+    padding: 16px;
+    background: var(--fill-2);
+  }
+  .ia-layer h3 {
+    margin: 0 0 4px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .ia-layer .sub {
+    font-size: 12px; color: var(--ink-2); margin: 0 0 10px;
+  }
+  .ia-layer ul {
+    margin: 0; padding-left: 18px;
+    font-size: 12px; color: var(--ink);
+  }
+  .ia-layer li { margin: 4px 0; }
+  .annotations {
+    margin-top: 14px; padding: 12px 14px;
+    border-left: 2px solid var(--accent-mute);
+    background: var(--fill-2);
+    font-size: 12px; color: var(--ink-2);
+  }
+  .annotations strong { color: var(--ink); }
+  .annotations ul { margin: 8px 0 0 18px; padding: 0; }
+  .annotations li { margin: 4px 0; }
+
+  /* Modal / overlay wireframe */
+  .wf.overlay {
+    background: #1f1f1f;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    grid-template-columns: none;
+  }
+  .wf-modal {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 560px;
+    display: flex;
+    flex-direction: column;
+    max-height: 460px;
+  }
+  .wf-modal header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .wf-modal header .title { font-weight: 600; font-size: 13px; color: var(--ink); }
+  .wf-modal .breadcrumb {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--line);
+    background: var(--fill-2);
+  }
+  .wf-modal .breadcrumb .path {
+    flex: 1;
+    padding: 4px 8px;
+    background: var(--fill);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    font-size: 10px;
+    color: var(--ink-2);
+  }
+  .wf-modal .list {
+    padding: 8px; flex: 1; overflow: auto;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .wf-modal .list .entry {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: var(--ink-2);
+    border: 1px solid transparent;
+  }
+  .wf-modal .list .entry.git {
+    border-color: var(--line);
+    background: var(--fill-2);
+    color: var(--ink);
+  }
+  .wf-modal .list .entry .name { flex: 1; }
+  .wf-modal .list .entry .tag {
+    padding: 2px 6px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 9px;
+    background: var(--bg);
+  }
+  .wf-modal footer {
+    padding: 10px 16px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+    color: var(--ink-2);
+  }
+
+  @media print {
+    @page { size: A4 landscape; margin: 12mm; }
+    body { background: #fff; }
+    header.doc { padding: 0 0 16px; border-bottom: 1px solid var(--line); }
+    nav.toc { display: none; }
+    main { padding: 0; gap: 0; max-width: none; }
+    section.frame {
+      border: none;
+      padding: 0;
+      page-break-after: always;
+      break-after: page;
+    }
+    section.frame:last-child { page-break-after: auto; break-after: auto; }
+    .wf { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="doc">
+  <h1>Don Cheli Studio — Cómo estará organizado</h1>
+  <p class="lead">
+    Este documento muestra cómo se verá la herramienta por dentro: qué pantallas tiene,
+    qué información aparece en cada una, y cómo se mueve la persona que la usa.
+  </p>
+  <p>
+    Todavía no hay colores ni diseño visual: solo cajas grises. La idea de este primer paso
+    es ponernos de acuerdo en <em>qué va dónde</em> antes de preocuparnos por cómo se ve.
+  </p>
+</header>
+
+<nav class="toc">
+  <a href="#modo">Cómo trabaja Don Cheli</a>
+  <a href="#ia">Cómo está organizado</a>
+  <a href="#w0">0. Recorrido inicial</a>
+  <a href="#w1">1. Ahora</a>
+  <a href="#w1b">1b. Primer uso</a>
+  <a href="#wmodal">Modal: seleccionar carpeta</a>
+  <a href="#w2">2. Proyectos</a>
+  <a href="#w3">3. Un proyecto</a>
+  <a href="#w4">4. Un trabajo</a>
+  <a href="#w5">5. Historial</a>
+  <a href="#w6">6. Gastos</a>
+  <a href="#w7">7. Arsenal</a>
+  <a href="#w8">8. Guía</a>
+</nav>
+
+<main>
+
+<!-- ========== MODO DE TRABAJO ========== -->
+<section class="frame" id="modo">
+  <h2>Cómo trabaja Don Cheli</h2>
+  <p class="desc">
+    Don Cheli <strong>no es un programa que se usa por separado</strong>. Es una <em>metodología</em>
+    con reglas, comandos y asistentes que viven dentro de la herramienta de IA que tú ya uses.
+    Para aprovecharlo al máximo hay tres lugares que se complementan.
+  </p>
+
+  <div class="ia-diagram">
+    <div class="ia-layer">
+      <h3>1. Tu editor con IA</h3>
+      <p class="sub">Aquí es donde de verdad trabajas. Escribes en lenguaje natural o usas comandos como <code>/dc:especificar</code> o <code>/dc:planificar</code>, y la IA hace el trabajo.</p>
+      <ul>
+        <li>Claude Code</li>
+        <li>Cursor</li>
+        <li>OpenCode</li>
+        <li>Gemini (Antigravity)</li>
+        <li>Codex / Qwen</li>
+        <li>Amp · Windsurf · otros</li>
+      </ul>
+    </div>
+    <div class="ia-layer">
+      <h3>2. Don Cheli Studio</h3>
+      <p class="sub">Esta herramienta. La torre de control visual: ves qué está pasando, los costos, los archivos generados, el historial. <strong>No reemplaza a tu editor de IA, lo acompaña.</strong></p>
+      <ul>
+        <li>Ver trabajos en vivo</li>
+        <li>Revisar historial</li>
+        <li>Controlar gastos</li>
+        <li>Consultar capacidades</li>
+      </ul>
+    </div>
+    <div class="ia-layer">
+      <h3>3. Terminal</h3>
+      <p class="sub">Solo para administrar. Instalar el framework, actualizarlo o abrir Don Cheli Studio. No es donde se hace el trabajo real.</p>
+      <ul>
+        <li>Instalar Don Cheli</li>
+        <li>Actualizar el framework</li>
+        <li>Abrir el Studio</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <strong>Don Cheli es independiente del asistente de IA que uses.</strong> Funciona con Claude,
+    OpenAI (Codex), Google (Gemini) o modelos locales (Ollama, Qwen). Lo que cambia entre uno y
+    otro es <em>cómo se invocan</em> los comandos:
+    <ul>
+      <li>En Claude Code → comandos <code>/dc:*</code> (93 comandos nativos)</li>
+      <li>En OpenCode → <code>/doncheli-*</code> (28 slash commands + 28 habilidades)</li>
+      <li>En Cursor → reglas en <code>.cursorrules</code></li>
+      <li>En Gemini / Antigravity → archivo <code>GEMINI.md</code></li>
+      <li>En Codex / Qwen → archivo <code>AGENTS.md</code></li>
+    </ul>
+    La metodología es la misma: los 7 pasos, las reglas, el arsenal. Solo cambia la puerta de entrada.
+  </div>
+</section>
+
+<!-- ========== MODELO IA ========== -->
+<section class="frame" id="ia">
+  <h2>Cómo está organizado — tres niveles</h2>
+  <p class="desc">
+    Queremos que esta herramienta sea una <strong>torre de control</strong>: que con un vistazo
+    sepas cómo va todo, y que cuando quieras investigar algo puedas entrar a ver los detalles.
+    Para lograrlo la dividimos en tres niveles, del más superficial al más profundo.
+  </p>
+  <div class="ia-diagram">
+    <div class="ia-layer">
+      <h3>1. De un vistazo</h3>
+      <p class="sub">Siempre visible arriba. Te dice si algo requiere tu atención, sin tener que entrar a nada.</p>
+      <ul>
+        <li>Si hay un trabajo en marcha</li>
+        <li>Avisos o errores sin resolver</li>
+        <li>Cuánto llevas gastado este mes</li>
+        <li>Cuántos trabajos hiciste hoy</li>
+      </ul>
+    </div>
+    <div class="ia-layer">
+      <h3>2. Trabajar</h3>
+      <p class="sub">Las cuatro secciones principales. Aquí haces cosas y revisas lo que pasa.</p>
+      <ul>
+        <li>Ahora — qué está pasando ahora mismo</li>
+        <li>Proyectos — todos tus proyectos</li>
+        <li>Historial — trabajos anteriores</li>
+        <li>Gastos — dinero gastado y por qué</li>
+      </ul>
+    </div>
+    <div class="ia-layer">
+      <h3>3. Consultar</h3>
+      <p class="sub">Referencia. Lo abres de vez en cuando cuando necesitas recordar algo.</p>
+      <ul>
+        <li>Arsenal — todo lo que Don Cheli sabe hacer</li>
+        <li>Guía — cómo funciona, reglas, preguntas frecuentes</li>
+        <li>Configuración</li>
+      </ul>
+    </div>
+  </div>
+  <div class="annotations">
+    <strong>Cómo se navega:</strong>
+    Siempre vas a ver un menú lateral a la izquierda con las cuatro secciones principales arriba
+    (Ahora, Proyectos, Historial, Gastos) y las tres de consulta abajo (Arsenal, Guía, Configuración).
+    Y arriba, en todo momento, una barra con los cuatro datos "de un vistazo" para que sepas el estado
+    de las cosas sin tener que entrar a ningún lado.
+    <br><br>
+    <strong>Idea clave:</strong> los avisos te <em>avisan</em>; las pantallas te ayudan a <em>investigar</em>.
+    Son dos cosas distintas y no deben mezclarse.
+    <br><br>
+    <strong>Editor de IA en el header:</strong> en la barra superior siempre se ve un chip que indica
+    con qué asistente de IA está trabajando el proyecto actual (por ejemplo, <em>◆ Editor: Claude Code</em>).
+    En las pantallas globales muestra el editor por defecto; en las pantallas de un proyecto específico
+    muestra el editor que tiene configurado ese proyecto (se puede tener un editor distinto por proyecto).
+    Al hacer clic sobre el chip se puede cambiar.
+  </div>
+</section>
+
+<!-- ========== 0. ONBOARDING / RECORRIDO INICIAL ========== -->
+<section class="frame" id="w0">
+  <h2>0. Recorrido inicial <span class="layer-tag">La primera vez que abres el Studio</span></h2>
+  <p class="desc">
+    La primera vez que alguien abre Don Cheli Studio, lo recibe un <strong>recorrido guiado de 5 pasos</strong>
+    que le explica en dos minutos qué es Don Cheli, cómo trabaja y cómo está organizado el dashboard.
+    Al final del recorrido aparece el flujo para seleccionar la primera carpeta.
+    <br><br>
+    El recorrido se puede <strong>saltar</strong> en cualquier momento, y también se puede
+    <strong>volver a ver</strong> después desde la sección <em>Guía</em>.
+  </p>
+
+  <div class="annotations" style="margin-top: 0; margin-bottom: 18px;">
+    <strong>Los 5 pasos del recorrido:</strong>
+    <ul>
+      <li><strong>Paso 1 · Bienvenida.</strong> Qué es Don Cheli en una frase: "una metodología que te acompaña a construir software paso a paso con la ayuda de la IA".</li>
+      <li><strong>Paso 2 · Cómo trabaja.</strong> Los tres lugares (tu editor con IA, este Studio, la terminal) y la lista de editores compatibles.</li>
+      <li><strong>Paso 3 · Cómo está organizado el dashboard.</strong> Los tres niveles (de un vistazo, trabajar, consultar) y las ocho secciones.</li>
+      <li><strong>Paso 4 · Los 7 pasos.</strong> El flujo completo de un trabajo: especificar → aclarar → planificar → diseñar → desglosar → construir → revisar.</li>
+      <li><strong>Paso 5 · Empecemos.</strong> Invitación a seleccionar la primera carpeta (abre el modal).</li>
+    </ul>
+  </div>
+
+  <p class="desc"><strong>Aspecto de cada paso</strong> (ejemplo: paso 2):</p>
+
+  <div class="wf" style="grid-template-columns: 1fr; min-height: 440px;">
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip strong">Don Cheli · Studio</span>
+        <span class="spacer"></span>
+        <span class="chip">Saltar recorrido</span>
+      </div>
+      <div class="wf-content" style="padding: 36px 48px; gap: 18px;">
+        <div style="text-align: center;">
+          <div style="font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em;">Paso 2 de 5</div>
+          <div class="label" style="font-size: 18px; margin-top: 6px;">Cómo trabaja Don Cheli</div>
+          <div class="hint" style="font-size: 12px; max-width: 560px; margin: 8px auto 0;">
+            Don Cheli trabaja con el editor de inteligencia artificial que tú ya uses.
+            Este Studio es tu torre de control visual — no reemplaza a tu editor, lo acompaña.
+          </div>
+        </div>
+
+        <div class="row cols-3" style="max-width: 780px; margin: 18px auto 0;">
+          <div class="block" style="text-align: center; padding: 14px;">
+            <div class="label">Tu editor con IA</div>
+            <div class="hint">Claude Code · Cursor · OpenCode · Gemini · Codex · otros</div>
+          </div>
+          <div class="block strong" style="text-align: center; padding: 14px;">
+            <div class="label">Don Cheli Studio</div>
+            <div class="hint">Ves lo que pasa, los costos, el historial</div>
+          </div>
+          <div class="block" style="text-align: center; padding: 14px;">
+            <div class="label">Terminal</div>
+            <div class="hint">Solo para instalar o actualizar</div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 28px; max-width: 780px; margin-left: auto; margin-right: auto;">
+          <span class="chip">← Anterior</span>
+          <div style="display: flex; gap: 6px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--ink-3);"></span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--ink);"></span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--line);"></span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--line);"></span>
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--line);"></span>
+          </div>
+          <span class="chip strong">Siguiente →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <strong>Detalles de comportamiento:</strong>
+    <ul>
+      <li>El recorrido aparece <strong>solo la primera vez</strong> que se abre el Studio.</li>
+      <li>En cualquier paso hay un botón <em>"Saltar recorrido"</em> arriba a la derecha.</li>
+      <li>Después se puede volver a ver desde la sección <em>Guía → Empezar aquí → Ver el recorrido</em>.</li>
+      <li>Si la persona prefiere leer en lugar de ver, cada paso tiene un enlace <em>"Leer el texto completo en la Guía"</em>.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 1. AHORA ========== -->
+<section class="frame" id="w1">
+  <h2>1. Ahora <span class="layer-tag">Pantalla principal</span></h2>
+  <p class="desc">
+    La primera pantalla cuando abres Don Cheli. Si hay un trabajo en marcha, lo ves aquí en vivo.
+    Si no hay nada corriendo, te ofrece empezar uno nuevo o continuar el último.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item active">Ahora</div>
+      <div class="nav-item">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item">Gastos</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item">Arsenal</div>
+      <div class="nav-item">Guía</div>
+      <div class="nav-item">Configuración</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip">1 trabajo en marcha</span>
+        <span class="chip">Sin avisos</span>
+        <span class="chip">$12.40 de $100 este mes</span>
+        <span class="chip">3 trabajos hoy</span>
+        <span class="spacer"></span>
+        <span class="chip strong">◆ Editor: Claude Code</span>
+        <span class="chip">Tu cuenta</span>
+      </div>
+      <div class="wf-content">
+        <div class="row cols-4">
+          <div class="block"><div class="stat"><span class="label">Proyecto</span><span class="value">auth-jwt</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Paso actual</span><span class="value">Diseñando</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Lleva</span><span class="value">4 min</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Costo hasta ahora</span><span class="value">$0.82</span></div></div>
+        </div>
+        <div class="block strong">
+          <div class="label">Trabajo en curso — los 7 pasos</div>
+          <div class="hint">Ves en qué paso va y cuáles faltan. El paso marcado es el que está ejecutándose ahora.</div>
+          <div class="phase-row" style="margin-top:10px">
+            <span class="phase-pill done">Especificar ✓</span>
+            <span class="phase-pill done">Aclarar ✓</span>
+            <span class="phase-pill done">Planificar ✓</span>
+            <span class="phase-pill active">Diseñar ●</span>
+            <span class="phase-pill">Desglosar</span>
+            <span class="phase-pill">Construir</span>
+            <span class="phase-pill">Revisar</span>
+          </div>
+          <div class="legend">
+            <span class="ag">Ya terminado</span>
+            <span class="ac">En marcha ahora</span>
+            <span class="ne">Pendiente</span>
+          </div>
+        </div>
+        <div class="row split">
+          <div class="block">
+            <div class="label">Qué está haciendo Don Cheli, en vivo</div>
+            <div class="hint">Un registro que se actualiza en tiempo real mientras trabaja. Se desplaza solo y puedes filtrar por tipo (información, avisos, errores).</div>
+          </div>
+          <div class="block">
+            <div class="label">Controles de calidad</div>
+            <div class="hint">Tres verificaciones que Don Cheli hace automáticamente: <br>• Tests (pruebas)<br>• Diseño aprobado<br>• Aprobación final</div>
+          </div>
+        </div>
+        <div class="block empty">
+          <div class="label">Cuando no hay nada corriendo, aparecen estas opciones:</div>
+          <div class="hint">[ Empezar un proyecto nuevo ]  ·  [ Continuar el último trabajo ]  ·  [ Ver el historial ]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 1b. PRIMER USO / EMPTY STATE ========== -->
+<section class="frame" id="w1b">
+  <h2>1b. Primer uso <span class="layer-tag">Pantalla "Ahora" sin proyectos aún</span></h2>
+  <p class="desc">
+    La primera vez que alguien abre Don Cheli Studio todavía no tiene ningún proyecto cargado.
+    La pantalla "Ahora" se transforma en una bienvenida guiada: le explica en una frase qué es
+    la herramienta y le ofrece dos caminos para empezar.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item active">Ahora</div>
+      <div class="nav-item">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item">Gastos</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item">Arsenal</div>
+      <div class="nav-item">Guía</div>
+      <div class="nav-item">Configuración</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip">Nada en marcha</span>
+        <span class="chip">Sin avisos</span>
+        <span class="chip">$0 este mes</span>
+        <span class="chip">Sin trabajos todavía</span>
+        <span class="spacer"></span>
+        <span class="chip">Editor: sin configurar</span>
+        <span class="chip">Tu cuenta</span>
+      </div>
+      <div class="wf-content">
+        <div class="block strong" style="padding: 28px; text-align: center;">
+          <div class="label" style="font-size: 16px;">Bienvenido a Don Cheli</div>
+          <div class="hint" style="font-size: 12px; margin-top: 6px; max-width: 440px; margin-left: auto; margin-right: auto;">
+            Don Cheli te acompaña a construir software paso a paso: especifica, planifica, diseña,
+            construye y revisa. Para empezar, selecciona la carpeta donde quieres trabajar.
+          </div>
+          <div class="row cols-2" style="margin-top: 22px; max-width: 420px; margin-left: auto; margin-right: auto;">
+            <div class="block strong" style="padding: 14px; text-align: center;">
+              <div class="label">Seleccionar carpeta existente</div>
+              <div class="hint">Si ya tienes un proyecto empezado</div>
+            </div>
+            <div class="block" style="padding: 14px; text-align: center;">
+              <div class="label">Crear carpeta nueva</div>
+              <div class="hint">Empezar desde cero</div>
+            </div>
+          </div>
+          <div class="hint" style="margin-top: 14px; font-size: 10px;">
+            Ambos botones abren la misma ventana para navegar por tu computador.
+          </div>
+        </div>
+        <div class="block empty">
+          <div class="label">¿Prefieres ver cómo funciona primero?</div>
+          <div class="hint">[ Ver un recorrido rápido (2 min) ]  ·  [ Abrir la Guía ]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="annotations">
+    <strong>Nota:</strong> esta pantalla es la misma "Ahora" de la pantalla 1, pero en estado vacío.
+    Al seleccionar una carpeta, la pantalla se transforma automáticamente en la versión con trabajo
+    en curso (pantalla 1) o con acciones rápidas si no hay nada corriendo.
+  </div>
+</section>
+
+<!-- ========== MODAL: SELECCIONAR CARPETA ========== -->
+<section class="frame" id="wmodal">
+  <h2>Ventana para seleccionar carpeta <span class="layer-tag">Se abre encima de cualquier pantalla</span></h2>
+  <p class="desc">
+    Esta ventana es un <strong>componente reutilizable</strong>: aparece en tres momentos distintos,
+    siempre con el mismo aspecto y funcionamiento.
+    <br><br>
+    <strong>¿Cuándo aparece?</strong>
+  </p>
+  <ul style="margin: 0 0 18px 22px; font-size: 13px; color: var(--ink-2);">
+    <li>La primera vez que abres Don Cheli (desde la pantalla <em>1b. Primer uso</em>).</li>
+    <li>Cuando haces clic en <em>"+ Nuevo proyecto"</em> dentro de la pantalla <em>Proyectos</em>.</li>
+    <li>Cuando haces clic en <em>"Empezar un proyecto nuevo"</em> en <em>Ahora</em>, si no hay nada corriendo.</li>
+  </ul>
+  <div class="wf overlay">
+    <div class="wf-modal">
+      <header>
+        <span class="title">Seleccionar carpeta de proyecto</span>
+        <span style="color: var(--ink-3); font-size: 14px;">×</span>
+      </header>
+      <div class="breadcrumb">
+        <span class="chip" style="border-color: var(--line); background: var(--bg);">Inicio</span>
+        <span class="chip" style="border-color: var(--line); background: var(--bg);">↑ Subir</span>
+        <span class="path">/Users/tu-usuario/proyectos</span>
+        <span class="chip strong">Seleccionar esta</span>
+      </div>
+      <div class="list">
+        <div class="entry git">
+          <span style="font-size: 14px;">▣</span>
+          <div class="name">
+            <div style="font-weight: 600;">mi-proyecto-web</div>
+            <div style="color: var(--ink-3); font-size: 9px;">/Users/tu-usuario/proyectos/mi-proyecto-web</div>
+          </div>
+          <span class="tag">npm</span>
+          <span class="tag">git</span>
+          <span style="color: var(--ink-3);">›</span>
+        </div>
+        <div class="entry git">
+          <span style="font-size: 14px;">▣</span>
+          <div class="name">
+            <div style="font-weight: 600;">landing-page</div>
+            <div style="color: var(--ink-3); font-size: 9px;">/Users/tu-usuario/proyectos/landing-page</div>
+          </div>
+          <span class="tag">git</span>
+          <span style="color: var(--ink-3);">›</span>
+        </div>
+        <div class="entry">
+          <span style="font-size: 14px;">□</span>
+          <span class="name">documentos</span>
+          <span style="color: var(--ink-3);">›</span>
+        </div>
+        <div class="entry">
+          <span style="font-size: 14px;">□</span>
+          <span class="name">fotos-vacaciones</span>
+          <span style="color: var(--ink-3);">›</span>
+        </div>
+        <div class="entry" style="border-color: var(--accent-mute); background: var(--fill-2);">
+          <span style="font-size: 12px;">✓</span>
+          <span class="name">. (carpeta actual)</span>
+          <span class="tag">seleccionar</span>
+        </div>
+      </div>
+      <footer>
+        + Crear una carpeta nueva aquí
+      </footer>
+    </div>
+  </div>
+  <div class="annotations">
+    <strong>Cómo se usa:</strong>
+    <ul>
+      <li>Navega por tus carpetas como en un explorador común: clic para entrar, flecha arriba para salir.</li>
+      <li>Las carpetas resaltadas son <em>proyectos de código</em> (tienen etiqueta "git" si son repositorios, "npm" si tienen un <code>package.json</code>).</li>
+      <li>Cuando estás dentro de la carpeta correcta, pulsas <strong>"Seleccionar esta"</strong> arriba a la derecha.</li>
+      <li>Truco rápido: doble clic sobre cualquier carpeta la selecciona directamente.</li>
+      <li>Si la carpeta que quieres no existe aún, puedes crearla con el botón de abajo sin salir de esta ventana.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 2. PROYECTOS ========== -->
+<section class="frame" id="w2">
+  <h2>2. Proyectos <span class="layer-tag">Lista</span></h2>
+  <p class="desc">
+    Todos tus proyectos en una sola lista. Para cada uno ves en qué paso va, cuánto has gastado
+    y hace cuánto que no lo tocas. Desde aquí puedes crear uno nuevo o continuar donde lo dejaste.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item active">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item">Gastos</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item">Arsenal</div>
+      <div class="nav-item">Guía</div>
+      <div class="nav-item">Configuración</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip">1 trabajo en marcha</span>
+        <span class="chip">Sin avisos</span>
+        <span class="chip">$12.40 de $100</span>
+        <span class="chip strong">◆ Editor: Claude Code</span>
+        <span class="spacer"></span>
+        <span class="chip strong">+ Nuevo proyecto</span>
+      </div>
+      <div class="wf-content">
+        <div class="row cols-2">
+          <div class="block"><div class="label">Buscar</div><div class="hint">Por nombre o estado</div></div>
+          <div class="block"><div class="label">Ordenar</div><div class="hint">Más recientes · Más gasto · Terminados</div></div>
+        </div>
+        <div class="block">
+          <div class="label">Lista de proyectos</div>
+          <div class="hint">Para cada proyecto: nombre, paso actual, cuánto ha costado, hace cuánto se usó. Botones para abrir o continuar.</div>
+          <div class="row cols-2" style="margin-top:10px; gap:8px">
+            <div class="block empty">
+              <div class="label">auth-jwt</div>
+              <div class="hint">Diseñando · $2.10 · hace 4 minutos · [ Ver ] [ Continuar ]</div>
+            </div>
+            <div class="block empty">
+              <div class="label">onboarding-v2</div>
+              <div class="hint">Terminado ✓ · $8.90 · hace 2 horas · [ Ver ]</div>
+            </div>
+            <div class="block empty">
+              <div class="label">cart-refactor</div>
+              <div class="hint">Construyendo · $4.50 · ayer · [ Ver ] [ Continuar ]</div>
+            </div>
+            <div class="block empty">
+              <div class="label">payments</div>
+              <div class="hint">Especificando · $0.12 · hace 3 días · [ Ver ] [ Continuar ]</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3. UN PROYECTO ========== -->
+<section class="frame" id="w3">
+  <h2>3. Un proyecto <span class="layer-tag">Detalle</span></h2>
+  <p class="desc">
+    Todo lo que sabemos de un proyecto específico: los trabajos que has hecho en él, los archivos
+    que Don Cheli fue generando, cómo está configurado, y el plan que se definió al principio.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item active">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item">Gastos</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item">Arsenal</div>
+      <div class="nav-item">Guía</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip">← Volver a Proyectos</span>
+        <span class="chip strong">auth-jwt</span>
+        <span class="chip strong">◆ Editor del proyecto: Claude Code</span>
+        <span class="spacer"></span>
+        <span class="chip">Cambiar editor</span>
+        <span class="chip strong">+ Empezar un trabajo</span>
+      </div>
+      <div class="wf-content">
+        <div class="row cols-4">
+          <div class="block"><div class="stat"><span class="label">Trabajos totales</span><span class="value">12</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Exitosos</span><span class="value">10 de 12</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Costo total</span><span class="value">$24.80</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Última actividad</span><span class="value">hace 4 min</span></div></div>
+        </div>
+        <div class="block">
+          <div class="label">Pestañas del proyecto</div>
+          <div class="hint" style="margin-top: 8px;">
+            <strong>Trabajos</strong> — lista de todas las veces que Don Cheli trabajó en este proyecto.<br>
+            <strong>Archivos generados</strong> — documentos que fue creando (especificación, plan, diseños, aprobación).<br>
+            <strong>Configuración</strong> — políticas del proyecto (qué hacer si pasa X). Ver detalle abajo.<br>
+            <strong>Acciones</strong> — botones para invocar comandos del LLM on-demand. Ver detalle abajo.<br>
+            <strong>Plan</strong> — hoja de ruta que se definió al inicio.
+          </div>
+        </div>
+
+        <div class="block strong">
+          <div class="label">Vista detallada: pestaña "Configuración"</div>
+          <div class="hint" style="margin-top: 4px;">Todas las opciones agrupadas. Muchas se pueden cambiar en cualquier momento; otras solo al iniciar un nuevo trabajo.</div>
+
+          <div style="margin-top: 14px; display: grid; gap: 12px;">
+            <div class="block">
+              <div class="label">Básico</div>
+              <div class="hint" style="margin-top: 6px; line-height: 1.7;">
+                Carpeta de trabajo · Editor de IA · Modelos a usar (Opus, Sonnet, Haiku) · Presupuesto por trabajo · Idioma
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Pasos activos</div>
+              <div class="hint" style="margin-top: 6px;">
+                Puedes activar o desactivar cada uno de los 7 pasos. Por ejemplo, en un proyecto muy técnico sin interfaz puedes apagar "Diseñar".
+              </div>
+              <div class="phase-row" style="margin-top:8px">
+                <span class="phase-pill done">☑ Especificar</span>
+                <span class="phase-pill done">☑ Aclarar</span>
+                <span class="phase-pill done">☑ Planificar</span>
+                <span class="phase-pill done">☑ Diseñar</span>
+                <span class="phase-pill done">☑ Desglosar</span>
+                <span class="phase-pill done">☑ Construir</span>
+                <span class="phase-pill done">☑ Revisar</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Qué hacer si se desvía del plan (SDD)</div>
+              <div class="hint" style="margin-top: 6px;">
+                Durante el trabajo, si Don Cheli detecta que algo no concuerda con la especificación original, ¿cómo debe reaccionar?
+              </div>
+              <div class="row cols-3" style="margin-top: 8px; gap: 8px;">
+                <div class="block empty" style="padding: 8px;">
+                  <div style="font-size: 11px;">○ Auto-corregir</div>
+                  <div class="hint">Sigue sin detenerse (recomendado para bugs y faltantes)</div>
+                </div>
+                <div class="block strong" style="padding: 8px;">
+                  <div style="font-size: 11px;">● Preguntar siempre</div>
+                  <div class="hint">Me avisa antes de cada desvío importante</div>
+                </div>
+                <div class="block empty" style="padding: 8px;">
+                  <div style="font-size: 11px;">○ Solo registrar</div>
+                  <div class="hint">Sigue trabajando pero deja todo anotado</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Qué hacer si se excede el presupuesto</div>
+              <div class="hint" style="margin-top: 6px;">Control de gasto: cuando el trabajo supera el límite que definiste.</div>
+              <div class="row cols-3" style="margin-top: 8px; gap: 8px;">
+                <div class="block strong" style="padding: 8px;">
+                  <div style="font-size: 11px;">● Detener inmediatamente</div>
+                  <div class="hint">Para el trabajo y espera tu decisión</div>
+                </div>
+                <div class="block empty" style="padding: 8px;">
+                  <div style="font-size: 11px;">○ Avisar y preguntar</div>
+                  <div class="hint">Pausa y te pregunta si continuar</div>
+                </div>
+                <div class="block empty" style="padding: 8px;">
+                  <div style="font-size: 11px;">○ Continuar con alerta</div>
+                  <div class="hint">Sigue pero muestra un aviso en rojo</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Validación previa automática (política)</div>
+              <div class="hint" style="margin-top: 6px;">
+                Decide si Don Cheli debe convocar automáticamente un panel de expertos antes de ciertos pasos.
+                Añade tiempo y costo pero reduce errores caros después.
+                <br><em>(¿Quieres convocarlos on-demand, no automático? Entra a la pestaña "Acciones".)</em>
+              </div>
+              <div class="row cols-2" style="margin-top: 10px; gap: 8px;">
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">☑ Convocar Mesa Redonda antes de planificar</div>
+                  <div class="hint" style="margin-top: 4px;">
+                    Auto-disparo en el paso "Planificar". Discusión multi-perspectiva: CPO, Arquitecto, UX, Negocio, QA, Seguridad, DevOps.
+                  </div>
+                </div>
+                <div class="block empty" style="padding: 10px;">
+                  <div class="label">☐ Convocar Mesa Técnica antes de construir</div>
+                  <div class="hint" style="margin-top: 4px;">
+                    Auto-disparo en el paso "Construir". Panel de ingenieros senior (+15 años): Tech Lead, Arquitecto, Backend, Frontend.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="block strong">
+          <div class="label">Vista detallada: pestaña "Acciones"</div>
+          <div class="hint" style="margin-top: 4px;">
+            Cada botón dispara un comando del LLM configurado para este proyecto. No esperan a un trabajo en curso —
+            se ejecutan al instante, con un costo estimado visible.
+          </div>
+
+          <div style="margin-top: 14px; display: grid; gap: 12px;">
+
+            <div class="block">
+              <div class="label">Consultas (discusión con expertos)</div>
+              <div class="row cols-3" style="margin-top: 8px; gap: 8px;">
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Convocar Mesa Redonda ahora</div>
+                  <div class="hint" style="margin-top: 2px;">Discusión exploratoria multi-perspectiva</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:mesa-redonda · ~$0.40 · ~2 min</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Convocar Mesa Técnica ahora</div>
+                  <div class="hint" style="margin-top: 2px;">Panel de ingenieros senior</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:mesa-tecnica · ~$0.60 · ~3 min</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Estimar costo y tiempo</div>
+                  <div class="hint" style="margin-top: 2px;">Pronóstico antes de arrancar un trabajo</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Agente: estimador · ~$0.10 · ~30s</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Auditorías (revisión del estado actual)</div>
+              <div class="row cols-3" style="margin-top: 8px; gap: 8px;">
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Auditar seguridad</div>
+                  <div class="hint" style="margin-top: 2px;">Busca vulnerabilidades, secretos expuestos, OWASP</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:auditar-seguridad · ~$0.30 · ~1 min</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Revisar calidad actual</div>
+                  <div class="hint" style="margin-top: 2px;">Análisis del código tal como está hoy</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:revisar · ~$0.35 · ~1 min</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Detectar "relleno IA"</div>
+                  <div class="hint" style="margin-top: 2px;">Encuentra código de baja calidad generado por IA</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:slop-scan · ~$0.20 · ~45s</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="label">Mantenimiento</div>
+              <div class="row cols-3" style="margin-top: 8px; gap: 8px;">
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Diagnóstico del proyecto</div>
+                  <div class="hint" style="margin-top: 2px;">Chequeo general: ¿algo está mal configurado?</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:doctor · ~$0.15 · ~30s</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Actualizar documentación</div>
+                  <div class="hint" style="margin-top: 2px;">Regenera la docs con base en el código actual</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:documentacion-viva · ~$0.50 · ~2 min</div>
+                </div>
+                <div class="block strong" style="padding: 10px;">
+                  <div class="label">Volver a clarificar</div>
+                  <div class="hint" style="margin-top: 2px;">Hace preguntas aclaratorias sobre requisitos</div>
+                  <div class="hint" style="margin-top: 4px; font-size: 9px;">Comando: /dc:clarificar · ~$0.25 · ~1 min</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block empty" style="padding: 10px;">
+              <div class="label">Ver todas las acciones disponibles</div>
+              <div class="hint" style="margin-top: 2px;">Hay muchos más comandos disponibles. Los 9 botones de arriba son los más usados; los demás se invocan desde el Arsenal (buscador con los 83 comandos y 57 habilidades).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="annotations">
+    <strong>Política vs Acción — la diferencia importante:</strong>
+    <ul>
+      <li><strong>Configuración</strong> define reglas automáticas: "cada vez que Don Cheli vaya a <em>planificar</em>, primero convoca una Mesa Redonda". El LLM se dispara sin que tú hagas nada más.</li>
+      <li><strong>Acciones</strong> son invocaciones manuales: "<em>ahora mismo</em> quiero una Mesa Técnica sobre este tema". Tú decides el momento; el botón dispara el comando al LLM al instante.</li>
+      <li>Muchas cosas pueden vivir en los dos lados (ejemplo: Mesa Redonda como auto-invocación <em>y</em> como botón manual). No son mutuamente excluyentes.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========== 4. UN TRABAJO ========== -->
+<section class="frame" id="w4">
+  <h2>4. Un trabajo <span class="layer-tag">Detalle en vivo o pasado</span></h2>
+  <p class="desc">
+    Lo que está pasando (o pasó) en un trabajo específico. Si está corriendo, lo ves en vivo.
+    Si ya terminó, puedes hacer clic en cualquier paso para "rebobinar" y ver qué pasó en ese momento.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item active">Proyectos</div>
+      <div class="nav-item">Historial</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip">← Volver a auth-jwt</span>
+        <span class="chip strong">Trabajo #12</span>
+        <span class="chip warn">En marcha</span>
+        <span class="chip strong">◆ Claude Code</span>
+        <span class="spacer"></span>
+        <span class="chip">Pausar</span>
+        <span class="chip">Detener</span>
+      </div>
+      <div class="wf-content">
+        <div class="block strong">
+          <div class="label">Los 7 pasos del trabajo</div>
+          <div class="hint">Cada paso muestra cuánto tardó y cuánto costó. Haz clic en un paso para ver qué pasó exactamente en ese momento.</div>
+          <div class="phase-row" style="margin-top:10px">
+            <span class="phase-pill done">Especificar ✓ · 30s · $0.05</span>
+            <span class="phase-pill done">Aclarar ✓ · 45s · $0.08</span>
+            <span class="phase-pill done">Planificar ✓ · 1m · $0.18</span>
+            <span class="phase-pill active">Diseñar ● · 2m · $0.51</span>
+            <span class="phase-pill">Desglosar</span>
+            <span class="phase-pill">Construir</span>
+            <span class="phase-pill">Revisar</span>
+          </div>
+        </div>
+
+        <div class="row cols-2">
+          <div class="block strong">
+            <div class="label">Control de calidad activo (gate actual)</div>
+            <div class="hint" style="margin-top: 6px;">
+              Antes de pasar al siguiente paso, Don Cheli verifica que se cumplan ciertas condiciones. Ahora mismo está verificando:
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+              <span class="phase-pill active">● Gate: Diseño aprobado</span>
+              <span style="font-size: 10px; color: var(--ink-3);">Estado: esperando aprobación del archivo de diseño</span>
+            </div>
+            <div class="hint" style="margin-top: 10px; font-size: 10px;">
+              Gates posibles: <em>Tests</em> (antes de construir), <em>Diseño</em> (antes de desglosar), <em>Aprobación final</em> (antes de revisar).
+              Si un gate falla, el trabajo se detiene y te explica por qué.
+            </div>
+          </div>
+          <div class="block strong">
+            <div class="label">Entorno técnico del trabajo</div>
+            <div class="hint" style="margin-top: 6px;">
+              Cada trabajo se hace sobre una <strong>copia aislada</strong> de tu carpeta (un <em>git worktree</em>).
+              Tu código original nunca se modifica hasta que todos los controles de calidad pasen.
+              Si algo sale mal, se puede descartar sin dejar rastro.
+            </div>
+            <div style="margin-top: 10px; font-size: 10px; color: var(--ink-2); font-family: ui-monospace, monospace;">
+              Carpeta original: /Users/.../auth-jwt<br>
+              Copia de trabajo: /Users/.../auth-jwt-run-12<br>
+              Rama: feature/auth-jwt-run-12
+            </div>
+            <div class="hint" style="margin-top: 10px;">
+              [ Ver diferencias ]  ·  [ Abrir la copia de trabajo ]
+            </div>
+          </div>
+        </div>
+
+        <div class="row split">
+          <div class="block">
+            <div class="label">Qué está haciendo Don Cheli (panel principal)</div>
+            <div class="hint">Lo que está escribiendo o pensando, en tiempo real. Si haces clic en un paso de arriba, este panel te muestra solo lo que pasó en ese paso.</div>
+          </div>
+          <div class="block">
+            <div class="label">Panel lateral — pestañas</div>
+            <div class="hint">
+              • <strong>Calidad:</strong> tests, diseño, aprobación (gates en detalle)<br>
+              • <strong>Costos:</strong> cuánto va gastado<br>
+              • <strong>Archivos:</strong> documentos generados<br>
+              • <strong>Entorno:</strong> worktree, rama, diferencias con el original<br>
+              • <strong>Por qué falló:</strong> si algo salió mal, explicación en palabras
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 5. HISTORIAL ========== -->
+<section class="frame" id="w5">
+  <h2>5. Historial <span class="layer-tag">Lo que ya hiciste</span></h2>
+  <p class="desc">
+    Todos los trabajos que has hecho, de cualquier proyecto, ordenados por fecha.
+    Puedes filtrar por tiempo (hoy, última semana, último mes), ver una línea del tiempo
+    o comparar dos trabajos lado a lado para ver qué hizo distinto.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item">Proyectos</div>
+      <div class="nav-item active">Historial</div>
+      <div class="nav-item">Gastos</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip strong">Hoy</span>
+        <span class="chip">Últimos 7 días</span>
+        <span class="chip">Últimos 30 días</span>
+        <span class="chip">Filtros</span>
+        <span class="spacer"></span>
+        <span class="chip">Comparar 2 trabajos</span>
+      </div>
+      <div class="wf-content">
+        <div class="block empty">
+          <div class="label">Línea del tiempo</div>
+          <div class="hint">Cada trabajo aparece como una barra horizontal. El color indica el resultado (exitoso / con errores / detenido). Haz clic en cualquier barra para ver el detalle.</div>
+        </div>
+        <div class="block">
+          <div class="label">Lista de trabajos</div>
+          <div class="hint">Número de trabajo  ·  Proyecto  ·  Pasos completados  ·  Cuánto tardó  ·  Costo  ·  Resultado  ·  [ Ver ] [ Comparar ]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6. GASTOS ========== -->
+<section class="frame" id="w6">
+  <h2>6. Gastos <span class="layer-tag">Cuánto cuesta y en qué</span></h2>
+  <p class="desc">
+    Cuánto has gastado este mes, cuánto se estima que vas a gastar al final del mes,
+    y en qué se va el dinero (qué proyecto, qué paso, qué modelo de IA).
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item active">Gastos</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip strong">Este mes</span>
+        <span class="chip">Presupuesto del mes: $100</span>
+        <span class="chip warn">Has gastado $12.40</span>
+      </div>
+      <div class="wf-content">
+        <div class="row cols-3">
+          <div class="block"><div class="stat"><span class="label">Este mes</span><span class="value">$12.40</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Estimado a fin de mes</span><span class="value">$41</span></div></div>
+          <div class="block"><div class="stat"><span class="label">Mes pasado</span><span class="value">$38.20</span></div></div>
+        </div>
+        <div class="block">
+          <div class="label">Gráfico — gasto día a día (últimos 30 días)</div>
+          <div class="hint">Una línea por día. Al pasar el mouse por encima ves en qué paso se fue ese dinero (especificar, planificar, diseñar, construir, etc.).</div>
+        </div>
+        <div class="row cols-2">
+          <div class="block">
+            <div class="label">Proyectos que más han costado</div>
+            <div class="hint">Barras ordenadas de mayor a menor. Haz clic en una para ir a ese proyecto.</div>
+          </div>
+          <div class="block">
+            <div class="label">Gasto por modelo de IA</div>
+            <div class="hint">Cuánto has gastado en cada modelo de Claude (Opus, Sonnet, Haiku). Te ayuda a elegir el más conveniente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7. ARSENAL ========== -->
+<section class="frame" id="w7">
+  <h2>7. Arsenal <span class="layer-tag">Todo lo que Don Cheli sabe hacer</span></h2>
+  <p class="desc">
+    El catálogo completo de capacidades de Don Cheli. Hay tres tipos de "herramientas" que puede usar:
+    <strong>Agentes</strong> (ayudantes especializados), <strong>Habilidades</strong> (cosas que sabe hacer)
+    y <strong>Comandos</strong> (atajos rápidos que puedes invocar). Desde aquí los ves, los pruebas
+    y aprendes para qué sirve cada uno.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Trabajar</div>
+      <div class="nav-item">Ahora</div>
+      <div class="nav-item">Proyectos</div>
+      <div class="nav-item">Historial</div>
+      <div class="nav-item">Gastos</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item active">Arsenal</div>
+      <div class="nav-item">Guía</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip strong">Agentes (1)</span>
+        <span class="chip">Habilidades (57)</span>
+        <span class="chip">Comandos (83)</span>
+        <span class="spacer"></span>
+        <span class="chip">Filtrar por categoría</span>
+        <span class="chip">Buscar</span>
+      </div>
+      <div class="wf-content">
+        <div class="block">
+          <div class="label">Pestaña activa: Agentes (1)</div>
+          <div class="hint">Un agente es un "ayudante especializado" que Don Cheli llama cuando necesita algo muy específico. Cada tarjeta muestra: nombre, para qué sirve, cuántas veces se ha usado.</div>
+        </div>
+        <div class="row cols-3">
+          <div class="block empty">
+            <div class="label">Estimador</div>
+            <div class="hint">Calcula cuánto va a costar y cuánto va a tardar un proyecto antes de empezar. Usado 8 veces.</div>
+          </div>
+        </div>
+        <div class="block empty">
+          <div class="label">Pestaña: Habilidades (57) — vista agrupada</div>
+          <div class="hint">Las habilidades son cosas puntuales que Don Cheli sabe hacer. Las agrupamos por categoría para que sea más fácil encontrarlas: diseño, pruebas, contexto, orquestación, seguridad, etc.</div>
+        </div>
+        <div class="row cols-3">
+          <div class="block empty">
+            <div class="label">Consulta de diseño</div>
+            <div class="hint">Diseño · 12 usos</div>
+          </div>
+          <div class="block empty">
+            <div class="label">Múltiples variantes visuales</div>
+            <div class="hint">Diseño · 4 usos</div>
+          </div>
+          <div class="block empty">
+            <div class="label">Detector de "relleno IA"</div>
+            <div class="hint">Calidad · 0 usos</div>
+          </div>
+          <div class="block empty">
+            <div class="label">Optimizar contexto</div>
+            <div class="hint">Contexto · 34 usos</div>
+          </div>
+          <div class="block empty">
+            <div class="label">Recuperación tras caída</div>
+            <div class="hint">Seguridad · 2 usos</div>
+          </div>
+          <div class="block empty">
+            <div class="label">Rebobinar en el tiempo</div>
+            <div class="hint">Investigación · 1 uso</div>
+          </div>
+        </div>
+        <div class="block empty">
+          <div class="label">Pestaña: Comandos (83) — lista</div>
+          <div class="hint">Los comandos son atajos que puedes escribir (como "/dc:especificar", "/dc:planificar"). Tabla con: comando, descripción, categoría, cuándo lo usaste por última vez, botón para copiar o ver la ayuda completa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8. GUÍA ========== -->
+<section class="frame" id="w8">
+  <h2>8. Guía <span class="layer-tag">Manual de uso</span></h2>
+  <p class="desc">
+    El manual de Don Cheli. Cómo funciona, qué reglas sigue, preguntas frecuentes.
+    Pensado como un libro: lo abres cuando necesitas recordar algo o cuando quieres aprender algo nuevo.
+  </p>
+  <div class="wf">
+    <aside class="wf-sidebar">
+      <div class="brand">Don Cheli · Studio</div>
+      <div class="section-label">Consultar</div>
+      <div class="nav-item">Arsenal</div>
+      <div class="nav-item active">Guía</div>
+      <div class="nav-item">Configuración</div>
+    </aside>
+    <div class="wf-main">
+      <div class="wf-topbar">
+        <span class="chip strong">Empezar aquí</span>
+        <span class="chip">Reglas obligatorias</span>
+        <span class="chip">Los 7 pasos</span>
+        <span class="chip">Preguntas frecuentes</span>
+        <span class="chip">Glosario</span>
+        <span class="spacer"></span>
+        <span class="chip">▶ Volver a ver el recorrido inicial</span>
+      </div>
+      <div class="wf-content">
+        <div class="row split">
+          <div class="block" style="min-height:380px">
+            <div class="label">Contenido del artículo</div>
+            <div class="hint">Títulos, párrafos, ejemplos, listas. Ancho cómodo para leer sin esfuerzo. Las palabras técnicas tienen explicación al pasar el mouse por encima.</div>
+          </div>
+          <div class="block">
+            <div class="label">Índice de la página</div>
+            <div class="hint">Los títulos del artículo actual, y al final una lista de artículos relacionados.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NOTAS FINALES ========== -->
+<section class="frame">
+  <h2>Resumen de cambios</h2>
+  <div class="annotations">
+    <strong>Qué cambia respecto a cómo está hoy:</strong>
+    <ul>
+      <li>Hoy hay una sola pantalla que mezcla todo: elegir carpeta, ver el trabajo, revisar archivos. Lo separamos en tres: <em>Ahora</em>, <em>Proyectos</em> y <em>Un trabajo</em>.</li>
+      <li>Aparece una barra arriba con datos clave para que siempre sepas el estado del sistema sin tener que entrar a ningún lado.</li>
+      <li>El <em>Historial</em> es nuevo: hoy cuesta trabajo encontrar los trabajos que hiciste en el pasado.</li>
+      <li>Los <em>Gastos</em> se promueven a sección propia: hoy es solo un contador pequeño en una esquina.</li>
+      <li>El <em>Arsenal</em> y la <em>Guía</em> quedan a un clic pero no ensucian las pantallas principales.</li>
+      <li>Puedes "rebobinar" un trabajo pasado haciendo clic en cualquiera de sus pasos.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+</body>
+</html>

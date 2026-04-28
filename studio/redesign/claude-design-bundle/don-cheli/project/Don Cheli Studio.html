@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Don Cheli Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf7; font-family: "Inter", sans-serif; }
+  * { box-sizing: border-box; }
+
+  .b-frame {
+    width: 100vw; height: 100vh;
+    display: flex; overflow: hidden;
+  }
+
+  /* Transition wrapper */
+  .route-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+  }
+
+  /* Tweaks panel */
+  .tweaks {
+    position: fixed; right: 18px; bottom: 18px;
+    width: 300px; background: #fff;
+    border-radius: 14px; box-shadow: 0 20px 50px -10px rgba(17,18,22,0.25), 0 2px 6px rgba(17,18,22,0.06);
+    font-family: "Inter", sans-serif; font-size: 13px;
+    color: #0f1114; z-index: 1000;
+    display: none; overflow: hidden;
+    border: 1px solid #eeeee8;
+  }
+  .tweaks.open { display: block; }
+  .tweaks header {
+    padding: 14px 16px; border-bottom: 1px solid #f4f4ee;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .tweaks h3 { margin: 0; font-size: 14px; font-weight: 500; letter-spacing: -0.1px; }
+  .tweaks .close {
+    font-size: 14px; color: #65666b; cursor: pointer; background: none; border: none; padding: 4px;
+  }
+  .tweaks .group { padding: 12px 16px; border-bottom: 1px solid #f4f4ee; }
+  .tweaks .group:last-child { border-bottom: none; }
+  .tweaks .label {
+    display: block; font-size: 11px; color: #9a9a9e; font-weight: 500;
+    letter-spacing: 0.3px; margin-bottom: 8px;
+  }
+  .seg {
+    display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+    gap: 3px; padding: 3px; background: #f4f4f0; border-radius: 8px;
+  }
+  .seg button {
+    border: none; background: transparent; font-family: inherit; font-size: 12px;
+    padding: 6px 8px; border-radius: 6px; cursor: pointer; color: #65666b;
+  }
+  .seg button.on {
+    background: #fff; color: #0f1114; font-weight: 500;
+    box-shadow: 0 1px 2px rgba(17,18,22,0.06);
+  }
+  .tg {
+    display: flex; align-items: center; gap: 10px; font-size: 13px;
+  }
+  .tg input { width: 32px; height: 18px; appearance: none; background: #e5e3de; border-radius: 999px; position: relative; cursor: pointer; outline: none; transition: background .2s; }
+  .tg input:checked { background: #0f1114; }
+  .tg input::after { content: ''; position: absolute; left: 2px; top: 2px; width: 14px; height: 14px; border-radius: 50%; background: #fff; transition: transform .2s; }
+  .tg input:checked::after { transform: translateX(14px); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "density": "comfy",
+    "timeline": "bar",
+    "scenario": "activo",
+    "showSidebar": true,
+    "route": "ahora"
+  }/*EDITMODE-END*/;
+</script>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="components/b-data.jsx"></script>
+<script type="text/babel" src="components/b-data-extended.jsx"></script>
+<script type="text/babel" src="components/b-icons.jsx"></script>
+<script type="text/babel" src="components/b-shell.jsx"></script>
+<script type="text/babel" src="components/b-chrome.jsx"></script>
+<script type="text/babel" src="components/b-timeline.jsx"></script>
+<script type="text/babel" src="components/b-app.jsx"></script>
+<script type="text/babel" src="components/b-page-projects.jsx"></script>
+<script type="text/babel" src="components/b-page-project-detail.jsx"></script>
+<script type="text/babel" src="components/b-page-job-detail.jsx"></script>
+<script type="text/babel" src="components/b-page-history.jsx"></script>
+<script type="text/babel" src="components/b-page-expenses.jsx"></script>
+<script type="text/babel" src="components/b-page-arsenal.jsx"></script>
+<script type="text/babel" src="components/b-page-guide.jsx"></script>
+<script type="text/babel" src="components/b-page-placeholder.jsx"></script>
+<script type="text/babel" src="components/b-page-onboarding.jsx"></script>
+<script type="text/babel" src="components/b-modal-folder-picker.jsx"></script>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const App = () => {
+  const [editMode, setEditMode] = useState(false);
+  const [density, setDensity] = useState(TWEAK_DEFAULTS.density);
+  const [timeline, setTimeline] = useState(TWEAK_DEFAULTS.timeline);
+  const [scenario, setScenario] = useState(TWEAK_DEFAULTS.scenario);
+  const [showSidebar, setShowSidebar] = useState(TWEAK_DEFAULTS.showSidebar);
+  const [folderPickerOpen, setFolderPickerOpen] = useState(false);
+  const [pickedFolder, setPickedFolder] = useState(null);
+
+  // Expose globally so any nested component can open the picker
+  useEffect(() => {
+    window.openFolderPicker = () => setFolderPickerOpen(true);
+    return () => { delete window.openFolderPicker; };
+  }, []);
+
+  // Router state
+  const [route, setRoute] = useState(() => {
+    try { return localStorage.getItem('dc_route') || TWEAK_DEFAULTS.route || 'ahora'; }
+    catch { return TWEAK_DEFAULTS.route || 'ahora'; }
+  });
+  const [projectId, setProjectId] = useState(() => {
+    try { return localStorage.getItem('dc_projectId') || 'auth-jwt'; }
+    catch { return 'auth-jwt'; }
+  });
+
+  const navigate = (to) => {
+    setRoute(to);
+    try { localStorage.setItem('dc_route', to); } catch {}
+  };
+  const openProject = (id) => {
+    setProjectId(id);
+    try { localStorage.setItem('dc_projectId', id); } catch {}
+    navigate('proyecto');
+  };
+
+  const persist = (edits) => {
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+  };
+
+  useEffect(() => {
+    const onMsg = (e) => {
+      const d = e.data || {};
+      if (d.type === '__activate_edit_mode') setEditMode(true);
+      if (d.type === '__deactivate_edit_mode') setEditMode(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  // Sidebar highlight maps "proyecto" / "trabajo" back to "proyectos" section
+  const sidebarRoute = (route === 'proyecto' || route === 'trabajo') ? 'proyectos' : route;
+
+  const pageProps = { dens: density, showSidebar, onNav: navigate, onOpenProject: openProject, scenario };
+
+  let page;
+  if (route === 'onboarding') {
+    page = <BS_Onboarding dens={density} onNav={navigate} />;
+  } else if (route === 'ahora') {
+    // Wrapped BStudio
+    page = (
+      <BStudio
+        dens={density}
+        scenario={scenario}
+        tlVariant={timeline}
+        showSidebar={showSidebar}
+        route="ahora"
+        onNav={navigate}
+      />
+    );
+  } else {
+    // Non-ahora routes: use shared shell
+    const Inner =
+      route === 'proyectos' ? <BS_Projects {...pageProps} /> :
+      route === 'proyecto'  ? <BS_ProjectDetail {...pageProps} projectId={projectId} /> :
+      route === 'trabajo'   ? <BS_JobDetail     {...pageProps} projectId={projectId} /> :
+      route === 'historial' ? <BS_History {...pageProps} /> :
+      route === 'gastos'    ? <BS_Expenses {...pageProps} /> :
+      route === 'arsenal'   ? <BS_Arsenal {...pageProps} /> :
+      route === 'guia'      ? <BS_Guide {...pageProps} /> :
+      route === 'configuracion' ? <BS_Placeholder {...pageProps} title="Configuración" sub="Ajustes del Studio" icon="⚙" /> :
+      <BS_Placeholder {...pageProps} title={route} sub="Sección desconocida" icon="·" />;
+    page = (
+      <BS_PageShell dens={density} showSidebar={showSidebar} route={sidebarRoute} onNav={navigate} scenario={scenario}>
+        {Inner}
+      </BS_PageShell>
+    );
+  }
+
+  return (
+    <>
+      <BS_GlobalCSS />
+      <div className="b-frame">
+        <div className="route-wrap" key={route + ':' + projectId}>
+          {page}
+        </div>
+      </div>
+
+      <BS_FolderPicker
+        open={folderPickerOpen}
+        onClose={() => setFolderPickerOpen(false)}
+        onSelect={(p) => setPickedFolder(p)}
+      />
+
+      <div className={`tweaks ${editMode ? 'open' : ''}`}>
+        <header>
+          <h3>Tweaks</h3>
+          <button className="close" onClick={() => setEditMode(false)}>✕</button>
+        </header>
+
+        <div className="group">
+          <span className="label">PANTALLA</span>
+          <div className="seg">
+            {[
+              ['ahora',     'Ahora'],
+              ['proyectos', 'Proyectos'],
+              ['trabajo',   'Un trabajo'],
+              ['historial', 'Historial'],
+              ['gastos',    'Gastos'],
+              ['arsenal',   'Arsenal'],
+              ['guia',      'Guía'],
+              ['onboarding','Recorrido'],
+            ].map(([v, label]) => (
+              <button key={v} className={(route === v || sidebarRoute === v) ? 'on' : ''}
+                onClick={() => navigate(v)}>{label}</button>
+            ))}
+          </div>
+        </div>
+
+        <div className="group">
+          <span className="label">ESCENARIO (AHORA)</span>
+          <div className="seg">
+            {[
+              ['activo', 'Activo'],
+              ['exito',  'Éxito'],
+              ['multi',  'Múltiple'],
+              ['vacio',  'Vacío'],
+            ].map(([v, label]) => (
+              <button key={v} className={scenario === v ? 'on' : ''}
+                onClick={() => { setScenario(v); persist({ scenario: v }); }}>{label}</button>
+            ))}
+          </div>
+        </div>
+
+        <div className="group">
+          <label className="tg">
+            <input type="checkbox" checked={showSidebar} onChange={(e) => {
+              const v = e.target.checked; setShowSidebar(v); persist({ showSidebar: v });
+            }} />
+            Mostrar menú lateral
+          </label>
+        </div>
+      </div>
+    </>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
