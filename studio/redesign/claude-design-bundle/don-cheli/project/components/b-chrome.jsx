@@ -123,9 +123,202 @@ const BS_Sidebar = ({ dens, scenario, route = 'ahora', onNav }) => {
   );
 };
 
+// ─────────── Editor switcher (dropdown del header) ───────────
+const B_EDITORS = [
+  { id: 'claude-code', name: 'Claude Code',        status: 'connected', sub: '93 comandos /dc:* nativos' },
+  { id: 'cursor',      name: 'Cursor',              status: 'connected', sub: '.cursorrules' },
+  { id: 'opencode',    name: 'OpenCode',            status: 'missing',   sub: 'Sin instalar' },
+  { id: 'gemini',      name: 'Gemini (Antigravity)', status: 'connected', sub: 'GEMINI.md' },
+  { id: 'codex',       name: 'Codex',               status: 'missing',   sub: 'Sin instalar' },
+  { id: 'qwen',        name: 'Qwen',                 status: 'missing',   sub: 'Sin instalar' },
+  { id: 'amp',         name: 'Amp',                  status: 'missing',   sub: 'Sin instalar' },
+  { id: 'windsurf',    name: 'Windsurf',            status: 'missing',   sub: 'Sin instalar' },
+];
+
+const BS_EditorSwitcher = ({ T, currentId, scenario, onPick, onConfigure }) => {
+  const [open, setOpen] = React.useState(false);
+  const [rect, setRect] = React.useState(null);
+  const ref = React.useRef(null);
+  const menuRef = React.useRef(null);
+
+  const isUnset = scenario === 'vacio' || !currentId;
+  const current = B_EDITORS.find(e => e.id === currentId) || B_EDITORS[0];
+
+  const toggle = (e) => {
+    e.stopPropagation();
+    if (!open && ref.current) setRect(ref.current.getBoundingClientRect());
+    setOpen(v => !v);
+  };
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => {
+      const inAnchor = ref.current && ref.current.contains(e.target);
+      const inMenu = menuRef.current && menuRef.current.contains(e.target);
+      if (!inAnchor && !inMenu) setOpen(false);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onScroll = (e) => {
+      if (menuRef.current && menuRef.current.contains(e.target)) return;
+      setOpen(false);
+    };
+    const onResize = () => setOpen(false);
+    document.addEventListener('mousedown', onDoc);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('scroll', onScroll, true);
+    window.addEventListener('resize', onResize);
+    return () => {
+      document.removeEventListener('mousedown', onDoc);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [open]);
+
+  // Posición portal-safe
+  const MENU_W = 300;
+  const MENU_H_MAX = 460;
+  const GAP = 6;
+  const MARGIN = 12;
+  let menuTop = 0, menuLeft = 0, maxH = MENU_H_MAX;
+  if (rect) {
+    const spaceBelow = window.innerHeight - rect.bottom - MARGIN - GAP;
+    maxH = Math.max(220, Math.min(MENU_H_MAX, spaceBelow));
+    menuTop = rect.bottom + GAP;
+    menuLeft = Math.min(window.innerWidth - MENU_W - MARGIN, Math.max(MARGIN, rect.right - MENU_W));
+  }
+
+  const dropdown = open && rect ? (
+    <div ref={menuRef} style={{
+      position: 'fixed', top: menuTop, left: menuLeft,
+      width: MENU_W, maxHeight: maxH,
+      background: T.panel, borderRadius: 10,
+      boxShadow: T.shadowLg, border: `1px solid ${T.border}`,
+      zIndex: 1100, padding: 6,
+      display: 'flex', flexDirection: 'column',
+      animation: 'bsFadeIn 0.16s cubic-bezier(.22,1,.36,1) both',
+    }}>
+      <div style={{
+        padding: '8px 10px 6px', fontSize: 10.5,
+        color: T.textFaint, fontWeight: 500,
+        textTransform: 'uppercase', letterSpacing: 0.6,
+        flexShrink: 0,
+      }}>Editor de IA</div>
+      <div style={{ flex: 1, minHeight: 0, overflowY: 'auto' }}>
+        {B_EDITORS.map((e, i) => {
+          const active = e.id === current.id && !isUnset;
+          const connected = e.status === 'connected';
+          return (
+            <div key={e.id}
+              onClick={(ev) => {
+                ev.stopPropagation();
+                if (!connected) return;
+                onPick && onPick(e);
+                setOpen(false);
+              }}
+              style={{
+                padding: '8px 10px', borderRadius: 7,
+                display: 'grid', gridTemplateColumns: '22px 1fr auto', gap: 10,
+                alignItems: 'center',
+                background: active ? T.bgAlt : 'transparent',
+                cursor: connected ? 'pointer' : 'not-allowed',
+                opacity: connected ? 1 : 0.55,
+                transition: 'background .1s ease',
+                animation: `bsFadeIn 0.16s ${i * 0.015}s cubic-bezier(.22,1,.36,1) both`,
+              }}
+              onMouseEnter={(ev) => { if (connected && !active) ev.currentTarget.style.background = T.bgAlt; }}
+              onMouseLeave={(ev) => { if (connected && !active) ev.currentTarget.style.background = 'transparent'; }}
+            >
+              <span style={{
+                width: 22, height: 22, borderRadius: 5,
+                background: connected ? T.successBg : T.bgAlt,
+                color: connected ? T.success : T.textFaint,
+                display: 'grid', placeItems: 'center', flexShrink: 0,
+              }}>
+                <BS_Icon name="code" size={12} />
+              </span>
+              <div style={{ minWidth: 0 }}>
+                <div style={{
+                  fontSize: 12.5, fontWeight: 500, color: T.text,
+                  display: 'flex', alignItems: 'center', gap: 6,
+                }}>
+                  {e.name}
+                  {active && (
+                    <span style={{ color: T.success, display: 'inline-flex' }}>
+                      <BS_Icon name="check" size={12} />
+                    </span>
+                  )}
+                </div>
+                <div style={{ fontSize: 10.5, color: T.textFaint, marginTop: 1 }}>{e.sub}</div>
+              </div>
+              {!connected && (
+                <span style={{
+                  fontSize: 10, padding: '2px 7px', borderRadius: 999,
+                  background: T.bgAlt, color: T.textDim,
+                }}>Instalar</span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <div
+        onClick={(ev) => { ev.stopPropagation(); onConfigure && onConfigure(); setOpen(false); }}
+        style={{
+          marginTop: 4, padding: '9px 10px', borderTop: `1px solid ${T.borderSoft}`,
+          fontSize: 12, color: T.textDim, cursor: 'pointer',
+          display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0,
+        }}
+        onMouseEnter={(e) => e.currentTarget.style.color = T.text}
+        onMouseLeave={(e) => e.currentTarget.style.color = T.textDim}
+      >
+        <BS_Icon name="settings" size={12} />
+        Administrar editores en Configuración →
+      </div>
+    </div>
+  ) : null;
+
+  return (
+    <>
+      <div
+        ref={ref}
+        onClick={toggle}
+        style={{
+          padding: '6px 12px', borderRadius: 8, background: T.panel,
+          boxShadow: T.shadow, display: 'flex', alignItems: 'center', gap: 8,
+          fontSize: 12.5, color: T.text, cursor: 'pointer',
+          border: open ? `1px solid ${T.text}` : '1px solid transparent',
+          transition: 'border-color .12s ease',
+        }}
+      >
+        <span style={{ color: isUnset ? T.textFaint : T.success, display: 'inline-flex' }}>
+          <BS_Icon name="code" size={13} />
+        </span>
+        {isUnset ? 'Editor: sin configurar' : current.name}
+        <span style={{
+          color: T.textFaint, display: 'inline-flex',
+          transform: open ? 'rotate(180deg)' : 'rotate(0)',
+          transition: 'transform .15s ease',
+        }}>
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+        </span>
+      </div>
+      {dropdown && ReactDOM.createPortal(dropdown, document.body)}
+    </>
+  );
+};
+
 // ─────────── Top bar (chips “de un vistazo”) ───────────
-const BS_TopBar = ({ dens, scenario, data }) => {
+const BS_TopBar = ({ dens, scenario, data, onNav }) => {
   const T = bStudioTokens(dens);
+  const [currentEditor, setCurrentEditor] = React.useState('claude-code');
+  const [toast, setToast] = React.useState(null);
+
+  React.useEffect(() => {
+    if (!toast) return;
+    const id = setTimeout(() => setToast(null), 2800);
+    return () => clearTimeout(id);
+  }, [toast]);
+
   return (
     <div style={{
       height: dens === 'compact' ? 52 : 60, padding: '0 28px',
@@ -161,20 +354,45 @@ const BS_TopBar = ({ dens, scenario, data }) => {
 
       <div style={{ width: 1, height: 20, background: T.border, margin: '0 6px' }} />
 
-      <div style={{
-        padding: '6px 12px', borderRadius: 8, background: T.panel,
-        boxShadow: T.shadow, display: 'flex', alignItems: 'center', gap: 8,
-        fontSize: 12.5, color: T.text,
-      }}>
-        <span style={{ color: T.textDim }}>◆</span>
-        {scenario === 'vacio' ? 'Editor: sin configurar' : 'Claude Code'}
-        <span style={{ color: T.textFaint, fontSize: 10 }}>▾</span>
-      </div>
+      <BS_EditorSwitcher
+        T={T}
+        currentId={currentEditor}
+        scenario={scenario}
+        onPick={(e) => {
+          setCurrentEditor(e.id);
+          setToast(`Editor cambiado a ${e.name}. Se aplica al próximo trabajo.`);
+        }}
+        onConfigure={() => onNav && onNav('configuracion')}
+      />
 
       <div style={{
         width: 32, height: 32, borderRadius: '50%', background: T.bgAlt,
         display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 500,
       }}>J</div>
+
+      {toast && ReactDOM.createPortal(
+        <div style={{
+          position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
+          background: T.text, color: '#fff',
+          padding: '11px 16px', borderRadius: 12,
+          boxShadow: T.shadowLg, zIndex: 1100,
+          display: 'flex', alignItems: 'center', gap: 12,
+          fontSize: 13, maxWidth: 'min(480px, 92vw)',
+          animation: 'bsFadeIn 0.2s cubic-bezier(.22,1,.36,1) both',
+        }}>
+          <span style={{
+            width: 22, height: 22, borderRadius: '50%',
+            background: T.success, display: 'grid', placeItems: 'center', flexShrink: 0,
+          }}>
+            <BS_Icon name="check" size={13} />
+          </span>
+          <span style={{ flex: 1 }}>{toast}</span>
+          <span onClick={() => setToast(null)} style={{
+            fontSize: 12, color: 'rgba(255,255,255,0.7)', cursor: 'pointer',
+          }}>✕</span>
+        </div>,
+        document.body
+      )}
     </div>
   );
 };
