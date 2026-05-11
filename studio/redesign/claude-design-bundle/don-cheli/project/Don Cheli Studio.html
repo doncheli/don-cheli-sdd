@@ -101,6 +101,7 @@
 <script type="text/babel" src="components/b-page-arsenal.jsx"></script>
 <script type="text/babel" src="components/b-page-capability-detail.jsx"></script>
 <script type="text/babel" src="components/b-page-guide.jsx"></script>
+<script type="text/babel" src="components/b-page-studio-settings.jsx"></script>
 <script type="text/babel" src="components/b-page-placeholder.jsx"></script>
 <script type="text/babel" src="components/b-page-onboarding.jsx"></script>
 <script type="text/babel" src="components/b-modal-folder-picker.jsx"></script>
@@ -205,7 +206,7 @@ const App = () => {
       route === 'arsenal'   ? <BS_Arsenal {...pageProps} /> :
       route === 'capability' ? <BS_CapabilityDetail {...pageProps} capabilityType={capabilityType} capabilityId={capabilityId} /> :
       route === 'guia'      ? <BS_Guide {...pageProps} /> :
-      route === 'configuracion' ? <BS_Placeholder {...pageProps} title="Configuración" sub="Ajustes del Studio" icon="⚙" /> :
+      route === 'configuracion' ? <BS_StudioSettings {...pageProps} /> :
       <BS_Placeholder {...pageProps} title={route} sub="Sección desconocida" icon="·" />;
     page = (
       <BS_PageShell dens={density} showSidebar={showSidebar} route={sidebarRoute} onNav={navigate} scenario={scenario}>
