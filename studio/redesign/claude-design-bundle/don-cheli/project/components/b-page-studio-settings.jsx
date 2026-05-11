@@ -185,26 +185,45 @@ const BS_StudioSettings = ({ dens, onNav }) => {
             )}
 
             {section === 'cuenta' && (
-              <Card title="Tu cuenta" sub="Información que aparece en los registros y en el chip arriba a la derecha.">
-                <Row label="Nombre"
-                  hint="Aparece en los commits que Don Cheli hace en tu nombre."
-                  control={
-                    <input defaultValue="Santiago Carrillo" style={{
-                      padding: '8px 12px', borderRadius: 7, border: `1px solid ${T.border}`,
-                      background: T.panel, fontFamily: 'inherit', fontSize: 13, width: 240, color: T.text, outline: 'none',
-                    }} />
-                  } />
-                <Row label="Email" hint="Se usa para asociar tu cuenta y para avisos críticos."
-                  control={
-                    <input type="email" defaultValue="santiago@example.com" style={{
-                      padding: '8px 12px', borderRadius: 7, border: `1px solid ${T.border}`,
-                      background: T.panel, fontFamily: 'inherit', fontSize: 13, width: 240, color: T.text, outline: 'none',
-                    }} />
-                  } />
-                <Row label="Plan"
-                  hint="Equipo · vence el 15 de mayo de 2026"
-                  control={<BS_Button>Administrar plan</BS_Button>} />
-              </Card>
+              <>
+                <Card title="Identidad para los commits" sub="Don Cheli usa estos datos como autor cuando hace commits en tu nombre. Nada se sube a un servidor; viven solo en tu equipo.">
+                  <Row label="Nombre"
+                    hint="Tal como quieres que aparezca en git log."
+                    control={
+                      <input defaultValue="Santiago Carrillo" style={{
+                        padding: '8px 12px', borderRadius: 7, border: `1px solid ${T.border}`,
+                        background: T.panel, fontFamily: 'inherit', fontSize: 13, width: 240, color: T.text, outline: 'none',
+                      }} />
+                    } />
+                  <Row label="Email" hint="Se usa como `author.email` en los commits que Don Cheli haga."
+                    control={
+                      <input type="email" defaultValue="santiago@example.com" style={{
+                        padding: '8px 12px', borderRadius: 7, border: `1px solid ${T.border}`,
+                        background: T.panel, fontFamily: 'inherit', fontSize: 13, width: 240, color: T.text, outline: 'none',
+                      }} />
+                    } />
+                  <Row label="Iniciales del avatar"
+                    hint="Aparecen en el círculo arriba a la derecha. Si no eliges nada, se toman del nombre."
+                    control={
+                      <input defaultValue="SC" maxLength={2} style={{
+                        padding: '8px 12px', borderRadius: 7, border: `1px solid ${T.border}`,
+                        background: T.panel, fontFamily: 'inherit', fontSize: 13,
+                        width: 80, color: T.text, outline: 'none', textAlign: 'center',
+                        textTransform: 'uppercase', letterSpacing: 2,
+                      }} />
+                    } />
+                </Card>
+
+                <div style={{
+                  padding: '12px 14px', borderRadius: 10,
+                  background: T.bgAlt, border: `1px solid ${T.border}`,
+                  fontSize: 12.5, color: T.textDim, lineHeight: 1.55,
+                }}>
+                  Don Cheli es <strong style={{ color: T.text }}>open source</strong> bajo licencia Apache-2.0.
+                  No hay cuentas, ni suscripciones, ni servidor central. Lo único que necesitamos saber
+                  de ti es cómo te quieres identificar en los commits que el framework hace localmente.
+                </div>
+              </>
             )}
 
             {section === 'editores' && (
