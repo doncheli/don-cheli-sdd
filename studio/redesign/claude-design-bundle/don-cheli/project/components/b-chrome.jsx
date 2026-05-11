@@ -307,6 +307,184 @@ const BS_EditorSwitcher = ({ T, currentId, scenario, onPick, onConfigure }) => {
   );
 };
 
+// ─────────── Avatar / menú de cuenta ───────────
+const B_ACCOUNT = {
+  initial: 'J',
+  name: 'Juana Pérez',
+  email: 'juana@ejemplo.co',
+  plan: 'Equipo · hasta el 15 may 2026',
+};
+
+const BS_AccountMenu = ({ T, onNav, onToast }) => {
+  const [open, setOpen] = React.useState(false);
+  const [rect, setRect] = React.useState(null);
+  const ref = React.useRef(null);
+  const menuRef = React.useRef(null);
+
+  const toggle = (e) => {
+    e.stopPropagation();
+    if (!open && ref.current) setRect(ref.current.getBoundingClientRect());
+    setOpen(v => !v);
+  };
+
+  React.useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => {
+      const inAnchor = ref.current && ref.current.contains(e.target);
+      const inMenu = menuRef.current && menuRef.current.contains(e.target);
+      if (!inAnchor && !inMenu) setOpen(false);
+    };
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false); };
+    const onScroll = (e) => {
+      if (menuRef.current && menuRef.current.contains(e.target)) return;
+      setOpen(false);
+    };
+    document.addEventListener('mousedown', onDoc);
+    document.addEventListener('keydown', onKey);
+    window.addEventListener('scroll', onScroll, true);
+    window.addEventListener('resize', () => setOpen(false));
+    return () => {
+      document.removeEventListener('mousedown', onDoc);
+      document.removeEventListener('keydown', onKey);
+      window.removeEventListener('scroll', onScroll, true);
+    };
+  }, [open]);
+
+  const MENU_W = 260;
+  const GAP = 8;
+  const MARGIN = 12;
+  let top = 0, left = 0;
+  if (rect) {
+    top = rect.bottom + GAP;
+    left = Math.min(window.innerWidth - MENU_W - MARGIN, Math.max(MARGIN, rect.right - MENU_W));
+  }
+
+  const go = (route) => { setOpen(false); onNav && onNav(route); };
+  const toast = (msg) => { setOpen(false); onToast && onToast(msg); };
+
+  const items = [
+    { id: 'config',   label: 'Configuración del Studio', icon: 'settings',   onSelect: () => go('configuracion') },
+    { id: 'atajos',   label: 'Atajos de teclado',         icon: 'terminal',   onSelect: () => { go('configuracion'); setTimeout(() => onToast && onToast('Sección "Atajos" abierta en Configuración.'), 80); } },
+    { id: 'guia',     label: 'Guía y manual',              icon: 'bookOpen',   onSelect: () => go('guia') },
+    { id: 'ayuda',    label: 'Centro de ayuda',            icon: 'helpCircle', onSelect: () => toast('Abriendo centro de ayuda en otra pestaña…') },
+    { id: 'acerca',   label: 'Acerca de Don Cheli',       icon: 'sparkles',   onSelect: () => toast('Don Cheli Studio v0.1.0 · Build interno · Apache-2.0') },
+  ];
+
+  const dropdown = open && rect ? (
+    <div ref={menuRef} style={{
+      position: 'fixed', top, left, width: MENU_W,
+      background: T.panel, borderRadius: 10,
+      boxShadow: T.shadowLg, border: `1px solid ${T.border}`,
+      zIndex: 1100, padding: 6,
+      display: 'flex', flexDirection: 'column',
+      animation: 'bsFadeIn 0.16s cubic-bezier(.22,1,.36,1) both',
+    }}>
+      {/* Identidad */}
+      <div style={{
+        padding: '12px 12px 10px',
+        display: 'grid', gridTemplateColumns: '36px 1fr', gap: 12, alignItems: 'center',
+        borderBottom: `1px solid ${T.borderSoft}`,
+      }}>
+        <div style={{
+          width: 36, height: 36, borderRadius: '50%',
+          background: T.text, color: '#fff',
+          display: 'grid', placeItems: 'center',
+          fontSize: 14, fontWeight: 600,
+        }}>{B_ACCOUNT.initial}</div>
+        <div style={{ minWidth: 0 }}>
+          <div style={{
+            fontSize: 13, fontWeight: 500, color: T.text,
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>{B_ACCOUNT.name}</div>
+          <div style={{
+            fontSize: 11.5, color: T.textDim, marginTop: 1,
+            overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+          }}>{B_ACCOUNT.email}</div>
+        </div>
+      </div>
+
+      {/* Plan */}
+      <div style={{
+        padding: '8px 12px',
+        fontSize: 11, color: T.textDim,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        borderBottom: `1px solid ${T.borderSoft}`,
+      }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <span style={{
+            padding: '2px 7px', borderRadius: 999,
+            background: T.successBg, color: T.success,
+            fontSize: 10, fontWeight: 600, letterSpacing: 0.3, textTransform: 'uppercase',
+          }}>Equipo</span>
+          <span>hasta 15 may 2026</span>
+        </span>
+        <span
+          onClick={(e) => { e.stopPropagation(); toast('Llevándote a la administración de tu plan…'); }}
+          style={{ color: T.text, cursor: 'pointer', fontWeight: 500 }}
+        >Gestionar</span>
+      </div>
+
+      {/* Items */}
+      <div style={{ padding: '4px 0' }}>
+        {items.map(it => (
+          <div key={it.id}
+            onClick={(e) => { e.stopPropagation(); it.onSelect(); }}
+            style={{
+              padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10,
+              cursor: 'pointer', fontSize: 12.5, color: T.text,
+              transition: 'background .1s ease',
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.background = T.bgAlt}
+            onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+          >
+            <span style={{ color: T.textFaint, display: 'inline-flex' }}>
+              <BS_Icon name={it.icon} size={14} />
+            </span>
+            {it.label}
+          </div>
+        ))}
+      </div>
+
+      {/* Cerrar sesión */}
+      <div style={{ borderTop: `1px solid ${T.borderSoft}`, padding: '4px 0' }}>
+        <div
+          onClick={(e) => { e.stopPropagation(); toast('Cerrando sesión. ¡Hasta luego!'); }}
+          style={{
+            padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 10,
+            cursor: 'pointer', fontSize: 12.5, color: T.textDim,
+            transition: 'background .1s ease, color .1s ease',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = T.bgAlt; e.currentTarget.style.color = T.text; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.textDim; }}
+        >
+          <span style={{ color: T.textFaint, display: 'inline-flex' }}>
+            <BS_Icon name="arrowRight" size={14} />
+          </span>
+          Cerrar sesión
+        </div>
+      </div>
+    </div>
+  ) : null;
+
+  return (
+    <>
+      <div
+        ref={ref}
+        onClick={toggle}
+        title={`${B_ACCOUNT.name} · ${B_ACCOUNT.email}`}
+        style={{
+          width: 32, height: 32, borderRadius: '50%', background: T.bgAlt,
+          display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 500,
+          cursor: 'pointer',
+          border: open ? `1px solid ${T.text}` : '1px solid transparent',
+          transition: 'border-color .12s ease',
+        }}
+      >{B_ACCOUNT.initial}</div>
+      {dropdown && ReactDOM.createPortal(dropdown, document.body)}
+    </>
+  );
+};
+
 // ─────────── Top bar (chips “de un vistazo”) ───────────
 const BS_TopBar = ({ dens, scenario, data, onNav }) => {
   const T = bStudioTokens(dens);
@@ -365,10 +543,11 @@ const BS_TopBar = ({ dens, scenario, data, onNav }) => {
         onConfigure={() => onNav && onNav('configuracion')}
       />
 
-      <div style={{
-        width: 32, height: 32, borderRadius: '50%', background: T.bgAlt,
-        display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 500,
-      }}>J</div>
+      <BS_AccountMenu
+        T={T}
+        onNav={onNav}
+        onToast={(msg) => setToast(msg)}
+      />
 
       {toast && ReactDOM.createPortal(
         <div style={{
