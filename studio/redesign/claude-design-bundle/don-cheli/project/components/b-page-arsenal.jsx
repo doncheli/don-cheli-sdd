@@ -344,7 +344,9 @@ const BS_Arsenal = ({ dens, showSidebar, onNav, scenario }) => {
               <div style={{ textAlign: 'right' }}></div>
             </div>
             {filtered.map((c, i) => (
-              <div key={c.id} className="bs-row" style={{
+              <div key={c.id} className="bs-row"
+                onClick={() => window.openCapability && window.openCapability('commands', c.id)}
+                style={{
                 display: 'grid', gridTemplateColumns: '1.4fr 2fr 110px 80px 110px',
                 padding: '11px 20px', fontSize: 12.5,
                 borderBottom: i < filtered.length - 1 ? `1px solid ${T.borderSoft}` : 'none',
@@ -370,7 +372,9 @@ const BS_Arsenal = ({ dens, showSidebar, onNav, scenario }) => {
               const isSkill = tab === 'skills';
               const isAgent = tab === 'agents';
               return (
-                <div key={x.id} className="bs-card-hover" style={{
+                <div key={x.id} className="bs-card-hover"
+                  onClick={() => window.openCapability && window.openCapability(tab, x.id)}
+                  style={{
                   background: T.panel, borderRadius: 12, boxShadow: T.shadow,
                   padding: 18, cursor: 'pointer',
                   animation: `bsFadeIn 0.3s ${i * 0.03}s cubic-bezier(.22,1,.36,1) both`,

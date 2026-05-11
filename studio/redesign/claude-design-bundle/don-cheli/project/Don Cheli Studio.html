@@ -99,6 +99,7 @@
 <script type="text/babel" src="components/b-page-history.jsx"></script>
 <script type="text/babel" src="components/b-page-expenses.jsx"></script>
 <script type="text/babel" src="components/b-page-arsenal.jsx"></script>
+<script type="text/babel" src="components/b-page-capability-detail.jsx"></script>
 <script type="text/babel" src="components/b-page-guide.jsx"></script>
 <script type="text/babel" src="components/b-page-placeholder.jsx"></script>
 <script type="text/babel" src="components/b-page-onboarding.jsx"></script>
@@ -115,11 +116,24 @@ const App = () => {
   const [showSidebar, setShowSidebar] = useState(TWEAK_DEFAULTS.showSidebar);
   const [folderPickerOpen, setFolderPickerOpen] = useState(false);
   const [pickedFolder, setPickedFolder] = useState(null);
+  const [capabilityType, setCapabilityType] = useState('skills');
+  const [capabilityId, setCapabilityId] = useState(null);
 
-  // Expose globally so any nested component can open the picker
+  const openCapability = (type, id) => {
+    setCapabilityType(type);
+    setCapabilityId(id);
+    setRoute('capability');
+    try { localStorage.setItem('dc_route', 'capability'); } catch {}
+  };
+
+  // Expose globally so any nested component pueda abrir el picker / la pantalla de capacidad
   useEffect(() => {
     window.openFolderPicker = () => setFolderPickerOpen(true);
-    return () => { delete window.openFolderPicker; };
+    window.openCapability = openCapability;
+    return () => {
+      delete window.openFolderPicker;
+      delete window.openCapability;
+    };
   }, []);
 
   // Router state
@@ -157,8 +171,11 @@ const App = () => {
     return () => window.removeEventListener('message', onMsg);
   }, []);
 
-  // Sidebar highlight maps "proyecto" / "trabajo" back to "proyectos" section
-  const sidebarRoute = (route === 'proyecto' || route === 'trabajo') ? 'proyectos' : route;
+  // Sidebar highlight maps subroutes back a su sección padre
+  const sidebarRoute =
+    (route === 'proyecto' || route === 'trabajo') ? 'proyectos' :
+    (route === 'capability') ? 'arsenal' :
+    route;
 
   const pageProps = { dens: density, showSidebar, onNav: navigate, onOpenProject: openProject, scenario };
 
@@ -186,6 +203,7 @@ const App = () => {
       route === 'historial' ? <BS_History {...pageProps} /> :
       route === 'gastos'    ? <BS_Expenses {...pageProps} /> :
       route === 'arsenal'   ? <BS_Arsenal {...pageProps} /> :
+      route === 'capability' ? <BS_CapabilityDetail {...pageProps} capabilityType={capabilityType} capabilityId={capabilityId} /> :
       route === 'guia'      ? <BS_Guide {...pageProps} /> :
       route === 'configuracion' ? <BS_Placeholder {...pageProps} title="Configuración" sub="Ajustes del Studio" icon="⚙" /> :
       <BS_Placeholder {...pageProps} title={route} sub="Sección desconocida" icon="·" />;
