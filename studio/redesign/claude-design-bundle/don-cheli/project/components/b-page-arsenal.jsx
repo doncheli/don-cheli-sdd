@@ -29,14 +29,9 @@ const BS_ApplyMenu = ({ T, anchorRef, triggerRect, onClose, onPick }) => {
     };
   }, [anchorRef, onClose]);
 
-  // Posición y alto calculados desde el viewport, no desde el contenedor padre.
-  // Lógica:
-  //   1. Si el menú a su alto preferido entra debajo del trigger → abre abajo.
-  //   2. Si no entra abajo pero sí entra arriba → flip a arriba.
-  //   3. Si no entra en ninguna dirección al alto preferido → elige la que
-  //      tenga más espacio y ajusta el alto a ese espacio (con scroll interno).
-  // Nunca se "empuja" el menú: si está abajo, su top es trigger.bottom + GAP
-  // exacto; si está arriba, su bottom es trigger.top - GAP exacto.
+  // Siempre abre hacia abajo (predictabilidad sobre eficiencia). El alto
+  // máximo se ajusta al espacio disponible bajo el trigger; si hay más
+  // proyectos que cupos visibles, el listado interno scrollea.
   const MENU_W = 280;
   const DESIRED_H = 420;
   const MIN_H = 180;
@@ -44,26 +39,9 @@ const BS_ApplyMenu = ({ T, anchorRef, triggerRect, onClose, onPick }) => {
   const MARGIN = 12;
 
   const spaceBelow = window.innerHeight - triggerRect.bottom - MARGIN - GAP;
-  const spaceAbove = triggerRect.top - MARGIN - GAP;
+  const maxH = Math.max(MIN_H, Math.min(DESIRED_H, spaceBelow));
 
-  let openUpward, maxH;
-  if (spaceBelow >= DESIRED_H) {
-    openUpward = false;
-    maxH = DESIRED_H;
-  } else if (spaceAbove >= DESIRED_H) {
-    openUpward = true;
-    maxH = DESIRED_H;
-  } else if (spaceAbove > spaceBelow) {
-    openUpward = true;
-    maxH = Math.max(MIN_H, spaceAbove);
-  } else {
-    openUpward = false;
-    maxH = Math.max(MIN_H, spaceBelow);
-  }
-
-  const top = openUpward
-    ? triggerRect.top - maxH - GAP
-    : triggerRect.bottom + GAP;
+  const top = triggerRect.bottom + GAP;
   const left = Math.min(
     window.innerWidth - MENU_W - MARGIN,
     Math.max(MARGIN, triggerRect.right - MENU_W)
