@@ -15,17 +15,23 @@ const BS_ApplyMenu = ({ T, anchorRef, triggerRect, onClose, onPick }) => {
       if (!inAnchor && !inMenu) onClose && onClose();
     };
     const onKey = (e) => { if (e.key === 'Escape') onClose && onClose(); };
-    const onScrollOrResize = () => onClose && onClose();
+    const onResize = () => onClose && onClose();
+    // Cierra cuando se scrollea cualquier contenedor de la página (porque el
+    // rect cacheado del trigger deja de ser válido), pero ignora los scrolls
+    // que ocurren dentro del propio menú.
+    const onScroll = (e) => {
+      if (menuRef.current && menuRef.current.contains(e.target)) return;
+      onClose && onClose();
+    };
     document.addEventListener('mousedown', onDoc);
     document.addEventListener('keydown', onKey);
-    window.addEventListener('resize', onScrollOrResize);
-    // Capturamos scrolls de cualquier contenedor (capture phase)
-    window.addEventListener('scroll', onScrollOrResize, true);
+    window.addEventListener('resize', onResize);
+    window.addEventListener('scroll', onScroll, true);
     return () => {
       document.removeEventListener('mousedown', onDoc);
       document.removeEventListener('keydown', onKey);
-      window.removeEventListener('resize', onScrollOrResize);
-      window.removeEventListener('scroll', onScrollOrResize, true);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('scroll', onScroll, true);
     };
   }, [anchorRef, onClose]);
 
