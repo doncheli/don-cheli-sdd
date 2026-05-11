@@ -372,10 +372,24 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
 
               {tab === 'preview' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <div style={{
+                    padding: '10px 12px', borderRadius: 8,
+                    background: T.bgAlt, border: `1px solid ${T.border}`,
+                    fontSize: 11.5, color: T.textDim, lineHeight: 1.5,
+                  }}>
+                    <strong style={{ color: T.text, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <BS_Icon name="eye" size={12} />
+                      Pantalla del proyecto <span style={{
+                        fontFamily: '"Geist Mono", monospace', fontSize: 11,
+                        background: T.panel, padding: '0 6px', borderRadius: 4,
+                      }}>{job.project}</span>
+                    </strong>
+                    <span style={{ marginLeft: 4 }}>— no es la interfaz del Studio.</span>
+                    <br />
+                    Don Cheli está construyendo el diseño que vas a entregar a los usuarios de tu producto. Se actualiza en vivo; cuando lo apruebes desde la pestaña Calidad, pasa a ser el diseño final.
+                  </div>
                   <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.55 }}>
-                    {designGateActive ? (
-                      <>Lo que se está construyendo, en vivo. Cuando Don Cheli termine y apruebes desde la pestaña Calidad, este preview pasa a ser el diseño final.</>
-                    ) : (
+                    {!designGateActive && (
                       <>Aún no hay diseño generado. Este panel se enciende cuando Don Cheli empieza el paso <strong style={{ color: T.text }}>Diseñar</strong>.</>
                     )}
                   </div>
