@@ -312,11 +312,127 @@ const B_ACCOUNT = {
   initial: 'J',
   name: 'Juana Pérez',
   email: 'juana@ejemplo.co',
-  plan: 'Equipo · hasta el 15 may 2026',
+};
+
+const B_STUDIO_VERSION = {
+  version: 'v0.1.0',
+  build: 'a12bf3c',
+  updated: 'hace 3 días',
+  license: 'Apache-2.0',
+  repo: 'https://github.com/doncheli/don-cheli-sdd',
+};
+
+// ─────────── Modal "Acerca de Don Cheli" ───────────
+const BS_AboutModal = ({ T, open, onClose }) => {
+  React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => { if (e.key === 'Escape') onClose && onClose(); };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  return ReactDOM.createPortal(
+    <div
+      onClick={onClose}
+      style={{
+        position: 'fixed', inset: 0, zIndex: 1200,
+        background: 'rgba(17, 18, 22, 0.55)',
+        display: 'grid', placeItems: 'center',
+        animation: 'bsFadeIn 0.18s cubic-bezier(.22,1,.36,1)',
+      }}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          width: 'min(440px, 92vw)',
+          background: T.panel, borderRadius: 14,
+          boxShadow: T.shadowLg,
+          display: 'flex', flexDirection: 'column',
+          overflow: 'hidden',
+          animation: 'bsFadeIn 0.2s cubic-bezier(.22,1,.36,1)',
+        }}
+      >
+        {/* Hero */}
+        <div style={{
+          padding: '28px 28px 22px', textAlign: 'center',
+          borderBottom: `1px solid ${T.border}`,
+        }}>
+          <div style={{
+            width: 56, height: 56, borderRadius: 14, margin: '0 auto 14px',
+            background: T.text, color: '#fff',
+            display: 'grid', placeItems: 'center',
+            fontWeight: 600, fontSize: 18,
+          }}>dc</div>
+          <div style={{ fontSize: 17, fontWeight: 500, letterSpacing: -0.3 }}>Don Cheli Studio</div>
+          <div style={{
+            fontSize: 12, color: T.textDim, marginTop: 4,
+            fontFamily: '"Geist Mono", monospace',
+          }}>{B_STUDIO_VERSION.version} · build {B_STUDIO_VERSION.build}</div>
+          <div style={{ fontSize: 11.5, color: T.textFaint, marginTop: 4 }}>
+            Actualizado {B_STUDIO_VERSION.updated}
+          </div>
+        </div>
+
+        {/* Acciones */}
+        <div style={{
+          padding: '14px 18px', display: 'flex', gap: 8,
+          borderBottom: `1px solid ${T.borderSoft}`,
+        }}>
+          <BS_Button size="sm">Buscar actualizaciones</BS_Button>
+          <BS_Button size="sm">Ver changelog</BS_Button>
+        </div>
+
+        {/* Detalle */}
+        <div style={{
+          padding: '14px 22px 16px',
+          display: 'flex', flexDirection: 'column', gap: 12,
+          fontSize: 12.5, color: T.textDim, lineHeight: 1.55,
+        }}>
+          <p style={{ margin: 0 }}>
+            Don Cheli es un framework <strong style={{ color: T.text }}>open source</strong> bajo
+            licencia <strong style={{ color: T.text }}>{B_STUDIO_VERSION.license}</strong>. Puedes usarlo,
+            modificarlo y distribuirlo libremente. El código vive en GitHub y la comunidad contribuye
+            con habilidades, agentes y comandos.
+          </p>
+          <p style={{ margin: 0 }}>
+            Si quieres reportar un problema, sugerir una funcionalidad o ver el código, abre el repositorio.
+          </p>
+        </div>
+
+        {/* Footer */}
+        <div style={{
+          padding: '12px 22px',
+          background: T.bgAlt,
+          borderTop: `1px solid ${T.borderSoft}`,
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          fontSize: 11.5, color: T.textDim,
+        }}>
+          <span
+            onClick={() => window.open(B_STUDIO_VERSION.repo, '_blank')}
+            style={{
+              color: T.text, fontWeight: 500, cursor: 'pointer',
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+            }}
+          >
+            <BS_Icon name="code" size={12} />
+            Ver en GitHub
+          </span>
+          <span
+            onClick={onClose}
+            style={{ cursor: 'pointer', color: T.textDim }}
+          >Cerrar</span>
+        </div>
+      </div>
+    </div>,
+    document.body
+  );
 };
 
 const BS_AccountMenu = ({ T, onNav, onToast }) => {
   const [open, setOpen] = React.useState(false);
+  const [aboutOpen, setAboutOpen] = React.useState(false);
   const [rect, setRect] = React.useState(null);
   const ref = React.useRef(null);
   const menuRef = React.useRef(null);
@@ -366,8 +482,8 @@ const BS_AccountMenu = ({ T, onNav, onToast }) => {
     { id: 'config',   label: 'Configuración del Studio', icon: 'settings',   onSelect: () => go('configuracion') },
     { id: 'atajos',   label: 'Atajos de teclado',         icon: 'terminal',   onSelect: () => { go('configuracion'); setTimeout(() => onToast && onToast('Sección "Atajos" abierta en Configuración.'), 80); } },
     { id: 'guia',     label: 'Guía y manual',              icon: 'bookOpen',   onSelect: () => go('guia') },
-    { id: 'ayuda',    label: 'Centro de ayuda',            icon: 'helpCircle', onSelect: () => toast('Abriendo centro de ayuda en otra pestaña…') },
-    { id: 'acerca',   label: 'Acerca de Don Cheli',       icon: 'sparkles',   onSelect: () => toast('Don Cheli Studio v0.1.0 · Build interno · Apache-2.0') },
+    { id: 'reportar', label: 'Reportar un problema',       icon: 'helpCircle', onSelect: () => { setOpen(false); window.open(B_STUDIO_VERSION.repo + '/issues/new', '_blank'); } },
+    { id: 'acerca',   label: 'Acerca de Don Cheli',        icon: 'sparkles',   onSelect: () => { setOpen(false); setAboutOpen(true); } },
   ];
 
   const dropdown = open && rect ? (
@@ -403,7 +519,7 @@ const BS_AccountMenu = ({ T, onNav, onToast }) => {
         </div>
       </div>
 
-      {/* Plan */}
+      {/* Versión + open source */}
       <div style={{
         padding: '8px 12px',
         fontSize: 11, color: T.textDim,
@@ -413,15 +529,15 @@ const BS_AccountMenu = ({ T, onNav, onToast }) => {
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
           <span style={{
             padding: '2px 7px', borderRadius: 999,
-            background: T.successBg, color: T.success,
+            background: T.bgAlt, color: T.textDim,
             fontSize: 10, fontWeight: 600, letterSpacing: 0.3, textTransform: 'uppercase',
-          }}>Equipo</span>
-          <span>hasta 15 may 2026</span>
+          }}>Open source</span>
+          <span style={{ fontFamily: '"Geist Mono", monospace' }}>{B_STUDIO_VERSION.version}</span>
         </span>
         <span
-          onClick={(e) => { e.stopPropagation(); toast('Llevándote a la administración de tu plan…'); }}
+          onClick={(e) => { e.stopPropagation(); setOpen(false); setAboutOpen(true); }}
           style={{ color: T.text, cursor: 'pointer', fontWeight: 500 }}
-        >Gestionar</span>
+        >Acerca de</span>
       </div>
 
       {/* Items */}
@@ -481,6 +597,7 @@ const BS_AccountMenu = ({ T, onNav, onToast }) => {
         }}
       >{B_ACCOUNT.initial}</div>
       {dropdown && ReactDOM.createPortal(dropdown, document.body)}
+      <BS_AboutModal T={T} open={aboutOpen} onClose={() => setAboutOpen(false)} />
     </>
   );
 };
