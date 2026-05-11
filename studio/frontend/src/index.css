@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Don Cheli Studio Design System — see ../DESIGN.md */
+
+  /* Typography */
+  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', 'Consolas', monospace;
+  --text-xs: 0.6875rem;
+  --text-sm: 0.75rem;
+  --text-base: 0.8125rem;
+  --text-md: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  /* Backgrounds */
+  --bg-base: #0C0C0E;
+  --bg-raised: #141416;
+  --bg-overlay: #1A1A1E;
+  --bg-subtle: #222226;
+
+  /* Borders */
+  --border-default: #2A2A30;
+  --border-subtle: #1E1E24;
+  --border-active: #E8C547;
+
+  /* Text */
+  --text-primary: #E8E8EC;
+  --text-secondary: #8E8E96;
+  --text-muted: #56565E;
+  --text-accent: #E8C547;
+
+  /* Semantic */
+  --color-success: #4ADE80;
+  --color-warning: #FBBF24;
+  --color-error: #F87171;
+  --color-info: #60A5FA;
+
+  /* Accent */
+  --color-accent: #E8C547;
+  --color-accent-dim: #E8C54720;
+  --color-accent-border: #E8C54740;
+
+  /* Agent colors */
+  --agent-spec: #60A5FA;
+  --agent-qa: #34D399;
+  --agent-arch: #A78BFA;
+  --agent-design: #F472B6;
+  --agent-plan: #FB923C;
+  --agent-dev: #4ADE80;
+  --agent-review: #E8C547;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+
+  /* Radius — max 8px, never bubbly */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.3);
+
+  /* Motion — fast, never > 200ms */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 100ms;
+  --duration-normal: 200ms;
+}
+
+/* ── Base ── */
+
+body {
+  margin: 0;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar — minimal, not distracting ── */
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Selection ── */
+::selection { background: var(--color-accent-dim); color: var(--text-primary); }
+
+/* ── Focus visible — gold ring, never browser default ── */
+:focus-visible {
+  outline: 1px solid var(--border-active);
+  outline-offset: 1px;
+}
+
+/* ── React Flow ── */
+.react-flow__node { border-radius: var(--radius-md) !important; }

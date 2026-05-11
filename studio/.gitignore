@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Rust build artifacts
+target/
+**/target/
+Cargo.lock
+
+# Frontend build
+dist/
+.vite/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Tauri generated
+gen/
+src-tauri/gen/
+
+# Environment
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log

@@ -9,6 +9,7 @@ const BASE_TOKENS_PER_PHASE: Record<PhaseName, number> = {
   specify: 8_000,
   clarify: 5_000,
   plan: 12_000,
+  design: 18_000,
   breakdown: 6_000,
   implement: 25_000,
   review: 15_000,
@@ -21,9 +22,13 @@ export interface CostEstimate {
 }
 
 export function estimatePhaseCost(phase: PhaseName, provider: AgentProvider): CostEstimate {
-  const baseTokens = BASE_TOKENS_PER_PHASE[phase];
+  const baseTokens = BASE_TOKENS_PER_PHASE[phase] ?? 10_000;
   const { tokens, costUsd } = provider.estimateCost(baseTokens);
-  return { phase, tokens, costUsd };
+  return {
+    phase,
+    tokens: Number.isFinite(tokens) ? tokens : baseTokens,
+    costUsd: Number.isFinite(costUsd) ? costUsd : 0,
+  };
 }
 
 export function estimatePipelineCost(
