@@ -51,7 +51,8 @@ const B_JOB_FILES = [
 
 const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
   const T = bStudioTokens(dens);
-  const [tab, setTab] = React.useState('calidad');
+  const designGateActive = B_JOB_GATES.some(g => g.id === 'design' && g.state === 'active');
+  const [tab, setTab] = React.useState(designGateActive ? 'preview' : 'calidad');
   const [selectedPhase, setSelectedPhase] = React.useState('design');
 
   const job = { id: 12, project: projectId || 'auth-jwt', editor: 'Claude Code',
@@ -63,6 +64,7 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
 
   const tabs = [
     { id: 'calidad',     label: 'Calidad',          count: B_JOB_GATES.filter(g => g.state === 'active').length || null },
+    { id: 'preview',     label: 'Vista previa',     live: designGateActive },
     { id: 'costos',      label: 'Costos' },
     { id: 'archivos',    label: 'Archivos',         count: B_JOB_FILES.length },
     { id: 'entorno',     label: 'Entorno' },
@@ -269,6 +271,13 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                     transition: 'color .12s ease',
                   }}>
                   {t.label}
+                  {t.live && (
+                    <span style={{
+                      width: 6, height: 6, borderRadius: '50%',
+                      background: T.success,
+                      animation: 'bsPulse 1.6s ease-in-out infinite',
+                    }} />
+                  )}
                   {t.count != null && (
                     <span style={{
                       padding: '1px 6px', borderRadius: 999,
@@ -335,6 +344,65 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                       </div>
                     );
                   })}
+                </div>
+              )}
+
+              {tab === 'preview' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <div style={{ fontSize: 12, color: T.textDim, lineHeight: 1.55 }}>
+                    {designGateActive ? (
+                      <>Lo que se está construyendo, en vivo. Cuando Don Cheli termine y apruebes desde la pestaña Calidad, este preview pasa a ser el diseño final.</>
+                    ) : (
+                      <>Aún no hay diseño generado. Este panel se enciende cuando Don Cheli empieza el paso <strong style={{ color: T.text }}>Diseñar</strong>.</>
+                    )}
+                  </div>
+
+                  <div style={{
+                    position: 'relative',
+                    borderRadius: 10, overflow: 'hidden',
+                    border: `1px solid ${T.border}`,
+                    background: T.bgAlt,
+                    aspectRatio: '3 / 4',
+                    minHeight: 380,
+                  }}>
+                    <iframe
+                      src="design-preview-welcome.html"
+                      title="Vista previa del diseño en construcción"
+                      style={{
+                        width: '100%', height: '100%',
+                        border: 'none', display: 'block', background: T.panel,
+                      }}
+                    />
+                  </div>
+
+                  <div style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10,
+                    padding: '8px 12px', borderRadius: 8, background: T.bgAlt,
+                    fontSize: 11.5, color: T.textDim,
+                  }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+                      <span style={{
+                        width: 6, height: 6, borderRadius: '50%', background: T.success,
+                        animation: 'bsPulse 1.6s ease-in-out infinite',
+                      }} />
+                      design/auth-login.figma.md
+                    </span>
+                    <span style={{ display: 'flex', gap: 6 }}>
+                      <span style={{
+                        padding: '4px 9px', borderRadius: 6, background: T.panel,
+                        boxShadow: T.shadow, color: T.text, cursor: 'pointer', fontWeight: 500,
+                      }}>Abrir en pestaña aparte</span>
+                      <span style={{
+                        padding: '4px 9px', borderRadius: 6, background: T.text,
+                        color: '#fff', cursor: 'pointer', fontWeight: 500,
+                      }}>Aprobar</span>
+                    </span>
+                  </div>
+
+                  <div style={{ fontSize: 11.5, color: T.textFaint, lineHeight: 1.5 }}>
+                    Las zonas con destello tenue son partes que Don Cheli todavía está iterando.
+                    Se actualizan automáticamente cuando termina cada componente.
+                  </div>
                 </div>
               )}
 

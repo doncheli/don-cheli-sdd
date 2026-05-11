@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Vista previa — pantalla de bienvenida</title>
+<style>
+  :root {
+    --ink:    oklch(17% 0.006 260);
+    --dim:    oklch(48% 0.005 260);
+    --faint:  oklch(65% 0.004 260);
+    --bg:     oklch(98% 0.005 105);
+    --panel:  oklch(99% 0.003 155);
+    --line:   oklch(93% 0.003 155);
+    --soft:   oklch(96% 0.003 155);
+    --accent: oklch(58% 0.14 155);
+    --accent-soft: oklch(96% 0.05 155);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); font-family: -apple-system, "Inter", system-ui, sans-serif; color: var(--ink); }
+
+  .frame {
+    min-height: 100vh; display: grid; place-items: center; padding: 24px;
+  }
+  .card {
+    width: 100%; max-width: 360px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 14px; padding: 28px 26px;
+    box-shadow: 0 1px 2px rgba(17,18,22,0.04), 0 8px 24px -16px rgba(17,18,22,0.10);
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 22px;
+  }
+  .brand .logo {
+    width: 30px; height: 30px; border-radius: 8px; background: var(--ink);
+    color: white; display: grid; place-items: center; font-weight: 600; font-size: 12px;
+  }
+  .brand .name { font-weight: 500; font-size: 14px; }
+
+  h1 {
+    font-size: 22px; letter-spacing: -0.5px; margin: 0 0 4px;
+    line-height: 1.2;
+  }
+  .sub {
+    color: var(--dim); font-size: 13px; line-height: 1.5; margin-bottom: 22px;
+  }
+
+  label {
+    display: block; font-size: 11px; font-weight: 500;
+    color: var(--dim); margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  .field {
+    width: 100%; padding: 10px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: white;
+    font-family: inherit; font-size: 13.5px; color: var(--ink);
+    outline: none; margin-bottom: 14px;
+    transition: border-color .15s ease;
+  }
+  .field:focus { border-color: var(--ink); }
+  .field::placeholder { color: var(--faint); }
+
+  .link {
+    font-size: 12px; color: var(--dim); text-decoration: none;
+    display: inline-block; margin-bottom: 18px;
+  }
+  .link:hover { color: var(--ink); }
+
+  .btn {
+    width: 100%; padding: 11px 16px; border-radius: 8px;
+    background: var(--ink); color: white; border: none;
+    font-family: inherit; font-size: 13.5px; font-weight: 500;
+    cursor: pointer;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 12px; margin: 20px 0;
+    color: var(--faint); font-size: 11px;
+  }
+  .divider::before, .divider::after {
+    content: ""; flex: 1; height: 1px; background: var(--line);
+  }
+
+  .sso {
+    width: 100%; padding: 10px 12px; border-radius: 8px;
+    background: white; color: var(--ink);
+    border: 1px solid var(--line);
+    font-family: inherit; font-size: 13px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-bottom: 8px;
+  }
+  .sso:hover { border-color: var(--ink); }
+
+  .foot {
+    text-align: center; margin-top: 22px; font-size: 12px; color: var(--dim);
+  }
+  .foot a { color: var(--ink); font-weight: 500; text-decoration: none; }
+
+  /* Shimmer en partes "que se están diseñando" — comunica que el diseño está vivo */
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .wip {
+    background: linear-gradient(90deg, var(--soft) 0%, var(--panel) 50%, var(--soft) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+    border-color: transparent !important;
+    color: transparent !important;
+  }
+  .wip::placeholder { color: transparent !important; }
+
+  /* Badge "WIP" arriba a la derecha */
+  .wip-badge {
+    position: fixed; top: 12px; right: 12px;
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 9px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .wip-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+</style>
+</head>
+<body>
+
+<div class="wip-badge">
+  <span class="dot"></span>
+  Diseñando en vivo
+</div>
+
+<div class="frame">
+  <div class="card">
+    <div class="brand">
+      <div class="logo">aj</div>
+      <div class="name">auth-jwt</div>
+    </div>
+
+    <h1>Inicia sesión</h1>
+    <p class="sub">Bienvenido de vuelta. Ingresa tus datos para continuar.</p>
+
+    <label>Correo</label>
+    <input class="field" type="email" placeholder="tu@correo.com" />
+
+    <label>Contraseña</label>
+    <input class="field" type="password" placeholder="••••••••" />
+
+    <a class="link" href="#">¿Olvidaste tu contraseña?</a>
+
+    <button class="btn">Entrar</button>
+
+    <div class="divider">o continuar con</div>
+
+    <button class="sso wip">Google</button>
+    <button class="sso wip">GitHub</button>
+
+    <div class="foot">
+      ¿Primera vez aquí? <a href="#">Crear una cuenta</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
