@@ -109,7 +109,7 @@ const BStudio = ({ dens = 'comfy', scenario = 'activo', tlVariant = 'bar', showS
         ) : (
           <>
             <BS_TopBar dens={dens} scenario={scenario} data={data} />
-            <BS_Header dens={dens} scenario={scenario} data={data} />
+            <BS_Header dens={dens} scenario={scenario} data={data} onNav={onNav} />
             <div style={{
               flex: 1, minHeight: 0, overflowY: 'auto',
               display: 'flex', flexDirection: 'column',

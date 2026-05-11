@@ -180,7 +180,7 @@ const BS_TopBar = ({ dens, scenario, data }) => {
 };
 
 // ─────────── Header con resumen conversacional ───────────
-const BS_Header = ({ dens, scenario, data }) => {
+const BS_Header = ({ dens, scenario, data, onNav }) => {
   const T = bStudioTokens(dens);
   const h = data.header;
 
@@ -217,25 +217,32 @@ const BS_Header = ({ dens, scenario, data }) => {
         <div style={{ display: 'flex', gap: 8 }}>
           {scenario === 'exito' ? (
             <>
-              <button style={{
-                padding: '7px 14px', borderRadius: 8, background: T.panel,
-                boxShadow: T.shadow, border: 'none', fontSize: 12.5, color: T.text, cursor: 'pointer',
-              }}>Ver los cambios</button>
-              <button style={{
-                padding: '7px 14px', borderRadius: 8, background: T.ink,
-                color: '#fff', border: 'none', fontSize: 12.5, fontWeight: 500, cursor: 'pointer',
-              }}>Llevar a mi rama →</button>
+              <button
+                onClick={() => onNav && onNav('trabajo')}
+                style={{
+                  padding: '7px 14px', borderRadius: 8, background: T.panel,
+                  boxShadow: T.shadow, border: 'none', fontSize: 12.5, color: T.text, cursor: 'pointer',
+                }}>Ver los cambios</button>
+              <button
+                onClick={() => onNav && onNav('trabajo')}
+                style={{
+                  padding: '7px 14px', borderRadius: 8, background: T.ink,
+                  color: '#fff', border: 'none', fontSize: 12.5, fontWeight: 500, cursor: 'pointer',
+                }}>Llevar a mi rama →</button>
             </>
           ) : (
             <>
-              <button style={{
-                padding: '7px 14px', borderRadius: 8, background: T.panel,
-                boxShadow: T.shadow, border: 'none', fontSize: 12.5, color: T.text, cursor: 'pointer',
-              }}>Pausar</button>
-              <button style={{
-                padding: '7px 14px', borderRadius: 8, background: T.ink,
-                color: '#fff', border: 'none', fontSize: 12.5, fontWeight: 500, cursor: 'pointer',
-              }}>Ver trabajo →</button>
+              <button
+                style={{
+                  padding: '7px 14px', borderRadius: 8, background: T.panel,
+                  boxShadow: T.shadow, border: 'none', fontSize: 12.5, color: T.text, cursor: 'pointer',
+                }}>Pausar</button>
+              <button
+                onClick={() => onNav && onNav('trabajo')}
+                style={{
+                  padding: '7px 14px', borderRadius: 8, background: T.ink,
+                  color: '#fff', border: 'none', fontSize: 12.5, fontWeight: 500, cursor: 'pointer',
+                }}>Ver trabajo →</button>
             </>
           )}
         </div>

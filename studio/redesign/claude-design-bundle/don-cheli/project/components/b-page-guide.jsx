@@ -190,10 +190,12 @@ const BS_Guide = ({ dens, showSidebar, onNav, scenario }) => {
                 );
               }
               if (b.kind === 'h2') {
+                const slug = `h-${activeId}-${i}`;
                 return (
-                  <h2 key={i} style={{
+                  <h2 key={i} id={slug} style={{
                     fontSize: 18, fontWeight: 500, letterSpacing: -0.3,
                     margin: '24px 0 8px', color: T.text,
+                    scrollMarginTop: 80,
                   }}>{b.text}</h2>
                 );
               }
@@ -291,15 +293,26 @@ const BS_Guide = ({ dens, showSidebar, onNav, scenario }) => {
               textTransform: 'uppercase', letterSpacing: 0.6, marginBottom: 10,
             }}>En esta sección</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              {cur.blocks.filter(b => b.kind === 'h2').map((h, i) => (
-                <span key={i} style={{
-                  fontSize: 12.5, color: T.textDim, padding: '4px 8px',
-                  borderRadius: 6, cursor: 'pointer',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.color = T.text}
-                onMouseLeave={(e) => e.currentTarget.style.color = T.textDim}
-                >{h.text}</span>
-              ))}
+              {cur.blocks
+                .map((b, i) => ({ b, i }))
+                .filter(x => x.b.kind === 'h2')
+                .map(({ b, i }) => {
+                  const slug = `h-${activeId}-${i}`;
+                  return (
+                    <span key={slug}
+                      onClick={() => {
+                        const el = document.getElementById(slug);
+                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }}
+                      style={{
+                        fontSize: 12.5, color: T.textDim, padding: '4px 8px',
+                        borderRadius: 6, cursor: 'pointer',
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = T.text}
+                      onMouseLeave={(e) => e.currentTarget.style.color = T.textDim}
+                    >{b.text}</span>
+                  );
+                })}
             </div>
 
             <div style={{

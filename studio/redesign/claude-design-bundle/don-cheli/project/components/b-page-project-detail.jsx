@@ -326,6 +326,12 @@ const BS_ProjectDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => 
   const T = bStudioTokens(dens);
   const p = B_PROJECTS.find(x => x.id === projectId) || B_PROJECTS[0];
   const [tab, setTab] = React.useState('resumen'); // resumen | trabajos | especificaciones | notas
+  const [toast, setToast] = React.useState(null);
+  React.useEffect(() => {
+    if (!toast) return;
+    const id = setTimeout(() => setToast(null), 3200);
+    return () => clearTimeout(id);
+  }, [toast]);
 
   const statusTone = { active: 'active', done: 'done', paused: 'paused', pending: 'pending' };
   const statusLabel = { active: 'Trabajando ahora', done: 'Terminado', paused: 'Pausado', pending: 'Sin empezar' };
@@ -496,13 +502,20 @@ const BS_ProjectDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => 
                 <div style={{ background: T.panel, borderRadius: 12, boxShadow: T.shadow, padding: '16px 18px' }}>
                   <div style={{ fontSize: 13.5, fontWeight: 500, marginBottom: 10 }}>Acciones</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-                    {['Rebobinar a un punto anterior', 'Exportar documentación viva', 'Archivar proyecto'].map(a => (
-                      <div key={a} style={{
-                        padding: '8px 10px', borderRadius: 6, fontSize: 12.5,
-                        color: T.textDim, cursor: 'pointer',
-                      }} onMouseEnter={(e) => { e.currentTarget.style.background = T.bgAlt; e.currentTarget.style.color = T.text; }}
-                         onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.textDim; }}>
-                        {a}
+                    {[
+                      { label: 'Rebobinar a un punto anterior', msg: 'Selecciona el punto al que quieres regresar. Esta acción se puede deshacer mientras no hagas otro trabajo encima.' },
+                      { label: 'Exportar documentación viva',   msg: 'Exportación iniciada. Te avisamos cuando esté lista para descargar.' },
+                      { label: 'Archivar proyecto',              msg: 'Archivar oculta este proyecto de la lista. Tus archivos y registros se conservan.' },
+                    ].map(a => (
+                      <div key={a.label}
+                        onClick={() => setToast(a.msg)}
+                        style={{
+                          padding: '8px 10px', borderRadius: 6, fontSize: 12.5,
+                          color: T.textDim, cursor: 'pointer',
+                        }}
+                        onMouseEnter={(e) => { e.currentTarget.style.background = T.bgAlt; e.currentTarget.style.color = T.text; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = T.textDim; }}>
+                        {a.label}
                       </div>
                     ))}
                   </div>
@@ -618,6 +631,29 @@ const BS_ProjectDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => 
           </div>
         )}
       </BS_PageBody>
+
+      {toast && (
+        <div style={{
+          position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
+          background: T.text, color: '#fff',
+          padding: '11px 16px', borderRadius: 12,
+          boxShadow: T.shadowLg, zIndex: 1100,
+          display: 'flex', alignItems: 'center', gap: 12,
+          fontSize: 13, maxWidth: 'min(520px, 92vw)',
+          animation: 'bsFadeIn 0.2s cubic-bezier(.22,1,.36,1) both',
+        }}>
+          <span style={{
+            width: 22, height: 22, borderRadius: '50%',
+            background: T.success, display: 'grid', placeItems: 'center', flexShrink: 0,
+          }}>
+            <BS_Icon name="check" size={13} />
+          </span>
+          <span style={{ flex: 1, lineHeight: 1.4 }}>{toast}</span>
+          <span onClick={() => setToast(null)} style={{
+            fontSize: 12, color: 'rgba(255,255,255,0.7)', cursor: 'pointer',
+          }}>✕</span>
+        </div>
+      )}
     </div>
   );
 };

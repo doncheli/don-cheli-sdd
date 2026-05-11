@@ -51,9 +51,25 @@ const B_JOB_FILES = [
 
 const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
   const T = bStudioTokens(dens);
-  const designGateActive = B_JOB_GATES.some(g => g.id === 'design' && g.state === 'active');
-  const [tab, setTab] = React.useState(designGateActive ? 'preview' : 'calidad');
+  const designGateActiveRaw = B_JOB_GATES.some(g => g.id === 'design' && g.state === 'active');
+  const [designApproved, setDesignApproved] = React.useState(false);
+  const [paused, setPaused] = React.useState(false);
+  const [selectedFile, setSelectedFile] = React.useState(null);
+  const [toast, setToast] = React.useState(null);
+  const designGateActive = designGateActiveRaw && !designApproved;
+  const [tab, setTab] = React.useState(designGateActiveRaw ? 'preview' : 'calidad');
   const [selectedPhase, setSelectedPhase] = React.useState('design');
+
+  React.useEffect(() => {
+    if (!toast) return;
+    const id = setTimeout(() => setToast(null), 3000);
+    return () => clearTimeout(id);
+  }, [toast]);
+
+  const approveDesign = () => {
+    setDesignApproved(true);
+    setToast('Diseño aprobado. Don Cheli continúa al siguiente paso.');
+  };
 
   const job = { id: 12, project: projectId || 'auth-jwt', editor: 'Claude Code',
                 started: 'hace 4 minutos', etaRemaining: '~10 min', status: 'running' };
@@ -97,8 +113,12 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
         onNav={onNav}
         actions={
           <>
-            <BS_Button>Pausar</BS_Button>
-            <BS_Button>Detener</BS_Button>
+            <BS_Button onClick={() => { setPaused(p => !p); setToast(paused ? 'Trabajo reanudado.' : 'Trabajo pausado. Reanuda cuando quieras.'); }}>
+              {paused ? 'Reanudar' : 'Pausar'}
+            </BS_Button>
+            <BS_Button onClick={() => setToast('Pediste detener el trabajo. Don Cheli va a cerrar limpiamente.')}>
+              Detener
+            </BS_Button>
           </>
         }
       />
@@ -296,8 +316,9 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                     Antes de pasar al siguiente paso, Don Cheli verifica que todo esté en orden.
                   </div>
                   {B_JOB_GATES.map((g, i) => {
-                    const active = g.state === 'active';
-                    const passed = g.state === 'passed';
+                    const effState = (g.id === 'design' && designApproved) ? 'passed' : g.state;
+                    const active = effState === 'active';
+                    const passed = effState === 'passed';
                     return (
                       <div key={g.id} style={{
                         padding: '12px 14px', borderRadius: 10,
@@ -335,10 +356,12 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                             <span style={{ color: T.textDim, fontFamily: '"Geist Mono", monospace', flex: 1 }}>
                               design/auth-login.figma.md
                             </span>
-                            <span style={{
-                              padding: '4px 11px', borderRadius: 6, background: T.text,
-                              color: '#fff', fontSize: 11.5, fontWeight: 500, cursor: 'pointer',
-                            }}>Aprobar</span>
+                            <span
+                              onClick={approveDesign}
+                              style={{
+                                padding: '4px 11px', borderRadius: 6, background: T.text,
+                                color: '#fff', fontSize: 11.5, fontWeight: 500, cursor: 'pointer',
+                              }}>Aprobar</span>
                           </div>
                         )}
                       </div>
@@ -382,20 +405,30 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                   }}>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
                       <span style={{
-                        width: 6, height: 6, borderRadius: '50%', background: T.success,
-                        animation: 'bsPulse 1.6s ease-in-out infinite',
+                        width: 6, height: 6, borderRadius: '50%',
+                        background: designApproved ? T.success : T.success,
+                        animation: designApproved ? 'none' : 'bsPulse 1.6s ease-in-out infinite',
                       }} />
                       design/auth-login.figma.md
+                      {designApproved && (
+                        <span style={{ color: T.success, fontWeight: 600, marginLeft: 6 }}>· Aprobado ✓</span>
+                      )}
                     </span>
                     <span style={{ display: 'flex', gap: 6 }}>
-                      <span style={{
-                        padding: '4px 9px', borderRadius: 6, background: T.panel,
-                        boxShadow: T.shadow, color: T.text, cursor: 'pointer', fontWeight: 500,
-                      }}>Abrir en pestaña aparte</span>
-                      <span style={{
-                        padding: '4px 9px', borderRadius: 6, background: T.text,
-                        color: '#fff', cursor: 'pointer', fontWeight: 500,
-                      }}>Aprobar</span>
+                      <span
+                        onClick={() => window.open('design-preview-welcome.html', '_blank')}
+                        style={{
+                          padding: '4px 9px', borderRadius: 6, background: T.panel,
+                          boxShadow: T.shadow, color: T.text, cursor: 'pointer', fontWeight: 500,
+                        }}>Abrir en pestaña aparte</span>
+                      {!designApproved && (
+                        <span
+                          onClick={approveDesign}
+                          style={{
+                            padding: '4px 9px', borderRadius: 6, background: T.text,
+                            color: '#fff', cursor: 'pointer', fontWeight: 500,
+                          }}>Aprobar</span>
+                      )}
                     </span>
                   </div>
 
@@ -443,10 +476,19 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
                     Documentos que Don Cheli ha generado en este trabajo.
                   </div>
                   {B_JOB_FILES.map((f, i) => (
-                    <div key={f.path} style={{
-                      padding: '8px 10px', borderRadius: 8, background: T.bgAlt,
+                    <div key={f.path}
+                      onClick={() => {
+                        const sel = selectedFile === f.path ? null : f.path;
+                        setSelectedFile(sel);
+                        if (sel) setToast(`Abriendo ${f.path}`);
+                      }}
+                      style={{
+                      padding: '8px 10px', borderRadius: 8,
+                      background: selectedFile === f.path ? T.successBg : T.bgAlt,
+                      border: `1px solid ${selectedFile === f.path ? T.success : 'transparent'}`,
                       display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer',
                       animation: `bsFadeIn 0.25s ${0.25 + i * 0.025}s cubic-bezier(.22,1,.36,1) both`,
+                      transition: 'background .12s ease, border-color .12s ease',
                     }}>
                       <span style={{
                         width: 24, height: 24, borderRadius: 5, background: T.panel,
@@ -524,6 +566,29 @@ const BS_JobDetail = ({ dens, showSidebar, onNav, projectId, scenario }) => {
           </div>
         </div>
       </BS_PageBody>
+
+      {toast && (
+        <div style={{
+          position: 'fixed', bottom: 24, left: '50%', transform: 'translateX(-50%)',
+          background: T.text, color: '#fff',
+          padding: '11px 16px', borderRadius: 12,
+          boxShadow: T.shadowLg, zIndex: 1100,
+          display: 'flex', alignItems: 'center', gap: 12,
+          fontSize: 13, maxWidth: 'min(480px, 92vw)',
+          animation: 'bsFadeIn 0.2s cubic-bezier(.22,1,.36,1) both',
+        }}>
+          <span style={{
+            width: 22, height: 22, borderRadius: '50%',
+            background: T.success, display: 'grid', placeItems: 'center', flexShrink: 0,
+          }}>
+            <BS_Icon name="check" size={13} />
+          </span>
+          <span style={{ flex: 1 }}>{toast}</span>
+          <span onClick={() => setToast(null)} style={{
+            fontSize: 12, color: 'rgba(255,255,255,0.7)', cursor: 'pointer',
+          }}>✕</span>
+        </div>
+      )}
     </div>
   );
 };
