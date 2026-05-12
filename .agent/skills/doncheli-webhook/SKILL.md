@@ -1,6 +1,6 @@
 ---
 name: doncheli-webhook
-description: Configure and test webhooks and automation triggers for the project. Activate when user mentions "webhook", "trigger", "automation", "event hook", "notify on", "callback URL".
+description: Configure and test webhooks and external triggers (GitHub, Slack, Linear, CI/CD) to automate Don Cheli commands. Activate when user mentions "webhook", "GitHub webhook", "Slack integration", "CI/CD webhook", "external triggers", "trigger automation", "automate Don Cheli", "event hook".
 ---
 
 # Don Cheli: Webhook & Automation
