@@ -1,6 +1,6 @@
 ---
-name: custom-gates
-description: Sistema de quality gates extensible con plugins YAML
+nombre: Custom Quality Gates
+descripcion: "Sistema de quality gates extensible con plugins YAML"
 version: 1.0.0
 tags: [quality, ci-cd, gates, plugins]
 grado_libertad: medio

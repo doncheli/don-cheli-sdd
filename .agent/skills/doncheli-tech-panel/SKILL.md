@@ -1,6 +1,6 @@
 ---
 name: doncheli-tech-panel
-description: Convene a senior engineering expert panel to evaluate technical decisions. Activate when user mentions "tech panel", "technical discussion", "expert opinion", "architecture decision", "which technology", "should we use".
+description: Convene a senior engineering expert panel for technical decisions on implementation, stack choice, and code quality. Activate when user mentions "tech panel", "technical meeting", "senior review", "mesa técnica", "stack decision", "implementation decision", "technical discussion", "expert panel".
 ---
 
 # Don Cheli: Senior Tech Panel
